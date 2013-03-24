@@ -12,6 +12,11 @@
 		<class>fr.afcepf.atod17.entitybeans.compte.Adresse</class>
 		<class>fr.afcepf.atod17.entitybeans.compte.Ville</class>
 		
+		<class>fr.afcepf.atod17.entitybeans.commande.Commande</class>
+		<class>fr.afcepf.atod17.entitybeans.commande.EtatCommande</class>
+		<class>fr.afcepf.atod17.entitybeans.commande.TarifLivraison</class>
+		<class>fr.afcepf.atod17.entitybeans.commande.TypeLivraison</class>
+		
 		<properties>
 			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://127.0.0.1:3306/atod17_g2_vins" />
 			<property name="javax.persistence.jdbc.password" value="afcepf" />
