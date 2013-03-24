@@ -4,6 +4,14 @@
 	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
 	<persistence-unit name="VinsSurVins" transaction-type="RESOURCE_LOCAL">
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
+		
+		<class>fr.afcepf.atod17.entitybeans.compte.CompteAbstrait</class>
+		<class>fr.afcepf.atod17.entitybeans.compte.CompteClient</class>
+		<class>fr.afcepf.atod17.entitybeans.compte.CompteSysteme</class>
+		<class>fr.afcepf.atod17.entitybeans.compte.EtatCompte</class>
+		<class>fr.afcepf.atod17.entitybeans.compte.Adresse</class>
+		<class>fr.afcepf.atod17.entitybeans.compte.Ville</class>
+		
 		<properties>
 			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://127.0.0.1:3306/atod17_g2_vins" />
 			<property name="javax.persistence.jdbc.password" value="afcepf" />
