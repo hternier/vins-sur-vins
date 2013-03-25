@@ -2,6 +2,7 @@ package fr.afcepf.atod17.entitybeans.commande;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -45,6 +47,10 @@ public class Commande implements Serializable {
 	@ManyToOne
 	@JoinColumn(name="idTarifLivraison")
 	private TarifLivraison tarifLivraison;
+	
+	@OneToMany
+	@JoinColumn(name="idCommande", referencedColumnName="idCommande")
+	private List<ProduitEnCommande> produitsEnCommande;
 	
 	public Commande() {
 		
@@ -96,6 +102,14 @@ public class Commande implements Serializable {
 
 	public void setTarifLivraison(TarifLivraison tarifLivraison) {
 		this.tarifLivraison = tarifLivraison;
+	}
+
+	public List<ProduitEnCommande> getProduitsEnCommande() {
+		return produitsEnCommande;
+	}
+
+	public void setProduitsEnCommande(List<ProduitEnCommande> produitsEnCommande) {
+		this.produitsEnCommande = produitsEnCommande;
 	}
 	
 }
