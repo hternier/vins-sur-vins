@@ -6,4 +6,10 @@
     xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_1.xsd"
     version="2.1">
 
+<managed-bean>
+	<managed-bean-name>mbTest</managed-bean-name>
+	<managed-bean-class>fr.afcepf.atod17.control.managedbeans.ManagedBeanTest</managed-bean-class>
+	<managed-bean-scope>request</managed-bean-scope>
+</managed-bean>
+
 </faces-config>
