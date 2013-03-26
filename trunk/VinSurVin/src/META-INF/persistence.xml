@@ -6,34 +6,34 @@
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 		<jta-data-source>java:/VinSurVin</jta-data-source>
 		
-		<class>fr.afcepf.atod17.entitybeans.compte.CompteAbstrait</class>
-		<class>fr.afcepf.atod17.entitybeans.compte.Adresse</class>
-		<class>fr.afcepf.atod17.entitybeans.compte.CompteClient</class>
-		<class>fr.afcepf.atod17.entitybeans.compte.CompteSysteme</class>
-		<class>fr.afcepf.atod17.entitybeans.compte.EtatCompte</class>
-		<class>fr.afcepf.atod17.entitybeans.compte.Ville</class>
+		<class>fr.afcepf.atod17.vinsurvin.entitybeans.compte.CompteAbstrait</class>
+		<class>fr.afcepf.atod17.vinsurvin.entitybeans.compte.Adresse</class>
+		<class>fr.afcepf.atod17.vinsurvin.entitybeans.compte.CompteClient</class>
+		<class>fr.afcepf.atod17.vinsurvin.entitybeans.compte.CompteSysteme</class>
+		<class>fr.afcepf.atod17.vinsurvin.entitybeans.compte.EtatCompte</class>
+		<class>fr.afcepf.atod17.vinsurvin.entitybeans.compte.Ville</class>
 		
-		<class>fr.afcepf.atod17.entitybeans.commande.Commande</class>	
-		<class>fr.afcepf.atod17.entitybeans.commande.EtatCommande</class>	
-		<class>fr.afcepf.atod17.entitybeans.commande.ProduitEnCommande</class>	
-		<class>fr.afcepf.atod17.entitybeans.commande.ProduitEnCommandePK</class>	
-		<class>fr.afcepf.atod17.entitybeans.commande.TarifLivraison</class>	
-		<class>fr.afcepf.atod17.entitybeans.commande.TypeLivraison</class>
+		<class>fr.afcepf.atod17.vinsurvin.entitybeans.commande.Commande</class>	
+		<class>fr.afcepf.atod17.vinsurvin.entitybeans.commande.EtatCommande</class>	
+		<class>fr.afcepf.atod17.vinsurvin.entitybeans.commande.ProduitEnCommande</class>	
+		<class>fr.afcepf.atod17.vinsurvin.entitybeans.commande.ProduitEnCommandePK</class>	
+		<class>fr.afcepf.atod17.vinsurvin.entitybeans.commande.TarifLivraison</class>	
+		<class>fr.afcepf.atod17.vinsurvin.entitybeans.commande.TypeLivraison</class>
 		
-		<class>fr.afcepf.atod17.entitybeans.produit.Produit</class>
-		<class>fr.afcepf.atod17.entitybeans.produit.Categorie</class>
-		<class>fr.afcepf.atod17.entitybeans.produit.CategorieAccessoire</class>
-		<class>fr.afcepf.atod17.entitybeans.produit.CategorieSpiritueux</class>
-		<class>fr.afcepf.atod17.entitybeans.produit.CategorieVin</class>
-		<class>fr.afcepf.atod17.entitybeans.produit.Prix</class>
-		<class>fr.afcepf.atod17.entitybeans.produit.Spiritueux</class>
-		<class>fr.afcepf.atod17.entitybeans.produit.TVA</class>
-		<class>fr.afcepf.atod17.entitybeans.produit.Vin</class>
-		<class>fr.afcepf.atod17.entitybeans.produit.Accessoire</class>
+		<class>fr.afcepf.atod17.vinsurvin.entitybeans.produit.Produit</class>
+		<class>fr.afcepf.atod17.vinsurvin.entitybeans.produit.Categorie</class>
+		<class>fr.afcepf.atod17.vinsurvin.entitybeans.produit.CategorieAccessoire</class>
+		<class>fr.afcepf.atod17.vinsurvin.entitybeans.produit.CategorieSpiritueux</class>
+		<class>fr.afcepf.atod17.vinsurvin.entitybeans.produit.CategorieVin</class>
+		<class>fr.afcepf.atod17.vinsurvin.entitybeans.produit.Prix</class>
+		<class>fr.afcepf.atod17.vinsurvin.entitybeans.produit.Spiritueux</class>
+		<class>fr.afcepf.atod17.vinsurvin.entitybeans.produit.TVA</class>
+		<class>fr.afcepf.atod17.vinsurvin.entitybeans.produit.Vin</class>
+		<class>fr.afcepf.atod17.vinsurvin.entitybeans.produit.Accessoire</class>
 		
 		
-		<class>fr.afcepf.atod17.entitybeans.misc.TypeProduit</class>
-		<class>fr.afcepf.atod17.entitybeans.misc.TypeCompte</class>
+		<class>fr.afcepf.atod17.vinsurvin.entitybeans.misc.TypeProduit</class>
+		<class>fr.afcepf.atod17.vinsurvin.entitybeans.misc.TypeCompte</class>
 		
 		<properties>
 			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />
