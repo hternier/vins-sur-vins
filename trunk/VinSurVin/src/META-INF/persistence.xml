@@ -5,6 +5,7 @@
 	<persistence-unit name="VinsSurVins" transaction-type="RESOURCE_LOCAL">
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 		<jta-data-source>java:/VinSurVin</jta-data-source>
+		
 		<class>fr.afcepf.atod17.entitybeans.compte.CompteAbstrait</class>
 		<class>fr.afcepf.atod17.entitybeans.compte.Adresse</class>
 		<class>fr.afcepf.atod17.entitybeans.compte.CompteClient</class>
