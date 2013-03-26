@@ -35,5 +35,16 @@ public class ProduitEnCommandePK implements Serializable {
 	public void setIdCommande(int idCommande) {
 		this.idCommande = idCommande;
 	}
+
+	@Override
+	public boolean equals(Object paramObj) {
+		ProduitEnCommandePK pk = (ProduitEnCommandePK) paramObj;
+		return (this.idCommande == pk.idCommande && this.idProduit == pk.idProduit);
+	}
+
+	@Override
+	public int hashCode() {
+		return super.hashCode();
+	}
 	
 }
