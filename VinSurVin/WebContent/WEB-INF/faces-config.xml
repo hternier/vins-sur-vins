@@ -8,7 +8,7 @@
 
 <managed-bean>
 	<managed-bean-name>mbTest</managed-bean-name>
-	<managed-bean-class>fr.afcepf.atod17.control.managedbeans.ManagedBeanTest</managed-bean-class>
+	<managed-bean-class>fr.afcepf.atod17.vinsurvin.control.managedbeans.ManagedBeanTest</managed-bean-class>
 	<managed-bean-scope>request</managed-bean-scope>
 </managed-bean>
 
