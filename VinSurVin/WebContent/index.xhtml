@@ -8,7 +8,7 @@
 <h:body>
 <f:view>
 <h:form id="form">
-	<p:dataTable value="#{mbTest.listeProduit}" var="produit" resizableColumns="true">
+	<p:dataTable value="#{mbTest.listeProduit}" var="produit" resizableColumns="true" paginator="true">
 		<p:column headerText="Id">
 			<h:outputText value="#{produit.id}" />
 		</p:column>
@@ -17,6 +17,7 @@
 		</p:column>
 	</p:dataTable>
 	<h:commandButton value="Salut" action="#{mbTest.testAction }" />
+	<h:commandButton action="#{mbTest.testActionEnStock }" value="En stock" />
 </h:form>
 </f:view>
 </h:body>
