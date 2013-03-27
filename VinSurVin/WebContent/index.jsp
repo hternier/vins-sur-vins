@@ -14,6 +14,7 @@
 		<h:outputText value="#{mbTest.listeProduitLength }" /><br/>
 		<h:dataTable value="#{mbTest.listeProduit }" var="produit">
 			<h:column>
+				<f:facet name="header">Id</f:facet>
 				<h:outputText value="#{produit.id}" />
 			</h:column>
 		</h:dataTable>
