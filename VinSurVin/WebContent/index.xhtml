@@ -7,20 +7,15 @@
 </h:head>
 <h:body>
 <f:view>
-<h:form>
-	<h:panelGroup rendered="#{mbTest.listeProduitLength > 0}">
-		<h:outputText value="#{mbTest.listeProduitLength }" /><br/>
-		<p:dataTable value="#{mbTest.listeProduit}" var="produit" >
-			<p:column>
-				<f:facet name="header"><h:outputText value="Id" /></f:facet>
-				<p:outputLabel value="#{produit.id}" />
-			</p:column>
-			<p:column>
-				<f:facet name="header"><h:outputText value="Categorie" /> </f:facet>
-				<p:outputLabel value="#{produit.categorie.valeur}" />
-			</p:column>
-		</p:dataTable>
-	</h:panelGroup>
+<h:form id="form">
+	<p:dataTable value="#{mbTest.listeProduit}" var="produit" resizableColumns="true">
+		<p:column headerText="Id">
+			<h:outputText value="#{produit.id}" />
+		</p:column>
+		<p:column headerText="Categorie">
+			<h:outputText value="#{produit.categorie.valeur}" />
+		</p:column>
+	</p:dataTable>
 	<h:commandButton value="Salut" action="#{mbTest.testAction }" />
 </h:form>
 </f:view>
