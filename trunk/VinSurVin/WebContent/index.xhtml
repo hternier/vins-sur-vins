@@ -1,0 +1,28 @@
+<html xmlns="http://www.w3.org/1999/xhtml"  
+    xmlns:h="http://java.sun.com/jsf/html"  
+    xmlns:f="http://java.sun.com/jsf/core"  
+    xmlns:p="http://primefaces.org/ui">
+<h:head>
+<title>Test</title>
+</h:head>
+<h:body>
+<f:view>
+<h:form>
+	<h:panelGroup rendered="#{mbTest.listeProduitLength > 0}">
+		<h:outputText value="#{mbTest.listeProduitLength }" /><br/>
+		<p:dataTable value="#{mbTest.listeProduit}" var="produit" >
+			<p:column>
+				<f:facet name="header"><h:outputText value="Id" /></f:facet>
+				<p:outputLabel value="#{produit.id}" />
+			</p:column>
+			<p:column>
+				<f:facet name="header"><h:outputText value="Categorie" /> </f:facet>
+				<p:outputLabel value="#{produit.categorie.valeur}" />
+			</p:column>
+		</p:dataTable>
+	</h:panelGroup>
+	<h:commandButton value="Salut" action="#{mbTest.testAction }" />
+</h:form>
+</f:view>
+</h:body>
+</html>
