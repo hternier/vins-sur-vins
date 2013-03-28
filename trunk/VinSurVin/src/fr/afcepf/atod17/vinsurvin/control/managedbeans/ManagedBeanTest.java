@@ -4,20 +4,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 import fr.afcepf.atod17.vinsurvin.entitybeans.produit.Produit;
-import fr.afcepf.atod17.vinsurvin.services.ServiceCatalogue;
+import fr.afcepf.atod17.vinsurvin.services.ServiceProduit;
 
 public class ManagedBeanTest extends AbstractManagedBean {
 	
 	private List<Produit> listeProduit = new ArrayList<Produit>();
 	
 	public String testAction() {
-		this.listeProduit = getContext().getBean("serviceCatalogue", ServiceCatalogue.class).getAllProduit(false);
+		this.listeProduit = getContext().getBean("serviceProduit", ServiceProduit.class).getAllProduit(false);
 		
 		return "";
 	}
 	
 	public String testActionEnStock() {
-		this.listeProduit = getContext().getBean("serviceCatalogue", ServiceCatalogue.class).getAllProduit(true);
+		this.listeProduit = getContext().getBean("serviceProduit", ServiceProduit.class).getAllProduit(true);
 		
 		return "";
 	}

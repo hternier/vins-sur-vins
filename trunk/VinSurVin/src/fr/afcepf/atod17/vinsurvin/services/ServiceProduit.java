@@ -5,11 +5,11 @@ import java.util.List;
 import fr.afcepf.atod17.vinsurvin.dao.interfaces.produit.IDaoProduit;
 import fr.afcepf.atod17.vinsurvin.entitybeans.produit.Produit;
 
-public class ServiceCatalogue {
+public class ServiceProduit {
 	
 	private IDaoProduit daoProduit;
 	
-	public ServiceCatalogue() {
+	public ServiceProduit() {
 		
 	}
 	
