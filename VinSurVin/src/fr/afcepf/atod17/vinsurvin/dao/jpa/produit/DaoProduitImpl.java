@@ -9,6 +9,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
+import javax.persistence.Query;
 
 import fr.afcepf.atod17.vinsurvin.dao.interfaces.produit.IDaoProduit;
 import fr.afcepf.atod17.vinsurvin.entitybeans.produit.Produit;
@@ -29,6 +30,13 @@ public class DaoProduitImpl implements IDaoProduit {
 
 	public void setEm(EntityManager em) {
 		this.em = em;
+	}
+	
+	public Produit getProduit(Produit paramProduit) {
+		String SQL_Query = "Select p From Produit p where p.id = :id";
+		Query query = em.createQuery(SQL_Query);
+		query.setParameter("id", paramProduit.getId());
+		return (Produit) query.getSingleResult();
 	}
 
 	@Override

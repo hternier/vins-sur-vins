@@ -8,5 +8,6 @@ public interface IDaoProduit {
 
 	public List<Produit> getAll();
 	public List<Produit> getAllEnStock();
+	public Produit getProduit(Produit produit);
 	
 }
