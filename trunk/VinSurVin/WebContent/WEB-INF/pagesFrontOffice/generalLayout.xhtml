@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+	xmlns:sec="http://www.springframework.org/security/tags">
+
+<f:view contentType="text/html">
+	<h:head>
+		<meta http-equiv="content-Type" content="text/html;charset=UTF-8" />
+		<script src="../resources/js/bdna.js" type="text/javascript" />
+		<script type="text/javascript" src="../resources/js/jquery.js" />
+		<script type="text/javascript" src="../resources/js/primefaces.js" />
+		<script type="text/javascript" src="../resources/js/bdna.js" />
+
+		<title><ui:insert name="title" /></title>
+		<link rel="shortcut icon" href="../resources/images/favicon.png"
+			type="image/x-icon" />
+		<link rel="icon" href="../resources/images/favicon.png"
+			type="image/x-icon" />
+
+		<link rel="stylesheet" href="../resources/css/style.css"
+			type="text/css" />
+		<link rel="stylesheet" href="../resources/css/bdna.style.css"
+			type="text/css" />
+		<link rel="stylesheet" href="../resources/css/theme.css"
+			type="text/css" />
+		<link rel="stylesheet" href="../resources/css/primefaces.css"
+			type="text/css" />
+		<link rel="stylesheet" href="../resources/css/base.css"
+			type="text/css" />
+		<!--[if IE 8]-->
+		<!--         <link href="href="../resources/css/ie8.css" media="screen" rel="stylesheet" type="text/css" /> -->
+		<!--  [endif]-->
+		<!--[if IE 9]-->
+		<!--         <link href="href="../resources/css/ie9.css" media="screen" rel="stylesheet" type="text/css" /> -->
+		<!-- [endif]-->
+	</h:head>
+
+	<h:body>
+		<p:panel id="page">
+			<p:panel id="header">
+				<h1 class="header-logo">
+					<a href="#" title="Vin sur Vin" class="logo-one"> <img
+						src="../resources/images/logo.png" alt="Vin sur Vin" />
+					</a>
+				</h1>
+				<div class="header_deconnexion">
+					<h:form styleClass="topmenu_form">
+						<h:commandButton disabled="true" type="button" style="right:200px"
+							styleClass="topmenu_button" />
+						<h:commandButton type="button" styleClass="topmenu_button"
+							onclick="window.location.href='/VinSurVin/flow/logout';"
+							value="Déconnexion" />
+					</h:form>
+				</div>
+				<div class="header_connexion">
+					<h:form styleClass="topmenu_form">
+						<h:commandButton disabled="true" type="button" style="right:200px"
+							styleClass="topmenu_button" />
+						<h:outputLabel value="Identifiant" />
+						<h:inputText id="identifiant_inputText" />
+						<h:outputLabel value="Mot de passe" />
+						<h:inputText id="mdp_inputText" />
+						<h:commandButton type="button" styleClass="topmenu_button"
+							onclick="window.location.href='/bdna/flow/login';"
+							value="Connexion" />
+					</h:form>
+				</div>
+			</p:panel>
+			<p:panel id="nav" styleClass="nav">
+				<h:form id="bandeauCommande" styleClass="nav_bandeau">
+					<p:commandButton id="accueil_button" value="Accueil"
+						action="goAccueil" styleClass="ui-button-home" ajax="false"
+						immediate="true" />
+					<p:commandButton id="vinRouge_button" value="Vins rouges"
+						action="goVinRouge" styleClass="ui-button" ajax="false"
+						immediate="true" />
+					<p:commandButton id="vinRose_button" value="Vins rosés"
+						action="goVinRose" styleClass="ui-button" ajax="false"
+						immediate="true" />
+					<p:commandButton id="vinBlanc_button" value="Vins blancs"
+						action="goVinBlanc" styleClass="ui-button-home" ajax="false"
+						immediate="true" />
+					<p:commandButton id="champagne_button" value="Champagnes"
+						action="goChampagne" styleClass="ui-button" ajax="false"
+						immediate="true" />
+					<p:commandButton id="spiritueux_button" value="Spiritueux"
+						action="goSpiritueux" styleClass="ui-button" ajax="false"
+						immediate="true" />
+					<p:commandButton id="accessoires_button" value="Accessoires"
+						action="goAccessoires" styleClass="ui-button" ajax="false"
+						immediate="true" />
+
+				</h:form>
+			</p:panel>
+
+			<h:form id="general_growl_form">
+				<p:growl id="general_growl" autoUpdate="true" showDetail="true"
+					showSummary="true" sticky="true" />
+			</h:form>
+
+			<p:panel id="main" styleClass="main">
+				<p:panel styleClass="padding-page">
+					<p:panel id="bodyGeneral-panel"
+						styleClass="ui-panel ui-widget ui-widget-content">
+						<p:panel id="bodyGeneral-panel_content"
+							styleClass="ui-panel-contentui-widget-content bodyGeneral-panel">
+							<ui:insert name="bodyGeneral" id="conteneurPage" />
+						</p:panel>
+					</p:panel>
+				</p:panel>
+			</p:panel>
+
+			<div id="footer">
+				<h:form>
+					<h:panelGrid columns="3">
+						<h:panelGroup columns="3">
+							<h:outputLabel value="Dernière connexion le"
+								rendered="" />
+							<h:outputLabel id="footer_connexion_dateHeure_outputText"
+								value=""
+								rendered="" />
+						</h:panelGroup>
+						<h:panelGroup columns="3">
+							<h:outputLabel value="Contact technique : " />
+							<h:outputLink value="mailto:contact@vinsurvin.fr">contact@vinsurvin.fr</h:outputLink>
+						</h:panelGroup>
+
+						<h:commandLink value="Aide en ligne" />
+						<h:commandLink value="Conditions générales de vente" />
+						<h:commandLink value="Mentions légales" />
+						<h:commandLink value="Plan du site" />
+						<h:outputText value="Copyright 2013 Vin sur Vin. Tous droits réservés " />
+					</h:panelGrid>
+				</h:form>
+			</div>
+		</p:panel>
+	</h:body>
+
+</f:view>
+</html>
