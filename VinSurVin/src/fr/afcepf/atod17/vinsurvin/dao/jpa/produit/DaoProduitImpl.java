@@ -9,7 +9,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
-import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 
 import fr.afcepf.atod17.vinsurvin.dao.interfaces.produit.IDaoProduit;
 import fr.afcepf.atod17.vinsurvin.entitybeans.produit.Produit;
@@ -33,20 +33,46 @@ public class DaoProduitImpl implements IDaoProduit {
 	}
 	
 	public Produit getProduit(Produit paramProduit) {
-		String SQL_Query = "Select p From Produit p where p.id = :id";
-		Query query = em.createQuery(SQL_Query);
-		query.setParameter("id", paramProduit.getId());
-		return (Produit) query.getSingleResult();
+		return em.find(Produit.class, paramProduit.getId());
 	}
-
+	
+	private final String REQ_GETALL = "From Produit";
+	
 	@Override
 	public List<Produit> getAll() {
-		return em.createQuery("From Produit", Produit.class).getResultList();
+		return em.createQuery(REQ_GETALL, Produit.class).getResultList();
 	}
+	
+	private final String REQ_GETALLENSTOCK = "From Produit p Where p.stock > 0";
 	
 	@Override
 	public List<Produit> getAllEnStock() {
-		return em.createQuery("From Produit p Where p.stock > 0", Produit.class).getResultList();
+		return em.createQuery(REQ_GETALLENSTOCK, Produit.class).getResultList();
+	}
+	
+	private final String REQ_GETALLREGIONASSTRING = "Select distinct v.region From Vin v order by v.region";
+
+	@Override
+	public List<String> getAllRegionAsString() {
+		return em.createQuery(REQ_GETALLREGIONASSTRING, String.class).getResultList();
+	}
+
+	private final String REQ_GETALLPARNOM = "From Produit p Where p.libelle like %:paramNom%";
+
+	@Override
+	public List<Produit> getAllParNom(String paramNom) {
+		TypedQuery<Produit> query = em.createQuery(REQ_GETALLPARNOM, Produit.class);
+		query.setParameter("paramNom", paramNom);
+		return query.getResultList();
+	}
+
+	private final String REQ_GETALLPARNOMENSTOCK = "From Produit p Where p.libelle like ? AND p.stock > 0";
+
+	@Override
+	public List<Produit> getAllParNomEnStock(String paramNom) {
+		TypedQuery<Produit> query = em.createQuery(REQ_GETALLPARNOMENSTOCK, Produit.class);
+		query.setParameter(1, "%" + paramNom + "%");
+		return query.getResultList();
 	}
 
 	@PostConstruct
