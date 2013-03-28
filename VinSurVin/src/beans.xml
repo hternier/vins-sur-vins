@@ -7,7 +7,7 @@
 	
 	<bean name="daoProduit" class="fr.afcepf.atod17.vinsurvin.dao.jpa.produit.DaoProduitImpl" />
 	
-	<bean name="serviceCatalogue" class="fr.afcepf.atod17.vinsurvin.services.ServiceCatalogue">
+	<bean name="serviceProduit" class="fr.afcepf.atod17.vinsurvin.services.ServiceCatalogue">
 		<property name="daoProduit" ref="daoProduit" />
 	</bean>
 </beans>
