@@ -10,8 +10,9 @@
 <body>
 <f:view>
 <h:form>
+	<h:outputText value="#{mbTest.produit.libelle}" />
+	<h:outputText value="#{mbTest.prixActuel}" />
 	<h:panelGroup rendered="#{mbTest.listeProduitLength > 0}">
-		<h:outputText value="#{mbTest.listeProduitLength }" /><br/>
 		<h:dataTable value="#{mbTest.listeProduit }" var="produit">
 			<h:column>
 				<f:facet name="header"><h:outputText value="Id" /></f:facet>
@@ -20,6 +21,24 @@
 		</h:dataTable>
 	</h:panelGroup>
 	<h:commandButton value="Salut" action="#{mbTest.testAction }" />
+	
+	<h:commandLink value="Ajout Produit 1" actionListener="#{mbPanier.ajoutPanier}">
+		<f:attribute name="produit" value="#{mbTest.produit}"/>
+		<f:attribute name="quantite" value="1"/>
+	</h:commandLink>
+	<h:commandLink value="Ajout Produit 2" actionListener="#{mbPanier.ajoutPanier}">
+		<f:attribute name="produit" value="#{mbTest.produit2}"/>
+		<f:attribute name="quantite" value="1"/>
+	</h:commandLink><br>
+	<h:commandLink value="Retirer Produit 1" actionListener="#{mbPanier.retirerPanier}">
+		<f:attribute name="produit" value="#{mbTest.produit}"/>
+		<f:attribute name="quantite" value="1"/>
+	</h:commandLink>
+	<h:commandLink value="Retirer Produit 2" actionListener="#{mbPanier.retirerPanier}">
+		<f:attribute name="produit" value="#{mbTest.produit2}"/>
+		<f:attribute name="quantite" value="1"/>
+	</h:commandLink><br>
+	<h:outputText value="#{mbPanier.totalPanier}" />
 </h:form>
 </f:view>
 </body>
