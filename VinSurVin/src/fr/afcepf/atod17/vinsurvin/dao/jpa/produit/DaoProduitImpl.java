@@ -13,6 +13,7 @@ import javax.persistence.TypedQuery;
 
 import fr.afcepf.atod17.vinsurvin.dao.interfaces.produit.IDaoProduit;
 import fr.afcepf.atod17.vinsurvin.entitybeans.produit.Produit;
+import fr.afcepf.atod17.vinsurvin.entitybeans.produit.Vin;
 
 public class DaoProduitImpl implements IDaoProduit {
 
@@ -73,6 +74,13 @@ public class DaoProduitImpl implements IDaoProduit {
 		TypedQuery<Produit> query = em.createQuery(REQ_GETALLPARNOMENSTOCK, Produit.class);
 		query.setParameter(1, "%" + paramNom + "%");
 		return query.getResultList();
+	}
+	
+	private final String REQ_GETALLVINPARREGION = "From Vin v Where v.region = ?";
+
+	@Override
+	public List<Vin> getAllVinParRegion(String paramRegion) {
+		return em.createQuery(REQ_GETALLVINPARREGION, Vin.class).setParameter(1, paramRegion).getResultList();
 	}
 
 	@PostConstruct
