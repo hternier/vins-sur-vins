@@ -109,7 +109,7 @@ public class PanierManagedBean extends AbstractManagedBean {
         totalPanier = 0.0;
         for (ProduitEnCommande pec : panier.getProduits()) {
             totalPanier += (getContext().getBean(ServiceProduitImpl.class)
-                    .getPrixActuel(pec.getProduit()) * pec.getQuantite());
+                    .getPrixActuelHT(pec.getProduit()) * pec.getQuantite());
         }
         return totalPanier;
     }
