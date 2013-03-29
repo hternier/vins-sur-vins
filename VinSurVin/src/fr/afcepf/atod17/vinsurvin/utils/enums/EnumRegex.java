@@ -2,7 +2,8 @@ package fr.afcepf.atod17.vinsurvin.utils.enums;
 
 public enum EnumRegex {
 	
-	PRIX("^[$]?[0-9]*(\\.|\\,)?[0-9]?[0-9]?$");
+	PRIX("^[$]?[0-9]*(\\.|\\,)?[0-9]?[0-9]?$"),
+	ANNEE("^\\d{4}$");
 	
 	private String pattern;
 
