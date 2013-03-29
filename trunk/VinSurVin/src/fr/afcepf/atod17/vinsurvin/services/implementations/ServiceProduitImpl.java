@@ -26,9 +26,14 @@ public class ServiceProduitImpl implements IServiceProduit {
 	 * Constructeur par defaut.
 	 */
 	public ServiceProduitImpl() {
+		
 	}
 
-	@Override
+	/**
+	 * Méthode de récupèration de la liste de tous les produits.
+	 * @param enStock Defini si les produit doivent êtres en stock.
+	 * @return La liste des produits
+	 */
 	public List<Produit> getAllProduit(boolean enStock) {
 		List<Produit> listeRetour = null;
 		if (enStock) {
@@ -43,7 +48,7 @@ public class ServiceProduitImpl implements IServiceProduit {
 	public List<String> getAllRegion(boolean enStock) {
 		List<String> listeRetour = new ArrayList<String>();
 		if (enStock) {
-			//TODO Si besoin
+			//TODO getAllRegion (mais que en stock) si besoin
 		} else {
 			listeRetour = daoProduit.getAllRegionAsString();
 		}
@@ -61,12 +66,15 @@ public class ServiceProduitImpl implements IServiceProduit {
 		return listeRetour;
 	}
 
-	@Override
+	/**
+	 * Méthode de récupèration d'un produit par son Id.
+	 * @param produit Le produit à récupérer.
+	 * @return Le produit récupéré
+	 */
 	public Produit getProduit(Produit produit) {
 		return daoProduit.getProduit(produit);
 	}
 
-	
 	@Override
 	public Double getPrixActuelTTC(Produit paramProduit) {
 		Double retour = getPrixActuelHT(paramProduit);
@@ -77,12 +85,7 @@ public class ServiceProduitImpl implements IServiceProduit {
 	@Override
 	public List<Produit> getAllProduitParPrix(double prixMin, double prixMax,
 			boolean enStock) {
-		List<Produit> listeRetour = null;
-		if (enStock) {
-			listeRetour = daoProduit.getAllEnStock();
-		} else {
-			listeRetour = daoProduit.getAll();
-		}
+		List<Produit> listeRetour = getAllProduit(enStock);
 		this.filterListeParPrix(listeRetour, prixMin, prixMax);
 		return listeRetour;
 	}
@@ -101,16 +104,16 @@ public class ServiceProduitImpl implements IServiceProduit {
 	@Override
 	public List<Produit> getAllProduitParPrixEtNom(double prixMin, double prixMax, boolean enStock, String paramNom) {
 		List<Produit> listeRetour = null;
-		if (enStock) {
-			listeRetour = daoProduit.getAllParNomEnStock(paramNom);
-		} else {
-			listeRetour = daoProduit.getAllParNom(paramNom);
-		}
-		this.filterListeParPrix(listeRetour, prixMin, prixMax);
+		listeRetour = getAllProduitParNom(paramNom, enStock);
+		filterListeParPrix(listeRetour, prixMin, prixMax);
 		return listeRetour;
 	}
 
-	@Override
+	 /**
+     * Méthode de récupèration du prix actuel HT du produit.
+     * @param paramProduit Le produit ayant un prix.
+     * @return Le prix HT actuel
+     */
 	public Double getPrixActuelHT(Produit paramProduit) {
         for (Prix prix : paramProduit.getPrix()) {
             if(prix.getDateDebut().before(new Date()) && prix.getDateFin() == null) {
@@ -122,10 +125,133 @@ public class ServiceProduitImpl implements IServiceProduit {
         }
         return null;
     }
+	
+	public List<Produit> getAllVinParRegion(String paramRegion, boolean enStock) {
+		List<Produit> listeRetour = null;
+		if (enStock) {
+			listeRetour = daoProduit.getAllVinParRegionEnStock(paramRegion);
+		} else {
+			listeRetour = daoProduit.getAllVinParRegion(paramRegion);
+		}
+		return listeRetour;
+	}
+
+
+	@Override
+	public List<Produit> getAllVinParRegionEtPrix(String paramRegion,
+			double prixMin, double prixMax, boolean enStock) {
+		List<Produit> listeRetour = this.getAllVinParRegion(paramRegion, enStock);
+		filterListeParPrix(listeRetour, prixMin, prixMax);
+		return listeRetour;
+	}
+
+	@Override
+	public List<Produit> getAllVinParRegionEtNom(String paramRegion, String paramNom, boolean enStock) {
+		List<Produit> listeRetour = null;
+		if (enStock) {
+			listeRetour = daoProduit.getAllVinParNomEtRegionEnStock(paramNom, paramRegion);
+		} else {
+			listeRetour = daoProduit.getAllVinParNomEtRegion(paramNom, paramRegion);
+		}
+		return listeRetour;
+	}
+
+	@Override
+	public List<Produit> getAllVinParRegionEtNomEtPrix(String paramRegion,
+			double prixMin, double prixMax, boolean enStock, String paramNom) {
+		List<Produit> listeRetour = null;
+		listeRetour = getAllVinParRegionEtNom(paramRegion, paramNom, enStock);
+		this.filterListeParPrix(listeRetour, prixMin, prixMax);
+		return listeRetour;
+	}	
+
+	@Override
+	public List<Produit> getAllProduitParMillesime(String paramMillesime,
+			boolean enStock) {
+		List<Produit> listeRetour = null;
+		if (enStock) {
+			listeRetour = daoProduit.getAllParMillesimeEnStock(paramMillesime);
+		} else {
+			listeRetour = daoProduit.getAllParMillesime(paramMillesime);
+		}
+		return listeRetour;
+	}
+
+	@Override
+	public List<Produit> getAllProduitParMillesimeEtPrix(String paramMillesime,
+			double prixMin, double prixMax, boolean enStock) {
+		List<Produit> listeRetour = getAllProduitParMillesime(paramMillesime, enStock);
+		filterListeParPrix(listeRetour, prixMin, prixMax);
+		return listeRetour;
+	}
+
+	@Override
+	public List<Produit> getAllProduitParMillesimeEtNom(String paramMillesime,
+			String paramNom, boolean enStock) {
+		List<Produit> listeRetour = null;
+		if (enStock) {
+			listeRetour = daoProduit.getAllParMillesimeEtNomEnStock(paramMillesime, paramNom);
+		} else {
+			listeRetour = daoProduit.getAllParMillesimeEtNom(paramMillesime, paramNom);
+		}
+		return listeRetour;
+	}
+
+	@Override
+	public List<Produit> getAllProduitParMillesimeEtNomEtPrix(
+			String paramMillesime, String paramNom, double prixMin,
+			double prixMax, boolean enStock) {
+		List<Produit> listeRetour = getAllProduitParMillesimeEtNom(paramMillesime, paramNom, true);
+		filterListeParPrix(listeRetour, prixMin, prixMax);
+		return listeRetour;
+	}
+
+	@Override
+	public List<Produit> getAllVinParMillesimeEtNomEtRegion(
+			String paramMillesime, String paramNom, String paramRegion,
+			boolean enStock) {
+		List<Produit> listeRetour = null;
+		if (enStock) {
+			listeRetour = daoProduit.getAllParMillesimeEtNomEtRegionEnStock(paramMillesime, paramNom, paramRegion);
+		} else {
+			listeRetour = daoProduit.getAllParMillesimeEtNomEtRegion(paramMillesime, paramNom, paramRegion);
+		}
+		return listeRetour;
+	}
+
+	@Override
+	public List<Produit> getAllVinParMillesimeEtNomEtRegionEtPrix(
+			String paramMillesime, String paramNom, String paramRegion,
+			double prixMin, double prixMax, boolean enStock) {
+		List<Produit> listeRetour = getAllVinParMillesimeEtNomEtRegion(paramMillesime, paramNom, paramRegion, true);
+		filterListeParPrix(listeRetour, prixMin, prixMax);
+		return listeRetour;
+	}
+
+	@Override
+	public List<Produit> getAllVinParMillesimeEtRegion(String paramMillesime,
+			String paramRegion, boolean enStock) {
+		List<Produit> listeRetour = null;
+		if (enStock) {
+			listeRetour = daoProduit.getAllVinParMillesimeEtRegionEnStock(paramMillesime, paramRegion);
+		} else {
+			listeRetour = daoProduit.getAllVinParMillesimeEtRegion(paramMillesime, paramRegion);
+		}
+		return listeRetour;
+	}
+
+	@Override
+	public List<Produit> getAllVinParMillesimeEtRegionEtPrix(
+			String paramMillesime, String paramRegion, double prixMin,
+			double prixMax, boolean enStock) {
+		List<Produit> listeRetour = getAllVinParMillesimeEtRegion(paramMillesime, paramRegion, enStock);
+		filterListeParPrix(listeRetour, prixMin, prixMax);
+		return listeRetour;
+	}
 
 	/**
 	 * Méthode de récupèration de la DAO produit.
-	 * @return La DAO produit
+	 * @return Le DAO produit
 	 */
 	public IDaoProduit getDaoProduit() {
 		return daoProduit;
