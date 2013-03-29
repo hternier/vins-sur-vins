@@ -7,8 +7,8 @@
 </h:head>
 <h:body>
 <f:view>
-<h:form>
-<p:panelGrid>
+<h:form id="form">
+<p:panelGrid style="margin:bottom:50px;">
 	<p:row>
 		<p:column><h:outputText value="Recherche :" /></p:column>
 		<p:column><p:inputText value="#{mbTestRecherche.rechercheTextuelle }" /></p:column>
@@ -29,23 +29,57 @@
 		<p:column><h:outputText value="Millesime :" /></p:column>
 		<p:column><p:inputText value="#{mbTestRecherche.rechercheMillesime }" /></p:column>
 		<p:column colspan="2"></p:column>
-		<p:column colspan="2"><p:commandButton value="Rechercher" action="#{mbTestRecherche.rechercher }" style="width:100%;" update="dataTable" /></p:column>
+		<p:column colspan="2"><p:commandButton value="Rechercher" action="#{mbTestRecherche.rechercher }" style="width:100%;" update="dataTableVin,dataTableSpiritueux,dataTableAccessoire" /></p:column>
 	</p:row>
 </p:panelGrid>
-<p:dataTable value="#{mbTestRecherche.listeResultat }" var="produit" id="dataTable" style="margin-top:15px;">
-	<p:column>
-		<f:facet name="header"><h:outputText value="Id" /> </f:facet>
-		<h:outputText value="#{produit.id }" />
-	</p:column>
-	<p:column>
-		<f:facet name="header"><h:outputText value="Libelle" /> </f:facet>
-		<h:outputText value="#{produit.libelle }" />
-	</p:column>
-	<p:column>
-		<f:facet name="header"><h:outputText value="Categorie" /> </f:facet>
-		<h:outputText value="#{produit.categorie.valeur }" />
-	</p:column>
-</p:dataTable>
+<p:fieldset id="dataTableVin" legend="Vins" style="#{mbTestRecherche.displayListeResultatVin }">
+	<p:dataTable value="#{mbTestRecherche.listeResultatVin }" var="produit">
+		<p:column>
+			<f:facet name="header"><h:outputText value="Id" /> </f:facet>
+			<h:outputText value="#{produit.id }" />
+		</p:column>
+		<p:column>
+			<f:facet name="header"><h:outputText value="Libelle" /> </f:facet>
+			<h:outputText value="#{produit.libelle }" />
+		</p:column>
+		<p:column>
+			<f:facet name="header"><h:outputText value="Categorie" /> </f:facet>
+			<h:outputText value="#{produit.categorie.valeur }" />
+		</p:column>
+	</p:dataTable>
+</p:fieldset>
+<p:fieldset id="dataTableSpiritueux" legend="Spiritueux" style="#{mbTestRecherche.displayListeResultatSpiritueux }">
+	<p:dataTable value="#{mbTestRecherche.listeResultatSpiritueux }" var="produit">
+		<p:column>
+			<f:facet name="header"><h:outputText value="Id" /> </f:facet>
+			<h:outputText value="#{produit.id }" />
+		</p:column>
+		<p:column>
+			<f:facet name="header"><h:outputText value="Libelle" /> </f:facet>
+			<h:outputText value="#{produit.libelle }" />
+		</p:column>
+		<p:column>
+			<f:facet name="header"><h:outputText value="Categorie" /> </f:facet>
+			<h:outputText value="#{produit.categorie.valeur }" />
+		</p:column>
+	</p:dataTable>
+</p:fieldset>
+<p:fieldset id="dataTableAccessoire" legend="Accessoires" style="#{mbTestRecherche.displayListeResultatAccessoire }">
+	<p:dataTable value="#{mbTestRecherche.listeResultatAccessoire }" var="produit">
+		<p:column>
+			<f:facet name="header"><h:outputText value="Id" /> </f:facet>
+			<h:outputText value="#{produit.id }" />
+		</p:column>
+		<p:column>
+			<f:facet name="header"><h:outputText value="Libelle" /> </f:facet>
+			<h:outputText value="#{produit.libelle }" />
+		</p:column>
+		<p:column>
+			<f:facet name="header"><h:outputText value="Categorie" /> </f:facet>
+			<h:outputText value="#{produit.categorie.valeur }" />
+		</p:column>
+	</p:dataTable>
+</p:fieldset>
 </h:form>
 </f:view>
 </h:body>
