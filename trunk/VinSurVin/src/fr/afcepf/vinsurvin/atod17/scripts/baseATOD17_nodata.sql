@@ -154,8 +154,6 @@ create table atod17_g2_vins.TARIFLIVRAISON
 create table atod17_g2_vins.TVA
 (
    IDTVA                int not null auto_increment,
-   DATEDEBUTTVA         timestamp not null,
-   DATEFINTVA           timestamp,
    VALEURTVA            double not null,
    primary key (IDTVA)
 );

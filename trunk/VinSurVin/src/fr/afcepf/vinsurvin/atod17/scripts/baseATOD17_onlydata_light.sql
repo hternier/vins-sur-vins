@@ -45,8 +45,8 @@ INSERT INTO ETATCOMMANDE VALUES (null, 'Annulé');
 
 INSERT INTO COMMANDE VALUES (null, 1, 2, 1, 2, current_timestamp);
 
-INSERT INTO TVA VALUES (null, current_timestamp, null, 0.196);
-INSERT INTO TVA VALUES (null, current_timestamp, null, 0.055);
+INSERT INTO TVA VALUES (null, 0.196);
+INSERT INTO TVA VALUES (null, 0.055);
 
 INSERT INTO TYPEPRODUIT VALUES (null, 'Vin');
 INSERT INTO TYPEPRODUIT VALUES (null, 'Spiritueux');
@@ -65,5 +65,7 @@ INSERT INTO CATEGORIEPRODUIT VALUES (null,2 , 'Whisky');
 INSERT INTO PRODUIT VALUES (null, 1, 1, 1, 'libelleProduit', 100, null, 'descriptionProduit', null, 1, 'France', 'Aquitaine', 'Bordeaux', '2009', 75, null, null, null, null, null, null);
 
 INSERT INTO PRIX VALUES (null, 1, current_timestamp, null, 4.75);
+INSERT INTO PRIX VALUES (null, 2, current_timestamp, null, 15);
+INSERT INTO PRIX VALUES (null, 3, current_timestamp, null, 4.75);
 
 INSERT INTO PRODUITCOMMANDE VALUES (1, 1, 3);
