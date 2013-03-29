@@ -80,10 +80,104 @@ public class DaoProduitImpl implements IDaoProduit {
 	private final String REQ_GETALLVINPARREGION = "From Vin v Where v.region = ?";
 
 	@Override
-	public List<Vin> getAllVinParRegion(String paramRegion) {
-		return em.createQuery(REQ_GETALLVINPARREGION, Vin.class).setParameter(1, paramRegion).getResultList();
+	public List<Produit> getAllVinParRegion(String paramRegion) {
+		return em.createQuery(REQ_GETALLVINPARREGION, Produit.class).setParameter(1, paramRegion).getResultList();
 	}
 
+	private final String REQ_GETALLVINPARREGIONENSTOCK = "From Vin v Where v.region = ? And v.stock > 0";
+	
+	@Override
+	public List<Produit> getAllVinParRegionEnStock(String paramRegion) {
+		return em.createQuery(REQ_GETALLVINPARREGIONENSTOCK, Produit.class).setParameter(1, paramRegion).getResultList();
+	}
+	
+	private final String REQ_GETALLVINPARNOMETREGION = "From Vin v Where v.libelle like ? And v.region = ?";
+
+	@Override
+	public List<Produit> getAllVinParNomEtRegion(String paramNom,
+			String paramRegion) {
+		return em.createQuery(REQ_GETALLVINPARNOMETREGION, Produit.class).setParameter(1, "%" + paramNom + "%").setParameter(2, paramRegion).getResultList();
+	}
+	
+	private final String REQ_GETALLVINPARNOMETREGIONENSTOCK = "From Vin v Where v.libelle like ? And v.region = ? and v.stock > 0";
+
+	@Override
+	public List<Produit> getAllVinParNomEtRegionEnStock(String paramNom,
+			String paramRegion) {
+		return em.createQuery(REQ_GETALLVINPARNOMETREGIONENSTOCK, Produit.class).setParameter(1, "%" + paramNom + "%").setParameter(2, paramRegion).getResultList();
+	}
+	
+	private final String REQ_GETALLPARMILLESIME = "From Produit p Where p.millesime = ?";
+
+	@Override
+	public List<Produit> getAllParMillesime(String paramMillesime) {
+		return em.createQuery(REQ_GETALLPARMILLESIME, Produit.class).setParameter(1, paramMillesime).getResultList();
+	}
+
+	private final String REQ_GETALLPARMILLESIMEENSTOCKVIN = "From Vin p Where p.millesime = ? And p.stock > 0";
+	private final String REQ_GETALLPARMILLESIMEENSTOCKSPI = "From Spiritueux p Where p.millesime = ? And p.stock > 0";
+	
+	@Override
+	public List<Produit> getAllParMillesimeEnStock(String paramMillesime) {
+		List<Produit> listeRetour = em.createQuery(REQ_GETALLPARMILLESIMEENSTOCKSPI, Produit.class).setParameter(1, paramMillesime).getResultList();
+		listeRetour.addAll(em.createQuery(REQ_GETALLPARMILLESIMEENSTOCKVIN, Produit.class).setParameter(1, paramMillesime).getResultList());
+		return listeRetour;
+	}
+
+	private final String REQ_GETALLPARMILLESIMEETNOMVIN = "From Vin v Where v.millesime = ? And v.libelle like ?";
+	private final String REQ_GETALLPARMILLESIMEETNOMSPI = "From Spiritueux v Where v.millesime = ? And v.libelle like ?";
+
+	@Override
+	public List<Produit> getAllParMillesimeEtNom(String paramMillesime,
+			String paramNom) {
+		List<Produit> listeRetour = em.createQuery(REQ_GETALLPARMILLESIMEETNOMVIN, Produit.class).setParameter(1, paramMillesime).setParameter(2, "%" + paramNom + "%").getResultList();
+		listeRetour.addAll(em.createQuery(REQ_GETALLPARMILLESIMEETNOMSPI, Produit.class).setParameter(1, paramMillesime).setParameter(2, "%" + paramNom + "%").getResultList());
+		return listeRetour;
+	}
+	
+	private final String REQ_GETALLPARMILLESIMEETNOMENSTOCKVIN = "From Vin v Where v.millesime = ? And v.libelle like ? And v.stock > 0";
+	private final String REQ_GETALLPARMILLESIMEETNOMENSTOCKSPI = "From Spiritueux v Where v.millesime = ? And v.libelle like ? And v.stock > 0";
+
+	@Override
+	public List<Produit> getAllParMillesimeEtNomEnStock(String paramMillesime,
+			String paramNom) {
+		List<Produit> listeRetour = em.createQuery(REQ_GETALLPARMILLESIMEETNOMENSTOCKVIN, Produit.class).setParameter(1, paramMillesime).setParameter(2, "%" + paramNom + "%").getResultList();
+		listeRetour.addAll(em.createQuery(REQ_GETALLPARMILLESIMEETNOMENSTOCKSPI, Produit.class).setParameter(1, paramMillesime).setParameter(2, "%" + paramNom + "%").getResultList());
+		return listeRetour;
+	}
+	
+	private final String REQ_GETALLPARMILLESIMEETNOMETREGION = "From Vin v Where v.millesime = ? And v.libelle like ? And v.region = ?";
+
+	@Override
+	public List<Produit> getAllParMillesimeEtNomEtRegion(String paramMillesime,
+			String paramNom, String paramRegion) {
+		return em.createQuery(REQ_GETALLPARMILLESIMEETNOMETREGION, Produit.class).setParameter(1, paramMillesime).setParameter(2, "%" + paramNom + "%").setParameter(3, paramRegion).getResultList();
+	}
+	
+	private final String REQ_GETALLPARMILLESIMEETNOMETREGIONENSTOCK = "From Vin v Where v.millesime = ? And v.libelle like ? And v.region = ? And v.stock > 0";
+
+	@Override
+	public List<Produit> getAllParMillesimeEtNomEtRegionEnStock(
+			String paramMillesime, String paramNom, String paramRegion) {
+		return em.createQuery(REQ_GETALLPARMILLESIMEETNOMETREGIONENSTOCK, Produit.class).setParameter(1, paramMillesime).setParameter(2, "%" + paramNom + "%").setParameter(3, paramRegion).getResultList();
+	}
+	
+	private final String REQ_GETALLVINPARMILLESIMEETREGION = "From Vin v Where v.millesime = ? And v.region = ?";
+
+	@Override
+	public List<Produit> getAllVinParMillesimeEtRegion(String paramMillesime,
+			String paramRegion) {
+		return em.createQuery(REQ_GETALLVINPARMILLESIMEETREGION, Produit.class).setParameter(1, paramMillesime).setParameter(2, paramRegion).getResultList();
+	}
+
+	private final String REQ_GETALLVINPARMILLESIMEETREGIONENSTOCK = "From Vin v Where v.millesime = ? And v.region = ? And v.stock > 0";
+
+	@Override
+	public List<Produit> getAllVinParMillesimeEtRegionEnStock(
+			String paramMillesime, String paramRegion) {
+		return em.createQuery(REQ_GETALLVINPARMILLESIMEETREGIONENSTOCK, Produit.class).setParameter(1, paramMillesime).setParameter(2, paramRegion).getResultList();
+	}
+	
 	@PostConstruct
 	public void init() throws IOException {
 		this.emf = Persistence.createEntityManagerFactory("VinSurVin");
