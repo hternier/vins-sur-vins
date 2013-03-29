@@ -31,7 +31,11 @@ public class ManagedBeanTest extends AbstractManagedBean {
 	}
 	
 	public int getListeProduitLength() {
-		return this.listeProduit.size();
+		int retour = 0;
+		if (listeProduit !=null) {
+			retour = listeProduit.size();
+		}
+		return retour;
 	}
 
 }
