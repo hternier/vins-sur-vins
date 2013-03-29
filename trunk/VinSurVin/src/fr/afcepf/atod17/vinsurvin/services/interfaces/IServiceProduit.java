@@ -20,8 +20,7 @@ public interface IServiceProduit {
      * @return Le produit récupéré
      */
 	public Produit getProduit(Produit produit);
-	
-
+	public Double getPrixActuelHT(Produit paramProduit);
 	
 	/**
 	 * <b>getAllRegion</b> Méthode pour obtenir toutes les régions de vin.
@@ -49,12 +48,18 @@ public interface IServiceProduit {
      * @return Le prix TTC actuel
      */
 	public Double getPrixActuelTTC(Produit paramProduit);
+	public List<Produit> getAllVinParRegion(String paramRegion, boolean enStock);
+	public List<Produit> getAllVinParRegionEtPrix (String paramRegion, double prixMin, double prixMax, boolean enStock);
+	public List<Produit> getAllVinParRegionEtNom (String paramRegion, String paramNom, boolean enStock);
+	public List<Produit> getAllVinParRegionEtNomEtPrix(String paramRegion, double prixMin, double prixMax, boolean enStock, String paramNom);
+	public List<Produit> getAllProduitParMillesime (String paramMillesime, boolean enStock);
+	public List<Produit> getAllProduitParMillesimeEtPrix (String paramMillesime, double prixMin, double prixMax, boolean enStock);
+	public List<Produit> getAllProduitParMillesimeEtNom (String paramMillesime, String paramNom, boolean enStock);
+	public List<Produit> getAllProduitParMillesimeEtNomEtPrix (String paramMillesime, String paramNom, double prixMin, double prixMax, boolean enStock);
+	public List<Produit> getAllVinParMillesimeEtNomEtRegion(String paramMillesime, String paramNom, String paramRegion, boolean enStock);
+	public List<Produit> getAllVinParMillesimeEtNomEtRegionEtPrix(String paramMillesime, String paramNom, String paramRegion, double prixMin, double prixMax, boolean enStock);
+	public List<Produit> getAllVinParMillesimeEtRegion(String paramMillesime, String paramRegion, boolean enStock);
+	public List<Produit> getAllVinParMillesimeEtRegionEtPrix(String paramMillesime, String paramRegion, double prixMin, double prixMax, boolean enStock);
 	
 	
-	/**
-     * Méthode de récupèration du prix actuel HT du produit.
-     * @param paramProduit Le produit ayant un prix.
-     * @return Le prix HT actuel
-     */
-    public Double getPrixActuelHT(Produit paramProduit);
 }
