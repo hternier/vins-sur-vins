@@ -1,7 +1,9 @@
 package fr.afcepf.atod17.vinsurvin.services.implementations;
 
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
+import java.util.ArrayList;
 
 import fr.afcepf.atod17.vinsurvin.dao.interfaces.produit.IDaoProduit;
 import fr.afcepf.atod17.vinsurvin.entitybeans.produit.Prix;
@@ -24,6 +26,7 @@ public class ServiceProduitImpl implements IServiceProduit {
 	 * Constructeur par defaut.
 	 */
 	public ServiceProduitImpl() {
+		
 	}
 
 	/**
@@ -41,6 +44,28 @@ public class ServiceProduitImpl implements IServiceProduit {
 		return listeRetour;
 	}
 
+	@Override
+	public List<String> getAllRegion(boolean enStock) {
+		List<String> listeRetour = new ArrayList<String>();
+		if (enStock) {
+			//TODO Si besoin
+		} else {
+			listeRetour = daoProduit.getAllRegionAsString();
+		}
+		return listeRetour;
+	}
+
+	@Override
+	public List<Produit> getAllProduitParNom(String paramNom, boolean enStock) {
+		List<Produit> listeRetour = null;
+		if (enStock) {
+			listeRetour = daoProduit.getAllParNomEnStock(paramNom);
+		} else {
+			listeRetour = daoProduit.getAllParNom(paramNom);
+		}
+		return listeRetour;
+	}
+
 	/**
 	 * Méthode de récupèration d'un produit par son Id.
 	 * @param produit Le produit à récupérer.
@@ -50,26 +75,47 @@ public class ServiceProduitImpl implements IServiceProduit {
 		return daoProduit.getProduit(produit);
 	}
 
-	/**
-	 * Méthode de récupèration du prix actuel TTC du produit.
-	 * @param paramProduit Le produit ayant un prix.
-	 * @return Le prix TTC actuel
-	 */
-	public Double getPrixActuel(Produit paramProduit) {
-	    Double prixProduit;
-		for (Prix prix : paramProduit.getPrix()) {
-		    if(prix.getDateDebut().before(new Date()) && prix.getDateFin() == null) {
-		        prixProduit = prix.getValeurHT();
-		        prixProduit = prixProduit + (prixProduit * paramProduit.getTva().getValeur());
-		        return prixProduit;
-		    } else
-		    if(prix.getDateDebut().before(new Date()) && prix.getDateFin().after(new Date())) {
-		        prixProduit = prix.getValeurHT();
-                prixProduit = prixProduit + (prixProduit * paramProduit.getTva().getValeur());
-                return prixProduit;
+	@Override
+	public Double getPrixActuelTTC(Produit paramProduit) {
+		Double retour = getPrixActuelHT(paramProduit);
+		retour *= 1d + paramProduit.getTva().getValeur();
+		return retour;
+	}
+	
+	@Override
+	public List<Produit> getAllProduitParPrix(double prixMin, double prixMax,
+			boolean enStock) {
+		List<Produit> listeRetour = null;
+		if (enStock) {
+			listeRetour = daoProduit.getAllEnStock();
+		} else {
+			listeRetour = daoProduit.getAll();
+		}
+		this.filterListeParPrix(listeRetour, prixMin, prixMax);
+		return listeRetour;
+	}
+	
+	private void filterListeParPrix(List<Produit> paramListe, double prixMin, double prixMax) {
+		Iterator<Produit> itProduit = paramListe.iterator();
+		while (itProduit.hasNext()) {
+			Produit p = itProduit.next();
+			double prixP = this.getPrixActuelTTC(p);
+			if (prixMin > prixP || prixMax < prixP) {
+				itProduit.remove();
 			}
 		}
-		return null;
+	}
+
+	@Override
+	public List<Produit> getAllProduitParPrixEtNom(double prixMin, double prixMax, boolean enStock, String paramNom) {
+		List<Produit> listeRetour = null;
+		if (enStock) {
+			listeRetour = daoProduit.getAllParNomEnStock(paramNom);
+		} else {
+			listeRetour = daoProduit.getAllParNom(paramNom);
+		}
+		this.filterListeParPrix(listeRetour, prixMin, prixMax);
+		return listeRetour;
 	}
 
 	 /**
