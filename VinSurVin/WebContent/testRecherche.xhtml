@@ -1,0 +1,52 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+<title>TestRecherche</title>
+</h:head>
+<h:body>
+<f:view>
+<h:form>
+<p:panelGrid>
+	<p:row>
+		<p:column><h:outputText value="Recherche :" /></p:column>
+		<p:column><p:inputText value="#{mbTestRecherche.rechercheTextuelle }" /></p:column>
+		<p:column colspan="2"><h:outputText value="Gamme de prix : entre" /></p:column>
+		<p:column><p:inputText value="#{mbTestRecherche.recherchePrixMin }" /></p:column>
+		<p:column><h:outputText value="euros et" /></p:column>
+		<p:column><p:inputText value="#{mbTestRecherche.recherchePrixMax }" /></p:column>
+		<p:column><h:outputText value="euros" /></p:column>
+	</p:row>
+	<p:row>
+		<p:column><h:outputText value="Region :" /></p:column>
+		<p:column>
+			<p:selectOneMenu value="#{mbTestRecherche.listeRegionSelected }">
+				<f:selectItem itemLabel="" />
+				<f:selectItems value="#{mbTestRecherche.listeRegion }" />
+			</p:selectOneMenu>
+		</p:column>
+		<p:column><h:outputText value="Millesime :" /></p:column>
+		<p:column><p:inputText value="#{mbTestRecherche.rechercheMillesime }" /></p:column>
+		<p:column colspan="2"></p:column>
+		<p:column colspan="2"><p:commandButton value="Rechercher" action="#{mbTestRecherche.rechercher }" style="width:100%;" update="dataTable" /></p:column>
+	</p:row>
+</p:panelGrid>
+<p:dataTable value="#{mbTestRecherche.listeResultat }" var="produit" id="dataTable" style="margin-top:15px;">
+	<p:column>
+		<f:facet name="header"><h:outputText value="Id" /> </f:facet>
+		<h:outputText value="#{produit.id }" />
+	</p:column>
+	<p:column>
+		<f:facet name="header"><h:outputText value="Libelle" /> </f:facet>
+		<h:outputText value="#{produit.libelle }" />
+	</p:column>
+	<p:column>
+		<f:facet name="header"><h:outputText value="Categorie" /> </f:facet>
+		<h:outputText value="#{produit.categorie.valeur }" />
+	</p:column>
+</p:dataTable>
+</h:form>
+</f:view>
+</h:body>
+</html>
