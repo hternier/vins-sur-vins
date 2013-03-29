@@ -13,8 +13,15 @@ public interface IServiceProduit {
 	 * @return
 	 */
 	public List<Produit> getAllProduit(boolean enStock);
+	
+	/**
+     * Méthode de récupèration d'un produit par son Id.
+     * @param produit Le produit à récupérer.
+     * @return Le produit récupéré
+     */
 	public Produit getProduit(Produit produit);
-	public Double getPrixActuelHT(Produit paramProduit);
+	
+
 	
 	/**
 	 * <b>getAllRegion</b> Méthode pour obtenir toutes les régions de vin.
@@ -35,6 +42,19 @@ public interface IServiceProduit {
 	public List<Produit> getAllProduitParPrix (double prixMin, double prixMax, boolean enStock);
 	
 	public List<Produit> getAllProduitParPrixEtNom (double prixMin, double prixMax, boolean enStock, String paramNom);
+	
+	 /**
+     * Méthode de récupèration du prix actuel TTC du produit.
+     * @param paramProduit Le produit ayant un prix.
+     * @return Le prix TTC actuel
+     */
 	public Double getPrixActuelTTC(Produit paramProduit);
 	
+	
+	/**
+     * Méthode de récupèration du prix actuel HT du produit.
+     * @param paramProduit Le produit ayant un prix.
+     * @return Le prix HT actuel
+     */
+    public Double getPrixActuelHT(Produit paramProduit);
 }

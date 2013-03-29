@@ -3,9 +3,11 @@ package fr.afcepf.atod17.vinsurvin.control.managedbeans;
 
 import javax.faces.event.ActionEvent;
 
+import fr.afcepf.atod17.vinsurvin.entitybeans.commande.Commande;
 import fr.afcepf.atod17.vinsurvin.entitybeans.commande.Panier;
 import fr.afcepf.atod17.vinsurvin.entitybeans.commande.ProduitEnCommande;
 import fr.afcepf.atod17.vinsurvin.entitybeans.produit.Produit;
+import fr.afcepf.atod17.vinsurvin.services.implementations.ServiceCommandeImpl;
 import fr.afcepf.atod17.vinsurvin.services.implementations.ServiceProduitImpl;
 
 
@@ -15,7 +17,7 @@ import fr.afcepf.atod17.vinsurvin.services.implementations.ServiceProduitImpl;
  * @author Hadrien TERNIER
  *
  */
-public class PanierManagedBean extends AbstractManagedBean {
+public class ManagedBeanPanier extends AbstractManagedBean {
 
     /**
      * Panier de la session.
@@ -100,6 +102,21 @@ public class PanierManagedBean extends AbstractManagedBean {
     public Double getTotalPanier() {
         return totalPanier;
     }
+    
+    /**
+     * Methode de validation du panier.
+     * Permet de créer une commande et de valider
+     * le stock disponible.
+     * @return La page de redirection
+     */
+    public String validerPanier() {
+        
+        Commande commande = new Commande();
+        commande.setProduitsEnCommande(panier.getProduits());
+        commande = getContext().getBean(ServiceCommandeImpl.class).ajoutCommande(commande);
+        
+        return "";
+    }
 
     /**
      * Méthode de mise à jour du prix total du panier.
@@ -109,7 +126,7 @@ public class PanierManagedBean extends AbstractManagedBean {
         totalPanier = 0.0;
         for (ProduitEnCommande pec : panier.getProduits()) {
             totalPanier += (getContext().getBean(ServiceProduitImpl.class)
-                    .getPrixActuelHT(pec.getProduit()) * pec.getQuantite());
+                    .getPrixActuelTTC(pec.getProduit()) * pec.getQuantite());
         }
         return totalPanier;
     }

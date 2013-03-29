@@ -13,6 +13,7 @@ import javax.persistence.Query;
 
 import fr.afcepf.atod17.vinsurvin.dao.interfaces.compte.IDaoCompte;
 import fr.afcepf.atod17.vinsurvin.entitybeans.compte.CompteClient;
+import fr.afcepf.atod17.vinsurvin.entitybeans.produit.Produit;
 
 public class DaoCompteImpl implements IDaoCompte{
 
@@ -33,11 +34,18 @@ public class DaoCompteImpl implements IDaoCompte{
 	
 	@Override
 	public CompteClient setCompte(CompteClient compte){
+	    this.tx.begin();
 		em.persist(compte.getAdresseFacturation());
 		em.persist(compte);
+		em.flush();
+		this.tx.commit();
 		return compte;
 	}
 	
+	@Override
+    public CompteClient getCompteClient(CompteClient paramCompteClient) {
+        return em.find(CompteClient.class, paramCompteClient.getId());
+    }
 	
 	
 	@PostConstruct
@@ -50,7 +58,6 @@ public class DaoCompteImpl implements IDaoCompte{
 	
 	@PreDestroy
 	public void destroy() throws IOException {
-		this.tx.commit();
 		this.em.close();
 		this.emf.close();
 	}
