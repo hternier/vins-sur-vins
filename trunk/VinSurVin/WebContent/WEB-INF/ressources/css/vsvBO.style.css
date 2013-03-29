@@ -1,0 +1,79 @@
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one
+ * or more contributor license agreements.  See the NOTICE file
+ * distributed with this work for additional information
+ * regarding copyright ownership.  The ASF licenses this file
+ * to you under the Apache License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance
+ * with the License.  You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied.  See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
+ */
+.container {
+	margin: 0px auto;
+	background-color: #2e6777;
+}
+
+.subcontainer {
+	padding: 100px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	background-color: #f8f8fa;
+}
+
+#loginForm {
+/* 	padding: 5px; */
+	/*color: #fff;*/
+	font-weight: bold;
+		padding: 100px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+/* 	background-color: #f8f8fa; */
+	background-color: #2e6777;
+}
+
+.block-login {
+	position: absolute;
+	top: 30px;
+	left: 35%;
+	width: 280px;
+	height: 272px;
+	padding: 35px;
+	box-shadow: 1px 4px 4px #a1bfc9;
+	background: white;
+}
+
+#nav .error {
+	color: #ff6666;
+}
+
+.topmenu {
+	background-color: #2e6777;
+	background-image: none;
+	background-image: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.2),
+		rgba(255, 255, 255, 0));
+	background-image: -moz-linear-gradient(top, rgba(255, 255, 255, 0.2),
+		rgba(255, 255, 255, 0));
+	background-image: -ms-linear-gradient(top, rgba(255, 255, 255, 0.2),
+		rgba(255, 255, 255, 0));
+	background-image: -o-linear-gradient(top, rgba(255, 255, 255, 0.2),
+		rgba(255, 255, 255, 0));
+	background: -moz-linear-gradient(center top, rgba(255, 255, 255, 0.2),
+		rgba(255, 255, 255, 0)) repeat scroll 0 0 #2e4555;
+	border-radius: 0px;
+	border: none;
+	padding: 0px;
+	border-bottom: 1px solid #192a34;
+	box-shadow: 0 1px 1px #192a34;
+}
+
+.top-align {
+	vertical-align: top;
+}
