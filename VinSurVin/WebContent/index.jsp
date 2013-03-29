@@ -11,7 +11,6 @@
 <f:view>
 <h:form>
 	<h:outputText value="#{mbTest.produit.libelle}" />
-	<h:outputText value="#{mbTest.prixActuel}" />
 	<h:panelGroup rendered="#{mbTest.listeProduitLength > 0}">
 		<h:dataTable value="#{mbTest.listeProduit }" var="produit">
 			<h:column>
@@ -38,7 +37,10 @@
 		<f:attribute name="produit" value="#{mbTest.produit2}"/>
 		<f:attribute name="quantite" value="1"/>
 	</h:commandLink><br>
-	<h:outputText value="#{mbPanier.totalPanier}" />
+	<h:outputText value="#{mbPanier.totalPanier}" /><br>
+	
+	<h:commandButton value="Valider panier" action="#{mbPanier.validerPanier}">
+	</h:commandButton><br>
 </h:form>
 </f:view>
 </body>

@@ -5,5 +5,6 @@ import fr.afcepf.atod17.vinsurvin.entitybeans.compte.CompteClient;
 public interface IServiceCompte {
 	
 	public CompteClient addCompteClient(CompteClient compte);
+	public CompteClient getCompteClient(CompteClient compte);
 
 }

@@ -26,14 +26,9 @@ public class ServiceProduitImpl implements IServiceProduit {
 	 * Constructeur par defaut.
 	 */
 	public ServiceProduitImpl() {
-		
 	}
 
-	/**
-	 * Méthode de récupèration de la liste de tous les produits.
-	 * @param enStock Defini si les produit doivent êtres en stock.
-	 * @return La liste des produits
-	 */
+	@Override
 	public List<Produit> getAllProduit(boolean enStock) {
 		List<Produit> listeRetour = null;
 		if (enStock) {
@@ -66,15 +61,12 @@ public class ServiceProduitImpl implements IServiceProduit {
 		return listeRetour;
 	}
 
-	/**
-	 * Méthode de récupèration d'un produit par son Id.
-	 * @param produit Le produit à récupérer.
-	 * @return Le produit récupéré
-	 */
+	@Override
 	public Produit getProduit(Produit produit) {
 		return daoProduit.getProduit(produit);
 	}
 
+	
 	@Override
 	public Double getPrixActuelTTC(Produit paramProduit) {
 		Double retour = getPrixActuelHT(paramProduit);
@@ -118,11 +110,7 @@ public class ServiceProduitImpl implements IServiceProduit {
 		return listeRetour;
 	}
 
-	 /**
-     * Méthode de récupèration du prix actuel HT du produit.
-     * @param paramProduit Le produit ayant un prix.
-     * @return Le prix HT actuel
-     */
+	@Override
 	public Double getPrixActuelHT(Produit paramProduit) {
         for (Prix prix : paramProduit.getPrix()) {
             if(prix.getDateDebut().before(new Date()) && prix.getDateFin() == null) {
@@ -137,7 +125,7 @@ public class ServiceProduitImpl implements IServiceProduit {
 
 	/**
 	 * Méthode de récupèration de la DAO produit.
-	 * @return Le DAO produit
+	 * @return La DAO produit
 	 */
 	public IDaoProduit getDaoProduit() {
 		return daoProduit;

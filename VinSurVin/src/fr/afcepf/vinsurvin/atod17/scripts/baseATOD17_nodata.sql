@@ -1,4 +1,4 @@
-drop database if exists atod17_g2_vins;
+﻿drop database if exists atod17_g2_vins;
 
 create database atod17_g2_vins;
 

@@ -10,4 +10,17 @@
 	<bean name="serviceProduit" class="fr.afcepf.atod17.vinsurvin.services.implementations.ServiceProduitImpl">
 		<property name="daoProduit" ref="daoProduit" />
 	</bean>
+	
+	<bean name="daoCompte" class="fr.afcepf.atod17.vinsurvin.dao.jpa.compte.DaoCompteImpl" />
+	
+	<bean name="serviceCompte" class="fr.afcepf.atod17.vinsurvin.services.implementations.ServiceCompteImpl">
+		<property name="daoCompte" ref="daoCompte" />
+	</bean>
+	
+	<bean name="daoCommande" class="fr.afcepf.atod17.vinsurvin.dao.jpa.commande.DaoCommandeImpl" />
+	
+	<bean name="serviceCommande" class="fr.afcepf.atod17.vinsurvin.services.implementations.ServiceCommandeImpl">
+		<property name="daoCommande" ref="daoCommande" />
+		<property name="daoCompte" ref="daoCompte" />
+	</bean>
 </beans>

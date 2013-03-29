@@ -17,6 +17,13 @@ public class ServiceCompteImpl implements IServiceCompte{
 		return daoCompte.setCompte(compte);
 	}
 
+    @Override
+    public CompteClient getCompteClient(CompteClient paramCompte) {
+        return daoCompte.getCompteClient(paramCompte);
+    }
+    
+    
+    
 	public IDaoCompte getDaoCompte() {
 		return daoCompte;
 	}
@@ -24,6 +31,4 @@ public class ServiceCompteImpl implements IServiceCompte{
 	public void setDaoCompte(IDaoCompte daoCompte) {
 		this.daoCompte = daoCompte;
 	}
-	
-	
 }

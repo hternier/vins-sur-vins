@@ -33,10 +33,11 @@ public class DaoProduitImpl implements IDaoProduit {
 		this.em = em;
 	}
 	
+	@Override
 	public Produit getProduit(Produit paramProduit) {
 		return em.find(Produit.class, paramProduit.getId());
 	}
-	
+
 	private final String REQ_GETALL = "From Produit";
 	
 	@Override
@@ -93,7 +94,6 @@ public class DaoProduitImpl implements IDaoProduit {
 	
 	@PreDestroy
 	public void destroy() throws IOException {
-		this.tx.commit();
 		this.em.close();
 		this.emf.close();
 	}
