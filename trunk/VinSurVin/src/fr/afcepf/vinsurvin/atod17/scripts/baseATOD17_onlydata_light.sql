@@ -29,6 +29,7 @@ INSERT INTO VILLE VALUES (null, '75009', 'PARIS 9EME ARRONDISSEMENT', 'FRANCE');
 INSERT INTO ADRESSE VALUES (null, 1, null, '255 rue du faubourg saint-martin', null);
 
 INSERT INTO COMPTE VALUES (null, 1, 1, 1, 1, 'Chalet', 'Nicolas', 'client', 'afcepf', '0123456789', 'Client', current_timestamp, null);
+INSERT INTO COMPTE VALUES (null, 2, null, null, 1, 'Ternier', 'Hadrien', 'interne', 'afcepf', '0123456789', 'Gestionnaire', null, null);
 
 INSERT INTO TYPELIVRAISON VALUES (null, 'La poste');
 
@@ -66,8 +67,8 @@ INSERT INTO PRODUIT VALUES (null, 1, 1, 1, 'libelleProduit', 100, null, 'descrip
 INSERT INTO PRODUIT VALUES (null, 1, 1, 1, 'libelleProduit', 100, null, 'descriptionProduit', null, 1, 'France', 'Aquitaine', 'Bordeaux', '2008', 75, null, null, null, null, null, null);
 INSERT INTO PRODUIT VALUES (null, 1, 1, 1, 'libelleProduit', 100, null, 'descriptionProduit', null, 1, 'France', 'Aquitaine', 'Bordeaux', '2001', 75, null, null, null, null, null, null);
 
-INSERT INTO PRIX VALUES (null, 1, current_timestamp, null, 4.75);
-INSERT INTO PRIX VALUES (null, 2, current_timestamp, null, 15);
-INSERT INTO PRIX VALUES (null, 3, current_timestamp, null, 4.75);
+INSERT INTO PRIX VALUES (null, 1, 2013-03-29 10:36:37, 2018-03-29 10:36:37, 4.75);
+INSERT INTO PRIX VALUES (null, 1, 2013-03-29 10:36:37, 2018-03-29 10:36:37, 15);
+INSERT INTO PRIX VALUES (null, 1, 2013-03-29 10:36:37, 2018-03-29 10:36:37, 4.75);
 
 INSERT INTO PRODUITCOMMANDE VALUES (1, 1, 3);
