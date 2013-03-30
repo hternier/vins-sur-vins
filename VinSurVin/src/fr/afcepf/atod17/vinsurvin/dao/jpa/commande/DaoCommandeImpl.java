@@ -8,14 +8,12 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
-import javax.persistence.Query;
 
 import fr.afcepf.atod17.vinsurvin.dao.interfaces.commande.IDaoCommande;
 import fr.afcepf.atod17.vinsurvin.entitybeans.commande.Commande;
 import fr.afcepf.atod17.vinsurvin.entitybeans.commande.EtatCommande;
 import fr.afcepf.atod17.vinsurvin.entitybeans.commande.ProduitEnCommande;
 import fr.afcepf.atod17.vinsurvin.entitybeans.commande.ProduitEnCommandePK;
-import fr.afcepf.atod17.vinsurvin.entitybeans.produit.Produit;
 
 public class DaoCommandeImpl implements IDaoCommande {
 
