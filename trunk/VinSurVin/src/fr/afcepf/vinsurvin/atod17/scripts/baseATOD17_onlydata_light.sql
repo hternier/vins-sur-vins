@@ -63,7 +63,7 @@ INSERT INTO CATEGORIEPRODUIT VALUES (null,2 , 'Cognac');
 INSERT INTO CATEGORIEPRODUIT VALUES (null,2 , 'Rhum');
 INSERT INTO CATEGORIEPRODUIT VALUES (null,2 , 'Whisky');
 
-INSERT INTO PRODUIT VALUES (null, 1, 1, 1, 'libelleProduit', 100, null, 'descriptionProduit', null, 1, 'France', 'Aquitaine', 'Bordeaux', '2009', 75, null, null, null, null, null, null);
+INSERT INTO PRODUIT VALUES (null, 1, 1, 1, 'libelleProduit', 100, null, 'descriptionProduit', null, 1, 'France', 'Champagne Ardenne', 'Bordeaux', '2009', 75, null, null, null, null, null, null);
 INSERT INTO PRODUIT VALUES (null, 1, 2, 1, 'libelleProduit2', 100, null, 'descriptionProduit2', null, 1, null, null, null, null, null, 'Wiskey', 2009, 45, 75, null, null);
 INSERT INTO PRODUIT VALUES (null, 1, 1, 1, 'libelleProduit3', 100, null, 'descriptionProduit3', null, 1, 'France', 'Aquitaine', 'Bordeaux', '2001', 75, null, null, null, null, null, null);
 INSERT INTO PRODUIT VALUES (null, 1, 3, 1, 'Verres x6', 30, null, 'descriptionVerres', null, 1, null, null, null, null, null, null, null, null, null, 'Verres and co', 350);
