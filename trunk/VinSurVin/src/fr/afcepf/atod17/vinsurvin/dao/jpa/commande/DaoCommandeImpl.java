@@ -52,6 +52,18 @@ public class DaoCommandeImpl implements IDaoCommande {
         return em.createQuery(REQ_GETETATCOMMANDE, EtatCommande.class).setParameter("id", paramEtatCommande.getId()).getSingleResult();
     }
 
+
+    @Override
+    public Commande setCommande(Commande paramCommande) {
+        this.tx.begin();
+        
+        em.merge(paramCommande);
+
+        em.flush();
+        this.tx.commit();
+        return paramCommande;
+    }
+
     
     @PostConstruct
     public void init() throws IOException {

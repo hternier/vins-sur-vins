@@ -20,7 +20,6 @@ public interface IServiceProduit {
      * @return Le produit récupéré
      */
 	public Produit getProduit(Produit produit);
-	public Double getPrixActuelHT(Produit paramProduit);
 	
 	/**
 	 * <b>getAllRegion</b> Méthode pour obtenir toutes les régions de vin.
@@ -62,4 +61,18 @@ public interface IServiceProduit {
 	public List<Produit> getAllVinParMillesimeEtRegionEtPrix(String paramMillesime, String paramRegion, double prixMin, double prixMax, boolean enStock);
 	
 	
+	/**
+     * Méthode de récupèration du prix actuel HT du produit.
+     * @param paramProduit Le produit ayant un prix.
+     * @return Le prix HT actuel
+     */
+    public Double getPrixActuelHT(Produit paramProduit);
+
+    /**
+     * Méthode de mise à jour d'un produit.
+     * Le produit doit existé précédement dans la BDD.
+     * @param paramProduit Le produit ayant les nouvelles valeurs.
+     * @return Le produit avec les nouvelles valeurs.
+     */
+    public Produit setProduit(Produit paramProduit);
 }

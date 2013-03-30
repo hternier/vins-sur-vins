@@ -9,6 +9,13 @@ public interface IDaoProduit {
 	public List<Produit> getAll();
 	public List<Produit> getAllEnStock();
 	public Produit getProduit(Produit produit);
+	/**
+	 * Méthode de mise à jour d'un produit.
+	 * Le produit doit existé précédement dans la BDD.
+	 * @param produit Le produit ayant les nouvelles valeurs.
+	 * @return Le produit avec les nouvelles valeurs.
+	 */
+	public Produit setProduit(Produit produit);
 	public List<String> getAllRegionAsString();
 	public List<Produit> getAllParNom(String paramNom);
 	public List<Produit> getAllParNomEnStock(String paramNom);
