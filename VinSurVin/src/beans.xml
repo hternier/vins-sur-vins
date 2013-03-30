@@ -22,5 +22,6 @@
 	<bean name="serviceCommande" class="fr.afcepf.atod17.vinsurvin.services.implementations.ServiceCommandeImpl">
 		<property name="daoCommande" ref="daoCommande" />
 		<property name="daoCompte" ref="daoCompte" />
+		<property name="daoProduit" ref="daoProduit" />
 	</bean>
 </beans>

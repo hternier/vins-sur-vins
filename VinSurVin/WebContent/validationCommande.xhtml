@@ -1,0 +1,24 @@
+<html xmlns="http://www.w3.org/1999/xhtml"  
+    xmlns:h="http://java.sun.com/jsf/html"  
+    xmlns:f="http://java.sun.com/jsf/core"  
+    xmlns:p="http://primefaces.org/ui">
+<h:head>
+<title>Validation commande</title>
+</h:head>
+<h:body>
+<f:view>
+<h:form id="form">
+	<p:dataTable value="#{mbTest.listeProduit}" var="produit" resizableColumns="true" paginator="true">
+		<p:column headerText="Id">
+			<h:outputText value="#{produit.id}" />
+		</p:column>
+		<p:column headerText="Categorie">
+			<h:outputText value="#{produit.categorie.valeur}" />
+		</p:column>
+	</p:dataTable>
+	<h:commandButton value="Salut" action="#{mbTest.testAction }" />
+	<h:commandButton action="#{mbTest.testActionEnStock }" value="En stock" />
+</h:form>
+</f:view>
+</h:body>
+</html>

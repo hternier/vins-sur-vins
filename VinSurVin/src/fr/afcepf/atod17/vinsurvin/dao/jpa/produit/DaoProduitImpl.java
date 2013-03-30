@@ -37,6 +37,17 @@ public class DaoProduitImpl implements IDaoProduit {
 	public Produit getProduit(Produit paramProduit) {
 		return em.find(Produit.class, paramProduit.getId());
 	}
+	
+	@Override
+	public Produit setProduit(Produit paramproduit) {
+	    this.tx.begin();
+	    
+	    em.merge(paramproduit);
+
+        em.flush();
+        this.tx.commit();
+        return paramproduit;
+	}
 
 	private final String REQ_GETALL = "From Produit";
 	

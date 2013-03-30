@@ -34,7 +34,7 @@ create table atod17_g2_vins.COMMANDE
    IDCOMMANDE           int not null auto_increment,
    IDCOMPTE             int not null,
    IDETATCOMMANDE       int not null,
-   IDADRESSECOMMANDE    int not null,
+   IDADRESSECOMMANDE    int,
    IDTARIFLIVRAISON     int,
    DATECOMMANDE         timestamp not null,
    primary key (IDCOMMANDE)
