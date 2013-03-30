@@ -3,6 +3,9 @@ package fr.afcepf.atod17.vinsurvin.control.managedbeans;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.faces.application.FacesMessage;
+import javax.faces.application.FacesMessage.Severity;
+import javax.faces.context.FacesContext;
 import javax.faces.model.SelectItem;
 
 import fr.afcepf.atod17.vinsurvin.entitybeans.produit.Accessoire;
@@ -262,7 +265,7 @@ public class ManagedBeanTestRecherche extends AbstractManagedBean {
 		if (!this.champPrixValide()) {
 			retour = false;
 		}
-		if (retour && !this.champMillesimeValide()) {
+		if (retour & !this.champMillesimeValide()) {
 			retour = false;
 		}
 		return retour;
@@ -272,17 +275,21 @@ public class ManagedBeanTestRecherche extends AbstractManagedBean {
 		boolean retour = true;
 		if (recherchePrixMin.trim().isEmpty() && !recherchePrixMax.trim().isEmpty()) {
 			retour = false;
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Erreur", "Si le champ prix max est renseigné, le champ prix min est obligatoire"));
 		} else if (!recherchePrixMin.trim().isEmpty() && recherchePrixMax.trim().isEmpty()) {
 			retour = false;
-		} else if (!recherchePrixMin.trim().isEmpty() && !recherchePrixMax.trim().isEmpty()) {
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Erreur", "Si le champ prix min est renseigné, le champ prix max est obligatoire"));
+		} if (!recherchePrixMin.trim().isEmpty() && !recherchePrixMax.trim().isEmpty()) {
 			if (this.recherchePrixMin.matches(EnumRegex.PRIX.getPattern()) && this.recherchePrixMax.matches(EnumRegex.PRIX.getPattern())) {
 				this.recherchePrixMin = this.recherchePrixMin.replace(',', '.');
 				this.recherchePrixMax = this.recherchePrixMax.replace(',', '.');
 				if (Double.parseDouble(recherchePrixMin) > Double.parseDouble(recherchePrixMax)) {
-					return false;
+					retour = false;
+					FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Erreur", "Le prix maximum est inférieur au prix minimum"));
 				}
 			} else {
-				return false;
+				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Erreur", "Prix incorrect"));
+				retour = false;
 			}
 		}
 		return retour;
@@ -296,6 +303,7 @@ public class ManagedBeanTestRecherche extends AbstractManagedBean {
 			int millesime = Integer.parseInt(rechercheMillesime.trim());
 			if (millesime < 1700 || millesime > 2200) {
 				retour = false;
+				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Erreur", "Millésime incorrect"));
 			}
 		} else {
 			retour = false;
