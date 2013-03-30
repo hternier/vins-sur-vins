@@ -8,6 +8,7 @@
 <h:body>
 <f:view>
 <h:form id="form">
+<p:growl id="erreurs" showDetail="true" />
 <p:panelGrid style="margin:bottom:50px;">
 	<p:row>
 		<p:column><h:outputText value="Recherche :" /></p:column>
@@ -29,7 +30,9 @@
 		<p:column><h:outputText value="Millesime :" /></p:column>
 		<p:column><p:inputText value="#{mbTestRecherche.rechercheMillesime }" /></p:column>
 		<p:column colspan="2"></p:column>
-		<p:column colspan="2"><p:commandButton value="Rechercher" action="#{mbTestRecherche.rechercher }" style="width:100%;" update="dataTableVin,dataTableSpiritueux,dataTableAccessoire" /></p:column>
+		<p:column colspan="2">
+			<p:commandButton value="Rechercher" action="#{mbTestRecherche.rechercher }" style="width:100%;" update="dataTableVin,dataTableSpiritueux,dataTableAccessoire,erreurs" />
+		</p:column>
 	</p:row>
 </p:panelGrid>
 <p:fieldset id="dataTableVin" legend="Vins" style="#{mbTestRecherche.displayListeResultatVin }">
@@ -45,6 +48,9 @@
 		<p:column>
 			<f:facet name="header"><h:outputText value="Categorie" /> </f:facet>
 			<h:outputText value="#{produit.categorie.valeur }" />
+		</p:column>
+		<p:column headerText="Millesime">
+			<h:outputText value="" />
 		</p:column>
 	</p:dataTable>
 </p:fieldset>
