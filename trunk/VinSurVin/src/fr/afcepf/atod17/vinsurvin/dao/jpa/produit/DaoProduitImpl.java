@@ -12,7 +12,9 @@ import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
 
 import fr.afcepf.atod17.vinsurvin.dao.interfaces.produit.IDaoProduit;
+import fr.afcepf.atod17.vinsurvin.entitybeans.produit.Accessoire;
 import fr.afcepf.atod17.vinsurvin.entitybeans.produit.Produit;
+import fr.afcepf.atod17.vinsurvin.entitybeans.produit.Spiritueux;
 import fr.afcepf.atod17.vinsurvin.entitybeans.produit.Vin;
 
 public class DaoProduitImpl implements IDaoProduit {
@@ -49,7 +51,7 @@ public class DaoProduitImpl implements IDaoProduit {
         return paramproduit;
 	}
 
-	private final String REQ_GETALL = "From Produit";
+	private final String REQ_GETALL = "From Produit p";
 	
 	@Override
 	public List<Produit> getAll() {
@@ -187,6 +189,43 @@ public class DaoProduitImpl implements IDaoProduit {
 	public List<Produit> getAllVinParMillesimeEtRegionEnStock(
 			String paramMillesime, String paramRegion) {
 		return em.createQuery(REQ_GETALLVINPARMILLESIMEETREGIONENSTOCK, Produit.class).setParameter(1, paramMillesime).setParameter(2, paramRegion).getResultList();
+	}
+	
+	private final String REQ_GETALLVIN = "From Vin p";
+	private final String REQ_GETALLSPIRITUEUX = "From Spiritueux p";
+	private final String REQ_GETALLACCESSOIRE = "From Accessoire p";
+
+	@Override
+	public List<Produit> getAllProduitByTypeProduit(String paramType, boolean enStock) {
+		String requeteFinale = "";
+		if (paramType.equals(Vin.class.getSimpleName())) {
+			requeteFinale += REQ_GETALLVIN;
+		} else if (paramType.equals(Spiritueux.class.getSimpleName())) {
+			requeteFinale += REQ_GETALLSPIRITUEUX;
+		} else if (paramType.equals(Accessoire.class.getSimpleName())) {
+			requeteFinale += REQ_GETALLACCESSOIRE;
+		}
+			
+		if (enStock) {
+			requeteFinale = ajouterStockARequete(requeteFinale);
+		}
+		
+		return em.createQuery(requeteFinale, Produit.class).getResultList();
+	}
+	
+	private final String ADD_STOCK_WHERE = "Where stock > 0";
+	
+	private String ajouterStockARequete(String paramString) {
+		return paramString + " " + ADD_STOCK_WHERE;
+	}
+
+	@Override
+	public List<Produit> getProduitParRechercheMulticritere(
+			String paramLibelle, String paramMillesime, String paramRegion) {
+			
+		//FIXME C'est le bordel
+		
+		return em.createQuery("From Spiritueux, Vin Where millesime = " + paramMillesime, Produit.class).getResultList();
 	}
 	
 	@PostConstruct

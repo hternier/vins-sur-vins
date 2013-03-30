@@ -75,4 +75,8 @@ public interface IServiceProduit {
      * @return Le produit avec les nouvelles valeurs.
      */
     public Produit setProduit(Produit paramProduit);
+    
+    public List<Produit> getAllVins(boolean enStock);
+    public List<Produit> getAllSpiritueux(boolean enStock);
+    public List<Produit> getAllAccessoires(boolean enStock);
 }

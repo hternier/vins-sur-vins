@@ -243,6 +243,21 @@ public class ServiceProduitImpl implements IServiceProduit {
 		return listeRetour;
 	}
 
+	@Override
+	public List<Produit> getAllVins(boolean enStock) {
+		return daoProduit.getAllProduitByTypeProduit("Vin", enStock);
+	}
+
+	@Override
+	public List<Produit> getAllSpiritueux(boolean enStock) {
+		return daoProduit.getAllProduitByTypeProduit("Spiritueux", enStock);
+	}
+
+	@Override
+	public List<Produit> getAllAccessoires(boolean enStock) {
+		return daoProduit.getAllProduitByTypeProduit("Accessoire", enStock);
+	}
+
 	/**
 	 * Méthode de récupèration de la DAO produit.
 	 * @return La DAO produit

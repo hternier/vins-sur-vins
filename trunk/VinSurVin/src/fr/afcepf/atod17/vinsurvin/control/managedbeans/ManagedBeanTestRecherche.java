@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.application.FacesMessage;
-import javax.faces.application.FacesMessage.Severity;
 import javax.faces.context.FacesContext;
 import javax.faces.model.SelectItem;
 
@@ -241,6 +240,34 @@ public class ManagedBeanTestRecherche extends AbstractManagedBean {
 		} else {
 			System.err.println("Saisie invalide");
 		}
+		return "";
+	}
+	
+	public String rechercheDynamique () {
+		ServiceProduitImpl serviceProduit = this.getContext().getBean(ServiceProduitImpl.class);
+		remplirListes(serviceProduit.getDaoProduit().getProduitParRechercheMulticritere(rechercheTextuelle, rechercheMillesime, listeRegionSelected));
+		
+		return "";
+	}
+	/**
+	 * Pour afficher les vins genre.
+	 * @return genre rien du tout
+	 */
+	public String afficherVins() {
+		ServiceProduitImpl serviceProduitImpl = this.getContext().getBean(ServiceProduitImpl.class);
+		remplirListes(serviceProduitImpl.getAllVins(true));
+		return "";
+	}
+	
+	public String afficherAccessoires() {
+		ServiceProduitImpl serviceProduitImpl = this.getContext().getBean(ServiceProduitImpl.class);
+		remplirListes(serviceProduitImpl.getAllAccessoires(true));
+		return "";
+	}
+	
+	public String afficherSpiritueux() {
+		ServiceProduitImpl serviceProduitImpl = this.getContext().getBean(ServiceProduitImpl.class);
+		remplirListes(serviceProduitImpl.getAllSpiritueux(true));
 		return "";
 	}
 	

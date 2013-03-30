@@ -64,8 +64,9 @@ INSERT INTO CATEGORIEPRODUIT VALUES (null,2 , 'Rhum');
 INSERT INTO CATEGORIEPRODUIT VALUES (null,2 , 'Whisky');
 
 INSERT INTO PRODUIT VALUES (null, 1, 1, 1, 'libelleProduit', 100, null, 'descriptionProduit', null, 1, 'France', 'Aquitaine', 'Bordeaux', '2009', 75, null, null, null, null, null, null);
-INSERT INTO PRODUIT VALUES (null, 1, 1, 1, 'libelleProduit2', 100, null, 'descriptionProduit2', null, 1, 'France', 'Aquitaine', 'Bordeaux', '2008', 75, null, null, null, null, null, null);
+INSERT INTO PRODUIT VALUES (null, 1, 2, 1, 'libelleProduit2', 100, null, 'descriptionProduit2', null, 1, 'France', 'Aquitaine', 'Bordeaux', '2008', 75, null, null, null, null, null, null);
 INSERT INTO PRODUIT VALUES (null, 1, 1, 1, 'libelleProduit3', 100, null, 'descriptionProduit3', null, 1, 'France', 'Aquitaine', 'Bordeaux', '2001', 75, null, null, null, null, null, null);
+INSERT INTO PRODUIT VALUES (null, 1, 3, 1, 'Verres x6', 30, null, 'descriptionVerres', null, 1, null, null, null, null, null, null, null, null, null, 'Verres and co', 350);
 
 INSERT INTO PRIX VALUES (null, 1, '2013-03-29 10:36:37', '2018-03-29 10:36:37', 4.75);
 INSERT INTO PRIX VALUES (null, 2, '2013-03-29 10:36:37', '2018-03-29 10:36:37', 15);
