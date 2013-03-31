@@ -12,7 +12,6 @@
 	<managed-bean-scope>request</managed-bean-scope>
 </managed-bean>
 
-
 <managed-bean>
 	<managed-bean-name>mbTestRecherche</managed-bean-name>
 	<managed-bean-class>fr.afcepf.atod17.vinsurvin.control.managedbeans.ManagedBeanTestRecherche</managed-bean-class>
