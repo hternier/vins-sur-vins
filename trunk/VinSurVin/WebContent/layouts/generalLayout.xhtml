@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions">
+
+<f:view contentType="text/html">
+	<h:head>
+		<meta http-equiv="content-Type" content="text/html;charset=UTF-8" />
+		<script src="../resources/js/bdna.js" type="text/javascript" />
+		<script type="text/javascript" src="../resources/js/jquery.js" />
+		<script type="text/javascript" src="../resources/js/primefaces.js" />
+
+
+		<title><ui:insert name="title" /></title>
+		<link rel="shortcut icon" href="../resources/images/favicon.png"
+			type="image/x-icon" />
+		<link rel="icon" href="../resources/images/favicon.png"
+			type="image/x-icon" />
+
+		<link rel="stylesheet" href="style.css"
+			type="text/css" />
+		<link rel="stylesheet" href="vsvBO.style.css"
+			type="text/css" />
+		<link rel="stylesheet" href="theme.css"
+			type="text/css" />
+		<link rel="stylesheet" href="primefaces.css"
+			type="text/css" />
+		<link rel="stylesheet" href="base.css"
+			type="text/css" />
+
+	</h:head>
+
+	<h:body>
+		<p:panel id="page">
+			<div class="header_deconnexion">
+				<h:form styleClass="topmenu_form">
+					 <img src="logo.png" alt="Vin sur Vin" />
+					<h:commandButton disabled="true" type="button" style="right:200px"
+						styleClass="topmenu_button"
+						value="#{currentUser.principal.toString()}" />
+					<h:commandButton type="button" styleClass="topmenu_button"
+						onclick="window.location.href='../faces/loginBO.xhtml';" value="Déconnexion" />
+				</h:form>
+			</div>
+		
+		<h:panelGrid columns="2">
+			<p:panel id="nav" styleClass="nav">
+				<h:form id="bandeauCommande" styleClass="nav_bandeau">
+					<h:panelGrid columns="1">
+						<p:commandButton id="accueil_button" value="Accueil"
+							action="goAccueil" styleClass="ui-button-home" ajax="false"
+							immediate="true" />
+						<p:commandButton id="gestion_produits_button"
+							value="Gestion Produits" action="goGestionProduitsBO"
+							styleClass="ui-button" ajax="false" immediate="true" />
+						<p:commandButton id="gestion_categorie_button"
+							value="Gestion Catégories" styleClass="ui-button" ajax="false" />
+						<p:commandButton id="gestion_application_button"
+							value="Paramètrage application" styleClass="ui-button"
+							ajax="false" />
+					</h:panelGrid>
+				</h:form>
+			</p:panel>
+
+			<p:panel id="main" styleClass="main">
+				<p:panel styleClass="padding-page">
+					<p:panel id="bodyGeneral-panel"
+						styleClass="ui-panel ui-widget ui-widget-content">
+						<p:panel id="bodyGeneral-panel_content"
+							styleClass="ui-panel-contentui-widget-content bodyGeneral-panel">
+							<ui:insert name="bodyGeneral" id="conteneurPage" />
+						</p:panel>
+					</p:panel>
+				</p:panel>
+			</p:panel>
+		</h:panelGrid>
+		<p:panel id="footer">
+			<h:outputLabel value="Contact technique : " />
+			<h:outputLink value="mailto:contact@vinsurvin.fr">contact@vinsurvin.fr</h:outputLink>
+		</p:panel>
+		</p:panel>
+	</h:body>
+
+</f:view>
+</html>
