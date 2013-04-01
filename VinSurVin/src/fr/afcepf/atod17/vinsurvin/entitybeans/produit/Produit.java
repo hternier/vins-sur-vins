@@ -141,4 +141,8 @@ public abstract class Produit implements Serializable {
 		this.prix = prix;
 	}
 	
+	public String getCategoriePrimaire() {
+		return this.getClass().getSimpleName();
+	}
+	
 }

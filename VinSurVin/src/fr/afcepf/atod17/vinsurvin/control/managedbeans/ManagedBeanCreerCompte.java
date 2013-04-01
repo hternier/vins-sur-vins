@@ -11,4 +11,6 @@ public class ManagedBeanCreerCompte extends AbstractManagedBean {
 		System.out.println("c fait!");
 		return "Success";
 	}
+	
+	
 }
