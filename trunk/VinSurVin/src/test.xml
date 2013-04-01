@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+	<bean id="testBean" class="fr.afcepf.atod17.vinsurvin.dao.DaoTest" />
+<!-- 	<bean id="loginBackOfficeBean" class="fr.afcepf.atod17.vinsurvin.dao.DaoLoginBackOffice" /> -->
+<!-- 	<bean id="gestionProduitsBean" class="fr.afcepf.atod17.vinsurvin.dao.DaoGestionProduits" /> -->
+
+<!-- 	<bean id="helloWorld" class="com.formation.hello.HelloWorld"></bean> -->
+	
+<!-- 	<bean id="htmlReport" -->
+<!-- 		class="com.formation.report.HtmlReportGenerator"> -->
+<!-- 	</bean> -->
+<!-- 	<bean id="pdfReport" -->
+<!-- 		class="com.formation.report.PdfReportGenerator"> -->
+<!-- 	</bean> -->
+<!-- 	<bean id="reportService" class="com.formation.report.ReportService"> -->
+<!-- 		<constructor-arg index="0" ref="pdfReport" /> -->
+<!-- 	</bean> -->
+</beans>

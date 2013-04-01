@@ -61,11 +61,21 @@ INSERT INTO CATEGORIEPRODUIT VALUES (null,2 , 'Armagnac');
 INSERT INTO CATEGORIEPRODUIT VALUES (null,2 , 'Cognac');
 INSERT INTO CATEGORIEPRODUIT VALUES (null,2 , 'Rhum');
 INSERT INTO CATEGORIEPRODUIT VALUES (null,2 , 'Whisky');
+INSERT INTO CATEGORIEPRODUIT VALUES (null,3,'Accessoire vin');
+INSERT INTO CATEGORIEPRODUIT VALUES (null,3,'raffraichisseur');
+INSERT INTO CATEGORIEPRODUIT VALUES (null,3,'Tire bouchon');
+INSERT INTO CATEGORIEPRODUIT VALUES (null,3,'Verre');
+INSERT INTO CATEGORIEPRODUIT VALUES (null,3,'Carafe');
+
 
 INSERT INTO PRODUIT VALUES (null, 1, 1, 1, 'libelleProduit', 100, null, 'descriptionProduit', null, 1, 'France', 'Champagne Ardenne', 'Bordeaux', '2009', 75, null, null, null, null, null, null);
 INSERT INTO PRODUIT VALUES (null, 1, 2, 8, 'libelleProduit2', 100, null, 'descriptionProduit2', null, 1, null, null, null, null, null, 'Wiskey', 2009, 45, 75, null, null);
-INSERT INTO PRODUIT VALUES (null, 1, 1, 2, 'libelleProduit3', 100, null, 'descriptionProduit3', null, 1, 'France', 'Aquitaine', 'Bordeaux', '2001', 75, null, null, null, null, null, null);
-INSERT INTO PRODUIT VALUES (null, 1, 3, 1, 'Verres x6', 30, null, 'descriptionVerres', null, 1, null, null, null, null, null, null, null, null, null, 'Verres and co', 350);
+INSERT INTO PRODUIT VALUES (null, 1, 1, 1, 'libelleProduit3', 100, null, 'descriptionProduit3', null, 1, 'France', 'Aquitaine', 'Bordeaux', '2001', 75, null, null, null, null, null, null);
+INSERT INTO PRODUIT VALUES (null, 1, 3, 12, 'Verres x6', 30, null, 'descriptionVerres', null, 1, null, null, null, null, null, null, null, null, null, 'Verres and co', 350);
+INSERT INTO PRODUIT VALUES (null,1,3,13,'Carafe à vin',10,'2013-04-01 11:34:52','Pour faire décanter votre vin',NULL,1,'pologne',NULL,NULL,NULL,NULL,NULL,NULL,NULL,1,'Swarowzky',1);
+INSERT INTO PRODUIT VALUES (null,1,1,1,'Chateau Latour 2009 75cl',200,'2013-03-29 10:07:32','Hum, délicieux',NULL,1,'France','Bordeaux','Bordeaux','2009',75,NULL,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO PRODUIT VALUES (null,1,1,1,'Chateau Lafitte 2007 75cl',0,'2013-03-29 10:04:20','En rupture',NULL,1,'FRANCE','Bordeaux','Bordeaux','2007',75,NULL,NULL,NULL,NULL,NULL,NULL);
+
 
 INSERT INTO PRIX VALUES (null, 1, '2013-03-29 10:36:37', '2018-03-29 10:36:37', 4.75);
 INSERT INTO PRIX VALUES (null, 2, '2013-03-29 10:36:37', '2018-03-29 10:36:37', 15);
