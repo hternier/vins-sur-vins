@@ -1,6 +1,8 @@
 package fr.afcepf.atod17.vinsurvin.control.managedbeans;
 
 
+import java.util.List;
+
 import javax.faces.event.ActionEvent;
 
 import fr.afcepf.atod17.vinsurvin.entitybeans.commande.Commande;
@@ -22,11 +24,44 @@ public class ManagedBeanPanier extends AbstractManagedBean {
     /**
      * Panier de la session.
      */
-    private Panier panier = new Panier();
+    private Panier panier;
+    
     /**
      * Prix total du panier.
      */
-    private Double totalPanier = 0.0;
+    private Double totalPanier;
+    
+    /**
+     * Constructeur par defaut.
+     */
+    public ManagedBeanPanier() {
+        panier = new Panier();
+        totalPanier = 0.0;
+    }
+    
+    /**
+     * Méthode qui définie la quantité d'un produit.
+     * @param ev Attibut JSP
+     *      (Produit) produit : produit
+     *      (int) quantite : quantité
+     */
+    public void setQuantite(ActionEvent ev) {
+        Produit produit = (Produit) ev.getComponent()
+                .getAttributes().get("produit");
+        int quantite = Integer.parseInt(ev.getComponent()
+                .getAttributes().get("quantite").toString());
+        System.out.println("Définie quantité produit : " + produit.toString()
+                + ", quantite : " + quantite);
+
+        for (ProduitEnCommande pec : panier.getProduits()) {
+            if (pec.getProduit().getId() == produit.getId()) {
+                pec.setQuantite(quantite);
+                System.out.println("nouvelle quantité : " + pec.getQuantite());
+                updateTotalPanier();
+                return;
+            }
+        }
+    }
 
     /**
      * Méthode d'ajout des produits au panier.
@@ -100,6 +135,7 @@ public class ManagedBeanPanier extends AbstractManagedBean {
      * @return le prix total
      */
     public Double getTotalPanier() {
+        updateTotalPanier();
         return totalPanier;
     }
     
@@ -112,6 +148,8 @@ public class ManagedBeanPanier extends AbstractManagedBean {
     public String validerPanier() {
         
         Commande commande = new Commande();
+        //TODO : (HT) définir l'adresse de livraison par rapport au lient connecté.
+        //commande.setAdresseCommande();
         commande.setProduitsEnCommande(panier.getProduits());
         commande = getContext().getBean(ServiceCommandeImpl.class).ajoutCommande(commande);
         
@@ -130,4 +168,10 @@ public class ManagedBeanPanier extends AbstractManagedBean {
         }
         return totalPanier;
     }
+
+    public List<ProduitEnCommande> getListeProduits() {
+        return this.panier.getProduits();
+    }
+    
+    
 }

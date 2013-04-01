@@ -1,6 +1,9 @@
 package fr.afcepf.atod17.vinsurvin.services.interfaces;
 
+import java.util.List;
+
 import fr.afcepf.atod17.vinsurvin.entitybeans.commande.Commande;
+import fr.afcepf.atod17.vinsurvin.entitybeans.commande.TarifLivraison;
 
 public interface IServiceCommande {
 
@@ -19,4 +22,15 @@ public interface IServiceCommande {
      * @return La commande validée
      */
     public Commande validationCommande(Commande paramCommande);
+
+    public List<Commande> rechercheCommande(Commande paramCommande);
+    
+    public List<TarifLivraison> getTarifLivraisonCommande(Commande paramCommande);
+
+    /**
+     * Ajout Pour ListTarifLivraison
+     * @param paramTarifLivraison
+     * @return
+     */
+    public TarifLivraison getTarifLivraison(TarifLivraison paramTarifRechercher);
 }

@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+	template="ajoutCommandeLayout.xhtml">
+	<ui:define name="body">
+		<h:form id="form">
+			<p:fieldset legend="Récapitulatife de la commande">
+				<h:outputText value="Votre commande :" />
+				<p:dataTable value="#{mbCommande.listeProduitEnCommande}"
+					var="produitEnCommande" resizableColumns="true" paginator="true">
+					<p:column headerText="Image">
+						<h:outputText value="#{produitEnCommande.produit.image}" />
+					</p:column>
+					<p:column headerText="Libellé">
+						<h:outputText value="#{produitEnCommande.produit.libelle}" />
+					</p:column>
+					<p:column headerText="Prix unitaire">
+						<h:outputText value="#{produitEnCommande.produit.prixActuelTTC}" />
+						<h:outputText value="€" />
+					</p:column>
+					<p:column headerText="Quantité">
+						<h:outputText value="#{produitEnCommande.quantite}" />
+					</p:column>
+					<p:column headerText="Prix total">
+						<h:outputText
+							value="#{produitEnCommande.produit.prixActuelTTC * produitEnCommande.quantite}" />
+						<h:outputText value="€" />
+					</p:column>
+				</p:dataTable>
+
+				<h:outputText value="Total commande H.T. : " />
+				<h:outputText value="#{mbCommande.totalCommandeHT}" />
+				<h:outputText value="€" />
+				<br />
+				<h:outputText value="Total commande T.T.C. : " />
+				<h:outputText value="#{mbCommande.totalCommandeTTC}" />
+				<h:outputText value="€" />
+
+				<br />
+				<br />
+				<h:outputText value="Adresse :" />
+				<br />
+				<p:panelGrid columns="2">
+					<p:row>
+						<p:column>
+							<p:fieldset legend="Adresse de livraison:">
+								<h:outputText value="#{mbCommande.adresse1}" />
+								<br />
+								<h:outputText value="#{mbCommande.adresse2}" />
+								<br />
+								<h:outputText value="#{mbCommande.ville}" />
+							</p:fieldset>
+						</p:column>
+					</p:row>
+					<p:row>
+						<p:column>
+							<p:fieldset legend="Adresse de facturation">
+								<h:outputText value="#{mbCommande.adresse1}" />
+								<br />
+								<h:outputText value="#{mbCommande.adresse2}" />
+								<br />
+								<h:outputText value="#{mbCommande.ville}" />
+							</p:fieldset>
+						</p:column>
+					</p:row>
+				</p:panelGrid>
+
+				<br />
+				<br />
+				<h:outputText value="Mode de livraison :" />
+				<br />
+				<p:dataTable id="tabLivraison" value="#{mbCommande.tarifsLivraisonCommande}" var="tarif"
+				selection="{mbCommande.tarifLivraisonSelectionne}">
+					<p:column selectionMode="single"/>  
+					<p:column headerText="Transporteur">
+						<h:outputText value="#{tarif.societe}" />
+					</p:column>
+					<p:column headerText="Description">
+						<h:outputText value="#{tarif.typeLivraison.libelle}" />
+					</p:column>
+					<p:column headerText="Prix">
+						<h:outputText value="#{tarif.tarif}" /><h:outputText value="€" />
+					</p:column>
+				</p:dataTable>
+
+				<br />
+				<br />
+				<h:outputText value="Mode de paiement :" />
+				<br />
+				<h:panelGrid columns="2"  style="margin-bottom:10px" cellpadding="5">
+					<p:selectOneRadio id="choixPaiement">
+						<f:selectItem itemLabel="Paypal" itemValue="1" />
+						<f:selectItem itemLabel="Carte bleu / Visa" itemValue="2" />
+					</p:selectOneRadio>
+				</h:panelGrid>
+
+				<br />
+				<h:commandButton value="Actualiser"
+					action="#{mbCommande.getCommande}" />
+			</p:fieldset>
+		</h:form>
+	</ui:define>
+</ui:composition>
