@@ -1,27 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<faces-config
-    xmlns="http://java.sun.com/xml/ns/javaee"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_1.xsd"
-    version="2.1">
+<faces-config xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_1.xsd"
+	version="2.1">
 
-<managed-bean>
-	<managed-bean-name>mbTest</managed-bean-name>
-	<managed-bean-class>fr.afcepf.atod17.vinsurvin.control.managedbeans.ManagedBeanTest</managed-bean-class>
-	<managed-bean-scope>request</managed-bean-scope>
-</managed-bean>
+	<managed-bean>
+		<managed-bean-name>mbTest</managed-bean-name>
+		<managed-bean-class>fr.afcepf.atod17.vinsurvin.control.managedbeans.ManagedBeanTest</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+	</managed-bean>
 
-<managed-bean>
-	<managed-bean-name>mbTestRecherche</managed-bean-name>
-	<managed-bean-class>fr.afcepf.atod17.vinsurvin.control.managedbeans.ManagedBeanTestRecherche</managed-bean-class>
-	<managed-bean-scope>request</managed-bean-scope>
-</managed-bean>
+	<managed-bean>
+		<managed-bean-name>mbTestRecherche</managed-bean-name>
+		<managed-bean-class>fr.afcepf.atod17.vinsurvin.control.managedbeans.ManagedBeanTestRecherche</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+	</managed-bean>
 
-<managed-bean>
-	<managed-bean-name>mbPanier</managed-bean-name>
-	<managed-bean-class>fr.afcepf.atod17.vinsurvin.control.managedbeans.ManagedBeanPanier</managed-bean-class>
-	<managed-bean-scope>session</managed-bean-scope>
-</managed-bean>
+	<managed-bean>
+		<managed-bean-name>mbPanier</managed-bean-name>
+		<managed-bean-class>fr.afcepf.atod17.vinsurvin.control.managedbeans.ManagedBeanPanier</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+			
+	
+ <!-- ==============================
+ |	MANAGEDBEANS BACKOFFICE GESTIONNAIRE	|
+ ================================ -->
+  	<!-- MANAGEDBEAN CONNEXION GESTIONNAIRE -->
+	<managed-bean>
+		<managed-bean-name>mbLoginBO</managed-bean-name>
+		<managed-bean-class>fr.afcepf.atod17.vinsurvin.control.managedbeans.ManagedBeanLoginBackOffice</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+	
+	 <!--MANAGEDBEAN GESTION PRODUITS -->
+	<managed-bean>
+		<managed-bean-name>mbGestionProduits</managed-bean-name>
+		<managed-bean-class>fr.afcepf.atod17.vinsurvin.control.managedbeans.ManagedBeanGestionProduits</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
 
+ <!-- ==================================
+ |	NAVIGATION DEPUIS LE TEMPLATE BO	|
+ =================================== -->
+	<navigation-rule>
+	  	<!-- ### CONNEXION -> BACKOFFICE POUR GESTIONNAIRE ###-->
+		<navigation-case>
+			<from-action>#{mbLoginBO.authentificationBO}</from-action>
+			<from-outcome>success</from-outcome>
+			<to-view-id>/indexBO.xhtml?faces-redirect=true</to-view-id>
+			<redirect />
+		</navigation-case>  
+  </navigation-rule>
 </faces-config>

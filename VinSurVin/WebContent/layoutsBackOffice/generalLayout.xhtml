@@ -11,38 +11,39 @@
 <f:view contentType="text/html">
 	<h:head>
 		<meta http-equiv="content-Type" content="text/html;charset=UTF-8" />
-		<script src="../resources/js/bdna.js" type="text/javascript" />
-		<script type="text/javascript" src="../resources/js/jquery.js" />
-		<script type="text/javascript" src="../resources/js/primefaces.js" />
-
-
+		
 		<title><ui:insert name="title" /></title>
-		<link rel="shortcut icon" href="../resources/images/favicon.png"
+		<link rel="shortcut icon" href="resources/images/favicon.png"
 			type="image/x-icon" />
-		<link rel="icon" href="../resources/images/favicon.png"
+		<link rel="icon" href="resources/images/favicon.png"
 			type="image/x-icon" />
 
-		<link rel="stylesheet" href="style.css"
-			type="text/css" />
-		<link rel="stylesheet" href="vsvBO.style.css"
-			type="text/css" />
-		<link rel="stylesheet" href="theme.css"
-			type="text/css" />
-		<link rel="stylesheet" href="primefaces.css"
-			type="text/css" />
-		<link rel="stylesheet" href="base.css"
-			type="text/css" />
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />		
+		<link rel="stylesheet" href="resources/css/vsvBO.style.css" type="text/css" />
+		<link rel="stylesheet" href="resources/css/base.css" type="text/css" />
+		<link rel="stylesheet" href="resources/css/theme.css" type="text/css" />
+		<link rel="stylesheet" href="resources/css/primefaces.css" type="text/css" />
+		<link rel="stylesheet" href="resources/css/style.css" type="text/css" />
 
 	</h:head>
 
 	<h:body>
 		<p:panel id="page">
+		
+		<p:panel id="header">
+			<h:form styleClass="topmenu_form">
+			<h:panelGrid columns="3"></h:panelGrid>
+				<img src="resources/images/logo.png" alt="Vin sur vin" height="60px" />
+					
+				</h:form>
+			</p:panel>
+		
+		
 			<div class="header_deconnexion">
 				<h:form styleClass="topmenu_form">
-					 <img src="logo.png" alt="Vin sur Vin" />
+					 <img src="resources/images/logo.png" alt="Vin sur Vin" />
 					<h:commandButton disabled="true" type="button" style="right:200px"
-						styleClass="topmenu_button"
-						value="#{currentUser.principal.toString()}" />
+						styleClass="topmenu_button" />
 					<h:commandButton type="button" styleClass="topmenu_button"
 						onclick="window.location.href='../faces/loginBO.xhtml';" value="Déconnexion" />
 				</h:form>
@@ -85,6 +86,5 @@
 		</p:panel>
 		</p:panel>
 	</h:body>
-
 </f:view>
 </html>

@@ -7,16 +7,9 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
-	template="./generalLayout.xhtml">
-
-	<ui:define name="title">
-		<h:outputText value="Vin sur Vin - Ajout d'un produit" />
-	</ui:define>
-
-	<ui:define name="bodyGeneral">
-		<div id="conteneurPage" class="conteneurAjoutProduit">
-			<ui:insert name="body" />
-			
-		</div>
+	template="../layoutsBackOffice/modificationProduitAccessoireBOLayout.xhtml">
+	<ui:define name="body">
+		<h:form id="modificationAccessoires_form">
+		</h:form>
 	</ui:define>
 </ui:composition>

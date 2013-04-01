@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+	template="../layoutsBackOffice/gestionProduitsBOLayout.xhtml">
+	<ui:define name="body">
+		<h:form id="accueilBO_form">
+			<p:fieldset legend="Gestion des produits">
+				<p:panel id="gestion_produits_panel" styleClass="panel">
+					<h2>Gestion des produits</h2>
+					<h:outputLabel value="Rechercher" />
+					<h:inputText id="recherche_inputText" />
+					<h:outputLabel for="categorie_outputLabel" value="Catégorie :" />
+					<h:selectOneMenu id="categorie_select"
+						value="#{gestionProduitManagedBean.categorie}" required="true">
+						<f:selectItem itemLabel="Selectionnez" itemValue="" />
+						<f:selectItems
+							value="#{gestionProduitManagedBean.listeCategories}" />
+					</h:selectOneMenu>
+
+					<h:outputLabel for="sousCategorie_outputLabel"
+						value="Sous-catégorie :" />
+					<h:selectOneMenu id="sousCategorie_select"
+						value="#{gestionProduitManagedBean.sousCategorie}" required="true">
+						<f:selectItem itemLabel="Selectionnez" itemValue="" />
+						<f:selectItems
+							value="#{gestionProduitManagedBean.listeSousCategories}" />
+					</h:selectOneMenu>
+
+					<h:commandButton value="OK" id="filtrerProduits_button" rendered="true" />
+					<h:commandButton value="Tout afficher" id="afficherTout_button" rendered="true" />
+					<h:commandButton value="Ajouter" id="ajouter_button" rendered="true" />
+					
+					
+					<p:dataTable var="produit" paginator="true" rendered="true"
+						>
+						<p:column headerText="Id produit" />
+						<p:column headerText="Libellé" />
+						<p:column headerText="Catégorie" />
+						<p:column headerText="Sous-catégorie" />
+						<p:column headerText="Stock" />
+						<p:column headerText=" Date de mise en ligne" />
+						<p:column headerText="Modifier" />
+					</p:dataTable>
+
+
+
+					<p:dataTable value="#{mbTest.listeProduit}" var="produit"
+						resizableColumns="true" paginator="true">
+						<p:column headerText="Id">
+							<h:outputText value="#{produit.id}" />
+						</p:column>
+						<p:column headerText="Libellé">
+							<h:outputText value="#{produit.libelle}" />
+						</p:column>
+						<p:column headerText="Categorie">
+							<h:outputText value="#{produit.categorie.valeur}" />
+						</p:column>
+						<p:column headerText="Stock">
+							<h:outputText value="#{produit.stock}" />
+						</p:column>
+					</p:dataTable>
+				</p:panel>
+			</p:fieldset>
+
+		</h:form>
+
+	</ui:define>
+</ui:composition>

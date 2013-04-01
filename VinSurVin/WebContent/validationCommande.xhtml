@@ -10,7 +10,7 @@
 <h:form id="form">
 	<p:dataTable value="#{mbTest.listeProduit}" var="produit" resizableColumns="true" paginator="true">
 		<p:column headerText="Id">
-			<h:outputText value="#{produit.id}" />
+			<h:outputText value="#{}" />
 		</p:column>
 		<p:column headerText="Categorie">
 			<h:outputText value="#{produit.categorie.valeur}" />
