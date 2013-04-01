@@ -29,15 +29,14 @@
 }
 
 #loginForm {
-	padding: 5px;
-	color: #fff;
-/* 	font-weight: bold; */
-/* 		padding: 100px; */
-/* 	padding-top: 5px; */
-/* 	padding-bottom: 5px; */
-/* 	background-color: #f8f8fa; bleu sombre*/
-/* 	background-color: #4d0017; rouge sombre */
-	background-color: #9a002f;
+/* 	padding: 5px; */
+	/*color: #fff;*/
+	font-weight: bold;
+		padding: 100px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+/* 	background-color: #f8f8fa; */
+	background-color: #2e6777;
 }
 
 .block-login {
@@ -48,8 +47,7 @@
 	height: 272px;
 	padding: 35px;
 	box-shadow: 1px 4px 4px #a1bfc9;
-/* 	background: white; */
- 
+	background: white;
 }
 
 #nav .error {
