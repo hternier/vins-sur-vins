@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<f:view contentType="text/html">
+	<h:head>
+	<title>Outil de Gestion de l'application Vin Sur Vin</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />		
+		<link rel="stylesheet" href="resources/css/vsvBO.style.css" type="text/css" />
+		<link rel="stylesheet" href="resources/css/base.css" type="text/css" />
+		<link rel="stylesheet" href="resources/css/theme.css" type="text/css" />
+		<link rel="stylesheet" href="resources/css/primefaces.css" type="text/css" />
+		<link rel="stylesheet" href="resources/css/style.css" type="text/css" />
+
+	</h:head>
+
+	<h:body>
+		<p:panel id="page">
+			<p:panel id="header">
+				<h1 class="header-logo">
+					<a href="#" title="Vin sur vin" class="logo-one"> <img
+						src="resources/images/logo.png" alt="Vin sur vin" height="60px" />
+					</a>
+				</h1>
+			</p:panel>
+
+			<p:panel id="nav" />
+
+			<p:panel id="main">
+				<p:panel styleClass="block-login">
+					<h1>Connexion</h1>
+
+					<h:form id="connexionBO">
+					<p:growl id="erreur" showDetail="true"/>
+						<h:outputLabel for="login">Nom d'utilisateur</h:outputLabel>
+						<h:inputText id="login" type="text" name="login" value="#{mbLoginBO.login}" required="true"   
+                        requiredMessage="Votre adresse mail est requise" />
+						<br />
+						<h:outputLabel for="password">Mot de passe</h:outputLabel>
+						<h:inputSecret id="password" type="password" name="pswd" value="#{mbLoginBO.mdp}" required="true"   
+                        requiredMessage="Votre mot de passe est obligatoire" />
+						<br />
+						<h:commandLink action="#{mbLoginBO.authentificationBO }" value="Se connecter" styleClass="actionNavigationButton" />				
+					</h:form>
+				</p:panel>
+			</p:panel>
+
+			<p:panel id="footer">
+				<h:outputLabel value="Contact technique : " />
+				<h:outputLink value="mailto:contact@vinsurvin.fr">contact@vinsurvin.fr</h:outputLink>
+			</p:panel>
+		</p:panel>
+	</h:body>
+</f:view>
+</html>

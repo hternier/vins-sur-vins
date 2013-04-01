@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+	template="../layoutsBackOffice/accueilBOLayout.xhtml">
+
+
+	<ui:define name="body">
+		<h:form id="accueilBO_form">
+			<p:panel id="gestionProduits_panel" styleClass="vsvPanel">
+				<h2>Gestion des produits</h2>
+				<h:outputLabel value="Rechercher " />
+				<h:inputText id="recherche_inputText"
+					value="#{mbTestRecherche.rechercheTextuelle }" />
+				
+				<h:outputLabel for="categorie_select" value="Catégorie :" />
+				<h:selectOneMenu id="categorie_select">
+					<f:selectItem itemLabel="Selectionnez" itemValue="" />
+
+				</h:selectOneMenu>
+
+				<h:outputLabel for="sousCategorie_select" value="Sous-catégorie :" />
+				<h:selectOneMenu id="sousCategorie_select">
+					<f:selectItem itemLabel="Selectionnez" itemValue="" />
+				</h:selectOneMenu>
+
+				<h:commandButton value="OK" id="filtrerProduits_button"
+					action="#{mbTestRecherche.rechercher}" />
+				<h:commandButton value="Tout afficher" id="afficherTout_button"
+					action="#{mbTest.testAction }" />
+				<h:commandButton value="Ajouter" id="ajouter_button"
+					action="goAjoutProduit" />
+
+				<p:dataTable value="#{mbTest.listeProduit}" var="produit"
+					resizableColumns="true" paginator="true" paginatorPosition="bottom"
+					rows="10" sortBy="#{produit.libelle}" sortOrder="ascending"
+					paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+					rowsPerPageTemplate="5,10,25,50,100" paginatorAlwaysVisible="true"
+					emptyMessage="Il n'y a pas de produit dans la base">
+					<p:column headerText="Id" style="width:5%;">
+						<h:outputText value="#{produit.id}" />
+					</p:column>
+					<p:column headerText="Libellé" style="width:30%;">
+						<h:outputText value="#{produit.libelle}" />
+					</p:column>
+					<p:column headerText="Categorie" style="width:10%;">
+						<h:outputText value="#{produit.categoriePrimaire}" />
+					</p:column>
+					<p:column headerText="Sous-Categorie" style="width:15%;">
+						<h:outputText value="#{produit.categorie.valeur}" />
+					</p:column>
+					<p:column headerText="Stock" style="width:6%;">
+						<h:outputText value="#{produit.stock}" />
+					</p:column>
+					<p:column headerText="Mise en ligne" style="width:22%;">
+						<h:outputText value="#{produit.dateMiseEnLigne}" />
+					</p:column>
+					<p:column headerText="Modifier" style="width:12%;">
+						<p:commandButton id="modifier_produit_button" value="modifier"
+							process="@this">
+							<f:setPropertyActionListener value="#{produit}"
+								target="#{mbTest.listeProduit}" />
+						</p:commandButton>
+					</p:column>
+				</p:dataTable>
+				<h:commandButton value="Afficher Tout"
+					action="#{mbTest.testAction }" />
+				<h:commandButton action="#{mbTest.testActionEnStock }"
+					value="En stock" />
+				
+			</p:panel>
+		</h:form>
+
+	</ui:define>
+</ui:composition>
+

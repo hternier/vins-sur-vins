@@ -12,11 +12,17 @@
 		<p:column headerText="Id">
 			<h:outputText value="#{produit.id}" />
 		</p:column>
+		<p:column headerText="Libellé">
+			<h:outputText value="#{produit.libelle}" />
+		</p:column>
 		<p:column headerText="Categorie">
 			<h:outputText value="#{produit.categorie.valeur}" />
 		</p:column>
+		<p:column headerText="Stock">
+			<h:outputText value="#{produit.stock}" />
+		</p:column>
 	</p:dataTable>
-	<h:commandButton value="Salut" action="#{mbTest.testAction }" />
+	<h:commandButton value="Afficher Tout" action="#{mbTest.testAction }" />
 	<h:commandButton action="#{mbTest.testActionEnStock }" value="En stock" />
 </h:form>
 </f:view>
