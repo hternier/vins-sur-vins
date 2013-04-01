@@ -141,6 +141,25 @@ public abstract class Produit implements Serializable {
 		this.prix = prix;
 	}
 	
+	
+	public Double getPrixActuelHT() {
+        for (Prix prix : this.getPrix()) {
+            if(prix.getDateDebut().before(new Date()) && prix.getDateFin() == null) {
+                return prix.getValeurHT();
+            } else
+            if(prix.getDateDebut().before(new Date()) && prix.getDateFin().after(new Date())) {
+                return prix.getValeurHT();
+            }
+        }
+        return null;
+    }
+	
+	public Double getPrixActuelTTC() {
+        Double retour = getPrixActuelHT();
+        retour *= 1d + this.getTva().getValeur();
+        return retour;
+    }
+	
 	public String getCategoriePrimaire() {
 		return this.getClass().getSimpleName();
 	}

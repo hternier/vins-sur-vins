@@ -1,7 +1,10 @@
 package fr.afcepf.atod17.vinsurvin.dao.interfaces.commande;
 
+import java.util.List;
+
 import fr.afcepf.atod17.vinsurvin.entitybeans.commande.Commande;
 import fr.afcepf.atod17.vinsurvin.entitybeans.commande.EtatCommande;
+import fr.afcepf.atod17.vinsurvin.entitybeans.commande.TarifLivraison;
 
 public interface IDaoCommande {
     
@@ -26,4 +29,15 @@ public interface IDaoCommande {
      * @return La commande modifiée
      */
     public Commande setCommande(Commande paramCommande);
+
+    public Commande getCommande(Commande paramCommande);
+
+    public List<TarifLivraison> getTarifLivraisonCommande(int TotalUniteLivraison);
+
+    /**
+     * Méthode de récupération d'un tarif de livraison par son id. 
+     * @param paramTarifLivraison Le tarif livraison à rechercher.
+     * @return Le tarif livraison recherché
+     */
+    public TarifLivraison getTarifLivraison(TarifLivraison paramTarifLivraison);
 }

@@ -10,17 +10,7 @@
 <body>
 <f:view>
 <h:form>
-	<h:outputText value="#{mbTest.produit.libelle}" />
-	<h:panelGroup rendered="#{mbTest.listeProduitLength > 0}">
-		<h:dataTable value="#{mbTest.listeProduit }" var="produit">
-			<h:column>
-				<f:facet name="header"><h:outputText value="Id" /></f:facet>
-				<h:outputText value="#{produit.id}" />
-			</h:column>
-		</h:dataTable>
-	</h:panelGroup>
-	<h:commandButton value="Salut" action="#{mbTest.testAction }" />
-	
+
 	<h:commandLink value="Ajout Produit 1" actionListener="#{mbPanier.ajoutPanier}">
 		<f:attribute name="produit" value="#{mbTest.produit}"/>
 		<f:attribute name="quantite" value="1"/>

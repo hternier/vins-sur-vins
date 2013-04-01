@@ -1,6 +1,10 @@
 package fr.afcepf.atod17.vinsurvin.services.implementations;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+
+import org.primefaces.model.SelectableDataModel;
 
 import fr.afcepf.atod17.vinsurvin.dao.interfaces.commande.IDaoCommande;
 import fr.afcepf.atod17.vinsurvin.dao.interfaces.compte.IDaoCompte;
@@ -8,11 +12,12 @@ import fr.afcepf.atod17.vinsurvin.dao.interfaces.produit.IDaoProduit;
 import fr.afcepf.atod17.vinsurvin.entitybeans.commande.Commande;
 import fr.afcepf.atod17.vinsurvin.entitybeans.commande.EtatCommande;
 import fr.afcepf.atod17.vinsurvin.entitybeans.commande.ProduitEnCommande;
+import fr.afcepf.atod17.vinsurvin.entitybeans.commande.TarifLivraison;
 import fr.afcepf.atod17.vinsurvin.entitybeans.compte.CompteClient;
 import fr.afcepf.atod17.vinsurvin.entitybeans.produit.Produit;
 import fr.afcepf.atod17.vinsurvin.services.interfaces.IServiceCommande;
 
-public class ServiceCommandeImpl implements IServiceCommande {
+public class ServiceCommandeImpl implements IServiceCommande{
 
     /**
      * Instenciation de l'implémentation de la DAO commande.
@@ -82,6 +87,32 @@ public class ServiceCommandeImpl implements IServiceCommande {
         }
         return paramCommande;
     }
+    
+    public List<TarifLivraison> getTarifLivraisonCommande(Commande paramCommande) {
+        int totalUniteLivraison = 0;
+        for (ProduitEnCommande pec : paramCommande.getProduitsEnCommande()) {
+            totalUniteLivraison += (pec.getProduit().getUniteLivraison() * pec.getQuantite());
+        }
+        return daoCommande.getTarifLivraisonCommande(totalUniteLivraison);
+    }
+    
+    @Override
+    public List<Commande> rechercheCommande(Commande paramCommande) {
+        
+        //TODO : (HT) à compléter selon recherche multi-critères
+        List<Commande> commandes = new ArrayList<Commande>();
+        
+        paramCommande = daoCommande.getCommande(paramCommande);
+        commandes.add(paramCommande);
+        return commandes;
+    }
+    
+    
+    public TarifLivraison getTarifLivraison(TarifLivraison paramTarifLivraison) {
+        return daoCommande.getTarifLivraison(paramTarifLivraison);
+    }
+    
+   
 
     /**
      * Méthode de récupèration de la DAO commande.
@@ -115,4 +146,6 @@ public class ServiceCommandeImpl implements IServiceCommande {
         daoProduit = paramDaoProduit;
     }
     
+    
+
 }

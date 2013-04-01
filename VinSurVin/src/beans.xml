@@ -24,4 +24,8 @@
 		<property name="daoCompte" ref="daoCompte" />
 		<property name="daoProduit" ref="daoProduit" />
 	</bean>
+	
+	<bean name="listeTarifsLivraison" class="fr.afcepf.atod17.vinsurvin.entitybeans.commande.ListeTarifsLivraison" scope="prototype">
+		<property name="serviceCommande" ref="serviceCommande" />
+	</bean>
 </beans>
