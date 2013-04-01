@@ -1,0 +1,86 @@
+.header-logo {
+	width: 20%;
+	float: left;
+}
+
+.panelRecherche {
+	width: 55%;
+	float: left;
+	font-size: medium !important;
+	line-height: 230%;
+}
+
+.header_deconnexion {
+	float: left;
+	width: 100%;
+}
+
+.header_connexion {
+	float: left;
+	width: 100%;
+}
+
+.header {
+	float:left;
+	width: 100%;
+}
+
+.nav {
+	float:left;
+	width: 100%;
+}
+
+.main {
+	float: left;
+}
+
+.footer {
+	float: left;
+}
+
+.page {
+	float: left;	
+}
+
+.logoAndrecherche {
+	float:left;
+	width: 100%;
+}
+
+.recherchePrixInput {
+	width:35px;
+}
+
+.rechercheMillesime {
+	margin-left:14px;
+	float:left;
+}
+
+.rechercheRegion {
+	height: 27px;
+	margin-left:10px;
+	max-width: 200px;
+	float:left;
+}
+
+.rechercheRegion label {
+	height:27px;
+	padding: 0;
+	line-height: 200%;
+}
+
+.labelRegion {
+	font-weight: bold;
+	float: left;
+	margin-left:5px;
+}
+
+.boutonRechercheMain {
+	float:left;
+	height:29px;
+	margin-left: 3px;
+}
+
+.boutonRechercheMain span {
+	display: inline !important;
+}
