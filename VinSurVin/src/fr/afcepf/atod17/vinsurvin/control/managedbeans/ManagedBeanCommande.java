@@ -1,11 +1,18 @@
 package fr.afcepf.atod17.vinsurvin.control.managedbeans;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
+import javax.faces.event.ActionEvent;
+
+
+import fr.afcepf.atod17.vinsurvin.control.entitys.VueCommande;
 import fr.afcepf.atod17.vinsurvin.entitybeans.commande.Commande;
+import fr.afcepf.atod17.vinsurvin.entitybeans.commande.EtatCommande;
 import fr.afcepf.atod17.vinsurvin.entitybeans.commande.ListeTarifsLivraison;
 import fr.afcepf.atod17.vinsurvin.entitybeans.commande.ProduitEnCommande;
+import fr.afcepf.atod17.vinsurvin.entitybeans.commande.TarifLivraison;
 import fr.afcepf.atod17.vinsurvin.services.implementations.ServiceCommandeImpl;
 import fr.afcepf.atod17.vinsurvin.services.implementations.ServiceProduitImpl;
 
@@ -17,6 +24,9 @@ import fr.afcepf.atod17.vinsurvin.services.implementations.ServiceProduitImpl;
  */
 public class ManagedBeanCommande extends AbstractManagedBean {
 
+    private ManagedBeanAccueil mbAccueil;
+    private ManagedBeanPanier mbPanier;
+    
     /**
      * Commande de la session.
      */
@@ -28,31 +38,32 @@ public class ManagedBeanCommande extends AbstractManagedBean {
     private Double totalCommandeTTC = 0.0;
     private Double totalCommandeHT = 0.0;
     
-    private ProduitEnCommande pec =new ProduitEnCommande();
     
     private ListeTarifsLivraison tarifsLivraisonCommande;
-    private String tarifLivraisonSelectionne;
+    private TarifLivraison tarifLivraisonSelectionne;
     
     private String choixPaiement;
     
+    private List<VueCommande> commandesEnCours;
+    private List<VueCommande> commandesHistoriques;
+    
+    
     public ManagedBeanCommande() {
-        getCommande();
     }
     
-    public List<ProduitEnCommande> getListeProduitEnCommande() {
-        return this.commande.getProduitsEnCommande();
-    }
     
     public Commande setCommande(Commande paramCommande) {
-        return paramCommande;
+        this.commande = paramCommande;
+        return this.commande;
     }
     
-    public String getCommande() {
-        //TODO : (HT) mettre en place la récupération dynamique de la commande
-        this.commande.setId(1);
-        this.commande = getContext().getBean(ServiceCommandeImpl.class).rechercheCommande(this.commande).get(0);
+    public Commande getCommande() {
         
-        return "";
+        if(this.commande.getId() == 0) {
+            setCommande(mbPanier.getCommande());
+        }
+        System.out.println("Init commande : " + commande.getDateCommande() + ", " + commande.getEtatCommande().getLibelle());
+        return this.commande;
     }
     
     /**
@@ -86,9 +97,12 @@ public class ManagedBeanCommande extends AbstractManagedBean {
     }
     
     public String getAdresse1() {
+        System.out.println("GETAdresse1");
         if (commande.getAdresseCommande() != null) {
             adresse1 =  this.commande.getAdresseCommande().getAdresse1();
+            System.out.println("GETAdresse1 : Adresse depuis commande : " + adresse1);
         }
+        System.out.println("GETAdresse1 : resultat : " + adresse1);
         return adresse1;
     }
     
@@ -108,30 +122,25 @@ public class ManagedBeanCommande extends AbstractManagedBean {
     
     public ListeTarifsLivraison setTarifsLivraisonCommande() {
         System.out.println("setTarifsLivraisonCommande");
-        tarifsLivraisonCommande = new ListeTarifsLivraison(getContext().getBean(ServiceCommandeImpl.class).getTarifLivraisonCommande(this.commande));
+        tarifsLivraisonCommande = 
+                new ListeTarifsLivraison(getContext().getBean(ServiceCommandeImpl.class).getTarifLivraisonCommande(this.commande));
         System.out.println("setTarifsLivraisonCommande : nb lignes retournées : " + tarifsLivraisonCommande.getRowCount());
         return tarifsLivraisonCommande;
     }
     
     public ListeTarifsLivraison getTarifsLivraisonCommande() {
-        System.out.println("getTarifsLivraisonCommande");
-        
         if(commande.getProduitsEnCommande() != null) {
             tarifsLivraisonCommande =  setTarifsLivraisonCommande();
         }
-        
-        System.out.println("getTarifsLivraisonCommande : TEST : " + getContext().getBean(ListeTarifsLivraison.class).getRowKey(getContext().getBean(ListeTarifsLivraison.class).getRowData("1")));
         return tarifsLivraisonCommande;
     }
 
-    public String getTarifLivraisonSelectionne() {
-        System.out.println("getTarifLivraisonSelectionne");
+    public TarifLivraison getTarifLivraisonSelectionne() {
         return this.tarifLivraisonSelectionne;
     }
 
     public void setTarifLivraisonSelectionne(
-            String paramTarifLivraisonSelectionne) {
-        System.out.println("setTarifLivraisonSelectionne");
+            TarifLivraison paramTarifLivraisonSelectionne) {
         this.tarifLivraisonSelectionne = paramTarifLivraisonSelectionne;
     }
 
@@ -141,6 +150,136 @@ public class ManagedBeanCommande extends AbstractManagedBean {
 
     public void setChoixPaiement(String paramChoixPaiement) {
         choixPaiement = paramChoixPaiement;
+    }
+    
+    /**
+     * Convertion de liste commande en liste VueCommande.
+     * @param paramListCommande La liste de commande
+     * @return La liste VueCommande convertie
+     */
+    public List<VueCommande> CommandeToVueCommande(List<Commande> paramListCommande) {
+        List<VueCommande> listVueCommande = new ArrayList<VueCommande>();
+        for (Commande commande : paramListCommande) {
+            listVueCommande.add(new VueCommande(commande));
+        }
+        return listVueCommande;
+    }
+
+    /**
+     * Affiche des commandes ayant le statut
+     * "En attente de validation" et "En attente de paiement"
+     */
+    public List<VueCommande> getCommandesEnCours() {
+        if(commandesEnCours == null) {
+            setCommandesEnCours();
+        }
+        return commandesEnCours;
+    }
+
+    /**
+     * Recherches des commandes ayant le statut
+     * "En attente de validation" et "En attente de paiement"
+     */
+    public void setCommandesEnCours() {
+        Commande rechercheCommande = new Commande();
+        
+        EtatCommande etatCommande = new EtatCommande();
+        etatCommande.setId(1);
+        rechercheCommande.setEtatCommande(etatCommande);
+        commandesEnCours = CommandeToVueCommande(getContext().getBean(ServiceCommandeImpl.class).rechercheCommande(rechercheCommande));
+        
+        etatCommande.setId(2);
+        rechercheCommande.setEtatCommande(etatCommande);
+        commandesEnCours.addAll(CommandeToVueCommande(getContext().getBean(ServiceCommandeImpl.class).rechercheCommande(rechercheCommande)));
+    }
+
+    /**
+     * Affiche des commandes ayant le statut
+     * 'En préparation', 'En livraison', 'Traité' ou 'Annulé'
+     */
+    public List<VueCommande> getCommandesHistoriques() {
+        
+        if(commandesHistoriques == null) {
+            setCommandesHistoriques();
+        }
+        return commandesHistoriques;
+    }
+
+    /**
+     * Recherches des commandes ayant le statut
+     * 'En préparation', 'En livraison', 'Traité' ou 'Annulé'
+     */
+    public void setCommandesHistoriques() {
+        Commande rechercheCommande = new Commande();
+        
+        EtatCommande etatCommande = new EtatCommande();
+        etatCommande.setId(3);
+        rechercheCommande.setEtatCommande(etatCommande);
+        commandesHistoriques = CommandeToVueCommande(getContext().getBean(ServiceCommandeImpl.class).rechercheCommande(rechercheCommande));
+        
+        etatCommande.setId(4);
+        rechercheCommande.setEtatCommande(etatCommande);
+        commandesHistoriques.addAll(CommandeToVueCommande(getContext().getBean(ServiceCommandeImpl.class).rechercheCommande(rechercheCommande)));
+        
+        etatCommande.setId(5);
+        rechercheCommande.setEtatCommande(etatCommande);
+        commandesHistoriques.addAll(CommandeToVueCommande(getContext().getBean(ServiceCommandeImpl.class).rechercheCommande(rechercheCommande)));
+    
+        etatCommande.setId(6);
+        rechercheCommande.setEtatCommande(etatCommande);
+        commandesHistoriques.addAll(CommandeToVueCommande(getContext().getBean(ServiceCommandeImpl.class).rechercheCommande(rechercheCommande)));
+    }
+    
+    public void getDetail(ActionEvent ae) {
+        this.commande = (Commande) ae.getComponent().getAttributes().get("paramCommande");
+    }
+    
+    /**
+     * Methode d'annulation de la commande.
+     * Les produits sont remis en stock.
+     * @return rien
+     */
+    public String annulerCommande() {
+        commande = getContext().getBean(ServiceCommandeImpl.class).annulerCommande(commande);
+        setCommandesEnCours();
+        setCommandesHistoriques();
+        return "";
+    }
+    
+    /**
+     * Methode de reprise de validation d'une commande.
+     * @return retour
+     */
+    public String repriseCommande() {
+        return "ajoutCommande";
+    }
+    
+    /**
+     * Methode de validation de la commande.
+     * La commande passe en statut "Attente de paiement"
+     * @return Vers l'accueil
+     */
+    public String validerCommande() {
+        System.out.println("tarifLivraisonSelectionne : " + tarifLivraisonSelectionne.getId());
+        commande.setTarifLivraison(tarifLivraisonSelectionne);
+        commande = getContext().getBean(ServiceCommandeImpl.class).validationCommande(commande);
+        return "Accueil";
+    }
+
+    public ManagedBeanAccueil getMbAccueil() {
+        return mbAccueil;
+    }
+
+    public void setMbAccueil(ManagedBeanAccueil paramMbAccueil) {
+        mbAccueil = paramMbAccueil;
+    }
+
+    public ManagedBeanPanier getMbPanier() {
+        return mbPanier;
+    }
+
+    public void setMbPanier(ManagedBeanPanier mbPanier) {
+        this.mbPanier = mbPanier;
     }
     
     

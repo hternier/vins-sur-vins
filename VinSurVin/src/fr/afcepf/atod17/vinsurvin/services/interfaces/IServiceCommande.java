@@ -2,6 +2,7 @@ package fr.afcepf.atod17.vinsurvin.services.interfaces;
 
 import java.util.List;
 
+import fr.afcepf.atod17.vinsurvin.control.entitys.VueCommande;
 import fr.afcepf.atod17.vinsurvin.entitybeans.commande.Commande;
 import fr.afcepf.atod17.vinsurvin.entitybeans.commande.TarifLivraison;
 
@@ -22,6 +23,14 @@ public interface IServiceCommande {
      * @return La commande validée
      */
     public Commande validationCommande(Commande paramCommande);
+    
+    /**
+     * Méthode d'annulation d'une commande.
+     * Passage en statut "annuler"
+     * @param paramCommande La commande à annuller
+     * @return La commande annulée
+     */
+    public Commande annulerCommande(Commande paramCommande);
 
     public List<Commande> rechercheCommande(Commande paramCommande);
     
@@ -33,4 +42,9 @@ public interface IServiceCommande {
      * @return
      */
     public TarifLivraison getTarifLivraison(TarifLivraison paramTarifRechercher);
+
+    public Commande getCommande(Commande paramCommande);
+
+    
+
 }

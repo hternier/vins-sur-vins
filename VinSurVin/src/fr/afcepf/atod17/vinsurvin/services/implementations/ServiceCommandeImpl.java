@@ -1,10 +1,7 @@
 package fr.afcepf.atod17.vinsurvin.services.implementations;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
-import org.primefaces.model.SelectableDataModel;
 
 import fr.afcepf.atod17.vinsurvin.dao.interfaces.commande.IDaoCommande;
 import fr.afcepf.atod17.vinsurvin.dao.interfaces.compte.IDaoCompte;
@@ -88,6 +85,27 @@ public class ServiceCommandeImpl implements IServiceCommande{
         return paramCommande;
     }
     
+    @Override
+    public Commande annulerCommande(Commande paramCommande) {
+        
+        Produit produitEnStock;
+        //Remise des produits dans le stock
+        for (ProduitEnCommande pec : paramCommande.getProduitsEnCommande()) {
+            produitEnStock = daoProduit.getProduit(pec.getProduit());
+            
+            produitEnStock.setStock(produitEnStock.getStock() + pec.getQuantite());
+            daoProduit.setProduit(produitEnStock);
+        }
+        
+        EtatCommande etatCommande = new EtatCommande();
+        etatCommande.setId(6);
+        etatCommande = daoCommande.getEtatCommande(etatCommande);
+        paramCommande.setEtatCommande(etatCommande);
+                
+        paramCommande = daoCommande.setCommande(paramCommande);
+        return paramCommande;
+    }
+    
     public List<TarifLivraison> getTarifLivraisonCommande(Commande paramCommande) {
         int totalUniteLivraison = 0;
         for (ProduitEnCommande pec : paramCommande.getProduitsEnCommande()) {
@@ -98,20 +116,18 @@ public class ServiceCommandeImpl implements IServiceCommande{
     
     @Override
     public List<Commande> rechercheCommande(Commande paramCommande) {
-        
-        //TODO : (HT) à compléter selon recherche multi-critères
-        List<Commande> commandes = new ArrayList<Commande>();
-        
-        paramCommande = daoCommande.getCommande(paramCommande);
-        commandes.add(paramCommande);
-        return commandes;
+        return daoCommande.rechercheCommande(paramCommande);
     }
     
+    @Override
+    public Commande getCommande(Commande paramCommande) {
+     return daoCommande.getCommande(paramCommande);
+    }
     
+    @Override
     public TarifLivraison getTarifLivraison(TarifLivraison paramTarifLivraison) {
         return daoCommande.getTarifLivraison(paramTarifLivraison);
     }
-    
    
 
     /**

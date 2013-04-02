@@ -12,7 +12,7 @@
 		<h:form id="form">
 			<p:fieldset legend="Récapitulatife de la commande">
 				<h:outputText value="Votre commande :" />
-				<p:dataTable value="#{mbCommande.listeProduitEnCommande}"
+				<p:dataTable value="#{mbCommande.commande.produitsEnCommande}"
 					var="produitEnCommande" resizableColumns="true" paginator="true">
 					<p:column headerText="Image">
 						<h:outputText value="#{produitEnCommande.produit.image}" />
@@ -21,26 +21,30 @@
 						<h:outputText value="#{produitEnCommande.produit.libelle}" />
 					</p:column>
 					<p:column headerText="Prix unitaire">
-						<h:outputText value="#{produitEnCommande.produit.prixActuelTTC}" />
-						<h:outputText value="€" />
+						<h:outputText value="#{produitEnCommande.produit.prixActuelTTC}">
+							<f:convertNumber type="currency" />
+						</h:outputText>
 					</p:column>
 					<p:column headerText="Quantité">
 						<h:outputText value="#{produitEnCommande.quantite}" />
 					</p:column>
 					<p:column headerText="Prix total">
 						<h:outputText
-							value="#{produitEnCommande.produit.prixActuelTTC * produitEnCommande.quantite}" />
-						<h:outputText value="€" />
+							value="#{produitEnCommande.produit.prixActuelTTC * produitEnCommande.quantite}" >
+							<f:convertNumber type="currency" />
+						</h:outputText>
 					</p:column>
 				</p:dataTable>
 
 				<h:outputText value="Total commande H.T. : " />
-				<h:outputText value="#{mbCommande.totalCommandeHT}" />
-				<h:outputText value="€" />
+				<h:outputText value="#{mbCommande.totalCommandeHT}">
+					<f:convertNumber type="currency" />
+				</h:outputText>
 				<br />
 				<h:outputText value="Total commande T.T.C. : " />
-				<h:outputText value="#{mbCommande.totalCommandeTTC}" />
-				<h:outputText value="€" />
+				<h:outputText value="#{mbCommande.totalCommandeTTC}">
+					<f:convertNumber type="currency" />
+				</h:outputText>
 
 				<br />
 				<br />
@@ -76,16 +80,16 @@
 				<h:outputText value="Mode de livraison :" />
 				<br />
 				<p:dataTable id="tabLivraison" value="#{mbCommande.tarifsLivraisonCommande}" var="tarif"
-				selection="{mbCommande.tarifLivraisonSelectionne}">
-					<p:column selectionMode="single"/>  
+				selection="#{mbCommande.tarifLivraisonSelectionne}">
+					    <p:column selectionMode="single" style="width:2%" />  
 					<p:column headerText="Transporteur">
-						<h:outputText value="#{tarif.societe}" />
+						#{tarif.societe}
 					</p:column>
 					<p:column headerText="Description">
-						<h:outputText value="#{tarif.typeLivraison.libelle}" />
+						#{tarif.typeLivraison.libelle}
 					</p:column>
 					<p:column headerText="Prix">
-						<h:outputText value="#{tarif.tarif}" /><h:outputText value="€" />
+						<h:outputText value="#{tarif.tarif}"><f:convertNumber type="currency" /></h:outputText>
 					</p:column>
 				</p:dataTable>
 
@@ -99,10 +103,10 @@
 						<f:selectItem itemLabel="Carte bleu / Visa" itemValue="2" />
 					</p:selectOneRadio>
 				</h:panelGrid>
+				
+				<p:commandButton ajax="false" value="Valider la commande" action="#{mbCommande.validerCommande}">
+				</p:commandButton>
 
-				<br />
-				<h:commandButton value="Actualiser"
-					action="#{mbCommande.getCommande}" />
 			</p:fieldset>
 		</h:form>
 	</ui:define>

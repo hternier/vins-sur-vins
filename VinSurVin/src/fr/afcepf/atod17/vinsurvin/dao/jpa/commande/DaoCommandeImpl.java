@@ -69,7 +69,28 @@ public class DaoCommandeImpl implements IDaoCommande {
         return paramCommande;
     }
     
-    //TODO : (HT) rechercherCommande multi-critères (compte utilisateur, statut ou id)
+    private final String REQ_RECHERCHECOMMANDE = "Select comm From Commande comm where str(comm.id) like :id AND str(comm.client) like :client AND str(comm.etatCommande) like :etatCommande";
+    
+    @Override
+    public List<Commande> rechercheCommande(Commande paramCommande) {
+        em.createQuery(REQ_RECHERCHECOMMANDE);
+        
+        String id, client, etatcommande;
+        if(paramCommande.getId() != 0) {
+            id = String.valueOf(paramCommande.getId());
+            em.setProperty("id", id);
+        } else {id = "%";}
+        
+        if(paramCommande.getClient() != null) {
+            client = String.valueOf(paramCommande.getClient().getId());
+        } else {client = "%";}
+        
+        if(paramCommande.getEtatCommande() != null) {
+            etatcommande = String.valueOf(paramCommande.getEtatCommande().getId());
+        } else {etatcommande = "%";}
+        
+        return em.createQuery(REQ_RECHERCHECOMMANDE, Commande.class).setParameter("id", id).setParameter("client", client).setParameter("etatCommande", etatcommande).getResultList();
+    }
 
     private final String REQ_GETTARIFLIVRAISONCOMMANDE = "Select tl From TarifLivraison tl where tl.uniteLivraisonMin <= :uniteRef AND tl.uniteLivraisonMax >= :uniteRef";
     
