@@ -9,4 +9,5 @@ public interface IDaoCompte {
 	  public CompteClient getCompteClient(CompteClient paramCompteClient);
 	
 	public CompteSysteme authentificationBO(String login, String mdp);
+    public CompteClient authentificationFO(String paramMail, String paramMdp);
 }

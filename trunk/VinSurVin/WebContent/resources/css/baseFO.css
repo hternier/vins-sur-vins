@@ -84,3 +84,8 @@
 .boutonRechercheMain span {
 	display: inline !important;
 }
+
+.gmapkikoo {
+	width: 800px;
+	height: 600px;
+}
