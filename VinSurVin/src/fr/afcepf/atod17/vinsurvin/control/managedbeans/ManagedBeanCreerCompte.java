@@ -11,11 +11,11 @@ public class ManagedBeanCreerCompte extends AbstractManagedBean {
 	{
 		compteClient.setAdresseFacturation(new Adresse());
 	}
-
 	public String creerCompte() {
 		
+		System.out.println("test");
 		this.compteClient = getContext().getBean(ServiceCompteImpl.class).addCompteClient(compteClient);
-		return "Success";
+		return "";
 	}
 
 	public CompteClient getCompteClient() {
