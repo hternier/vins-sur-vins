@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+	template="ajoutCommandeLayout.xhtml">
+	<ui:define name="body">
+		<h:form id="form">
+			<p:fieldset legend="Gestion de vos commandes">
+				<h:outputText value="Vos commandes en cours :" />
+
+				<p:growl id="msgs" showDetail="true" />
+				<p:dataTable value="#{mbCommande.commandesEnCours}"
+					var="commandeEnCours" resizableColumns="true" paginator="false">
+					<p:column headerText="N° de commande">
+						<h:outputText value="#{commandeEnCours.commande.id}" />
+					</p:column>
+					<p:column headerText="Statut">
+						<h:outputText
+							value="#{commandeEnCours.commande.etatCommande.libelle}" />
+					</p:column>
+					<p:column headerText="Prix">
+						<h:outputText value="#{commandeEnCours.prixTotalTTC}"><f:convertNumber type="currency" /></h:outputText>
+					</p:column>
+					<p:column style="width:4%">
+						<p:commandButton id="selectButton" update=":form"
+							icon="ui-icon-search" title="Détail" actionListener="#{mbCommande.getDetail}">
+							<f:attribute name="paramCommande" value="#{commandeEnCours.commande}"/>
+						</p:commandButton>
+					</p:column>
+				</p:dataTable>
+				<br/>
+				<br/>
+				<h:form id="form">
+				<h:outputText value="Detail de la commande n°" /><h:outputText value="#{mbCommande.commande.id}" /><h:outputText value=" : " />
+				<p:dataTable value="#{mbCommande.commande.produitsEnCommande}"
+					var="produitEnCommande" resizableColumns="true" paginator="false">
+					<p:column headerText="Libellé">
+						<h:outputText value="#{produitEnCommande.produit.libelle}" />
+					</p:column>
+					<p:column headerText="Prix unitaire">
+						<h:outputText value="#{produitEnCommande.produit.prixActuelTTC}"><f:convertNumber type="currency" /></h:outputText>
+						<h:outputText value="€" />
+					</p:column>
+					<p:column headerText="Quantité">
+						<h:outputText value="#{produitEnCommande.quantite}" />
+					</p:column>
+					<p:column headerText="Prix total">
+						<h:outputText
+							value="#{produitEnCommande.produit.prixActuelTTC * produitEnCommande.quantite}"><f:convertNumber type="currency" /></h:outputText>
+						<h:outputText value="€" />
+					</p:column>
+				</p:dataTable>
+				</h:form>
+				
+				<p:panelGrid columns="2">
+					<p:column>
+						<p:commandButton ajax="false" value="Reprise de la commande" action="#{mbCommande.repriseCommande}">
+						</p:commandButton>
+					</p:column>
+					<p:column >
+						<p:commandButton styleClass="btnRight" ajax="false" value="Annuler la commande" action="#{mbCommande.annulerCommande}">
+						</p:commandButton>
+					</p:column>
+				</p:panelGrid>
+				
+				<br/>
+				<br/>
+				<h:outputText value="Historique de vos commandes :" />
+				<p:dataTable value="#{mbCommande.commandesHistoriques}"
+					var="commandeHistorique" resizableColumns="true" paginator="true">
+					<p:column headerText="N° de commande">
+						<h:outputText value="#{commandeHistorique.commande.id}" />
+					</p:column>
+					<p:column headerText="Statut">
+						<h:outputText
+							value="#{commandeHistorique.commande.etatCommande.libelle}" />
+					</p:column>
+					<p:column headerText="Date">
+						<h:outputText value="#{commandeHistorique.commande.dateCommande}" />
+					</p:column>
+					<p:column headerText="Prix total">
+						<h:outputText
+							value="#{commandeHistorique.prixTotalTTC}"><f:convertNumber type="currency" /></h:outputText>
+					</p:column>
+				</p:dataTable>
+				
+			</p:fieldset>
+		</h:form>
+	</ui:define>
+</ui:composition>

@@ -40,4 +40,12 @@ public interface IDaoCommande {
      * @return Le tarif livraison recherché
      */
     public TarifLivraison getTarifLivraison(TarifLivraison paramTarifLivraison);
+
+    /**
+     * Recherche multi-critère sur les commandes.
+     * Par id, compte utilisateur ou statut
+     * @param paramCommande
+     * @return
+     */
+    public List<Commande> rechercheCommande(Commande paramCommande);
 }

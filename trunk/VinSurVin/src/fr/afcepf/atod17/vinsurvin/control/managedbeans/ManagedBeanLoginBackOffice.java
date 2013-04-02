@@ -26,8 +26,8 @@ public class ManagedBeanLoginBackOffice extends AbstractManagedBean {
 //			System.out.println("error");
 		}
 //		System.out.println("Fin du MBLoginBO  : Droit d'accès  :" + compteSysteme.getDroitAcces()+"   login : "+ login +"   mot de passe :"+ mdp);
-		return "/pagesBackOffice/indexBO.xhtml" + "?faces-redirect=true";
-//		return "success";
+//		return "/pagesBackOffice/indexBO.xhtml" + "?faces-redirect=true";
+		return "success";
 	}
 	
 	/*	--------GETTERS & SETTERS ------------*/

@@ -87,5 +87,10 @@ public class TarifLivraison implements Serializable {
 	public void setTypeLivraison(TypeLivraison typeLivraison) {
 		this.typeLivraison = typeLivraison;
 	}
+
+    @Override
+    public String toString() {
+        return String.valueOf(this.id);
+    }
 	
 }

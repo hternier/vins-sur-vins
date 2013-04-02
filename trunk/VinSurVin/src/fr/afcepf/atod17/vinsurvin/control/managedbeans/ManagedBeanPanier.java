@@ -21,22 +21,27 @@ import fr.afcepf.atod17.vinsurvin.services.implementations.ServiceProduitImpl;
  */
 public class ManagedBeanPanier extends AbstractManagedBean {
 
+    private ManagedBeanAccueil mbAccueil;
+    
     /**
      * Panier de la session.
      */
-    private Panier panier;
+    private Panier panier = new Panier();;
+    
+    /**
+     * La commande qui sera généré par le panier
+     */
+    private Commande commande = new Commande();
     
     /**
      * Prix total du panier.
      */
-    private Double totalPanier;
+    private Double totalPanier = 0.0;
     
     /**
      * Constructeur par defaut.
      */
     public ManagedBeanPanier() {
-        panier = new Panier();
-        totalPanier = 0.0;
     }
     
     /**
@@ -143,17 +148,18 @@ public class ManagedBeanPanier extends AbstractManagedBean {
      * Methode de validation du panier.
      * Permet de créer une commande et de valider
      * le stock disponible.
-     * @return La page de redirection
+     * @return La d'ajout de commande
      */
     public String validerPanier() {
-        
-        Commande commande = new Commande();
-        //TODO : (HT) définir l'adresse de livraison par rapport au lient connecté.
-        //commande.setAdresseCommande();
+        //Ajout de l'adresse de livraison et du panier à la nouvelle commande
+        commande.setAdresseCommande(mbAccueil.getClientConnected().getAdresseLivraison());
         commande.setProduitsEnCommande(panier.getProduits());
         commande = getContext().getBean(ServiceCommandeImpl.class).ajoutCommande(commande);
         
-        return "";
+        //Création d'un nouveau panier
+        panier = new Panier();
+        
+        return "ajoutCommande";
     }
 
     /**
@@ -171,6 +177,30 @@ public class ManagedBeanPanier extends AbstractManagedBean {
 
     public List<ProduitEnCommande> getListeProduits() {
         return this.panier.getProduits();
+    }
+    
+    /**
+     * Retour vers l'accueil.
+     * @return Vers l'accueil
+     */
+    public String accueil() {
+        return "Accueil";
+    }
+
+    public ManagedBeanAccueil getMbAccueil() {
+        return mbAccueil;
+    }
+
+    public void setMbAccueil(ManagedBeanAccueil paramMbAccueil) {
+        mbAccueil = paramMbAccueil;
+    }
+
+    public Commande getCommande() {
+        return commande;
+    }
+
+    public void setCommande(Commande paramCommande) {
+        commande = paramCommande;
     }
     
     

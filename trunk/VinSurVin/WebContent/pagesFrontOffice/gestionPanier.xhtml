@@ -11,6 +11,17 @@
 	<ui:define name="body">
 		<h:form id="form">
 
+<h:commandLink value="Ajout Produit 1" actionListener="#{mbPanier.ajoutPanier}">
+		<f:attribute name="produit" value="#{mbTest.produit}"/>
+		<f:attribute name="quantite" value="1"/>
+	</h:commandLink>
+	<h:commandLink value="Ajout Produit 2" actionListener="#{mbPanier.ajoutPanier}">
+		<f:attribute name="produit" value="#{mbTest.produit2}"/>
+		<f:attribute name="quantite" value="1"/>
+	</h:commandLink><br/>
+	<br/>
+	<h:outputText value="#{mbPanier.totalPanier}" /><br/>
+
 			<p:fieldset legend="Récapitulatife du panier">
 				<h:outputText value="Votre panier :" />
 				<p:dataTable id="dtProduits" value="#{mbPanier.listeProduits}" var="produitPanier"
@@ -22,8 +33,7 @@
 						<h:outputText value="#{produitPanier.produit.libelle}" />
 					</p:column>
 					<p:column headerText="Prix unitaire">
-						<h:outputText value="#{produitPanier.produit.prixActuelTTC}" />
-						<h:outputText value="€" />
+						<h:outputText value="#{produitPanier.produit.prixActuelTTC}"><f:convertNumber type="currency" /></h:outputText>
 					</p:column>
 					<p:column headerText="Quantité">
 						<p:inputText value="#{produitPanier.quantite}" />
@@ -34,8 +44,7 @@
 					</p:column>
 					<p:column headerText="Prix total">
 						<h:outputText
-							value="#{produitPanier.produit.prixActuelTTC * produitPanier.quantite}" />
-						<h:outputText value="€" />
+							value="#{produitPanier.produit.prixActuelTTC * produitPanier.quantite}"><f:convertNumber type="currency" /></h:outputText>
 					</p:column>
 					<p:column headerText="Suppression">
 						<h:commandLink value="Supprimer"
@@ -49,17 +58,17 @@
 				
 				<br />
 				<h:outputText value="Total commande T.T.C. : " />
-				<h:outputText value="#{mbPanier.totalPanier}" />
-				<h:outputText value="€" />
+				<h:outputText value="#{mbPanier.totalPanier}"><f:convertNumber type="currency" />
+				</h:outputText>
 				<br /><br />
 				
 				<p:panelGrid columns="2">
 					<p:column>
-						<p:commandButton ajax="false" value="Continuer mes achats">
+						<p:commandButton ajax="false" value="Continuer mes achats" action="#{mbPanier.accueil}">
 						</p:commandButton>
 					</p:column>
 					<p:column >
-						<p:commandButton styleClass="btnRight" ajax="false" value="Valider mon panier" >
+						<p:commandButton styleClass="btnRight" ajax="false" value="Valider mon panier" action="#{mbPanier.validerPanier}">
 						</p:commandButton>
 					</p:column>
 				
