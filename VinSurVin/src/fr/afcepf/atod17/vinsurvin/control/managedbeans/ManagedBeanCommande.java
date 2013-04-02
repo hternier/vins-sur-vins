@@ -1,17 +1,11 @@
 package fr.afcepf.atod17.vinsurvin.control.managedbeans;
 
 
-import java.util.ArrayList;
 import java.util.List;
-
-import javax.faces.event.ActionEvent;
 
 import fr.afcepf.atod17.vinsurvin.entitybeans.commande.Commande;
 import fr.afcepf.atod17.vinsurvin.entitybeans.commande.ListeTarifsLivraison;
-import fr.afcepf.atod17.vinsurvin.entitybeans.commande.Panier;
 import fr.afcepf.atod17.vinsurvin.entitybeans.commande.ProduitEnCommande;
-import fr.afcepf.atod17.vinsurvin.entitybeans.commande.TarifLivraison;
-import fr.afcepf.atod17.vinsurvin.entitybeans.produit.Produit;
 import fr.afcepf.atod17.vinsurvin.services.implementations.ServiceCommandeImpl;
 import fr.afcepf.atod17.vinsurvin.services.implementations.ServiceProduitImpl;
 
