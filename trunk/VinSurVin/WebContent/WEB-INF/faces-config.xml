@@ -27,40 +27,41 @@
   <managed-bean-class>fr.afcepf.atod17.vinsurvin.control.managedbeans.ManagedBeanCommande</managed-bean-class>
   <managed-bean-scope>session</managed-bean-scope>
  </managed-bean>
- 
  <!-- ==============================
  |	MANAGEDBEANS BACKOFFICE GESTIONNAIRE	|
- ================================ -->
-  	<!-- MANAGEDBEAN CONNEXION GESTIONNAIRE -->
-	<managed-bean>
-		<managed-bean-name>mbLoginBO</managed-bean-name>
-		<managed-bean-class>fr.afcepf.atod17.vinsurvin.control.managedbeans.ManagedBeanLoginBackOffice</managed-bean-class>
-		<managed-bean-scope>session</managed-bean-scope>
-	</managed-bean>
-	
-	 <!--MANAGEDBEAN GESTION PRODUITS -->
-	<managed-bean>
-		<managed-bean-name>mbGestionProduits</managed-bean-name>
-		<managed-bean-class>fr.afcepf.atod17.vinsurvin.control.managedbeans.ManagedBeanGestionProduits</managed-bean-class>
-		<managed-bean-scope>session</managed-bean-scope>
-	</managed-bean>
- 
+ ================================ 
+ MANAGEDBEAN CONNEXION GESTIONNAIRE -->
+ <managed-bean>
+  <managed-bean-name>mbLoginBO</managed-bean-name>
+  <managed-bean-class>fr.afcepf.atod17.vinsurvin.control.managedbeans.ManagedBeanLoginBackOffice</managed-bean-class>
+  <managed-bean-scope>session</managed-bean-scope>
+ </managed-bean>
+ <!--MANAGEDBEAN GESTION PRODUITS -->
+ <managed-bean>
+  <managed-bean-name>mbGestionProduits</managed-bean-name>
+  <managed-bean-class>fr.afcepf.atod17.vinsurvin.control.managedbeans.ManagedBeanGestionProduits</managed-bean-class>
+  <managed-bean-scope>session</managed-bean-scope>
+ </managed-bean>
+ <managed-bean>
+  <managed-bean-name>mbCreerCompte</managed-bean-name>
+  <managed-bean-class>fr.afcepf.atod17.vinsurvin.control.managedbeans.ManagedBeanCreerCompte</managed-bean-class>
+  <managed-bean-scope>session</managed-bean-scope>
+ </managed-bean>
  <navigation-rule>
- 	<from-view-id>/pagesFrontOffice/generalLayoutFO.xhtml</from-view-id>
- 	<navigation-case>
- 		<from-action>#{mbAccueil.rechercher }</from-action>
- 		<from-outcome></from-outcome>
- 		<to-view-id>/index.xhtml</to-view-id>
- 		<redirect></redirect>
- 	</navigation-case>
+  <from-view-id>/pagesFrontOffice/generalLayoutFO.xhtml</from-view-id>
+  <navigation-case>
+   <from-action>#{mbAccueil.rechercher }</from-action>
+   <to-view-id>/index.xhtml</to-view-id>
+   <redirect/>
+  </navigation-case>
  </navigation-rule>
  <navigation-rule>
- <!-- ### CONNEXION -> BACKOFFICE POUR GESTIONNAIRE ###-->
+  <!-- ### CONNEXION -> BACKOFFICE POUR GESTIONNAIRE ###-->
   <navigation-case>
    <from-action>#{mbLoginBO.authentificationBO}</from-action>
    <from-outcome>success</from-outcome>
    <to-view-id>/indexBO.xhtml</to-view-id>
-   <redirect />
-  </navigation-case>  
+   <redirect/>
+  </navigation-case>
  </navigation-rule>
 </faces-config>
