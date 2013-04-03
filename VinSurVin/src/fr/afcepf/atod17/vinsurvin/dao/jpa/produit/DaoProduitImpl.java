@@ -72,12 +72,12 @@ public class DaoProduitImpl implements IDaoProduit {
 		return em.createQuery(REQ_GETALLREGIONASSTRING, String.class).getResultList();
 	}
 
-	private final String REQ_GETALLPARNOM = "From Produit p Where p.libelle like %:paramNom%";
+	private final String REQ_GETALLPARNOM = "From Produit p Where p.libelle like ?";
 
 	@Override
 	public List<Produit> getAllParNom(String paramNom) {
 		TypedQuery<Produit> query = em.createQuery(REQ_GETALLPARNOM, Produit.class);
-		query.setParameter("paramNom", paramNom);
+		query.setParameter(1, "%" + paramNom + "%");
 		return query.getResultList();
 	}
 
@@ -213,11 +213,15 @@ public class DaoProduitImpl implements IDaoProduit {
 		return em.createQuery(requeteFinale, Produit.class).getResultList();
 	}
 	
+
+	
 	private final String ADD_STOCK_WHERE = "Where stock > 0";
 	
 	private String ajouterStockARequete(String paramString) {
 		return paramString + " " + ADD_STOCK_WHERE;
 	}
+	
+	
 
 	@Override
 	public List<Produit> getProduitParRechercheMulticritere(
@@ -241,5 +245,7 @@ public class DaoProduitImpl implements IDaoProduit {
 		this.em.close();
 		this.emf.close();
 	}
+
+
 
 }
