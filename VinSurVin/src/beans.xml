@@ -9,6 +9,9 @@
 	
 	<bean name="serviceProduit" class="fr.afcepf.atod17.vinsurvin.services.implementations.ServiceProduitImpl">
 		<property name="daoProduit" ref="daoProduit" />
+		<property name="daoTypeProduit" ref="daoTypeProduit" />
+		<property name="daoCategorieProduit" ref="daoCategorieProduit" />
+		<property name="daoTVA" ref="daoTVA" />
 	</bean>
 	
 	<bean name="daoCompte" class="fr.afcepf.atod17.vinsurvin.dao.jpa.compte.DaoCompteImpl" />
@@ -25,7 +28,13 @@
 		<property name="daoProduit" ref="daoProduit" />
 	</bean>
 	
-	<bean name="listeTarifsLivraison" class="fr.afcepf.atod17.vinsurvin.entitybeans.commande.ListeTarifsLivraison" scope="prototype">
+	<bean name="daoTypeProduit" class="fr.afcepf.atod17.vinsurvin.dao.jpa.typeProduit.DaoTypeProduitImpl" />
+	
+	<bean name="daoCategorieProduit" class="fr.afcepf.atod17.vinsurvin.dao.jpa.categorieProduit.DaoCategorieProduitImpl" />
+	
+	<bean name="daoTVA" class="fr.afcepf.atod17.vinsurvin.dao.jpa.tva.DaoTVAProduitImpl" />
+
+<bean name="listeTarifsLivraison" class="fr.afcepf.atod17.vinsurvin.entitybeans.commande.ListeTarifsLivraison" scope="prototype">
 		<property name="serviceCommande" ref="serviceCommande" />
 	</bean>
 </beans>
