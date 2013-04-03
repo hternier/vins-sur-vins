@@ -12,5 +12,4 @@ import java.util.List;
 public interface IDaoTypeProduit {
 	public List<String> getAllCategoriesPrimairesAsString();
 
-//	List<Produit> getAllProduitParCategoriesPrimaires();
 }

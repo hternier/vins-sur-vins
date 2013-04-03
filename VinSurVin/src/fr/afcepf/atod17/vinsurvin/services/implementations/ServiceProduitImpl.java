@@ -333,6 +333,15 @@ public class ServiceProduitImpl implements IServiceProduit {
 					.println("entrée dans la methode getAllProduitParTypeProduit, pas de concordance trouvée ");
 		return getAllProduit(false);
 	}
+	
+	/**
+	 * methode de recherche de produits par type de produit et par texte pour la gestion des
+	 * produits en Back office
+	 **/
+	@Override
+	public List<Produit> getAllProduitParTypeProduitEtNom(String paramType, String paramText) {
+		return daoProduit.getAllProduitByTypeProduitEtTexte(paramType,paramText);
+	}
 
 	/**
 	 * methode de recherche de produits par catégorie pour la gestion des
@@ -342,23 +351,16 @@ public class ServiceProduitImpl implements IServiceProduit {
 	public List<Produit> getAllProduitParCategorie(Integer paramCat) {
 		return daoCategorieProduit.getAllProduitsParCategorie(paramCat);
 	}
-
+	
 	/**
-	 * methode de recherche multicritère de produits pour la gestion des
+	 * methode de recherche de produits par catégorie et saisie texte pour la gestion des
 	 * produits en Back office
 	 **/
 	@Override
-	public List<Produit> getAllProduitParFiltre(String paramTextuel,
-			String paramType, Integer paramCat) {
-//		List<Produit>listeTousLesProduits = ArrayList<Produit>();
-//		if (!paramTextuel.equals(null) && !paramType.equals(null)
-//				&& paramCat != null) {
-//			
-//			listeTousLesProduits = 
-//			return null;
-//		}
-		return null;
+	public List<Produit> getAllProduitsParCategorieEtTexte(Integer paramCat, String paramText) {
+		return daoCategorieProduit.getAllProduitsParCategorieEtTexte(paramCat, paramText);
 	}
+
 
 	/* ################## GETTERS & SETTERS ##################### */
 

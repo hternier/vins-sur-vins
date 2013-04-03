@@ -156,7 +156,11 @@ public interface IServiceProduit {
 	
 	/** Methode de récupération des produits par catégorie de produit **/
 	List<Produit> getAllProduitParCategorie(Integer paramCat);
-	
-	/** Methode de récupération des produits par catégorie de produit **/
-	List<Produit> getAllProduitParFiltre(String paramTextuel, String paramType, Integer paramCat);
+
+	/** Methode de récupération des produits par type de produit et recherche textuelle **/
+	List<Produit> getAllProduitParTypeProduitEtNom(String paramType, String paramText);
+
+	/** Methode de récupération des produits par categorie de produit et recherche textuelle **/
+	List<Produit> getAllProduitsParCategorieEtTexte(Integer paramCat, String paramText);
+
 }

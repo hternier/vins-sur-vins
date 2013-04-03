@@ -20,30 +20,44 @@ public class DaoCategorieProduitImpl implements IDaoCategorieProduit {
 	private EntityManagerFactory emf;
 	private EntityTransaction tx;
 	private EntityManager em;
-	
-	
-	private final String REQ_GETALLCATEGORIESASSTRING = "SELECT c FROM Categorie c";//  SELECT * FROM atod17_g2_vins.categorieproduit c;
+
+	/** Méthode de recherche de toutes les sous catégories **/
+	private final String REQ_GETALLCATEGORIESASSTRING = "SELECT c FROM Categorie c";// SELECT
+																					// *
+																					// FROM
+																					// atod17_g2_vins.categorieproduit
+																					// c;
 
 	@Override
 	public List<Categorie> getAllCategoriesAsString() {
-		return em.createQuery(REQ_GETALLCATEGORIESASSTRING, Categorie.class).getResultList();
+		return em.createQuery(REQ_GETALLCATEGORIESASSTRING, Categorie.class)
+				.getResultList();
 	}
-	
 
-//	public List<Produit> getAllProduitsParCategorie(Categorie valeurCategorie) {
-//		TypedQuery<Produit> query = em.createQuery(REQ_GETALLPRODUITPARCATEGORIE, Produit.class);
-//		query.setParameter(1, "%" + valeurCategorie + "%");
-//		return null;
-//	}
-	
-	
+	/** Méthode de recherche de tous les produits d'une catégorie **/
 	private final String REQ_GETALLPRODUITPARCATEGORIE = "FROM Produit produit WHERE produit.categorie.id = ?";
+
 	public List<Produit> getAllProduitsParCategorie(Integer valeurCategorie) {
-		TypedQuery<Produit> query = em.createQuery(REQ_GETALLPRODUITPARCATEGORIE, Produit.class);
+		TypedQuery<Produit> query = em.createQuery(
+				REQ_GETALLPRODUITPARCATEGORIE, Produit.class);
 		query.setParameter(1, valeurCategorie);
 		return query.getResultList();
 	}
-	
+
+	/**
+	 * Méthode de recherche de tous les produits d'une catégorie + recherche
+	 * textuelle
+	 **/
+	private final String REQ_GETALLPRODUITPARCATEGORIEETTEXTE = "FROM Produit produit WHERE produit.categorie.id = ? AND produit.libelle LIKE ?";
+
+	public List<Produit> getAllProduitsParCategorieEtTexte(Integer idCategorie,
+			String libelle) {
+		return em
+				.createQuery(REQ_GETALLPRODUITPARCATEGORIEETTEXTE,
+						Produit.class).setParameter(1, idCategorie)
+				.setParameter(2, "%" + libelle + "%").getResultList();
+	}
+
 	/**
 	 * @return the emf
 	 */
@@ -66,26 +80,28 @@ public class DaoCategorieProduitImpl implements IDaoCategorieProduit {
 	}
 
 	/**
-	 * @param paramEmf the emf to set
+	 * @param paramEmf
+	 *            the emf to set
 	 */
 	public void setEmf(EntityManagerFactory paramEmf) {
 		emf = paramEmf;
 	}
 
 	/**
-	 * @param paramTx the tx to set
+	 * @param paramTx
+	 *            the tx to set
 	 */
 	public void setTx(EntityTransaction paramTx) {
 		tx = paramTx;
 	}
 
 	/**
-	 * @param paramEm the em to set
+	 * @param paramEm
+	 *            the em to set
 	 */
 	public void setEm(EntityManager paramEm) {
 		em = paramEm;
 	}
-	
 
 	@PostConstruct
 	public void init() throws IOException {
@@ -100,7 +116,5 @@ public class DaoCategorieProduitImpl implements IDaoCategorieProduit {
 		this.em.close();
 		this.emf.close();
 	}
-
-
 
 }
