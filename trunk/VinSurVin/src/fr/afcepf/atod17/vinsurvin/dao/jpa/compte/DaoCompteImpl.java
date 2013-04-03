@@ -53,6 +53,13 @@ public class DaoCompteImpl implements IDaoCompte {
 		return em.createQuery(REQ_RECHERCHEVILLEPARCP, Ville.class).setParameter(1, cp).getResultList();
 	}
 
+	private final String REQ_ALLCLIENTS = "FROM CompteAbstrait c where c.mail = ?";
+	
+	@Override
+	public Long testEmail(String mail) {
+		return (long) em.createQuery(REQ_ALLCLIENTS, CompteAbstrait.class).setParameter(1, mail.trim()).getResultList().size();
+	}
+	
 	@Override
 	public CompteClient getCompteClient(CompteClient paramCompteClient) {
 		return em.find(CompteClient.class, paramCompteClient.getId());

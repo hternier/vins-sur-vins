@@ -353,6 +353,10 @@ public class ManagedBeanAccueil extends AbstractManagedBean {
 		return listeRetour;
 	}
 	
+	public String creerCompte() {
+		return "CreerCompte";
+	}
+	
 	public String gestionPanier() {
         return "gestionPanier";
     }
