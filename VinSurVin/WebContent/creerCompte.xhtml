@@ -8,6 +8,7 @@
 <h:body>
 	<f:view>
 		<h:form>
+		<p:messages id="msgs"/>
 			<p:panel id="panel" header="Inscription" style="margin-bottom:10px;">
 				<h:panelGrid>
 					<h:outputLabel for="Nom" value="Nom: " />
@@ -38,9 +39,22 @@
 					<p:inputText
 						value="#{mbCreerCompte.compteClient.adresseFacturation.adresse2}"
 						name="Adresse2" />
+					<h:outputText value="Code postal: " />
+					<p:inputText value="#{mbCreerCompte.cp}">
+						<p:ajax event="keyup" update="listeVille"
+							listener="#{mbCreerCompte.villeParCP}" />
+					</p:inputText>
+					<h:outputText value="Ville: " />
+					<p:selectOneMenu id="listeVille" disabled=""
+						value="#{mbCreerCompte.ville}">
+						<f:selectItem itemLabel="" itemValue="" />
+						<f:selectItems value="#{mbCreerCompte.listVille}" />
+					</p:selectOneMenu>
+
 				</h:panelGrid>
 			</p:panel>
-			<p:commandButton value="texte"  action="#{mbCreerCompte.creerCompte}" />
+			<p:commandButton value="S'enregistrer"
+				action="#{mbCreerCompte.creerCompte }" update="msgs" />
 
 		</h:form>
 	</f:view>
