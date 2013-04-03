@@ -32,35 +32,38 @@ public class ServiceCommandeImpl implements IServiceCommande{
     @Override
     public Commande ajoutCommande(Commande paramCommande) {
         
-        Produit produitEnStock;
-        for (ProduitEnCommande pec : paramCommande.getProduitsEnCommande()) {
-            //TODO : (HT) Voir si quantité stock est actualiser en temps réel.
-            produitEnStock = daoProduit.getProduit(pec.getProduit());
+        if (paramCommande.getAdresseCommande() != null && paramCommande.getClient() != null && paramCommande.getProduitsEnCommande() != null) {
             
-            if (pec.getQuantite() > produitEnStock.getStock()) {
-                System.err.println("Erreur de quantité commandé. Produit :" + pec.getProduit().getLibelle()
-                        + ", quantité désiré : " + pec.getQuantite() + ", quantité disponible : " + produitEnStock.getStock());
-                return null;
-            } else {
-                produitEnStock.setStock(produitEnStock.getStock() - pec.getQuantite());
-                daoProduit.setProduit(produitEnStock);
+            //Décrémentation du stock
+            Produit produitEnStock;
+            for (ProduitEnCommande pec : paramCommande.getProduitsEnCommande()) {
+                produitEnStock = daoProduit.getProduit(pec.getProduit());
+                
+                if (pec.getQuantite() > produitEnStock.getStock()) {
+                    System.err.println("Erreur de quantité commandé. Produit :" + pec.getProduit().getLibelle()
+                            + ", quantité désiré : " + pec.getQuantite() + ", quantité disponible : " + produitEnStock.getStock());
+                    return null;
+                } else {
+                    produitEnStock.setStock(produitEnStock.getStock() - pec.getQuantite());
+                    daoProduit.setProduit(produitEnStock);
+                }
             }
+            
+            //Affectation de la date
+            paramCommande.setDateCommande(new Date());
+            
+            //Affectation du statut "En attente payement"
+            EtatCommande etatCommande = new EtatCommande();
+            etatCommande.setId(1);
+            etatCommande = daoCommande.getEtatCommande(etatCommande);
+            paramCommande.setEtatCommande(etatCommande);
+            
+            //Percistance de la commande
+            paramCommande = daoCommande.addCommande(paramCommande);
+        } else {
+            System.err.println("Création de commande impossible, il manque des informations !");
         }
         
-        paramCommande.setDateCommande(new Date());
-        
-        EtatCommande etatCommande = new EtatCommande();
-        etatCommande.setId(1);
-        etatCommande = daoCommande.getEtatCommande(etatCommande);
-        paramCommande.setEtatCommande(etatCommande);
-        
-        //TODO : (HT) Compte client à récupérer dynamiquement
-        CompteClient compte = new CompteClient();
-        compte.setId(1);
-        compte = daoCompte.getCompteClient(compte);
-        paramCommande.setClient(compte);
-        
-        paramCommande = daoCommande.addCommande(paramCommande);
         return paramCommande;
     }
     
