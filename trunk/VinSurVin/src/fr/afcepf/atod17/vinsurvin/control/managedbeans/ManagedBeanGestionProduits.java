@@ -8,11 +8,11 @@ import javax.faces.model.SelectItem;
 import fr.afcepf.atod17.vinsurvin.entitybeans.produit.Categorie;
 import fr.afcepf.atod17.vinsurvin.entitybeans.produit.Produit;
 import fr.afcepf.atod17.vinsurvin.services.implementations.ServiceProduitImpl;
+import fr.afcepf.atod17.vinsurvin.services.interfaces.IServiceProduit;
 
 public class ManagedBeanGestionProduits extends AbstractManagedBean {
 
 	private String rechercheTextuelle;
-
 	private String listeCategoriesSelected;
 	private Integer listeSousCategoriesSelected;
 	private List<SelectItem> listeCategories;
@@ -42,11 +42,12 @@ public class ManagedBeanGestionProduits extends AbstractManagedBean {
 	}
 
 	/**
-	 * Recherche par type de produit. 
-	 * Attention : une catégorie sur le site correspond à un type de produit dans l'application
+	 * Recherche par type de produit. Attention : une catégorie sur le site
+	 * correspond à un type de produit dans l'application
 	 **/
 	public String rechercheType() {
-		System.out.println("type de produit selectionné : "+listeCategoriesSelected.toString());
+		System.out.println("type de produit selectionné : "
+				+ listeCategoriesSelected.toString());
 		this.listeProduits = getContext().getBean(ServiceProduitImpl.class)
 				.getAllProduitParTypeProduit(listeCategoriesSelected);
 		System.out.println("taille de la liste des produits triés par 1 type "
@@ -55,8 +56,7 @@ public class ManagedBeanGestionProduits extends AbstractManagedBean {
 	}
 
 	/**
-	 * Recherche de toutes les catégories de produits en base 
-	 * Attention : une
+	 * Recherche de toutes les catégories de produits en base Attention : une
 	 * sous-catégorie sur le site correspond à une catégorie produit dans
 	 * l'application
 	 **/
@@ -70,35 +70,120 @@ public class ManagedBeanGestionProduits extends AbstractManagedBean {
 		return "";
 	}
 
-	/** Recherche Tous les produits avec la recherche textuelle **/
-	public String rechercheFiltre() {
-		System.out.println(rechercheTextuelle.toString());
-		System.out.println(listeCategoriesSelected.toString());
-		System.out.println(listeSousCategoriesSelected.toString());
-		this.listeProduits = getContext().getBean("serviceProduit",
-				ServiceProduitImpl.class).getAllProduitParNom(
-				rechercheTextuelle, false);
+	public String rechercheTexteEtCat() {
+		this.listeProduits = getContext().getBean(ServiceProduitImpl.class)
+				.getAllProduitsParCategorieEtTexte(listeSousCategoriesSelected,
+						rechercheTextuelle);
+		return "";
+
+	}
+
+	public String rechercheTexteEtType() {
+		this.listeProduits = getContext().getBean(ServiceProduitImpl.class)
+				.getAllProduitParTypeProduitEtNom(listeCategoriesSelected,
+						rechercheTextuelle);
+		return "";
+
+	}
+
+	public String rechercheMulticritere() {
+		System.out.println("ds recherche multicritère");
+
+		this.listeProduits = rechercheFiltre(rechercheTextuelle,
+				listeCategoriesSelected, listeSousCategoriesSelected);
+
+		System.out.println("taille liste produit recherche multicritères : "
+				+ listeProduits.size());
 		return "";
 	}
 
-	// public String rechercheDynamique () {
-	// ServiceProduitImpl serviceProduit =
-	// this.getContext().getBean(ServiceProduitImpl.class);
-	// remplirListes(serviceProduit.getDaoProduit().getProduitParRechercheMulticritere(rechercheTextuelle,
-	// listeCategoriesSelected, listeSousCategoriesSelected));
-	// return "";
-	// }
-	//
-	// private void remplirListes (List<Produit> paramListe) {
-	// this.listeProduits.clear();
-	// for (Produit produit : paramListe) {
-	// String produitClass = produit.getClass().getName();
-	// this.listeProduits.add(produit);
-	// }
-	// }
+	/**
+	 * methode de recherche multicritère de produits pour la gestion des
+	 * produits en Back office
+	 **/
+	public List<Produit> rechercheFiltre(String paramTextuel, String paramType,
+			Integer paramCat) {
+		System.out.println("Valeur de la recherche textuelle :"
+				+ rechercheTextuelle.toString());
+		System.out.println("Valeur de la recherche par type :"
+				+ listeCategoriesSelected.toString());
+		System.out.println("Valeur de la recherche par catégorie:"
+				+ listeSousCategoriesSelected.toString());
+
+		IServiceProduit serviceProduit = getContext().getBean(
+				ServiceProduitImpl.class);
+		// si la recherche textuelle est vide :
+		if (paramTextuel.isEmpty()) {
+			// si aucun type de produit n'est selectionné :
+			if (paramType.isEmpty()) {
+				// si aucune catégorie n'est selectionnée :
+				if (paramCat == 0) {
+					listeProduits = serviceProduit.getAllProduit(false);
+					System.out.println("Aucun critère de recherche");
+					// si une catégorie est selectionnée :
+				} else {
+					listeProduits = serviceProduit
+							.getAllProduitParCategorie(listeSousCategoriesSelected);
+					System.out
+							.println("taille de la liste des produits si seule la catégorie est selectionnée : "
+									+ listeProduits.size());
+				}
+				// Si un type de produit a été selectionné :
+			} else {
+				// si aucune catégorie n'est selectionnée :
+				if (paramCat == 0) {
+					listeProduits = serviceProduit
+							.getAllProduitParTypeProduit(listeCategoriesSelected);
+					System.out
+							.println("taille de la liste des produits si seule le type de produit est selectionné : "
+									+ listeProduits.size());
+					// si une catégorie est selectionnée :
+				} else {
+					listeProduits = serviceProduit
+							.getAllProduitParCategorie(listeSousCategoriesSelected);
+					System.out
+							.println("taille de la liste des produits si  un type et une catégorie sont selectionnés : "
+									+ listeProduits.size());
+				}
+			}
+			// si la recherche textuelle n'est pas vide
+		} else {
+			// si aucun type de produit n'est selectionné :
+			if (paramType.isEmpty()) {
+				// si aucune catégorie n'est selectionnée :
+				if (paramCat == 0) {
+					listeProduits = serviceProduit.getAllProduitParNom(
+							this.rechercheTextuelle.trim(), false);
+					System.out
+							.println("taille de la liste des produits si seule la recherche textuelle est renseignée : "
+									+ listeProduits.size());
+
+					// si une catégorie de produit est selectionnée :
+				} else {
+					// si aucune catégorie n'est selectionnée :
+//					if (paramCat == 0) {
+						listeProduits = serviceProduit
+								.getAllProduitsParCategorieEtTexte(paramCat,
+										paramTextuel);
+						System.out
+								.println("taille de la liste des produits si la recherche textuelle + catégorie produit sont renseignés : "
+										+ listeProduits.size());
+						
+				}	// Si une catégorie est selectionnée :
+					} else {
+						listeProduits = serviceProduit
+								.getAllProduitParTypeProduitEtNom(paramType,
+										paramTextuel);
+						System.out
+								.println("taille de la liste des produits si la recherche textuelle + type produit sont renseignés : "
+										+ listeProduits.size());
+					}
+				}
+		return listeProduits;
+	}
+
 
 	/** gestion de la liste des catégories primaires **/
-
 	private void fillListeCategories() {
 		List<SelectItem> liste = new ArrayList<SelectItem>();
 		for (String typeProduit : getContext()
@@ -109,7 +194,6 @@ public class ManagedBeanGestionProduits extends AbstractManagedBean {
 	}
 
 	/** gestion de la liste des sous-catégories primaires **/
-
 	private void fillListeSousCategories() {
 		List<SelectItem> liste = new ArrayList<SelectItem>();
 
