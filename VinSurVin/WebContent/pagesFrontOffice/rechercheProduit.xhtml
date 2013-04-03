@@ -10,7 +10,7 @@
 <body> 
 <ui:define name="bodyGeneral">
 <h:form id="resultatRecherche">
-	<p:fieldset legend="Vin">
+	<p:fieldset legend="Vin" rendered="#{mbRechercheProduit.listeVinsLength > 0}">
 		<p:dataGrid columns="3" value="#{mbRechercheProduit.listeVins}" var="vin" styleClass="panelResultatProduit" >
 			<p:panel header="#{vin.libelle}">
 				<p:panelGrid columns="2" >
@@ -29,7 +29,7 @@
 			</p:panel>
 		</p:dataGrid>
 	</p:fieldset>
-	<p:fieldset legend="Spiritueux">
+	<p:fieldset legend="Spiritueux" rendered="#{mbRechercheProduit.listeSpiritueuxLength > 0}">
 		<p:dataGrid columns="3" value="#{mbRechercheProduit.listeSpiritueux}" var="spritueux" styleClass="panelResultatProduit" >
 			<p:panel header="#{spritueux.libelle}" styleClass="aze">
 				<p:panelGrid columns="2" >
@@ -48,7 +48,7 @@
 			</p:panel>
 		</p:dataGrid>
 	</p:fieldset>
-	<p:fieldset legend="Accessoires">
+	<p:fieldset legend="Accessoires" rendered="#{mbRechercheProduit.listeAccessoiresLength > 0}">
 		<p:dataGrid columns="3" value="#{mbRechercheProduit.listeAccessoires}" var="accessoire" styleClass="panelResultatProduit" >
 			<p:panel header="#{accessoire.libelle}" styleClass="aze">
 				<p:panelGrid columns="2" >
