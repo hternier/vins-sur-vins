@@ -68,6 +68,14 @@
 							<p:commandButton value="Rechercher" action="#{mbAccueil.rechercher }" update=":general_growl_form:general_growl" styleClass="boutonRechercheMain" />
 						</h:form>
 					</p:panel>
+					<p:panel styleClass="panelPanier">
+						<h:form>
+							<h:outputText value="Panier : " style="font-weight:bold;" /><br/>
+							<h:outputText value="#{mbPanier.nbrProduitPanier}"/><br/>
+							<h:commandLink value="Voir mon panier" action="#{mbAccueil.gestionPanier}">
+							</h:commandLink>
+						</h:form>
+					</p:panel>
 				</div>
 			</p:panel>
 			<p:panel id="nav" styleClass="nav">
