@@ -1,15 +1,17 @@
-<html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:p="http://primefaces.org/ui">
-<h:head>
-	<title>Test</title>
-</h:head>
-<h:body>
-	<f:view>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      template="/layoutsFO/creerCompteLayout.xhtml"> 
+	
+	<ui:define name="body">
 		<h:form>
-		<p:messages id="msgs"/>
-			<p:panel id="panel" header="Inscription" style="margin-bottom:10px;">
+<!-- 		<p:messages id="msgs"/> -->
+        <p:messages id="messages" showDetail="true" autoUpdate="true"/>  
+<p:growl id="growl" showDetail="true"/>  
+			<p:panel id="panel" header="Inscription" style="margin-bottom:10px;float:left;">
 				<h:panelGrid>
 					<h:outputLabel for="Nom" value="Nom: " />
 					<p:inputText id="Nom" value="#{mbCreerCompte.compteClient.nom}" />
@@ -17,10 +19,10 @@
 					<p:inputText id="Prenom"
 						value="#{mbCreerCompte.compteClient.prenom}" />
 					<h:outputLabel for="email1" value="Email: " />
-					<p:inputText id="email1" value="#{mbCreerCompte.compteClient.mail}"
-						match="email2" label="email1" required="true" />
+					<p:inputText id="email1" value="#{mbCreerCompte.mail1}"
+					 label="email1" required="true" />
 					<h:outputLabel for="email2" value="Confirmer email: *" />
-					<p:inputText id="email2" value="#{mbCreerCompte.compteClient.mail}"
+					<p:inputText id="email2" value="#{mbCreerCompte.mail2}"
 						label="email2" required="true" />
 					<h:outputLabel for="pwd1" value="Password 1: " />
 					<p:password id="pwd1" value="#{mbCreerCompte.compteClient.mdp}"
@@ -45,18 +47,22 @@
 							listener="#{mbCreerCompte.villeParCP}" />
 					</p:inputText>
 					<h:outputText value="Ville: " />
-					<p:selectOneMenu id="listeVille" disabled=""
-						value="#{mbCreerCompte.ville}">
-						<f:selectItem itemLabel="" itemValue="" />
+					<p:selectOneMenu id="listeVille" value="#{mbCreerCompte.ville}" styleClass="choixVille">
+						<f:selectItem itemLabel="" itemValue=""  />
 						<f:selectItems value="#{mbCreerCompte.listVille}" />
 					</p:selectOneMenu>
 
 				</h:panelGrid>
 			</p:panel>
 			<p:commandButton value="S'enregistrer"
-				action="#{mbCreerCompte.creerCompte }" update="msgs" />
-
+				action="#{mbCreerCompte.creerCompte() }" update="panel,growl" />
 		</h:form>
-	</f:view>
-</h:body>
-</html>
+	</ui:define>
+
+</ui:composition>
+
+
+
+
+
+

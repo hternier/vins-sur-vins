@@ -39,7 +39,7 @@
 					<h:outputLabel value="Mot de passe" />
 					<p:password style="margin-left:10px;" id="mdp_inputText" value="#{mbAccueil.connexionMdp }" />
 					<p:commandButton styleClass="topmenu_button" value="Connexion" action="#{mbAccueil.connexion }" update=":panelConnexion,:general_growl_form:general_growl" />
-					<p:commandButton styleClass="topmenu_button" value="Inscription" />
+					<p:commandButton styleClass="topmenu_button" value="Inscription" action="#{mbAccueil.creerCompte}"/>
 				</p:panel>
 			</h:form>
 			<p:panel id="header" styleClass="header">
@@ -68,7 +68,7 @@
 							<p:commandButton value="Rechercher" action="#{mbAccueil.rechercheMulticritere}" update=":general_growl_form:general_growl" styleClass="boutonRechercheMain" />
 						</h:form>
 					</p:panel>
-					<p:panel id="panelPanierAccueil" styleClass="panelPanier">
+				<p:panel id="panelPanierAccueil" styleClass="panelPanier">
 						<h:form>
 							<h:outputText value="Panier : " style="font-weight:bold;" /><br/>
 							<h:outputText value="#{mbPanier.nbrProduitPanier}"/><br/>

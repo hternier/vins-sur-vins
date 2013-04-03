@@ -17,4 +17,6 @@ public interface IDaoCompte {
 	public CompteClient authentificationFO(String paramMail, String paramMdp);
 	
 	public List<Ville> getVilleParCP(String cp);
+	
+	public Long testEmail(String mail);
 }

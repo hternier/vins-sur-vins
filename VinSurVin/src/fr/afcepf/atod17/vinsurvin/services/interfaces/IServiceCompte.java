@@ -20,6 +20,7 @@ public interface IServiceCompte {
 	
 	public List<Ville> getVilleParCP(String cp);
 
+	public Long testEmail(String mail);
 	/**
 	 * Methode pour authentifier un utilisateur de site
 	 * 
