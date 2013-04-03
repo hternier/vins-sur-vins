@@ -16,7 +16,6 @@ import fr.afcepf.atod17.vinsurvin.entitybeans.compte.CompteAbstrait;
 import fr.afcepf.atod17.vinsurvin.entitybeans.compte.CompteClient;
 import fr.afcepf.atod17.vinsurvin.entitybeans.compte.CompteSysteme;
 import fr.afcepf.atod17.vinsurvin.entitybeans.compte.Ville;
-import fr.afcepf.atod17.vinsurvin.entitybeans.produit.Produit;
 
 public class DaoCompteImpl implements IDaoCompte {
 
