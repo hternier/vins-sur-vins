@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      template="/layoutsFO/rechercheProduitLayout.xhtml"> 
+
+<h:head></h:head> 
+<body> 
+<ui:define name="bodyGeneral">
+<h:form id="resultatRecherche">
+	<p:fieldset legend="Vin">
+		<p:dataGrid columns="3" value="#{mbRechercheProduit.listeVins}" var="vin" styleClass="panelResultatProduit" >
+			<p:panel header="#{vin.libelle}">
+				<p:panelGrid columns="2" >
+					<p:panelGrid columns="1" style="text-align:center">
+						<p:graphicImage value="#{vin.image}" alt="image produit" />
+						<h:outputText value="#{vin.millesime}" />
+						<h:outputText value="#{vin.prix}">
+							<f:convertNumber type="currency"/>
+						</h:outputText>
+						<p:commandLink actionListener="#{mbRechercheProduit.loadDetailManagedBeanVin}" action="#{mbRechercheProduit.showDetail}">
+						 	<f:attribute name="produit" value="#{vin }"/>
+							<h:outputText styleClass="ui-icon ui-icon-search" style="margin:0 auto;" />
+						</p:commandLink>
+					</p:panelGrid>
+				</p:panelGrid>
+			</p:panel>
+		</p:dataGrid>
+	</p:fieldset>
+	<p:fieldset legend="Spiritueux">
+		<p:dataGrid columns="3" value="#{mbRechercheProduit.listeSpiritueux}" var="spritueux" styleClass="panelResultatProduit" >
+			<p:panel header="#{spritueux.libelle}" styleClass="aze">
+				<p:panelGrid columns="2" >
+					<p:panelGrid columns="1" style="text-align:center">
+						<p:graphicImage value="#{spritueux.image}" alt="image produit" />
+						<h:outputText value="#{spritueux.millesime}" />
+						<h:outputText value="#{spritueux.prix}">
+							<f:convertNumber type="currency"/>
+						</h:outputText>
+					</p:panelGrid>
+				</p:panelGrid>
+			</p:panel>
+		</p:dataGrid>
+	</p:fieldset>
+</h:form>
+</ui:define>
+</body> 
+</ui:composition>

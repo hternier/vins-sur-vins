@@ -1,17 +1,13 @@
 package fr.afcepf.atod17.vinsurvin.control.managedbeans;
 
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import fr.afcepf.atod17.vinsurvin.utils.VinSurVinContext;
 
 public abstract class AbstractManagedBean {
 	
-	private static ApplicationContext ctx;
-	
 	protected ApplicationContext getContext () {
-		if (ctx == null) {
-			ctx = new ClassPathXmlApplicationContext("beans.xml");
-		}
-		return ctx;
+		return VinSurVinContext.getSpringContext();
 	}
 	
 }

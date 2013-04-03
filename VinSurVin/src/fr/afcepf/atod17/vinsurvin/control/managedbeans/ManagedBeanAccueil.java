@@ -10,9 +10,11 @@ import javax.faces.model.SelectItem;
 import fr.afcepf.atod17.vinsurvin.entitybeans.compte.CompteClient;
 import fr.afcepf.atod17.vinsurvin.services.implementations.ServiceCompteImpl;
 import fr.afcepf.atod17.vinsurvin.services.implementations.ServiceProduitImpl;
+import fr.afcepf.atod17.vinsurvin.services.interfaces.IServiceProduit;
 
 public class ManagedBeanAccueil extends AbstractManagedBean {
 	
+	private ManagedBeanRechercheProduit mbRechercheProduit;
 	private String connexionMail;
 	private String connexionMdp;
 	private CompteClient clientConnected;
@@ -25,6 +27,14 @@ public class ManagedBeanAccueil extends AbstractManagedBean {
 	
 	public ManagedBeanAccueil() {
 		
+	}
+
+	public ManagedBeanRechercheProduit getMbRechercheProduit() {
+		return mbRechercheProduit;
+	}
+
+	public void setMbRechercheProduit(ManagedBeanRechercheProduit mbRechercheProduit) {
+		this.mbRechercheProduit = mbRechercheProduit;
 	}
 
 	public String getRechercheTextuelle() {
@@ -76,6 +86,10 @@ public class ManagedBeanAccueil extends AbstractManagedBean {
 		this.listeRegion = listeRegion;
 	}
 	
+	public int getListeRegionTaille() {
+		return listeRegion.size();
+	}
+	
 	private void fillListeRegion() {
 		listeRegion.clear();
 		for (String region : getContext().getBean(ServiceProduitImpl.class).getAllRegion(false)) {
@@ -108,10 +122,8 @@ public class ManagedBeanAccueil extends AbstractManagedBean {
 	}
 
 	public String rechercher () {
-		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("test", "ça marche !"));
-		if (this.rechercheTextuelle.equals("aze")) {
-			return "aze";
-		}
+		IServiceProduit serviceProduit = getContext().getBean(ServiceProduitImpl.class);
+		this.mbRechercheProduit.remplirListes(serviceProduit.getAllProduit(false));
 		return "";
 	}
 	

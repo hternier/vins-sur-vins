@@ -29,6 +29,19 @@
 
 	<h:body>
 		<p:panel id="page" styleClass="page">
+			<h:form id="panelConnexion">
+				<p:panel styleClass="header_deconnexion" rendered="#{mbAccueil.clientConnected != null}">
+					<p:commandButton styleClass="topmenu_button" value="Déconnexion" action="#{mbAccueil.deconnexion }" update=":panelConnexion" />
+				</p:panel>
+				<p:panel styleClass="header_connexion" rendered="#{mbAccueil.clientConnected == null}">
+					<h:outputLabel value="Identifiant" />
+					<p:inputText id="identifiant_inputText" value="#{mbAccueil.connexionMail }" style="margin-left:10px;" />
+					<h:outputLabel value="Mot de passe" />
+					<p:password style="margin-left:10px;" id="mdp_inputText" value="#{mbAccueil.connexionMdp }" />
+					<p:commandButton styleClass="topmenu_button" value="Connexion" action="#{mbAccueil.connexion }" update=":panelConnexion,:general_growl_form:general_growl" />
+					<p:commandButton styleClass="topmenu_button" value="Inscription" />
+				</p:panel>
+			</h:form>
 			<p:panel id="header" styleClass="header">
 				<div class="logoAndrecherche">
 					<h1 class="header-logo">
@@ -56,18 +69,6 @@
 						</h:form>
 					</p:panel>
 				</div>
-				<h:form id="panelConnexion">
-					<p:panel styleClass="header_deconnexion" rendered="#{mbAccueil.clientConnected != null}">
-						<p:commandButton styleClass="topmenu_button" value="Déconnexion" action="#{mbAccueil.deconnexion }" update=":panelConnexion" />
-					</p:panel>
-					<p:panel styleClass="header_connexion" rendered="#{mbAccueil.clientConnected == null}">
-						<h:outputLabel value="Identifiant" />
-						<p:inputText id="identifiant_inputText" value="#{mbAccueil.connexionMail }" />
-						<h:outputLabel value="Mot de passe" />
-						<p:password id="mdp_inputText" value="#{mbAccueil.connexionMdp }" />
-						<p:commandButton styleClass="topmenu_button" value="Connexion" action="#{mbAccueil.connexion }" update=":panelConnexion,:general_growl_form:general_growl" />
-					</p:panel>
-				</h:form>
 			</p:panel>
 			<p:panel id="nav" styleClass="nav">
 				<h:form id="bandeauCommande" styleClass="nav_bandeau">
@@ -100,10 +101,7 @@
 			</h:form>
 
 			<p:panel id="main" styleClass="main">
-				<p:panel id="bodyGeneral-panel_content"
-					styleClass="ui-panel-contentui-widget-content bodyGeneral-panel">
-					<ui:insert name="bodyGeneral" id="conteneurPage" />
-				</p:panel>
+				<ui:insert name="bodyGeneral" id="conteneurPage" />
 			</p:panel>
 
 			<div id="footer" class="footer">
