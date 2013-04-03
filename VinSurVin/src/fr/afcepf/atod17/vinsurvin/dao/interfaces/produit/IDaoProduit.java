@@ -16,6 +16,13 @@ public interface IDaoProduit {
 	 * @return Le produit avec les nouvelles valeurs.
 	 */
 	public Produit setProduit(Produit produit);
+	
+	/**
+     * Méthode de création d'un produit.
+     * @param produit Le produit a creer.
+     * @return Le produit creé.
+     */
+    public Produit ajoutProduit (Produit paramProduit);
 	public List<String> getAllRegionAsString();
 	public List<Produit> getAllParNom(String paramNom);
 	public List<Produit> getAllParNomEnStock(String paramNom);

@@ -58,6 +58,11 @@ public class DaoCategorieProduitImpl implements IDaoCategorieProduit {
 				.setParameter(2, "%" + libelle + "%").getResultList();
 	}
 
+	@Override
+	public Categorie getCategorieParId (Categorie paramCategorie) {
+	    return em.find(Categorie.class, paramCategorie.getId());
+	}
+	
 	/**
 	 * @return the emf
 	 */

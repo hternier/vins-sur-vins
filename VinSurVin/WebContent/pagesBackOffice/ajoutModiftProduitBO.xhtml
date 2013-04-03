@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+	template="../layoutsBackOffice/ajoutProduitBOLayout.xhtml">
+	<ui:define name="body">
+	
+		<h:form id="ajoutProduit_form">
+			<p:panel id="ajoutProduit_panel" styleClass="vsvPanel">
+				<h2>Ajout/Modification d'un produit</h2>
+				
+				<p:panel id="produit_panel">
+				<h:panelGrid columns="2">
+						<p:column id="colonneGauche">
+						
+							<h4>Description :</h4>
+							<h:panelGrid columns="2" columnClasses="item_label,item_value">
+								<h:outputText value="Libellé :" />
+
+								<h:inputText id="libelle_vin_inputText"
+									value="#{mbAjoutModifProduit.produit.libelle}" />
+
+								<h:outputText value="Stock :" />
+								<h:inputText id="stock_vin_inputText" value="#{mbAjoutModifProduit.produit.stock}" />
+
+								<h:outputText value="Date de mise en ligne:" />
+								<p:calendar  id="dateMiseEnLigne_vin_inputText"
+									value="#{mbAjoutModifProduit.produit.dateMiseEnLigne}" />
+
+								<h:outputText value="Descritpion:" />
+								<h:inputTextarea id="description_vin_inputText"
+									value="#{mbAjoutModifProduit.produit.description}" />
+									</h:panelGrid>
+						</p:column>
+						<p:column id="colonneDroite">
+
+							<h4>Prix :</h4>
+							<h:commandButton value="Ajouter" />
+							<p:dataTable var="prix">
+								<p:column headerText="id">
+									<h:outputText />
+								</p:column>
+
+								<p:column headerText="Date début">
+									<h:outputText>
+										<f:convertDateTime pattern="dd/MM/yyyy" />
+									</h:outputText>
+								</p:column>
+
+								<p:column headerText="Date fin">
+									<h:outputText />
+								</p:column>
+
+								<p:column headerText="Prix HT">
+									<h:outputText />
+								</p:column>
+							</p:dataTable>
+							<br></br>
+							<h:panelGrid columns="2" columnClasses="item_label,item_value">
+								<h:outputText value="Selectionnez un taux de TVA : " />
+								<h:selectOneMenu id="tva" value="#{mbAjoutModifProduit.listeTVASelected}">
+									<f:selectItem itemLabel="TVA" itemValue="" />
+									<f:selectItems value="#{mbAjoutModifProduit.listeTVA}" />
+								</h:selectOneMenu>
+
+								<h:outputText value="Unité de livraison :" />
+								<h:inputText id="uniteLivraison_inputText"
+									value="#{mbAjoutModifProduit.produit.uniteLivraison}" />
+
+							</h:panelGrid>
+							
+							<h:form enctype="multipart/form-data">  
+							<h:outputText value="Image :"/>
+							<p:graphicImage id="emplacementImage"
+								url="#{mbAjoutModifProduit.image}" alt="image produit"
+								styleClass="vertical-align:top" />
+							<p:fileUpload
+								fileUploadListener="#{mbAjoutModifProduit.handleFileUpload}" mode="advanced"  
+					            update="messages"  
+					            auto="true"  
+					            sizeLimit="100000"   
+					            allowTypes="/(\.|\/)(gif|jpe?g|png)$/"/>  
+					  
+				    		<p:growl id="messages" showDetail="true"/>  
+  
+							</h:form>
+
+						</p:column>
+					</h:panelGrid>
+				</p:panel>
+
+				<p:panel id="ajoutVin_panel">
+					<h4>Détail :</h4>
+					<h:panelGrid columns="1" columnClasses="item_label,item_value">
+								<h:outputText value="Sous-catégorie:" />
+								<h:selectOneMenu id="sousCat_vin_inputText"
+									value="#{mbAjoutModifProduit.listeSousCategoriesSelected }">
+									<f:selectItem itemLabel="Selectionnez" itemValue="" />
+									<f:selectItems value="#{mbGestionProduits.listeSousCategories }" />
+								</h:selectOneMenu>
+								<h:outputText value="Pays :" />
+								<h:inputText id="pays_vin_inputText" value="#{mbAjoutModifProduit.produit.pays}" />
+
+								<h:outputText value="Région :" />
+								<h:inputText id="region_vin_inputText"
+									value="#{mbAjoutModifProduit.produit.region}" />
+
+								<h:outputText value="Appelation :" />
+								<h:inputText id="appellation_vin_inputText"
+									value="#{mbAjoutModifProduit.produit.appelation}" />
+
+								<h:outputText value="Millésime:" />
+								<h:inputText id="millesime_vin_inputText"
+									value="#{mbAjoutModifProduit.produit.millesime}" />
+
+								<h:outputText value="Contenance" />
+								<h:inputText id="contenance_vin_inputText"
+									value="#{mbAjoutModifProduit.produit.contenance}" />
+					</h:panelGrid>
+				</p:panel>
+				<p:panel id="ajoutSpiritueux_panel"></p:panel>
+				<p:panel id="ajoutAccessoires_panel"></p:panel>
+			</p:panel>
+			<h:commandButton ajax="false" value="Ok" action="mbAjoutModifProduit.validerProduit"/>
+			<h:commandButton ajax="false" value="Annuler" />
+		</h:form>
+	</ui:define>
+</ui:composition>

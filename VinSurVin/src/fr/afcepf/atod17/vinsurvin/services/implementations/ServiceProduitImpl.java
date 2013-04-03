@@ -14,6 +14,7 @@ import fr.afcepf.atod17.vinsurvin.entitybeans.produit.Categorie;
 import fr.afcepf.atod17.vinsurvin.entitybeans.produit.Prix;
 import fr.afcepf.atod17.vinsurvin.entitybeans.produit.Produit;
 import fr.afcepf.atod17.vinsurvin.entitybeans.produit.Spiritueux;
+import fr.afcepf.atod17.vinsurvin.entitybeans.produit.TVA;
 import fr.afcepf.atod17.vinsurvin.entitybeans.produit.Vin;
 import fr.afcepf.atod17.vinsurvin.services.interfaces.IServiceProduit;
 
@@ -306,7 +307,7 @@ public class ServiceProduitImpl implements IServiceProduit {
 	 * en Back office
 	 **/
 	@Override
-	public List<Double> getAllTVA() {
+	public List<TVA> getAllTVA() {
 		return daoTVA.getAllTauxTVA();
 	}
 
@@ -351,7 +352,7 @@ public class ServiceProduitImpl implements IServiceProduit {
 	public List<Produit> getAllProduitParCategorie(Integer paramCat) {
 		return daoCategorieProduit.getAllProduitsParCategorie(paramCat);
 	}
-	
+
 	/**
 	 * methode de recherche de produits par catégorie et saisie texte pour la gestion des
 	 * produits en Back office
@@ -360,7 +361,17 @@ public class ServiceProduitImpl implements IServiceProduit {
 	public List<Produit> getAllProduitsParCategorieEtTexte(Integer paramCat, String paramText) {
 		return daoCategorieProduit.getAllProduitsParCategorieEtTexte(paramCat, paramText);
 	}
-
+	
+	@Override
+	public Categorie getCategorie (Categorie paramCategorie) {
+        return daoCategorieProduit.getCategorieParId(paramCategorie);
+	    
+	}
+	
+	@Override
+	public Produit ajoutProduit (Produit paramProduit) {
+	    return daoProduit.ajoutProduit(paramProduit);
+	}
 
 	/* ################## GETTERS & SETTERS ##################### */
 

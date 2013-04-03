@@ -11,6 +11,8 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 
 import fr.afcepf.atod17.vinsurvin.dao.interfaces.tva.IDaoTVAProduit;
+import fr.afcepf.atod17.vinsurvin.entitybeans.produit.Categorie;
+import fr.afcepf.atod17.vinsurvin.entitybeans.produit.TVA;
 
 public class DaoTVAProduitImpl implements IDaoTVAProduit {
 
@@ -19,11 +21,11 @@ public class DaoTVAProduitImpl implements IDaoTVAProduit {
 	private EntityManager em;
 
 	
-	private final String REQ_GETALLTVAASSTRING = "SELECT tva.valeur FROM TVA tva";//  SELECT * FROM atod17_g2_vins.categorieproduit c;
+	private final String REQ_GETALLTVAASSTRING = "FROM TVA ";
 	
 	@Override
-	public List<Double> getAllTauxTVA() {
-		return em.createQuery(REQ_GETALLTVAASSTRING, Double.class).getResultList();
+	public List<TVA> getAllTauxTVA() {
+		return em.createQuery(REQ_GETALLTVAASSTRING, TVA.class).getResultList();
 	}
 
 	/**
