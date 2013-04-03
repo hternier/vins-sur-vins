@@ -10,7 +10,6 @@ import fr.afcepf.atod17.vinsurvin.entitybeans.commande.Commande;
 import fr.afcepf.atod17.vinsurvin.entitybeans.commande.EtatCommande;
 import fr.afcepf.atod17.vinsurvin.entitybeans.commande.ProduitEnCommande;
 import fr.afcepf.atod17.vinsurvin.entitybeans.commande.TarifLivraison;
-import fr.afcepf.atod17.vinsurvin.entitybeans.compte.CompteClient;
 import fr.afcepf.atod17.vinsurvin.entitybeans.produit.Produit;
 import fr.afcepf.atod17.vinsurvin.services.interfaces.IServiceCommande;
 
