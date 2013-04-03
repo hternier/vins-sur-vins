@@ -1,17 +1,20 @@
 package fr.afcepf.atod17.vinsurvin.services.implementations;
 
+import java.util.List;
+
 import fr.afcepf.atod17.vinsurvin.dao.interfaces.compte.IDaoCompte;
 import fr.afcepf.atod17.vinsurvin.entitybeans.compte.CompteAbstrait;
 import fr.afcepf.atod17.vinsurvin.entitybeans.compte.CompteClient;
 import fr.afcepf.atod17.vinsurvin.entitybeans.compte.CompteSysteme;
+import fr.afcepf.atod17.vinsurvin.entitybeans.compte.Ville;
 import fr.afcepf.atod17.vinsurvin.services.interfaces.IServiceCompte;
 
-public class ServiceCompteImpl implements IServiceCompte{
+public class ServiceCompteImpl implements IServiceCompte {
 
 	public IDaoCompte daoCompte;
-	
-	public ServiceCompteImpl (){
-	
+
+	public ServiceCompteImpl() {
+
 	}
 
 	@Override
@@ -20,6 +23,11 @@ public class ServiceCompteImpl implements IServiceCompte{
 	}
 
   @Override
+	public List<Ville> getVilleParCP(String cp) {
+		return daoCompte.getVilleParCP(cp);
+	}
+
+@Override
     public CompteClient getCompteClient(CompteClient paramCompte) {
         return daoCompte.getCompteClient(paramCompte);
     }
@@ -34,6 +42,7 @@ public class ServiceCompteImpl implements IServiceCompte{
 
 	@Override
 	public CompteSysteme authentificationBO(CompteSysteme paramCompteSysteme) {
+		System.out.println("entrée dans le service Compte implementation");
 		return daoCompte.authentificationBO(paramCompteSysteme.getMail(), paramCompteSysteme.getMdp());
 	}
 
