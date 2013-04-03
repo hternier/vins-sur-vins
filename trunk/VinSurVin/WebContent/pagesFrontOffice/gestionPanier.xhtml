@@ -10,17 +10,6 @@
 	template="gestionPanierLayout.xhtml">
 	<ui:define name="body">
 		<h:form id="form">
-
-<h:commandLink value="Ajout Produit 1" actionListener="#{mbPanier.ajoutPanier}">
-		<f:attribute name="produit" value="#{mbTest.produit}"/>
-		<f:attribute name="quantite" value="1"/>
-	</h:commandLink>
-	<h:commandLink value="Ajout Produit 2" actionListener="#{mbPanier.ajoutPanier}">
-		<f:attribute name="produit" value="#{mbTest.produit2}"/>
-		<f:attribute name="quantite" value="1"/>
-	</h:commandLink><br/>
-	<br/>
-
 			<p:fieldset legend="Récapitulatife du panier">
 				<h:outputText value="Votre panier :" />
 				<p:dataTable id="dtProduits" value="#{mbPanier.listeProduits}" var="produitPanier"

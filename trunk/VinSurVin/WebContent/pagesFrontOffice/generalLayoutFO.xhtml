@@ -68,7 +68,7 @@
 							<p:commandButton value="Rechercher" action="#{mbAccueil.rechercheMulticritere}" update=":general_growl_form:general_growl" styleClass="boutonRechercheMain" />
 						</h:form>
 					</p:panel>
-					<p:panel styleClass="panelPanier">
+					<p:panel id="panelPanierAccueil" styleClass="panelPanier">
 						<h:form>
 							<h:outputText value="Panier : " style="font-weight:bold;" /><br/>
 							<h:outputText value="#{mbPanier.nbrProduitPanier}"/><br/>

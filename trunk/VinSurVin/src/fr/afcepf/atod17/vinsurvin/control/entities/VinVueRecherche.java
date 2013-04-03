@@ -7,6 +7,7 @@ import fr.afcepf.atod17.vinsurvin.utils.VinSurVinContext;
 public class VinVueRecherche {
 	
 	private Vin vin;
+	private int quantite;
 	
 	public VinVueRecherche(Vin vin) {
 		this.vin = vin;
@@ -42,6 +43,18 @@ public class VinVueRecherche {
 
 	public void setVin(Vin vin) {
 		this.vin = vin;
+	}
+
+	public int getQuantite() {
+		return quantite;
+	}
+
+	public void setQuantite(int quantite) {
+		this.quantite = quantite;
+	}
+	
+	public int getStock() {
+		return vin.getStock();
 	}
 
 }
