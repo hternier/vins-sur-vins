@@ -11,6 +11,7 @@ import fr.afcepf.atod17.vinsurvin.entitybeans.commande.ProduitEnCommande;
 import fr.afcepf.atod17.vinsurvin.entitybeans.produit.Produit;
 import fr.afcepf.atod17.vinsurvin.services.implementations.ServiceCommandeImpl;
 import fr.afcepf.atod17.vinsurvin.services.implementations.ServiceProduitImpl;
+import fr.afcepf.atod17.vinsurvin.utils.VinSurVinContext;
 
 
 /**
@@ -84,6 +85,7 @@ public class ManagedBeanPanier extends AbstractManagedBean {
         System.out.println("Ajout produit : " + produit.toString()
                 + ", quantite : " + quantite);
 
+        VinSurVinContext.afficherMessage("Panier", quantite + " produit(s) ajoutés au panier : " + produit.getLibelle());
         for (ProduitEnCommande pec : panier.getProduits()) {
             if (pec.getProduit().getId() == produit.getId()) {
                 System.out.println("objet en double");

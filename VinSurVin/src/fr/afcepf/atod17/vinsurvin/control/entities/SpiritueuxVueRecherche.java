@@ -7,6 +7,7 @@ import fr.afcepf.atod17.vinsurvin.utils.VinSurVinContext;
 public class SpiritueuxVueRecherche {
 	
 	private Spiritueux spiritueux;
+	private int quantite = 1;
 	
 	public SpiritueuxVueRecherche(Spiritueux spiritueux) {
 		this.spiritueux = spiritueux;
@@ -42,6 +43,18 @@ public class SpiritueuxVueRecherche {
 
 	public void setSpiritueux(Spiritueux spiritueux) {
 		this.spiritueux = spiritueux;
+	}
+
+	public int getQuantite() {
+		return quantite;
+	}
+
+	public void setQuantite(int quantite) {
+		this.quantite = quantite;
+	}
+	
+	public int getStock() {
+		return this.spiritueux.getStock();
 	}
 
 }

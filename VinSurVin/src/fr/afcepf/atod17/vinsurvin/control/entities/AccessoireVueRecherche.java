@@ -7,6 +7,7 @@ import fr.afcepf.atod17.vinsurvin.utils.VinSurVinContext;
 public class AccessoireVueRecherche {
 	
 	private Accessoire accessoire;
+	private int quantite = 1;
 	
 	public AccessoireVueRecherche(Accessoire accessoire) {
 		this.accessoire = accessoire;
@@ -38,6 +39,18 @@ public class AccessoireVueRecherche {
 	
 	public int getId() {
 		return accessoire.getId();
+	}
+
+	public int getQuantite() {
+		return quantite;
+	}
+
+	public void setQuantite(int quantite) {
+		this.quantite = quantite;
+	}
+	
+	public int getStock() {
+		return this.accessoire.getStock();
 	}
 	
 }
