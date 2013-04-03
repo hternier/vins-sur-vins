@@ -30,28 +30,17 @@
 					<f:selectItem itemLabel="Selectionnez" itemValue="" />
 					<f:selectItems value="#{mbGestionProduits.listeSousCategories }" />
 				</h:selectOneMenu>
+				<br></br>
 
-
-
-				<h:commandButton value="OK texte"
-					action="#{mbGestionProduits.rechercheTextuelle }" />
-
-				<h:commandButton value="OK type"
-					action="#{mbGestionProduits.rechercheType }" />
-
-
-				<h:commandButton value="OK sousCat"
-					action="#{mbGestionProduits.rechercheCat }" />
-
-
+				
 				<h:commandButton value="OK" id="filtrerProduits_button"
-					action="#{mbGestionProduits.rechercheFiltre }" />
-					
-					
+					action="#{mbGestionProduits.rechercheMulticritere }" />
+
+
 				<h:commandButton value="Tout afficher" id="afficherTout_button"
 					action="#{mbGestionProduits.rechercheTout }" />
-					
-					
+
+
 				<h:commandButton value="Ajouter" id="ajouter_button"
 					onclick="window.location.href='./ajoutProduitBO.xhtml';" />
 
@@ -60,7 +49,7 @@
 					resizableColumns="true" paginator="true" paginatorPosition="bottom"
 					rows="7" sortBy="#{produit.libelle}" sortOrder="ascending"
 					paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-					rowsPerPageTemplate="10,25,50,100" paginatorAlwaysVisible="true" 
+					rowsPerPageTemplate="10,25,50,100" paginatorAlwaysVisible="true"
 					emptyMessage="Il n'y a pas de produit dans la base">
 					<p:column headerText="Id" style="width:5%;">
 						<h:outputText value="#{produit.id}" />
