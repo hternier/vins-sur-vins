@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+	template="../layoutsBackOffice/ajoutProduitBOLayout.xhtml">
+	<ui:define name="body">
+		<h:form id="ajoutProduit_form">
+			<p:panel id="ajoutProduit_panel" styleClass="vsvPanel">
+				<h2>Ajout d'un produit</h2>
+
+				<h:outputLabel for="categorie_select" value="Séléctionnez une catégorie :" />
+				<h:selectOneMenu id="categorie_select"
+					value="#{mbGestionProduits.listeCategoriesSelected }">
+					<f:selectItem itemLabel="Selectionnez" itemValue="" />
+					<f:selectItems value="#{mbGestionProduits.listeCategories }" />
+				</h:selectOneMenu>
+
+				<p:panel id="ajoutVin_panel">
+					<h3>Ajout d'un produit de la catégorie vin</h3>
+					<h:panelGrid columns="2">
+						<p:column id="colonneGauche_ajoutVin">
+							<h:panelGrid columns="2" columnClasses="item_label,item_value">
+								<h:outputText value="Libellé :" />
+
+								<h:inputText id="libelle_vin_inputText"
+									value="#{produit.libelle}" />
+
+								<h:outputText value="Stock :" />
+								<h:inputText id="stock_vin_inputText" value="#{produit.stock}" />
+
+								<h:outputText value="Date de mise en ligne:" />
+								<h:inputText id="dateMiseEnLigne_vin_inputText"
+									value="#{produit.dateMiseEnLigne}" />
+
+								<h:outputText value="Descritpion:" />
+								<h:inputTextarea id="description_vin_inputText"
+									value="#{produit.description}" />
+
+								<br></br>
+								<br></br>
+								<br></br>
+								<h:outputLabel colspan="2">Détails</h:outputLabel>
+
+								<h:outputText value="Sous-catégorie:" />
+								<h:inputText id="sousCat_vin_inputText"
+									value="#{produit.categorie}" />
+
+								<h:outputText value="Pays :" />
+								<h:inputText id="pays_vin_inputText" value="#{produit.vin.pays}" />
+
+								<h:outputText value="Région :" />
+								<h:inputText id="region_vin_inputText"
+									value="#{produit.vin.region}" />
+
+								<h:outputText value="Appelation :" />
+								<h:inputText id="appellation_vin_inputText"
+									value="#{produit.vin.appellation}" />
+
+								<h:outputText value="Millésime:" />
+								<h:inputText id="millesime_vin_inputText"
+									value="#{produit.vin.millesime}" />
+
+								<h:outputText value="Contenance" />
+								<h:inputText id="contenance_vin_inputText"
+									value="#{produit.vin.contenance}" />
+
+							</h:panelGrid>
+						</p:column>
+
+
+						<p:column id="colonneDroite_ajoutVin">
+
+							<h4>Prix</h4>
+							<h:commandButton value="Ajouter" />
+							<p:dataTable var="prix">
+								<p:column headerText="id">
+									<h:outputText />
+								</p:column>
+
+								<p:column headerText="Date début">
+									<h:outputText>
+										<f:convertDateTime pattern="dd/MM/yyyy" />
+									</h:outputText>
+								</p:column>
+
+								<p:column headerText="Date fin">
+									<h:outputText />
+								</p:column>
+
+								<p:column headerText="Prix HT">
+									<h:outputText />
+								</p:column>
+							</p:dataTable>
+							<br></br>
+							<h:panelGrid columns="2" columnClasses="item_label,item_value">
+								<h:outputText value="Selectionnez un taux de TVA : " />
+								<h:selectOneMenu id="tva">
+									<f:selectItem itemLabel="TVA"
+										itemValue="" />
+									<f:selectItems />
+								</h:selectOneMenu>
+
+								<h:outputText value="Unité de livraison :" />
+								<h:inputText id="uniteLivraison_inputText"
+									value="#{produit.uniteLivraison}" />
+
+							</h:panelGrid>
+
+							<p:graphicImage id="emplacementImage"
+								url="/resources/images/produits/landereau-2005.jpg"
+								styleClass="vertical-align:top" />
+							<p:fileUpload
+								fileUploadListener="#{fileUploadController.handleFileUpload}"
+								mode="simple" allowTypes="/(\.|\/)(gif|jpe?g|png)$/" />
+
+
+						</p:column>
+					</h:panelGrid>
+
+				</p:panel>
+				<p:panel id="ajoutSpiritueux_panel"></p:panel>
+				<p:panel id="ajoutAccessoires_panel"></p:panel>
+			</p:panel>
+			<h:commandButton value="Ok" />
+			<h:commandButton value="Annuler" />
+		</h:form>
+	</ui:define>
+</ui:composition>
