@@ -120,7 +120,7 @@
 	
 	<navigation-rule>
 		<navigation-case>
-			<from-action>#{mbAccueil.rechercher }</from-action>
+			<from-action>#{mbAccueil.rechercheMulticritere }</from-action>
 			<from-outcome>rechercheValide</from-outcome>
 			<to-view-id>/pagesFrontOffice/rechercheProduit.xhtml</to-view-id>
 			<redirect />
