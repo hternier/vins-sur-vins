@@ -271,23 +271,6 @@ public class DaoProduitImpl implements IDaoProduit {
 		return paramString + " " + ADD_STOCK_WHERE;
 	}
 
-	@Override
-	public List<Produit> getProduitParRechercheMulticritere(
-			String paramLibelle, String paramMillesime, String paramRegion) {
-
-		// FIXME C'est le bordel
-
-		return em.createQuery(
-				"From Spiritueux, Vin Where millesime = " + paramMillesime,
-				Produit.class).getResultList();
-
-		// FIXME C'est le bordel
-
-		return em.createQuery(
-				"From Spiritueux, Vin Where millesime = " + paramMillesime,
-				Produit.class).getResultList();
-	}
-
 	/**
 	 * Methode de recherche d'une liste de produits par libellé + Type de
 	 * produit pour la recherche multicritère du back office

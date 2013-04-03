@@ -39,7 +39,6 @@ public interface IDaoProduit {
 	public List<Produit> getAllVinParMillesimeEtRegion(String paramMillesime, String paramRegion);
 	public List<Produit> getAllVinParMillesimeEtRegionEnStock(String paramMillesime, String paramRegion);
 	public List<Produit> getAllProduitByTypeProduit(String paramType, boolean enStock);
-	public List<Produit> getProduitParRechercheMulticritere(String paramLibelle, String paramMillesime, String paramRegion);
 	List<Produit> getAllProduitByTypeProduitEtTexte(String paramType,
 			String paramText);
 
