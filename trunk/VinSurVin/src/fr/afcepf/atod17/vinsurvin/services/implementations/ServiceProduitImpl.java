@@ -1,13 +1,19 @@
 package fr.afcepf.atod17.vinsurvin.services.implementations;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
-import java.util.ArrayList;
 
+import fr.afcepf.atod17.vinsurvin.dao.interfaces.categorieProduit.IDaoCategorieProduit;
 import fr.afcepf.atod17.vinsurvin.dao.interfaces.produit.IDaoProduit;
+import fr.afcepf.atod17.vinsurvin.dao.interfaces.tva.IDaoTVAProduit;
+import fr.afcepf.atod17.vinsurvin.dao.interfaces.typeProduit.IDaoTypeProduit;
+import fr.afcepf.atod17.vinsurvin.entitybeans.misc.TypeProduit;
+import fr.afcepf.atod17.vinsurvin.entitybeans.produit.Categorie;
 import fr.afcepf.atod17.vinsurvin.entitybeans.produit.Prix;
 import fr.afcepf.atod17.vinsurvin.entitybeans.produit.Produit;
+import fr.afcepf.atod17.vinsurvin.entitybeans.produit.Vin;
 import fr.afcepf.atod17.vinsurvin.services.interfaces.IServiceProduit;
 
 /**
@@ -21,7 +27,14 @@ public class ServiceProduitImpl implements IServiceProduit {
      * Instenciation de l'implémentation de la DAO produit.
      */
     private IDaoProduit daoProduit;
+    
+    private IDaoTypeProduit daoTypeProduit;
+    
+    private IDaoCategorieProduit daoCategorieProduit;
+    
+    private IDaoTVAProduit daoTVA;
 
+	
 	/**
 	 * Constructeur par defaut.
 	 */
@@ -257,7 +270,71 @@ public class ServiceProduitImpl implements IServiceProduit {
 	public List<Produit> getAllAccessoires(boolean enStock) {
 		return daoProduit.getAllProduitByTypeProduit("Accessoire", enStock);
 	}
+	
+	@Override
+	public List<String> getAllTypeProduit() {
+		return daoTypeProduit.getAllCategoriesPrimairesAsString();
+	}
+	
+	@Override
+	public List<Categorie> getAllCategorieProduit() {
+		return daoCategorieProduit.getAllCategoriesAsString();
+	}
+	
 
+	@Override
+	public List<Double> getAllTVA() {
+		return daoTVA.getAllTauxTVA();
+	}
+	
+	@Override
+//	public List<Produit> getAllProduitParTypeProduit(String paramType) {
+//		if(paramType == "Vin"){
+//			System.out.println("entrée dans la methode getAllProduitParTypeProduit, dans la partie VIN ");
+//			return getAllVins(false);
+//		}else if (paramType == "Spiritueux"){
+//			System.out.println("entrée dans la methode getAllProduitParTypeProduit, dans la partie SPIRITUEUX");
+//			return daoProduit.getAllProduitByTypeProduit("Spiritueux", false);
+//		}else if (paramType == "Accessoire"){
+//			System.out.println("entrée dans la methode getAllProduitParTypeProduit, dans la partie ACCESSOIRE ");
+//			return daoProduit.getAllProduitByTypeProduit("Accessoire", false);
+//		}else
+//			System.out.println("entrée dans la methode getAllProduitParTypeProduit, pas de concordance trouvée ");
+//			return getAllProduit(false); 
+//	}
+	
+	public List<Produit> getAllProduitParTypeProduit(String paramType) {
+//		TypeProduit typeProduit = new TypeProduit();
+//		if (paramType == typeProduit.getLibelleTypeProduit()){
+//			System.out.println("c'est du vin");
+//		}
+		
+		
+		List<Produit> listeProduit = getAllProduit(false);
+		List<Produit> listeVins = new ArrayList<Produit>();
+		for( Produit p : listeProduit){
+			if (p instanceof Vin) {
+				listeVins.add((Vin) p);
+				System.out.println("taille liste vin :" +listeVins.size());
+			}
+		
+		}
+		return listeVins;
+		
+	}
+
+//	@Override
+//	public List<Produit> getAllProduitParCategorie(Categorie paramCat) {
+//		return daoCategorieProduit.getAllProduitsParCategorie(paramCat);
+//	}
+	@Override
+	public List<Produit> getAllProduitParCategorie(Integer paramCat) {
+		return daoCategorieProduit.getAllProduitsParCategorie(paramCat);
+	}
+
+	
+	/* ##################  GETTERS & SETTERS  ##################### */
+	
 	/**
 	 * Méthode de récupèration de la DAO produit.
 	 * @return La DAO produit
@@ -272,5 +349,47 @@ public class ServiceProduitImpl implements IServiceProduit {
 	 */
 	public void setDaoProduit(IDaoProduit paramDaoProduit) {
 		this.daoProduit = paramDaoProduit;
+	}
+	
+	/**
+	 * @return the daoTVA
+	 */
+	public IDaoTVAProduit getDaoTVA() {
+		return daoTVA;
+	}
+
+	/**
+	 * @param paramDaoTVA the daoTVA to set
+	 */
+	public void setDaoTVA(IDaoTVAProduit paramDaoTVA) {
+		daoTVA = paramDaoTVA;
+	}
+
+	/**
+	 * @return the daoCategorieProduit
+	 */
+	public IDaoCategorieProduit getDaoCategorieProduit() {
+		return daoCategorieProduit;
+	}
+
+	/**
+	 * @param paramDaoCategorieProduit the daoCategorieProduit to set
+	 */
+	public void setDaoCategorieProduit(IDaoCategorieProduit paramDaoCategorieProduit) {
+		daoCategorieProduit = paramDaoCategorieProduit;
+	}
+
+	/**
+	 * @return the daoTypeProduit
+	 */
+	public IDaoTypeProduit getDaoTypeProduit() {
+		return daoTypeProduit;
+	}
+
+	/**
+	 * @param paramDaoTypeProduit the daoTypeProduit to set
+	 */
+	public void setDaoTypeProduit(IDaoTypeProduit paramDaoTypeProduit) {
+		daoTypeProduit = paramDaoTypeProduit;
 	}
 }
