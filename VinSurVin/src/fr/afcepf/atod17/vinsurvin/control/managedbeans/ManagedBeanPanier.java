@@ -168,15 +168,25 @@ public class ManagedBeanPanier extends AbstractManagedBean {
      * @return La d'ajout de commande
      */
     public String validerPanier() {
-        //Ajout de l'adresse de livraison et du panier à la nouvelle commande
-        commande.setAdresseCommande(mbAccueil.getClientConnected().getAdresseLivraison());
-        commande.setProduitsEnCommande(panier.getProduits());
-        commande = getContext().getBean(ServiceCommandeImpl.class).ajoutCommande(commande);
+        String retour = "creerCompte";
         
-        //Création d'un nouveau panier
-        panier = new Panier();
+        if (mbAccueil.getClientConnected() != null) {
+            //Ajout des infos à la commande
+            commande.setClient(mbAccueil.getClientConnected());
+            commande.setAdresseCommande(mbAccueil.getClientConnected().getAdresseLivraison());
+            commande.setProduitsEnCommande(panier.getProduits());
+            commande = getContext().getBean(ServiceCommandeImpl.class).ajoutCommande(commande);
+            
+            //Création d'un nouveau panier
+            panier = new Panier();
+            
+            retour = "ajoutCommande";
+        } else {
+            System.err.println("Impossible de créer une commande si pas authetifier");
+          //TODO : (HT) redirection création compte
+        }
         
-        return "ajoutCommande";
+        return retour;
     }
 
     /**
