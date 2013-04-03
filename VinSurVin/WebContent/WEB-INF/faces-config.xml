@@ -129,7 +129,7 @@
 	
 							<!-- Depuis accueil, redirection vers gestion panier -->
 	<navigation-rule>
-		<from-view-id>/pagesFrontOffice/generalLayoutFO/xhtml</from-view-id>
+		<from-view-id>/pagesFrontOffice/generalLayoutFO.xhtml</from-view-id>
 		<navigation-case>
 			<from-outcome>gestionPanier</from-outcome>
 			<to-view-id>/pagesFrontOffice/gestionPanier.xhtml</to-view-id>
