@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.faces.event.ActionEvent;
 
+import fr.afcepf.atod17.vinsurvin.control.entities.AccessoireVueRecherche;
 import fr.afcepf.atod17.vinsurvin.control.entities.SpiritueuxVueRecherche;
 import fr.afcepf.atod17.vinsurvin.control.entities.VinVueRecherche;
 import fr.afcepf.atod17.vinsurvin.entitybeans.produit.Accessoire;
@@ -17,7 +18,7 @@ public class ManagedBeanRechercheProduit extends AbstractManagedBean {
 	private ManagedBeanDetailProduit mbDetailProduit;
 	private List<VinVueRecherche> listeVins = new ArrayList<VinVueRecherche>();
 	private List<SpiritueuxVueRecherche> listeSpiritueux = new ArrayList<SpiritueuxVueRecherche>();
-	private List<Accessoire> listeAccessoires = new ArrayList<Accessoire>();
+	private List<AccessoireVueRecherche> listeAccessoires = new ArrayList<AccessoireVueRecherche>();
 	
 	public ManagedBeanRechercheProduit() {
 		
@@ -39,11 +40,11 @@ public class ManagedBeanRechercheProduit extends AbstractManagedBean {
 		this.listeSpiritueux = listeSpiritueux;
 	}
 
-	public List<Accessoire> getListeAccessoires() {
+	public List<AccessoireVueRecherche> getListeAccessoires() {
 		return listeAccessoires;
 	}
 
-	public void setListeAccessoires(List<Accessoire> listeAccessoires) {
+	public void setListeAccessoires(List<AccessoireVueRecherche> listeAccessoires) {
 		this.listeAccessoires = listeAccessoires;
 	}
 	
@@ -66,19 +67,28 @@ public class ManagedBeanRechercheProduit extends AbstractManagedBean {
 			} else if (produitClass.equals(Spiritueux.class.getName())) {
 				this.listeSpiritueux.add(new SpiritueuxVueRecherche((Spiritueux) produit));
 			} else if (produitClass.equals(Accessoire.class.getName())) {
-				this.listeAccessoires.add((Accessoire) produit);
+				this.listeAccessoires.add(new AccessoireVueRecherche((Accessoire) produit));
 			}
 		}
 	}
 	
 	public String showDetail() {
-		System.out.println("J'y rentre");
 		return "success";
 	}
 	
 	public void loadDetailManagedBeanVin (ActionEvent ae) {
 		VinVueRecherche p = (VinVueRecherche) ae.getComponent().getAttributes().get("produit");
 		mbDetailProduit.setProduit(p.getVin());
+	}
+	
+	public void loadDetailManagedBeanSpiritueux (ActionEvent ae) {
+		SpiritueuxVueRecherche p = (SpiritueuxVueRecherche) ae.getComponent().getAttributes().get("produit");
+		mbDetailProduit.setProduit(p.getSpiritueux());
+	}
+	
+	public void loadDetailManagedBeanAccessoire (ActionEvent ae) {
+		AccessoireVueRecherche p = (AccessoireVueRecherche) ae.getComponent().getAttributes().get("produit");
+		mbDetailProduit.setProduit(p.getAccessoire());
 	}
 	
 }

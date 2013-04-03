@@ -39,6 +39,28 @@
 						<h:outputText value="#{spritueux.prix}">
 							<f:convertNumber type="currency"/>
 						</h:outputText>
+						<p:commandLink actionListener="#{mbRechercheProduit.loadDetailManagedBeanSpiritueux}" action="#{mbRechercheProduit.showDetail}">
+						 	<f:attribute name="produit" value="#{spritueux }"/>
+							<h:outputText styleClass="ui-icon ui-icon-search" style="margin:0 auto;" />
+						</p:commandLink>
+					</p:panelGrid>
+				</p:panelGrid>
+			</p:panel>
+		</p:dataGrid>
+	</p:fieldset>
+	<p:fieldset legend="Accessoires">
+		<p:dataGrid columns="3" value="#{mbRechercheProduit.listeAccessoires}" var="accessoire" styleClass="panelResultatProduit" >
+			<p:panel header="#{accessoire.libelle}" styleClass="aze">
+				<p:panelGrid columns="2" >
+					<p:panelGrid columns="1" style="text-align:center">
+						<p:graphicImage value="#{accessoire.image}" alt="image produit" />
+						<h:outputText value="#{accessoire.prix}">
+							<f:convertNumber type="currency"/>
+						</h:outputText>
+						<p:commandLink actionListener="#{mbRechercheProduit.loadDetailManagedBeanAccessoire}" action="#{mbRechercheProduit.showDetail}">
+						 	<f:attribute name="produit" value="#{accessoire }"/>
+							<h:outputText styleClass="ui-icon ui-icon-search" style="margin:0 auto;" />
+						</p:commandLink>
 					</p:panelGrid>
 				</p:panelGrid>
 			</p:panel>
