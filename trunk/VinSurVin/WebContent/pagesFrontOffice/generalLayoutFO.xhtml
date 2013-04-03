@@ -81,26 +81,19 @@
 			<p:panel id="nav" styleClass="nav">
 				<h:form id="bandeauCommande" styleClass="nav_bandeau">
 					<p:commandButton id="accueil_button" value="Accueil"
-						action="goAccueil" styleClass="ui-button-home" ajax="false"
-						immediate="true" />
+						action="goAccueil" styleClass="ui-button-home" />
 					<p:commandButton id="vinRouge_button" value="Vins rouges"
-						action="goVinRouge" styleClass="ui-button" />
+						action="#{mbAccueil.rechercheVinRouges}" />
 					<p:commandButton id="vinRose_button" value="Vins rosés"
-						action="goVinRose" styleClass="ui-button" ajax="false"
-						immediate="true" />
+						action="#{mbAccueil.rechercheVinRoses}" />
 					<p:commandButton id="vinBlanc_button" value="Vins blancs"
-						action="goVinBlanc" styleClass="ui-button-home" ajax="false"
-						immediate="true" />
+						action="#{mbAccueil.rechercheVinBlancs}" />
 					<p:commandButton id="champagne_button" value="Champagnes"
-						action="goChampagne" styleClass="ui-button" ajax="false"
-						immediate="true" />
+						action="#{mbAccueil.rechercheChampagnes}" />
 					<p:commandButton id="spiritueux_button" value="Spiritueux"
-						action="goSpiritueux" styleClass="ui-button" ajax="false"
-						immediate="true" />
+						action="#{mbAccueil.rechercheSpiritueux}" />
 					<p:commandButton id="accessoires_button" value="Accessoires"
-						action="goAccessoires" styleClass="ui-button" ajax="false"
-						immediate="true" />
-
+						action="#{mbAccueil.rechercheAccessoires}" />
 				</h:form>
 			</p:panel>
 

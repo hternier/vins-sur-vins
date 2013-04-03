@@ -31,6 +31,10 @@ public class ManagedBeanRechercheProduit extends AbstractManagedBean {
 	public void setListeVins(List<VinVueRecherche> listeVins) {
 		this.listeVins = listeVins;
 	}
+	
+	public int getListeVinsLength() {
+		return listeVins.size();
+	}
 
 	public List<SpiritueuxVueRecherche> getListeSpiritueux() {
 		return listeSpiritueux;
@@ -39,6 +43,10 @@ public class ManagedBeanRechercheProduit extends AbstractManagedBean {
 	public void setListeSpiritueux(List<SpiritueuxVueRecherche> listeSpiritueux) {
 		this.listeSpiritueux = listeSpiritueux;
 	}
+	
+	public int getListeSpiritueuxLength() {
+		return listeSpiritueux.size();
+	}
 
 	public List<AccessoireVueRecherche> getListeAccessoires() {
 		return listeAccessoires;
@@ -46,6 +54,10 @@ public class ManagedBeanRechercheProduit extends AbstractManagedBean {
 
 	public void setListeAccessoires(List<AccessoireVueRecherche> listeAccessoires) {
 		this.listeAccessoires = listeAccessoires;
+	}
+	
+	public int getListeAccessoiresLength() {
+		return listeAccessoires.size();
 	}
 	
 	public ManagedBeanDetailProduit getMbDetailProduit() {

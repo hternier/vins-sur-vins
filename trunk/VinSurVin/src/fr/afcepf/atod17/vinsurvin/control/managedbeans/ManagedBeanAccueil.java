@@ -17,6 +17,7 @@ import fr.afcepf.atod17.vinsurvin.utils.enums.EnumRegex;
 
 public class ManagedBeanAccueil extends AbstractManagedBean {
 	
+	public final String RECHERCHE_VALIDE = "rechercheValide";
 	private ManagedBeanRechercheProduit mbRechercheProduit;
 	private String connexionMail;
 	private String connexionMdp;
@@ -131,7 +132,7 @@ public class ManagedBeanAccueil extends AbstractManagedBean {
 		String savedPrixMax = this.recherchePrixMax;
 		
 		if (champsValides()) { 
-			retour = "rechercheValide";
+			retour = RECHERCHE_VALIDE;
 			mbRechercheProduit.remplirListes(rechercheMulticritere(this.rechercheTextuelle.trim(), this.rechercheMillesime.trim(), this.rechercheRegion.trim(), Double.parseDouble(this.recherchePrixMin.trim()), Double.parseDouble(this.recherchePrixMax.trim())));
 		} else {
 			retour = "erreurRecherche";
@@ -144,8 +145,33 @@ public class ManagedBeanAccueil extends AbstractManagedBean {
 	}
 	
 	public String rechercheVinRouges() {
-		
-		return "";
+		mbRechercheProduit.remplirListes(getContext().getBean(ServiceProduitImpl.class).getAllProduitParCategorie(1));
+		return RECHERCHE_VALIDE;
+	}
+	
+	public String rechercheVinRoses() {
+		mbRechercheProduit.remplirListes(getContext().getBean(ServiceProduitImpl.class).getAllProduitParCategorie(3));
+		return RECHERCHE_VALIDE;
+	}
+	
+	public String rechercheVinBlancs() {
+		mbRechercheProduit.remplirListes(getContext().getBean(ServiceProduitImpl.class).getAllProduitParCategorie(2));
+		return RECHERCHE_VALIDE;
+	}
+	
+	public String rechercheChampagnes() {
+		mbRechercheProduit.remplirListes(getContext().getBean(ServiceProduitImpl.class).getAllProduitParCategorie(4));
+		return RECHERCHE_VALIDE;
+	}
+	
+	public String rechercheSpiritueux() {
+		mbRechercheProduit.remplirListes(getContext().getBean(ServiceProduitImpl.class).getAllSpiritueux(true));
+		return RECHERCHE_VALIDE;
+	}
+	
+	public String rechercheAccessoires() {
+		mbRechercheProduit.remplirListes(getContext().getBean(ServiceProduitImpl.class).getAllAccessoires(true));
+		return RECHERCHE_VALIDE;
 	}
 	
 	public String connexion() {
@@ -209,7 +235,7 @@ public class ManagedBeanAccueil extends AbstractManagedBean {
 					prixMaxAsDouble = Double.parseDouble(this.recherchePrixMax.trim());
 					if (prixMaxAsDouble <= prixMinAsDouble) {
 						retour = false;
-						VinSurVinContext.afficherErreur("Erreur", "Le champ prix max est inférieux au champ prix min");
+						VinSurVinContext.afficherErreur("Erreur", "Le champ prix max est inférieur au champ prix min");
 					}
 				} catch (NumberFormatException e) {
 					retour = false;
