@@ -9,6 +9,7 @@ import fr.afcepf.atod17.vinsurvin.services.implementations.ServiceCommandeImpl;
 import fr.afcepf.atod17.vinsurvin.services.interfaces.IServiceCommande;
 import fr.afcepf.atod17.vinsurvin.utils.VinSurVinContext;
 
+@SuppressWarnings({ "unchecked", "rawtypes" })
 public class ListeTarifsLivraison extends ListDataModel<Object> implements SelectableDataModel<Object> {
 
     private IServiceCommande serviceCommande = VinSurVinContext.getSpringContext().getBean(ServiceCommandeImpl.class);
@@ -16,7 +17,7 @@ public class ListeTarifsLivraison extends ListDataModel<Object> implements Selec
     public ListeTarifsLivraison() {
     }
     
-    public ListeTarifsLivraison(List paramTarifsLivraison) {
+	public ListeTarifsLivraison(List paramTarifsLivraison) {
         super(paramTarifsLivraison);
     }
 

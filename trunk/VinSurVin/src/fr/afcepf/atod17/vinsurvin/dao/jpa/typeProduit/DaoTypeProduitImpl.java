@@ -11,7 +11,6 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 
 import fr.afcepf.atod17.vinsurvin.dao.interfaces.typeProduit.IDaoTypeProduit;
-import fr.afcepf.atod17.vinsurvin.entitybeans.produit.Produit;
 
 public class DaoTypeProduitImpl implements IDaoTypeProduit {
 

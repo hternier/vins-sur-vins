@@ -1,7 +1,6 @@
 package fr.afcepf.atod17.vinsurvin.dao.jpa.tva;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
