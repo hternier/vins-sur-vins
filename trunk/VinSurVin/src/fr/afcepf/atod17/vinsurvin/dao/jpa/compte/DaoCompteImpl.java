@@ -1,6 +1,7 @@
 package fr.afcepf.atod17.vinsurvin.dao.jpa.compte;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
@@ -14,6 +15,8 @@ import fr.afcepf.atod17.vinsurvin.dao.interfaces.compte.IDaoCompte;
 import fr.afcepf.atod17.vinsurvin.entitybeans.compte.CompteAbstrait;
 import fr.afcepf.atod17.vinsurvin.entitybeans.compte.CompteClient;
 import fr.afcepf.atod17.vinsurvin.entitybeans.compte.CompteSysteme;
+import fr.afcepf.atod17.vinsurvin.entitybeans.compte.Ville;
+import fr.afcepf.atod17.vinsurvin.entitybeans.produit.Produit;
 
 public class DaoCompteImpl implements IDaoCompte {
 
@@ -41,6 +44,13 @@ public class DaoCompteImpl implements IDaoCompte {
 		em.flush();
 		this.tx.commit();
 		return compte;
+	}
+
+	private final String REQ_RECHERCHEVILLEPARCP = "FROM Ville v WHERE v.cp=? ";
+
+	@Override
+	public List<Ville> getVilleParCP(String cp) {
+		return em.createQuery(REQ_RECHERCHEVILLEPARCP, Ville.class).setParameter(1, cp).getResultList();
 	}
 
 	@Override
@@ -78,14 +88,16 @@ public class DaoCompteImpl implements IDaoCompte {
 		}
 		return retour;
 	}
-	
+
 	private final String REQ_AUTHENTIFICATIONFO = "From CompteClient c Where c.mail = ? And c.mdp = ? And c.etatCompte = 1";
 
 	@Override
 	public CompteClient authentificationFO(String paramMail, String paramMdp) {
 		CompteClient retour;
 		try {
-			retour = em.createQuery(REQ_AUTHENTIFICATIONFO, CompteClient.class).setParameter(1, paramMail).setParameter(2, paramMdp).getSingleResult();
+			retour = em.createQuery(REQ_AUTHENTIFICATIONFO, CompteClient.class)
+					.setParameter(1, paramMail).setParameter(2, paramMdp)
+					.getSingleResult();
 		} catch (NoResultException e) {
 			retour = null;
 		}
