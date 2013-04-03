@@ -6,9 +6,7 @@
       xmlns:p="http://primefaces.org/ui"
       template="/layoutsFO/rechercheProduitLayout.xhtml"> 
 
-<h:head></h:head> 
-<body> 
-<ui:define name="bodyGeneral">
+<ui:define name="body">
 <h:form id="resultatRecherche">
 	<p:fieldset legend="Vin" rendered="#{mbRechercheProduit.listeVinsLength > 0}">
 		<p:dataGrid columns="3" value="#{mbRechercheProduit.listeVins}" var="vin" styleClass="panelResultatProduit" paginatorPosition="top" paginator="true" paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}" rowsPerPageTemplate="6,9,12,15"  >
@@ -48,7 +46,7 @@
 	</p:fieldset>
 	<p:fieldset legend="Spiritueux" rendered="#{mbRechercheProduit.listeSpiritueuxLength > 0}">
 		<p:dataGrid columns="3" value="#{mbRechercheProduit.listeSpiritueux}" var="spritueux" styleClass="panelResultatProduit" paginatorPosition="top" paginator="true" paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}" rowsPerPageTemplate="6,9,12,15" >
-			<p:panel header="#{spritueux.libelle}" styleClass="aze">
+			<p:panel header="#{spritueux.libelle}" styleClass="panelProduitRecherche">
 				<p:panelGrid columns="2" >
 					<p:panelGrid columns="1" style="text-align:center">
 						<p:graphicImage value="#{spritueux.image}" alt="image produit" styleClass="imageCatalogue" />
@@ -119,5 +117,4 @@
 	</p:fieldset>
 </h:form>
 </ui:define>
-</body> 
 </ui:composition>
