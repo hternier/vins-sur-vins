@@ -19,7 +19,7 @@ a {
 	font-size: 1em;
 }
 
-.ui-widget input,.ui-widget select,.ui-widget textarea,.ui-widget button
+.ui-widget input,.ui-widget select,.ui-widget textarea,.ui-widget 
 	{
 	font-family: Arial, sans-serif;
 	font-size: 1em;
@@ -38,7 +38,7 @@ a {
 .ui-widget-header {
 	border: 1px solid #a8a8a8;
 	background: #c4c4c4
-		url("/bdna/flow/javax.faces.resource/images/ui-bg_highlight-soft_100_c4c4c4_1x100.png?ln=primefaces-aristo")
+		
 		50% 50% repeat-x;
 	background: #c4c4c4 linear-gradient(top, rgba(255, 255, 255, 0.8),
 		rgba(255, 255, 255, 0));
@@ -60,7 +60,6 @@ a {
 	{
 	border: 1px solid #a8a8a8;
 	background: #c4c4c4
-		url("/bdna/flow/javax.faces.resource/images/ui-bg_highlight-hard_80_c4c4c4_1x100.png?ln=primefaces-aristo")
 		50% 50% repeat-x;
 	background: #c4c4c4 linear-gradient(top, rgba(255, 255, 255, 0.8),
 		rgba(255, 255, 255, 0));
@@ -92,7 +91,6 @@ a {
 	{
 	border: 1px solid #7096ab;
 	background: #85b2cb
-		url("/bdna/flow/javax.faces.resource/images/ui-bg_highlight-hard_80_85b2cb_1x100.png?ln=primefaces-aristo")
 		50% 50% repeat-x;
 	background: #85b2cb linear-gradient(top, rgba(255, 255, 255, 0.6),
 		rgba(255, 255, 255, 0));
@@ -124,7 +122,6 @@ a {
 	{
 	border: 1px solid #7096ab;
 	background: #85b2cb
-		url("/bdna/flow/javax.faces.resource/images/ui-bg_inset-hard_65_85b2cb_1x100.png?ln=primefaces-aristo")
 		50% 50% repeat-x;
 	background: #85b2cb linear-gradient(top, rgba(255, 255, 255, 0),
 		rgba(255, 255, 255, 0.4));
@@ -178,7 +175,6 @@ a {
 	{
 	border: 1px solid #cd0a0a;
 	background: #fef1ec
-		url("/bdna/flow/javax.faces.resource/images/ui-bg_inset-soft_95_fef1ec_1x100.png?ln=primefaces-aristo")
 		50% bottom repeat-x;
 	background: #fef1ec linear-gradient(top, rgba(255, 255, 255, 0.8),
 		rgba(255, 255, 255, 0));
@@ -222,43 +218,34 @@ a {
 .ui-icon {
 	width: 16px;
 	height: 16px;
-	background-image:
-		url("/bdna/flow/javax.faces.resource/images/ui-icons_616161_256x240.png?ln=primefaces-aristo");
-}
+	}
 
 .ui-widget-content .ui-icon {
-	background-image:
-		url("/bdna/flow/javax.faces.resource/images/ui-icons_616161_256x240.png?ln=primefaces-aristo");
+	
 }
 
 .ui-widget-header .ui-icon {
-	background-image:
-		url("/bdna/flow/javax.faces.resource/images/ui-icons_898989_256x240.png?ln=primefaces-aristo");
+
 }
 
 .ui-state-default .ui-icon {
-	background-image:
-		url("/bdna/flow/javax.faces.resource/images/ui-icons_38667f_256x240.png?ln=primefaces-aristo");
+
 }
 
 .ui-state-hover .ui-icon,.ui-state-focus .ui-icon {
-	background-image:
-		url("/bdna/flow/javax.faces.resource/images/ui-icons_38667f_256x240.png?ln=primefaces-aristo");
+
 }
 
 .ui-state-active .ui-icon {
-	background-image:
-		url("/bdna/flow/javax.faces.resource/images/ui-icons_38667f_256x240.png?ln=primefaces-aristo");
+	
 }
 
 .ui-state-highlight .ui-icon {
-	background-image:
-		url("/bdna/flow/javax.faces.resource/images/ui-icons_2e83ff_256x240.png?ln=primefaces-aristo");
+
 }
 
 .ui-state-error .ui-icon,.ui-state-error-text .ui-icon {
-	background-image:
-		url("/bdna/flow/javax.faces.resource/images/ui-icons_cd0a0a_256x240.png?ln=primefaces-aristo");
+
 } /* positioning */
 .ui-icon-carat-1-n {
 	background-position: 0 0;
@@ -1028,7 +1015,7 @@ a {
 } /* Overlays */
 .ui-widget-overlay {
 	background: #2d5972
-		url("/bdna/flow/javax.faces.resource/images/ui-bg_flat_0_2d5972_40x100.png?ln=primefaces-aristo")
+	
 		50% 50% repeat-x;
 	opacity: .30;
 	filter: Alpha(Opacity =     30);
@@ -1038,7 +1025,7 @@ a {
 	margin: -8px 0 0 -8px;
 	padding: 8px;
 	background: #4f4f4f
-		url("/bdna/flow/javax.faces.resource/images/ui-bg_flat_0_4f4f4f_40x100.png?ln=primefaces-aristo")
+		
 		50% 50% repeat-x;
 	opacity: .30;
 	filter: Alpha(Opacity =     30);
@@ -1261,7 +1248,7 @@ a {
 
 .ui-menu,.ui-menu .ui-menu-child {
 	background: #c4c4c4
-		url("/bdna/flow/javax.faces.resource/images/ui-bg_highlight-hard_80_c4c4c4_1x100.png?ln=primefaces-aristo")
+		
 		top repeat-x;
 	background: #c4c4c4 linear-gradient(top, rgba(255, 255, 255, 0.8),
 		rgba(255, 255, 255, 0));
