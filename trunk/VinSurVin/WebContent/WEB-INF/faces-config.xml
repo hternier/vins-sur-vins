@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<faces-config version="2.1" xmlns="http://java.sun.com/xml/ns/javaee"
-    xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_1.xsd">
+
+<faces-config xmlns="http://java.sun.com/xml/ns/javaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_1.xsd"
+    version="2.1">
+
+
     <!-- ============================== | MANAGEDBEANS FRONTOFFICE -->
+
+
     <managed-bean>
         <managed-bean-name>mbPanier</managed-bean-name>
         <managed-bean-class>fr.afcepf.atod17.vinsurvin.control.managedbeans.ManagedBeanPanier</managed-bean-class>
@@ -13,6 +19,7 @@
             <value>#{mbAccueil}</value>
         </managed-property>
     </managed-bean>
+
     <managed-bean>
         <managed-bean-name>mbAccueil</managed-bean-name>
         <managed-bean-class>fr.afcepf.atod17.vinsurvin.control.managedbeans.ManagedBeanAccueil</managed-bean-class>
@@ -22,6 +29,7 @@
             <value>#{mbRechercheProduit }</value>
         </managed-property>
     </managed-bean>
+
     <managed-bean>
         <managed-bean-name>mbCommande</managed-bean-name>
         <managed-bean-class>fr.afcepf.atod17.vinsurvin.control.managedbeans.ManagedBeanCommande</managed-bean-class>
@@ -31,17 +39,20 @@
             <property-class>fr.afcepf.atod17.vinsurvin.control.managedbeans.ManagedBeanAccueil</property-class>
             <value>#{mbAccueil}</value>
         </managed-property>
+
         <managed-property>
             <property-name>mbPanier</property-name>
             <property-class>fr.afcepf.atod17.vinsurvin.control.managedbeans.ManagedBeanPanier</property-class>
             <value>#{mbPanier}</value>
         </managed-property>
     </managed-bean>
+
     <managed-bean>
         <managed-bean-name>mbCreerCompte</managed-bean-name>
         <managed-bean-class>fr.afcepf.atod17.vinsurvin.control.managedbeans.ManagedBeanCreerCompte</managed-bean-class>
         <managed-bean-scope>session</managed-bean-scope>
     </managed-bean>
+
     <managed-bean>
         <managed-bean-name>mbRechercheProduit</managed-bean-name>
         <managed-bean-class>fr.afcepf.atod17.vinsurvin.control.managedbeans.ManagedBeanRechercheProduit</managed-bean-class>
@@ -52,13 +63,19 @@
             <value>#{mbDetailProduit}</value>
         </managed-property>
     </managed-bean>
+
+
     <managed-bean>
         <managed-bean-name>mbDetailProduit</managed-bean-name>
         <managed-bean-class>fr.afcepf.atod17.vinsurvin.control.managedbeans.ManagedBeanDetailProduit</managed-bean-class>
         <managed-bean-scope>session</managed-bean-scope>
     </managed-bean>
-    <!--REGLES DE REDIRECTION FRONTOFFICE Depuis gestion commande, redirection 
-        vers l'ajout d'une commande -->
+
+
+
+    <!--REGLES DE REDIRECTION FRONTOFFICE -->
+
+    <!-- Depuis gestion commande, redirection vers l'ajout d'une commande -->
     <navigation-rule>
         <from-view-id>/pagesFrontOffice/gestionCommande.xhtml</from-view-id>
         <navigation-case>
@@ -98,6 +115,7 @@
             <redirect />
         </navigation-case>
     </navigation-rule>
+
     <navigation-rule>
         <navigation-case>
             <from-outcome>rechercheValide</from-outcome>
@@ -115,35 +133,59 @@
             <redirect />
         </navigation-case>
     </navigation-rule>
-   
-        
 
-    <!-- ============================== | MANAGEDBEANS BACKOFFICE GESTIONNAIRE 
-        MANAGEDBEAN CONNEXION GESTIONNAIRE -->
+
+    <!-- ======== | MANAGEDBEANS BACKOFFICE GESTIONNAIRE | ========= -->
+    <!-- MANAGEDBEAN CONNEXION GESTIONNAIRE -->
     <managed-bean>
         <managed-bean-name>mbLoginBO</managed-bean-name>
         <managed-bean-class>fr.afcepf.atod17.vinsurvin.control.managedbeans.ManagedBeanLoginBackOffice</managed-bean-class>
         <managed-bean-scope>session</managed-bean-scope>
     </managed-bean>
+
     <!--MANAGEDBEAN GESTION PRODUITS -->
     <managed-bean>
         <managed-bean-name>mbGestionProduits</managed-bean-name>
         <managed-bean-class>fr.afcepf.atod17.vinsurvin.control.managedbeans.ManagedBeanGestionProduits</managed-bean-class>
         <managed-bean-scope>session</managed-bean-scope>
     </managed-bean>
+
     <!--MANAGEDBEAN AJOUT PRODUIT -->
     <managed-bean>
-        <managed-bean-name>mbAjoutProduit</managed-bean-name>
-        <managed-bean-class>fr.afcepf.atod17.vinsurvin.control.managedbeans.ManagedBeanAjoutProduit</managed-bean-class>
+        <managed-bean-name>mbAjoutModifProduit</managed-bean-name>
+        <managed-bean-class>fr.afcepf.atod17.vinsurvin.control.managedbeans.ManagedBeanAjoutModifProduit</managed-bean-class>
         <managed-bean-scope>session</managed-bean-scope>
+        <managed-property>
+            <property-name>mbGestionProduits</property-name>
+            <property-class>fr.afcepf.atod17.vinsurvin.control.managedbeans.ManagedBeanGestionProduits</property-class>
+            <value>#{mbGestionProduits}</value>
+        </managed-property>
     </managed-bean>
-    <!-- Depuis accueil, redirection vers gestion panier -->
+
     <!-- ============ | NAVIGATION DEPUIS LE TEMPLATE BO | ========= -->
     <navigation-rule>
         <!-- ### CONNEXION -> BACKOFFICE POUR GESTIONNAIRE ### -->
         <from-view-id>/loginBO.xhtml</from-view-id>
         <navigation-case>
             <from-outcome>success</from-outcome>
+            <to-view-id>/pagesBackOffice/accueilBO.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    
+        <!-- Depuis accueil, redirection vers ajout/modif produit -->
+    <navigation-rule>
+        <from-view-id>/pagesBackOffice/accueilBO.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>ajoutModifProduit</from-outcome>
+            <to-view-id>/pagesBackOffice/ajoutModiftProduitBO.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    
+            <!-- Depuis ajoutModifProduit, redirection vers gestion produit -->
+    <navigation-rule>
+        <from-view-id>/pagesBackOffice/ajoutModiftProduitBO.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>gestionProduit</from-outcome>
             <to-view-id>/pagesBackOffice/accueilBO.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>

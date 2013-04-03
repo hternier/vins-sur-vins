@@ -18,6 +18,13 @@ public class ManagedBeanGestionProduits extends AbstractManagedBean {
 	private List<SelectItem> listeCategories;
 	private List<SelectItem> listeSousCategories;
 	private List<Produit> listeProduits = new ArrayList<Produit>();
+	
+	/**
+	 * Le produit à créer/modifier
+	 */
+	private Produit produit;
+	
+	
 
 	/**
 	 * Constructeur par défaut
@@ -203,6 +210,24 @@ public class ManagedBeanGestionProduits extends AbstractManagedBean {
 		}
 		this.listeSousCategories = liste;
 	}
+	
+    public String nouveauProduit() {
+        String retour = "";
+        try {
+            Class c = java.lang.Class.forName("fr.afcepf.atod17.vinsurvin.entitybeans.produit." + listeCategoriesSelected);
+            produit = (Produit) c.newInstance();
+            
+            retour = "ajoutModifProduit";
+        } catch (InstantiationException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        
+        return retour;
+    }
 
 	/* ################## GETTERS & SETTERS ##################### */
 
@@ -315,5 +340,15 @@ public class ManagedBeanGestionProduits extends AbstractManagedBean {
 
 		this.listeSousCategories = paramListeSousCategories;
 	}
+
+    public Produit getProduit() {
+        return produit;
+    }
+
+    public void setProduit(Produit paramProduit) {
+        produit = paramProduit;
+    }
+	
+	
 
 }

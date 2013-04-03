@@ -4,6 +4,7 @@ import java.util.List;
 
 import fr.afcepf.atod17.vinsurvin.entitybeans.produit.Categorie;
 import fr.afcepf.atod17.vinsurvin.entitybeans.produit.Produit;
+import fr.afcepf.atod17.vinsurvin.entitybeans.produit.TVA;
 
 public interface IServiceProduit {
 
@@ -149,7 +150,7 @@ public interface IServiceProduit {
 	 * 
 	 * @return
 	 */
-	public List<Double> getAllTVA();
+	public List<TVA> getAllTVA();
 	
 	/** Methode de récupération des produits par type de produit **/
 	public List<Produit> getAllProduitParTypeProduit(String paramType);
@@ -163,4 +164,10 @@ public interface IServiceProduit {
 	/** Methode de récupération des produits par categorie de produit et recherche textuelle **/
 	List<Produit> getAllProduitsParCategorieEtTexte(Integer paramCat, String paramText);
 
+
+	/** Methode de récupération d'une categorie par l'Id **/
+    public Categorie getCategorie(Categorie paramCategorie);
+
+    /** Méthode d'ajout d'un nouveau produit **/
+    public Produit ajoutProduit(Produit paramProduit);
 }

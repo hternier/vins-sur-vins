@@ -51,6 +51,17 @@ public class DaoProduitImpl implements IDaoProduit {
 		return paramproduit;
 	}
 
+	@Override
+	public Produit ajoutProduit(Produit paramProduit) {
+		this.tx.begin();
+
+		em.persist(paramProduit);
+
+		em.flush();
+		this.tx.commit();
+		return paramProduit;
+	}
+
 	private final String REQ_GETALL = "From Produit p";
 
 	@Override
@@ -269,6 +280,12 @@ public class DaoProduitImpl implements IDaoProduit {
 		return em.createQuery(
 				"From Spiritueux, Vin Where millesime = " + paramMillesime,
 				Produit.class).getResultList();
+
+		// FIXME C'est le bordel
+
+		return em.createQuery(
+				"From Spiritueux, Vin Where millesime = " + paramMillesime,
+				Produit.class).getResultList();
 	}
 
 	/**
@@ -293,7 +310,7 @@ public class DaoProduitImpl implements IDaoProduit {
 		return em.createQuery(requeteFinale, Produit.class)
 				.setParameter(1, "%" + paramText + "%").getResultList();
 	}
-	
+
 	
 
 	@PostConstruct

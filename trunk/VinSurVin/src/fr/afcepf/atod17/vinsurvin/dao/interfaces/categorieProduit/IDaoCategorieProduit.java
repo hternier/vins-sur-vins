@@ -26,4 +26,8 @@ public interface IDaoCategorieProduit {
 	 **/
 	public List<Produit> getAllProduitsParCategorieEtTexte(Integer paramCat,
 			String paramText);
+	
+	
+    public Categorie getCategorieParId(Categorie paramCategorie);
+    
 }

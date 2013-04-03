@@ -3,10 +3,8 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:c="http://java.sun.com/jsp/jstl/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui"
-	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
 	template="../layoutsBackOffice/gestionProduitsBOLayout.xhtml">
 	<ui:define name="body">
 		<h:form id="accueilBO_form">
@@ -17,7 +15,7 @@
 					<h:inputText id="recherche_inputText" />
 					<h:outputLabel for="categorie_outputLabel" value="Catégorie :" />
 					<h:selectOneMenu id="categorie_select"
-						value="#{gestionProduitManagedBean.categorie}" required="true">
+						value="#{gestionProduitManagedBean.categorie}" >
 						<f:selectItem itemLabel="Selectionnez" itemValue="" />
 						<f:selectItems
 							value="#{gestionProduitManagedBean.listeCategories}" />
@@ -26,7 +24,7 @@
 					<h:outputLabel for="sousCategorie_outputLabel"
 						value="Sous-catégorie :" />
 					<h:selectOneMenu id="sousCategorie_select"
-						value="#{gestionProduitManagedBean.sousCategorie}" required="true">
+						value="#{gestionProduitManagedBean.sousCategorie}">
 						<f:selectItem itemLabel="Selectionnez" itemValue="" />
 						<f:selectItems
 							value="#{gestionProduitManagedBean.listeSousCategories}" />
@@ -34,8 +32,17 @@
 
 					<h:commandButton value="OK" id="filtrerProduits_button" rendered="true" />
 					<h:commandButton value="Tout afficher" id="afficherTout_button" rendered="true" />
-					<h:commandButton value="Ajouter" id="ajouter_button" rendered="true" />
 					
+					<br/>
+					<h:form id="nouveauProduit">
+					<p:messages id="erreursLol" />
+						<h:outputLabel for="nouveauProduitCategorie_select" value="Créer un nouveau produit de type : " />
+						<h:selectOneMenu id="nouveauProduitCategorie_select" value="#{mbGestionProduits.listeCategoriesSelected}">
+							<f:selectItem itemLabel="Selectionnez" itemValue="" />
+							<f:selectItems value="#{mbGestionProduits.listeCategories}" />
+						</h:selectOneMenu>
+						<p:commandButton value="Ok" action="#{mbGestionProduits.nouveauProduit}" update="erreursLol"/>
+					</h:form>
 					
 					<p:dataTable var="produit" paginator="true" rendered="true"
 						>

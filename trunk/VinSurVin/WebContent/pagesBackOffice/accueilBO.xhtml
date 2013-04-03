@@ -30,7 +30,6 @@
 					<f:selectItem itemLabel="Selectionnez" itemValue="" />
 					<f:selectItems value="#{mbGestionProduits.listeSousCategories }" />
 				</h:selectOneMenu>
-				<br></br>
 
 				
 				<h:commandButton value="OK" id="filtrerProduits_button"
@@ -41,8 +40,15 @@
 					action="#{mbGestionProduits.rechercheTout }" />
 
 
-				<h:commandButton value="Ajouter" id="ajouter_button"
-					onclick="window.location.href='./ajoutProduitBO.xhtml';" />
+				<br/>
+				<h:form id="nouveauProduit">
+					<h:outputLabel for="nouveauProduitCategorie_select" value="Créer un nouveau produit de type : " />
+					<h:selectOneMenu id="nouveauProduitCategorie_select" value="#{mbGestionProduits.listeCategoriesSelected}">
+						<f:selectItem itemLabel="Selectionnez" itemValue="" />
+						<f:selectItems value="#{mbGestionProduits.listeCategories}" />
+					</h:selectOneMenu>
+					<h:commandButton value="Ok" action="#{mbGestionProduits.nouveauProduit}"/>
+				</h:form>
 
 				<p:dataTable value="#{mbGestionProduits.listeProduits}"
 					var="produit" id="datatable_listeProduitGestion"
