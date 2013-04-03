@@ -60,7 +60,7 @@
 					resizableColumns="true" paginator="true" paginatorPosition="bottom"
 					rows="7" sortBy="#{produit.libelle}" sortOrder="ascending"
 					paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-					rowsPerPageTemplate="5,10,25,50,100" paginatorAlwaysVisible="true"
+					rowsPerPageTemplate="10,25,50,100" paginatorAlwaysVisible="true" 
 					emptyMessage="Il n'y a pas de produit dans la base">
 					<p:column headerText="Id" style="width:5%;">
 						<h:outputText value="#{produit.id}" />
