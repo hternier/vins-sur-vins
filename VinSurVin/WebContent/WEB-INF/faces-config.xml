@@ -29,6 +29,10 @@
 		<managed-bean-name>mbAccueil</managed-bean-name>
 		<managed-bean-class>fr.afcepf.atod17.vinsurvin.control.managedbeans.ManagedBeanAccueil</managed-bean-class>
 		<managed-bean-scope>session</managed-bean-scope>
+		<managed-property>
+			<property-name>mbRechercheProduit</property-name>
+			<value>#{mbRechercheProduit }</value>
+		</managed-property>
 	</managed-bean>
 	<managed-bean>
 		<managed-bean-name>mbCommande</managed-bean-name>
@@ -44,6 +48,12 @@
 			<property-class>fr.afcepf.atod17.vinsurvin.control.managedbeans.ManagedBeanPanier</property-class>
 			<value>#{mbPanier}</value>
 		</managed-property>
+	</managed-bean>
+	
+	<managed-bean>
+		<managed-bean-name>mbCreerCompte</managed-bean-name>
+		<managed-bean-class>fr.afcepf.atod17.vinsurvin.control.managedbeans.ManagedBeanCreerCompte</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
 	</managed-bean>
 	
 	
@@ -80,8 +90,24 @@
 			<from-outcome>ajoutCommande</from-outcome>
 			<to-view-id>/pagesFrontOffice/ajoutCommande.xhtml</to-view-id>
 		</navigation-case>
+	</navigation-rule>	
+	
+	<navigation-rule>
+		<from-view-id>/pagesFrontOffice/rechercheProduit.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>success</from-outcome>
+			<to-view-id>/pagesFrontOffice/detailProduit.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
 	</navigation-rule>
 	
+	<navigation-rule>
+		<navigation-case>
+			<from-action>#{mbAccueil.rechercher }</from-action>
+			<to-view-id>/pagesFrontOffice/rechercheProduit.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
 	
 	<!-- ============================== | MANAGEDBEANS BACKOFFICE GESTIONNAIRE -->
 	<!--MANAGEDBEAN CONNEXION GESTIONNAIRE -->
@@ -97,18 +123,20 @@
 		<managed-bean-scope>session</managed-bean-scope>
 	</managed-bean>
 	<managed-bean>
-		<managed-bean-name>mbCreerCompte</managed-bean-name>
-		<managed-bean-class>fr.afcepf.atod17.vinsurvin.control.managedbeans.ManagedBeanCreerCompte</managed-bean-class>
+		<managed-bean-name>mbRechercheProduit</managed-bean-name>
+		<managed-bean-class>fr.afcepf.atod17.vinsurvin.control.managedbeans.ManagedBeanRechercheProduit</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+		<managed-property>
+			<property-name>mbDetailProduit</property-name>
+			<property-class>fr.afcepf.atod17.vinsurvin.control.managedbeans.ManagedBeanDetailProduit</property-class>
+			<value>#{mbDetailProduit}</value>
+		</managed-property>
+	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>mbDetailProduit</managed-bean-name>
+		<managed-bean-class>fr.afcepf.atod17.vinsurvin.control.managedbeans.ManagedBeanDetailProduit</managed-bean-class>
 		<managed-bean-scope>session</managed-bean-scope>
 	</managed-bean>
-	<navigation-rule>
-		<from-view-id>/pagesFrontOffice/generalLayoutFO.xhtml</from-view-id>
-		<navigation-case>
-			<from-action>#{mbAccueil.rechercher }</from-action>
-			<to-view-id>/index.xhtml</to-view-id>
-			<redirect />
-		</navigation-case>
-	</navigation-rule>
 	<navigation-rule>
 		<!-- ### CONNEXION -> BACKOFFICE POUR GESTIONNAIRE ### -->
 		<from-view-id>/loginBO.xhtml</from-view-id>
