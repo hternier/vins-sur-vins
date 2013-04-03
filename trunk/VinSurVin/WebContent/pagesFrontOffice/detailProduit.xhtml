@@ -4,13 +4,13 @@
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:p="http://primefaces.org/ui"
-      template="/pagesFrontOffice/generalLayoutFO.xhtml"> 
+      template="/layoutsFO/detailProduitLayout.xhtml"> 
 
 <h:head></h:head> 
 <body> 
-<ui:define name="bodyGeneral">
-<h:form id="resultatRecherche">
-
+<ui:define name="body">
+<h:form id="detailProduit">
+	<h:outputText value="#{mbDetailProduit.produit.libelle}" />
 </h:form>
 </ui:define>
 </body> 

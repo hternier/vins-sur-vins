@@ -26,9 +26,6 @@ public class ManagedBeanTestRecherche extends AbstractManagedBean {
 	private List<Spiritueux> listeResultatSpiritueux = new ArrayList<Spiritueux>();
 	private List<Accessoire> listeResultatAccessoire = new ArrayList<Accessoire>();
 	
-	
-	private int test;
-	
 	public String getRechercheTextuelle() {
 		return rechercheTextuelle;
 	}

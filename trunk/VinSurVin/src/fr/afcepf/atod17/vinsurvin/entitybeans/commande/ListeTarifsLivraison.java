@@ -4,6 +4,7 @@ import java.util.List;
 import javax.faces.model.ListDataModel;
 import org.primefaces.model.SelectableDataModel;
 
+
 import fr.afcepf.atod17.vinsurvin.services.implementations.ServiceCommandeImpl;
 import fr.afcepf.atod17.vinsurvin.services.interfaces.IServiceCommande;
 import fr.afcepf.atod17.vinsurvin.utils.VinSurVinContext;
@@ -19,7 +20,6 @@ public class ListeTarifsLivraison extends ListDataModel<Object> implements Selec
         super(paramTarifsLivraison);
     }
 
-   
 
     @Override
     public TarifLivraison getRowData(String paramRowKey) {

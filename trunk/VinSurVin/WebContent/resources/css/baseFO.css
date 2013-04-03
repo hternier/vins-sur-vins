@@ -13,16 +13,30 @@
 .header_deconnexion {
 	float: left;
 	width: 100%;
+	max-height: 50px;
+}
+
+.header_deconnexion div {
+	padding: 0em !important;
 }
 
 .header_connexion {
 	float: left;
 	width: 100%;
+	max-height: 50px;
 }
 
-.header {
-	float:left;
-	width: 100%;
+.header_connexion div {
+	padding: 0em !important;
+}
+
+.topmenu_button {
+	margin-left: 10px;
+	height: 33px;
+}
+
+.topmenu_button span {
+	display: inline !important;
 }
 
 .nav {
@@ -48,12 +62,13 @@
 }
 
 .recherchePrixInput {
-	width:35px;
+	width:25px;
 }
 
 .rechercheMillesime {
 	margin-left:14px;
 	float:left;
+	max-width: 100px;
 }
 
 .rechercheRegion {
@@ -85,7 +100,10 @@
 	display: inline !important;
 }
 
-.gmapkikoo {
-	width: 800px;
-	height: 600px;
+.panelResultatProduit {
+	width: 100%;
+}
+
+.main {
+	width: 100%;
 }
