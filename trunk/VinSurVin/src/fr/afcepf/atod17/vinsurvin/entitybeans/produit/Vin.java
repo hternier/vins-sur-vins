@@ -24,6 +24,9 @@ public class Vin extends Produit {
 	
 	@Column(name="contenanceVinProduit")
 	private int contenance;
+	
+	@Column(name="degresVinProduit")
+	private String degres;
 
 	public String getPays() {
 		return pays;

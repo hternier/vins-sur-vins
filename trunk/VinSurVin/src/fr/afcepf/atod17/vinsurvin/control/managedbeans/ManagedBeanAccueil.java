@@ -235,7 +235,7 @@ public class ManagedBeanAccueil extends AbstractManagedBean {
 					prixMaxAsDouble = Double.parseDouble(this.recherchePrixMax.trim());
 					if (prixMaxAsDouble <= prixMinAsDouble) {
 						retour = false;
-						VinSurVinContext.afficherMessage("Erreur", "Le champ prix max est inférieur au champ prix min");
+						VinSurVinContext.afficherMessage("Erreur", "Le champ prix max est inférieur ou égal au champ prix min");
 					}
 				} catch (NumberFormatException e) {
 					retour = false;

@@ -1,20 +1,20 @@
 package fr.afcepf.atod17.vinsurvin.control.managedbeans;
 
-import fr.afcepf.atod17.vinsurvin.entitybeans.produit.Produit;
+import fr.afcepf.atod17.vinsurvin.control.entities.ProduitVueDetail;
 
 public class ManagedBeanDetailProduit extends AbstractManagedBean {
 
-	private Produit produit;
+	private ProduitVueDetail produit;
 	
 	public ManagedBeanDetailProduit() {
 		
 	}
 
-	public Produit getProduit() {
+	public ProduitVueDetail getProduit() {
 		return produit;
 	}
 
-	public void setProduit(Produit produit) {
+	public void setProduit(ProduitVueDetail produit) {
 		this.produit = produit;
 	}
 	

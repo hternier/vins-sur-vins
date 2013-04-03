@@ -68,13 +68,13 @@ INSERT INTO CATEGORIEPRODUIT VALUES (null,3,'Verre');
 INSERT INTO CATEGORIEPRODUIT VALUES (null,3,'Carafe');
 
 
-INSERT INTO PRODUIT VALUES (null, 1, 1, 1, 'libelleProduit', 100, null, 'descriptionProduit', 'coccinelle-de-la-grolet_1_1_1.jpg', 1, 'France', 'Champagne Ardenne', 'Bordeaux', '2009', 75, null, null, null, null, null, null);
-INSERT INTO PRODUIT VALUES (null, 1, 2, 8, 'libelleProduit2', 100, null, 'descriptionProduit2', 'hine-vsop_1.jpg', 1, null, null, null, null, null, 'Wiskey', 2009, 45, 75, null, null);
-INSERT INTO PRODUIT VALUES (null, 1, 1, 1, 'libelleProduit3', 100, null, 'descriptionProduit3', 'closdesboutes-pluriel_1_1.jpg', 1, 'France', 'Aquitaine', 'Bordeaux', '2001', 75, null, null, null, null, null, null);
-INSERT INTO PRODUIT VALUES (null, 1, 3, 12, 'Verres x6', 30, null, 'descriptionVerres', 'verres.jpg', 1, null, null, null, null, null, null, null, null, null, 'Verres and co', 350);
-INSERT INTO PRODUIT VALUES (null,1,3,13,'Carafe à vin',10,'2013-04-01 11:34:52','Pour faire décanter votre vin',NULL,1,'pologne',NULL,NULL,NULL,NULL,NULL,NULL,NULL,1,'Swarowzky',1);
-INSERT INTO PRODUIT VALUES (null,1,1,1,'Chateau Latour 2009 75cl',200,'2013-03-29 10:07:32','Hum, délicieux','lazaret_2_1.jpg',1,'France','Bordeaux','Bordeaux','2009',75,NULL,NULL,NULL,NULL,NULL,NULL);
-INSERT INTO PRODUIT VALUES (null,1,1,1,'Chateau Lafitte 2007 75cl',0,'2013-03-29 10:04:20','En rupture','viognier-delas_1.jpg',1,'France','Bordeaux','Bordeaux','2007',75,NULL,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO PRODUIT VALUES (null, 1, 1, 1, 'libelleProduit', 100, null, 'descriptionProduit', 'coccinelle-de-la-grolet_1_1_1.jpg', 1, 'France', 'Champagne Ardenne', 'Bordeaux', '2009', 75, null, null, null, null, null, null, '12');
+INSERT INTO PRODUIT VALUES (null, 1, 2, 8, 'libelleProduit2', 100, null, 'descriptionProduit2', 'hine-vsop_1.jpg', 1, null, null, null, null, null, 'Wiskey', 2009, 45, 75, null, null,NULL);
+INSERT INTO PRODUIT VALUES (null, 1, 1, 1, 'libelleProduit3', 100, null, 'descriptionProduit3', 'closdesboutes-pluriel_1_1.jpg', 1, 'France', 'Aquitaine', 'Bordeaux', '2001', 75, null, null, null, null, null, null, '12');
+INSERT INTO PRODUIT VALUES (null, 1, 3, 12, 'Verres x6', 30, null, 'descriptionVerres', 'verres.jpg', 1, null, null, null, null, null, null, null, null, null, 'Verres and co', 350,NULL);
+INSERT INTO PRODUIT VALUES (null,1,3,13,'Carafe à vin',10,'2013-04-01 11:34:52','Pour faire décanter votre vin',NULL,1,'pologne',NULL,NULL,NULL,NULL,NULL,NULL,NULL,1,'Swarowzky',1,NULL);
+INSERT INTO PRODUIT VALUES (null,1,1,1,'Chateau Latour 2009 75cl',200,'2013-03-29 10:07:32','Hum, délicieux','lazaret_2_1.jpg',1,'France','Bordeaux','Bordeaux','2009',75,NULL,NULL,NULL,NULL,NULL,NULL, '12');
+INSERT INTO PRODUIT VALUES (null,1,1,1,'Chateau Lafitte 2007 75cl',0,'2013-03-29 10:04:20','En rupture','viognier-delas_1.jpg',1,'France','Bordeaux','Bordeaux','2007',75,NULL,NULL,NULL,NULL,NULL,NULL, '12');
 
 
 INSERT INTO PRIX VALUES (null, 1, '2013-03-29 10:36:37', '2018-03-29 10:36:37', 4.75);
