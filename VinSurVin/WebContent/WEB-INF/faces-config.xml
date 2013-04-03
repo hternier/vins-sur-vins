@@ -1,20 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<faces-config version="2.1" xmlns="http://java.sun.com/xml/ns/javaee"
-	xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_1.xsd">
-	
+
+<faces-config xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_1.xsd"
+	version="2.1">
+
+
 	<!-- ============================== | MANAGEDBEANS FRONTOFFICE -->
+	
 	
 	<managed-bean>
 		<managed-bean-name>mbTest</managed-bean-name>
 		<managed-bean-class>fr.afcepf.atod17.vinsurvin.control.managedbeans.ManagedBeanTest</managed-bean-class>
 		<managed-bean-scope>request</managed-bean-scope>
 	</managed-bean>
+
 	<managed-bean>
 		<managed-bean-name>mbTestRecherche</managed-bean-name>
 		<managed-bean-class>fr.afcepf.atod17.vinsurvin.control.managedbeans.ManagedBeanTestRecherche</managed-bean-class>
 		<managed-bean-scope>request</managed-bean-scope>
 	</managed-bean>
+
 	<managed-bean>
 		<managed-bean-name>mbPanier</managed-bean-name>
 		<managed-bean-class>fr.afcepf.atod17.vinsurvin.control.managedbeans.ManagedBeanPanier</managed-bean-class>
@@ -25,6 +31,7 @@
 			<value>#{mbAccueil}</value>
 		</managed-property>
 	</managed-bean>
+	
 	<managed-bean>
 		<managed-bean-name>mbAccueil</managed-bean-name>
 		<managed-bean-class>fr.afcepf.atod17.vinsurvin.control.managedbeans.ManagedBeanAccueil</managed-bean-class>
@@ -34,6 +41,7 @@
 			<value>#{mbRechercheProduit }</value>
 		</managed-property>
 	</managed-bean>
+	
 	<managed-bean>
 		<managed-bean-name>mbCommande</managed-bean-name>
 		<managed-bean-class>fr.afcepf.atod17.vinsurvin.control.managedbeans.ManagedBeanCommande</managed-bean-class>
@@ -43,6 +51,7 @@
 			<property-class>fr.afcepf.atod17.vinsurvin.control.managedbeans.ManagedBeanAccueil</property-class>
 			<value>#{mbAccueil}</value>
 		</managed-property>
+		
 		<managed-property>
 			<property-name>mbPanier</property-name>
 			<property-class>fr.afcepf.atod17.vinsurvin.control.managedbeans.ManagedBeanPanier</property-class>
@@ -55,6 +64,25 @@
 		<managed-bean-class>fr.afcepf.atod17.vinsurvin.control.managedbeans.ManagedBeanCreerCompte</managed-bean-class>
 		<managed-bean-scope>session</managed-bean-scope>
 	</managed-bean>
+	
+	<managed-bean>
+		<managed-bean-name>mbRechercheProduit</managed-bean-name>
+		<managed-bean-class>fr.afcepf.atod17.vinsurvin.control.managedbeans.ManagedBeanRechercheProduit</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+		<managed-property>
+			<property-name>mbDetailProduit</property-name>
+			<property-class>fr.afcepf.atod17.vinsurvin.control.managedbeans.ManagedBeanDetailProduit</property-class>
+			<value>#{mbDetailProduit}</value>
+		</managed-property>
+	</managed-bean>
+	
+	
+	<managed-bean>
+		<managed-bean-name>mbDetailProduit</managed-bean-name>
+		<managed-bean-class>fr.afcepf.atod17.vinsurvin.control.managedbeans.ManagedBeanDetailProduit</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+	
 	
 	
 	<!--REGLES DE REDIRECTION FRONTOFFICE -->
@@ -90,8 +118,7 @@
 			<from-outcome>ajoutCommande</from-outcome>
 			<to-view-id>/pagesFrontOffice/ajoutCommande.xhtml</to-view-id>
 		</navigation-case>
-	</navigation-rule>	
-	
+	</navigation-rule>
 	<navigation-rule>
 		<from-view-id>/pagesFrontOffice/rechercheProduit.xhtml</from-view-id>
 		<navigation-case>
@@ -109,40 +136,36 @@
 		</navigation-case>
 	</navigation-rule>
 	
-	<!-- ============================== | MANAGEDBEANS BACKOFFICE GESTIONNAIRE -->
-	<!--MANAGEDBEAN CONNEXION GESTIONNAIRE -->
+
+	<!-- ======== | MANAGEDBEANS BACKOFFICE GESTIONNAIRE | ========= -->
+	<!-- MANAGEDBEAN CONNEXION GESTIONNAIRE -->
 	<managed-bean>
 		<managed-bean-name>mbLoginBO</managed-bean-name>
 		<managed-bean-class>fr.afcepf.atod17.vinsurvin.control.managedbeans.ManagedBeanLoginBackOffice</managed-bean-class>
 		<managed-bean-scope>session</managed-bean-scope>
 	</managed-bean>
+
 	<!--MANAGEDBEAN GESTION PRODUITS -->
 	<managed-bean>
 		<managed-bean-name>mbGestionProduits</managed-bean-name>
 		<managed-bean-class>fr.afcepf.atod17.vinsurvin.control.managedbeans.ManagedBeanGestionProduits</managed-bean-class>
 		<managed-bean-scope>session</managed-bean-scope>
 	</managed-bean>
+	
+	<!--MANAGEDBEAN AJOUT PRODUIT -->
 	<managed-bean>
-		<managed-bean-name>mbRechercheProduit</managed-bean-name>
-		<managed-bean-class>fr.afcepf.atod17.vinsurvin.control.managedbeans.ManagedBeanRechercheProduit</managed-bean-class>
-		<managed-bean-scope>session</managed-bean-scope>
-		<managed-property>
-			<property-name>mbDetailProduit</property-name>
-			<property-class>fr.afcepf.atod17.vinsurvin.control.managedbeans.ManagedBeanDetailProduit</property-class>
-			<value>#{mbDetailProduit}</value>
-		</managed-property>
-	</managed-bean>
-	<managed-bean>
-		<managed-bean-name>mbDetailProduit</managed-bean-name>
-		<managed-bean-class>fr.afcepf.atod17.vinsurvin.control.managedbeans.ManagedBeanDetailProduit</managed-bean-class>
+		<managed-bean-name>mbAjoutProduit</managed-bean-name>
+		<managed-bean-class>fr.afcepf.atod17.vinsurvin.control.managedbeans.ManagedBeanAjoutProduit</managed-bean-class>
 		<managed-bean-scope>session</managed-bean-scope>
 	</managed-bean>
+
+	<!-- ============ | NAVIGATION DEPUIS LE TEMPLATE BO | ========= -->
 	<navigation-rule>
 		<!-- ### CONNEXION -> BACKOFFICE POUR GESTIONNAIRE ### -->
 		<from-view-id>/loginBO.xhtml</from-view-id>
 		<navigation-case>
 			<from-outcome>success</from-outcome>
-			<to-view-id>/indexBO.xhtml</to-view-id>
+			<to-view-id>/pagesBackOffice/accueilBO.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
 </faces-config>
