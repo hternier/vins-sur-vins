@@ -9,28 +9,35 @@ import fr.afcepf.atod17.vinsurvin.services.implementations.ServiceCompteImpl;
 public class ManagedBeanLoginBackOffice extends AbstractManagedBean {
 	private String login;
 	private String mdp;
-	
-	public ManagedBeanLoginBackOffice() {}
-	
-	public String authentificationBO (){
-//		System.out.println("appel  MBLoginBO");
-		ServiceCompteImpl serviceCompteSysteme = getContext().getBean(ServiceCompteImpl.class);
-//		System.out.println("dans  MBLoginBO  : login saisie par utilisateur  :"+ login.trim() +" mdp saisie par utilisateur: "+ mdp.trim());
+
+	public ManagedBeanLoginBackOffice() {
+	}
+
+	public String authentificationBO() {
+		System.out.println("appel  MBLoginBO");
+		ServiceCompteImpl serviceCompteSysteme = getContext().getBean(
+				ServiceCompteImpl.class);
+		System.out.println("dans  MBLoginBO  : login saisie par utilisateur  :"
+				+ login.trim() + " mdp saisie par utilisateur: " + mdp.trim());
 		CompteSysteme compteSysteme = new CompteSysteme();
 		compteSysteme.setMail(login);
 		compteSysteme.setMdp(mdp);
 		compteSysteme = serviceCompteSysteme.authentificationBO(compteSysteme);
-		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("good", "Compte valide" + login + mdp));
-		if(compteSysteme==null){
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Erreur", "Compte invalide" + login + mdp));
-//			System.out.println("error");
+
+		if (compteSysteme == null) {		
+			FacesContext.getCurrentInstance().addMessage(null,
+					new FacesMessage("Erreur", "Compte invalide"));
+			return "erreur";
+		} else {
+			System.out.println("Fin du MBLoginBO  : Droit d'accès  :"
+					+ compteSysteme.getDroitAcces() + "   login : " + login
+					+ "   mot de passe :" + mdp);
+			// return "/indexBO.xhtml" + "?faces-redirect=true";
+			return "success";
 		}
-//		System.out.println("Fin du MBLoginBO  : Droit d'accès  :" + compteSysteme.getDroitAcces()+"   login : "+ login +"   mot de passe :"+ mdp);
-//		return "/pagesBackOffice/indexBO.xhtml" + "?faces-redirect=true";
-		return "success";
 	}
-	
-	/*	--------GETTERS & SETTERS ------------*/
+
+	/* --------GETTERS & SETTERS ------------ */
 
 	public String getLogin() {
 		return login;
@@ -46,5 +53,5 @@ public class ManagedBeanLoginBackOffice extends AbstractManagedBean {
 
 	public void setMdp(String paramMdp) {
 		mdp = paramMdp;
-	}	
+	}
 }
