@@ -19,7 +19,7 @@ public class VinSurVinContext {
 		return ctx;
 	}
 	
-	public static void afficherErreur(String titre, String detail) {
+	public static void afficherMessage(String titre, String detail) {
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(titre, detail));
 	}
 

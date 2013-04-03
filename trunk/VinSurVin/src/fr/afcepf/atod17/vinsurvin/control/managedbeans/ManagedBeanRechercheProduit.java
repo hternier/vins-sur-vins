@@ -16,6 +16,7 @@ import fr.afcepf.atod17.vinsurvin.entitybeans.produit.Vin;
 public class ManagedBeanRechercheProduit extends AbstractManagedBean {
 	
 	private ManagedBeanDetailProduit mbDetailProduit;
+	
 	private List<VinVueRecherche> listeVins = new ArrayList<VinVueRecherche>();
 	private List<SpiritueuxVueRecherche> listeSpiritueux = new ArrayList<SpiritueuxVueRecherche>();
 	private List<AccessoireVueRecherche> listeAccessoires = new ArrayList<AccessoireVueRecherche>();

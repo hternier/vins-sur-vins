@@ -112,3 +112,15 @@
 	width: 144px;
 	height: 144px;
 }
+
+.quantiteVignette {
+	width: 50px;
+}
+
+.quantiteVignette input {
+	width: 24px;
+}
+
+.panelPanier {
+	text-align: right;
+}

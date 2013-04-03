@@ -11,8 +11,8 @@
 <ui:define name="bodyGeneral">
 <h:form id="resultatRecherche">
 	<p:fieldset legend="Vin" rendered="#{mbRechercheProduit.listeVinsLength > 0}">
-		<p:dataGrid columns="3" value="#{mbRechercheProduit.listeVins}" var="vin" styleClass="panelResultatProduit" paginatorPosition="top" paginator="true" paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}" rowsPerPageTemplate="9,12,15" >
-			<p:panel header="#{vin.libelle}">
+		<p:dataGrid columns="3" value="#{mbRechercheProduit.listeVins}" var="vin" styleClass="panelResultatProduit" paginatorPosition="top" paginator="true" paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}" rowsPerPageTemplate="6,9,12,15"  >
+			<p:panel header="#{vin.libelle}" style="padding: 4px 4px;">
 				<p:panelGrid columns="2" >
 					<p:panelGrid columns="1" style="text-align:center">
 						<p:graphicImage value="#{vin.image}" alt="image produit" styleClass="imageCatalogue" />
@@ -31,13 +31,15 @@
 					   </p:row>
 					   <p:row>
 					       <p:column><h:outputText value="Quantité : " /></p:column>
-					       <p:column><p:spinner value="#{vin.quantite}" stepFactor="1" min="0" max="#{vin.stock} "/></p:column>
-					       <p:column>
-					           <p:commandButton actionListener="#{mbPanier.ajoutPanier}" update=":panelPanierAccueil">
-					               <f:attribute name="produit" value="#{vin.vin}"/>
-					               <f:attribute name="quantite" value="#{vin.quantite}" />
-					           </p:commandButton>
-					       </p:column>
+					       <p:column><p:spinner id="quantiteVignette" styleClass="quantiteVignette" value="#{vin.quantite}" stepFactor="1" min="1" max="#{vin.stock}" /></p:column>
+					   </p:row>
+					   <p:row>
+					       <p:column colspan="2">
+                               <p:commandButton value="Ajouter au panier" actionListener="#{mbPanier.ajoutPanier}" update=":panelPanierAccueil,:general_growl_form:general_growl">
+                                   <f:attribute name="produit" value="#{vin.vin}"/>
+                                   <f:attribute name="quantite" value="#{vin.quantite}" />
+                               </p:commandButton>
+                           </p:column>
 					   </p:row>
 					</p:panelGrid>
 				</p:panelGrid>
@@ -45,7 +47,7 @@
 		</p:dataGrid>
 	</p:fieldset>
 	<p:fieldset legend="Spiritueux" rendered="#{mbRechercheProduit.listeSpiritueuxLength > 0}">
-		<p:dataGrid columns="3" value="#{mbRechercheProduit.listeSpiritueux}" var="spritueux" styleClass="panelResultatProduit" paginatorPosition="top" paginator="true" paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}" rowsPerPageTemplate="9,12,15" >
+		<p:dataGrid columns="3" value="#{mbRechercheProduit.listeSpiritueux}" var="spritueux" styleClass="panelResultatProduit" paginatorPosition="top" paginator="true" paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}" rowsPerPageTemplate="6,9,12,15" >
 			<p:panel header="#{spritueux.libelle}" styleClass="aze">
 				<p:panelGrid columns="2" >
 					<p:panelGrid columns="1" style="text-align:center">
@@ -59,12 +61,29 @@
 							<h:outputText styleClass="ui-icon ui-icon-search" style="margin:0 auto;" />
 						</p:commandLink>
 					</p:panelGrid>
+                    <p:panelGrid style="font-size:small;">
+                       <p:row>
+                           <p:column colspan="3"><h:outputText value="Ajouter au panier :" /></p:column>
+                       </p:row>
+                       <p:row>
+                           <p:column><h:outputText value="Quantité : " /></p:column>
+                           <p:column><p:spinner id="quantiteVignette" styleClass="quantiteVignette" value="#{spritueux.quantite}" stepFactor="1" min="0" max="#{spritueux.stock}" /></p:column>
+                       </p:row>
+                       <p:row>
+                           <p:column colspan="2">
+                               <p:commandButton value="Ajouter au panier" actionListener="#{mbPanier.ajoutPanier}" update=":panelPanierAccueil,:general_growl_form:general_growl">
+                                   <f:attribute name="produit" value="#{spritueux.spiritueux}"/>
+                                   <f:attribute name="quantite" value="#{spritueux.quantite}" />
+                               </p:commandButton>
+                           </p:column>
+                       </p:row>
+                    </p:panelGrid>
 				</p:panelGrid>
 			</p:panel>
 		</p:dataGrid>
 	</p:fieldset>
 	<p:fieldset legend="Accessoires" rendered="#{mbRechercheProduit.listeAccessoiresLength > 0}">
-		<p:dataGrid columns="3" value="#{mbRechercheProduit.listeAccessoires}" var="accessoire" styleClass="panelResultatProduit" paginatorPosition="top" paginator="true" paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}" rowsPerPageTemplate="9,12,15,18" >
+		<p:dataGrid columns="3" value="#{mbRechercheProduit.listeAccessoires}" var="accessoire" styleClass="panelResultatProduit" paginatorPosition="top" paginator="true" paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}" rowsPerPageTemplate="6,9,12,15" >
 			<p:panel header="#{accessoire.libelle}" styleClass="aze">
 				<p:panelGrid columns="2" >
 					<p:panelGrid columns="1" style="text-align:center">
@@ -77,6 +96,23 @@
 							<h:outputText styleClass="ui-icon ui-icon-search" style="margin:0 auto;" />
 						</p:commandLink>
 					</p:panelGrid>
+                    <p:panelGrid style="font-size:small;">
+                       <p:row>
+                           <p:column colspan="3"><h:outputText value="Ajouter au panier :" /></p:column>
+                       </p:row>
+                       <p:row>
+                           <p:column><h:outputText value="Quantité : " /></p:column>
+                           <p:column><p:spinner id="quantiteVignette" styleClass="quantiteVignette" value="#{accessoire.quantite}" stepFactor="1" min="0" max="#{accessoire.stock}" /></p:column>
+                       </p:row>
+                       <p:row>
+                           <p:column colspan="2">
+                               <p:commandButton value="Ajouter au panier" actionListener="#{mbPanier.ajoutPanier}" update=":panelPanierAccueil,:general_growl_form:general_growl">
+                                   <f:attribute name="produit" value="#{accessoire.accessoire}"/>
+                                   <f:attribute name="quantite" value="#{accessoire.quantite}" />
+                               </p:commandButton>
+                           </p:column>
+                       </p:row>
+                    </p:panelGrid>
 				</p:panelGrid>
 			</p:panel>
 		</p:dataGrid>

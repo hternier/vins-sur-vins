@@ -207,12 +207,12 @@ public class ManagedBeanAccueil extends AbstractManagedBean {
 			int millesimeAsInt = 0;
 			if (!this.rechercheMillesime.trim().matches(EnumRegex.ANNEE.getPattern())) {
 				retour = false;
-				VinSurVinContext.afficherErreur("Erreur", "Millésime invalide.");
+				VinSurVinContext.afficherMessage("Erreur", "Millésime invalide.");
 			} else {
 				millesimeAsInt = Integer.parseInt(this.rechercheMillesime.trim());
 				if (millesimeAsInt < 1500 || millesimeAsInt > 2200) {
 					retour = false;
-					VinSurVinContext.afficherErreur("Erreur", "Le millésime doit être compris entre 1500 et 2200");
+					VinSurVinContext.afficherMessage("Erreur", "Le millésime doit être compris entre 1500 et 2200");
 				}
 			}
 		}
@@ -228,18 +228,18 @@ public class ManagedBeanAccueil extends AbstractManagedBean {
 		if (!this.recherchePrixMin.trim().isEmpty() || !this.recherchePrixMax.trim().isEmpty()) {
 			if (this.recherchePrixMin.trim().isEmpty() || this.recherchePrixMax.trim().isEmpty()) {
 				retour = false;
-				VinSurVinContext.afficherErreur("Erreur", "Si un champ prix est renseigné, l'autre est obligatoire");
+				VinSurVinContext.afficherMessage("Erreur", "Si un champ prix est renseigné, l'autre est obligatoire");
 			} else {
 				try {
 					prixMinAsDouble = Double.parseDouble(this.recherchePrixMin.trim());
 					prixMaxAsDouble = Double.parseDouble(this.recherchePrixMax.trim());
 					if (prixMaxAsDouble <= prixMinAsDouble) {
 						retour = false;
-						VinSurVinContext.afficherErreur("Erreur", "Le champ prix max est inférieur au champ prix min");
+						VinSurVinContext.afficherMessage("Erreur", "Le champ prix max est inférieur au champ prix min");
 					}
 				} catch (NumberFormatException e) {
 					retour = false;
-					VinSurVinContext.afficherErreur("Erreur", "Champ prix incorrect");
+					VinSurVinContext.afficherMessage("Erreur", "Champ prix incorrect");
 				}
 			}
 		} else {
