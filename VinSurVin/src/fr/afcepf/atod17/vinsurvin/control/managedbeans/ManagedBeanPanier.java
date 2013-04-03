@@ -145,6 +145,23 @@ public class ManagedBeanPanier extends AbstractManagedBean {
     }
     
     /**
+     * Méthode de récupèration du nombre de produits dans le panier.
+     * @return Une chaine décrivant le nombre de produit
+     */
+    public String getNbrProduitPanier() {
+        String messageNbrProduit = "Votre panier est vide";
+        int nbrProduit = 0;
+        for (ProduitEnCommande pec : panier.getProduits()) {
+            nbrProduit += pec.getQuantite();
+        }
+        if (nbrProduit != 0) {
+            messageNbrProduit = "Votre panier contient " + String.valueOf(nbrProduit) + " produit(s)";
+        }
+        
+        return messageNbrProduit;
+    }
+    
+    /**
      * Methode de validation du panier.
      * Permet de créer une commande et de valider
      * le stock disponible.
