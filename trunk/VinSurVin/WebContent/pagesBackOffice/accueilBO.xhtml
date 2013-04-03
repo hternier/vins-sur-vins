@@ -16,36 +16,56 @@
 				<h2>Gestion des produits</h2>
 				<h:outputLabel value="Rechercher " />
 				<h:inputText id="recherche_inputText"
-					value="#{mbTestRecherche.rechercheTextuelle }" />
-				
+					value="#{mbGestionProduits.rechercheTextuelle }" />
 				<h:outputLabel for="categorie_select" value="Catégorie :" />
-				<h:selectOneMenu id="categorie_select">
+				<h:selectOneMenu id="categorie_select"
+					value="#{mbGestionProduits.listeCategoriesSelected }">
 					<f:selectItem itemLabel="Selectionnez" itemValue="" />
-
+					<f:selectItems value="#{mbGestionProduits.listeCategories }" />
 				</h:selectOneMenu>
 
 				<h:outputLabel for="sousCategorie_select" value="Sous-catégorie :" />
-				<h:selectOneMenu id="sousCategorie_select">
+				<h:selectOneMenu id="sousCategorie_select"
+					value="#{mbGestionProduits.listeSousCategoriesSelected }">
 					<f:selectItem itemLabel="Selectionnez" itemValue="" />
+					<f:selectItems value="#{mbGestionProduits.listeSousCategories }" />
 				</h:selectOneMenu>
 
-				<h:commandButton value="OK" id="filtrerProduits_button"
-					action="#{mbTestRecherche.rechercher}" />
-				<h:commandButton value="Tout afficher" id="afficherTout_button"
-					action="#{mbTest.testAction }" />
-				<h:commandButton value="Ajouter" id="ajouter_button"
-					action="goAjoutProduit" />
 
-				<p:dataTable value="#{mbTest.listeProduit}" var="produit"
+
+				<h:commandButton value="OK texte"
+					action="#{mbGestionProduits.rechercheTextuelle }" />
+
+				<h:commandButton value="OK type"
+					action="#{mbGestionProduits.rechercheType }" />
+
+
+				<h:commandButton value="OK sousCat"
+					action="#{mbGestionProduits.rechercheCat }" />
+
+
+				<h:commandButton value="OK" id="filtrerProduits_button"
+					action="#{mbGestionProduits.rechercheFiltre }" />
+					
+					
+				<h:commandButton value="Tout afficher" id="afficherTout_button"
+					action="#{mbGestionProduits.rechercheTout }" />
+					
+					
+				<h:commandButton value="Ajouter" id="ajouter_button"
+					onclick="window.location.href='./ajoutProduitBO.xhtml';" />
+
+				<p:dataTable value="#{mbGestionProduits.listeProduits}"
+					var="produit" id="datatable_listeProduitGestion"
 					resizableColumns="true" paginator="true" paginatorPosition="bottom"
-					rows="10" sortBy="#{produit.libelle}" sortOrder="ascending"
+					rows="7" sortBy="#{produit.libelle}" sortOrder="ascending"
 					paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 					rowsPerPageTemplate="5,10,25,50,100" paginatorAlwaysVisible="true"
 					emptyMessage="Il n'y a pas de produit dans la base">
 					<p:column headerText="Id" style="width:5%;">
 						<h:outputText value="#{produit.id}" />
 					</p:column>
-					<p:column headerText="Libellé" style="width:30%;">
+					<p:column headerText="Libellé" style="width:37%;">
 						<h:outputText value="#{produit.libelle}" />
 					</p:column>
 					<p:column headerText="Categorie" style="width:10%;">
@@ -57,8 +77,10 @@
 					<p:column headerText="Stock" style="width:6%;">
 						<h:outputText value="#{produit.stock}" />
 					</p:column>
-					<p:column headerText="Mise en ligne" style="width:22%;">
-						<h:outputText value="#{produit.dateMiseEnLigne}" />
+					<p:column headerText="Mise en ligne" style="width:15%;">
+						<h:outputText value="#{produit.dateMiseEnLigne}">
+							<f:convertDateTime pattern="dd/MM/yyyy" />
+						</h:outputText>
 					</p:column>
 					<p:column headerText="Modifier" style="width:12%;">
 						<p:commandButton id="modifier_produit_button" value="modifier"
@@ -68,11 +90,6 @@
 						</p:commandButton>
 					</p:column>
 				</p:dataTable>
-				<h:commandButton value="Afficher Tout"
-					action="#{mbTest.testAction }" />
-				<h:commandButton action="#{mbTest.testActionEnStock }"
-					value="En stock" />
-				
 			</p:panel>
 		</h:form>
 
