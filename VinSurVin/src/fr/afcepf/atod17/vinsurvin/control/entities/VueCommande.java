@@ -1,4 +1,4 @@
-package fr.afcepf.atod17.vinsurvin.control.entitys;
+package fr.afcepf.atod17.vinsurvin.control.entities;
 
 import fr.afcepf.atod17.vinsurvin.entitybeans.commande.Commande;
 import fr.afcepf.atod17.vinsurvin.entitybeans.commande.ProduitEnCommande;
