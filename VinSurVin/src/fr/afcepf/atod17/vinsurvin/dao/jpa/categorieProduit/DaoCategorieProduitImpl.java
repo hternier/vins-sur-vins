@@ -44,12 +44,6 @@ public class DaoCategorieProduitImpl implements IDaoCategorieProduit {
 		return query.getResultList();
 	}
 	
-//	@Override
-//	public List<Produit> getAllProduitsParCategorie(String paramValeurCategorie) {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
-
 	/**
 	 * @return the emf
 	 */
