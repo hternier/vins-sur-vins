@@ -7,7 +7,7 @@ import java.util.List;
 import javax.faces.event.ActionEvent;
 
 
-import fr.afcepf.atod17.vinsurvin.control.entitys.VueCommande;
+import fr.afcepf.atod17.vinsurvin.control.entities.VueCommande;
 import fr.afcepf.atod17.vinsurvin.entitybeans.commande.Commande;
 import fr.afcepf.atod17.vinsurvin.entitybeans.commande.EtatCommande;
 import fr.afcepf.atod17.vinsurvin.entitybeans.commande.ListeTarifsLivraison;

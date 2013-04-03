@@ -2,7 +2,7 @@ package fr.afcepf.atod17.vinsurvin.services.interfaces;
 
 import java.util.List;
 
-import fr.afcepf.atod17.vinsurvin.control.entitys.VueCommande;
+import fr.afcepf.atod17.vinsurvin.control.entities.VueCommande;
 import fr.afcepf.atod17.vinsurvin.entitybeans.commande.Commande;
 import fr.afcepf.atod17.vinsurvin.entitybeans.commande.TarifLivraison;
 
