@@ -9,7 +9,6 @@ import fr.afcepf.atod17.vinsurvin.dao.interfaces.categorieProduit.IDaoCategorieP
 import fr.afcepf.atod17.vinsurvin.dao.interfaces.produit.IDaoProduit;
 import fr.afcepf.atod17.vinsurvin.dao.interfaces.tva.IDaoTVAProduit;
 import fr.afcepf.atod17.vinsurvin.dao.interfaces.typeProduit.IDaoTypeProduit;
-import fr.afcepf.atod17.vinsurvin.entitybeans.misc.TypeProduit;
 import fr.afcepf.atod17.vinsurvin.entitybeans.produit.Categorie;
 import fr.afcepf.atod17.vinsurvin.entitybeans.produit.Prix;
 import fr.afcepf.atod17.vinsurvin.entitybeans.produit.Produit;

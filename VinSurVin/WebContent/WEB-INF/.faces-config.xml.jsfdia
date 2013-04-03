@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PROCESS model-entity="JSFProcess">
+ <PROCESS-ITEM NAME="rules:" SHAPE="32,241,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules::0" NAME="item" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="rechercheValide:#{mbAccueil.rechercher }:#pagesFrontOffice#rechercheProduit.xhtml"
+    NAME="output1" PATH="/pagesFrontOffice/rechercheProduit.xhtml"
+    TARGET="rules:#pagesFrontOffice#rechercheProduit.xhtml"
+    TITLE="#{mbAccueil.rechercher }:rechercheValide" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#index.xhtml" PATH="/index.xhtml"
+  SHAPE="256,593,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#pagesFrontOffice#gestionCommande.xhtml"
+  PATH="/pagesFrontOffice/gestionCommande.xhtml" SHAPE="32,465,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#pagesFrontOffice#gestionCommande.xhtml:0"
+   NAME="item" PATH="/pagesFrontOffice/gestionCommande.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="ajoutCommande::#pagesFrontOffice#ajoutCommande.xhtml"
+    NAME="output" PATH="/pagesFrontOffice/ajoutCommande.xhtml"
+    TARGET="rules:#pagesFrontOffice#ajoutCommande.xhtml"
+    TITLE="ajoutCommande" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#pagesFrontOffice#ajoutCommande.xhtml"
+  PATH="/pagesFrontOffice/ajoutCommande.xhtml" SHAPE="256,481,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#pagesFrontOffice#ajoutCommande.xhtml:0"
+   NAME="item" PATH="/pagesFrontOffice/ajoutCommande.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="Accueil::#index.xhtml" NAME="output"
+    PATH="/index.xhtml" TARGET="rules:#index.xhtml" TITLE="Accueil" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#pagesFrontOffice#gestionPanier.xhtml"
+  PATH="/pagesFrontOffice/gestionPanier.xhtml" SHAPE="32,577,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#pagesFrontOffice#gestionPanier.xhtml:0"
+   NAME="item" PATH="/pagesFrontOffice/gestionPanier.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="Accueil::#index.xhtml" NAME="output"
+    PATH="/index.xhtml" TARGET="rules:#index.xhtml" TITLE="Accueil" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+  <PROCESS-ITEM ID="rules:#pagesFrontOffice#gestionPanier.xhtml:1"
+   NAME="item1" PATH="/pagesFrontOffice/gestionPanier.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="ajoutCommande::#pagesFrontOffice#ajoutCommande.xhtml"
+    NAME="output" PATH="/pagesFrontOffice/ajoutCommande.xhtml"
+    TARGET="rules:#pagesFrontOffice#ajoutCommande.xhtml"
+    TITLE="ajoutCommande" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#pagesFrontOffice#rechercheProduit.xhtml"
+  PATH="/pagesFrontOffice/rechercheProduit.xhtml" SHAPE="240,257,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#pagesFrontOffice#rechercheProduit.xhtml:0"
+   NAME="item" PATH="/pagesFrontOffice/rechercheProduit.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="success::#pagesFrontOffice#detailProduit.xhtml" NAME="output"
+    PATH="/pagesFrontOffice/detailProduit.xhtml"
+    TARGET="rules:#pagesFrontOffice#detailProduit.xhtml" TITLE="success" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#loginBO.xhtml" PATH="/loginBO.xhtml"
+  SHAPE="32,721,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#loginBO.xhtml:0" NAME="item"
+   PATH="/loginBO.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="success::#pagesBackOffice#accueilBO.xhtml"
+    NAME="output" PATH="/pagesBackOffice/accueilBO.xhtml"
+    TARGET="rules:#pagesBackOffice#accueilBO.xhtml" TITLE="success" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#pagesFrontOffice#detailProduit.xhtml"
+  PATH="/pagesFrontOffice/detailProduit.xhtml" SHAPE="448,241,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#pagesBackOffice#accueilBO.xhtml"
+  PATH="/pagesBackOffice/accueilBO.xhtml" SHAPE="240,961,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#pagesFrontOffice#generalLayoutFO.xhtml"
+  PATH="/pagesFrontOffice/generalLayoutFO.xhtml" SHAPE="32,833,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#pagesFrontOffice#generalLayoutFO.xhtml:0"
+   NAME="item" PATH="/pagesFrontOffice/generalLayoutFO.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="gestionPanier::#pagesFrontOffice#gestionPanier.xhtml"
+    NAME="output" PATH="/pagesFrontOffice/gestionPanier.xhtml"
+    TARGET="rules:#pagesFrontOffice#gestionPanier.xhtml"
+    TITLE="gestionPanier" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+</PROCESS>
