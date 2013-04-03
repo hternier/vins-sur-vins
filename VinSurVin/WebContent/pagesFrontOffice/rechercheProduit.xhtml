@@ -65,7 +65,7 @@
                        </p:row>
                        <p:row>
                            <p:column><h:outputText value="Quantité : " /></p:column>
-                           <p:column><p:spinner id="quantiteVignette" styleClass="quantiteVignette" value="#{spritueux.quantite}" stepFactor="1" min="0" max="#{spritueux.stock}" /></p:column>
+                           <p:column><p:spinner id="quantiteVignette" styleClass="quantiteVignette" value="#{spritueux.quantite}" stepFactor="1" min="1" max="#{spritueux.stock}" /></p:column>
                        </p:row>
                        <p:row>
                            <p:column colspan="2">
@@ -100,7 +100,7 @@
                        </p:row>
                        <p:row>
                            <p:column><h:outputText value="Quantité : " /></p:column>
-                           <p:column><p:spinner id="quantiteVignette" styleClass="quantiteVignette" value="#{accessoire.quantite}" stepFactor="1" min="0" max="#{accessoire.stock}" /></p:column>
+                           <p:column><p:spinner id="quantiteVignette" styleClass="quantiteVignette" value="#{accessoire.quantite}" stepFactor="1" min="1" max="#{accessoire.stock}" /></p:column>
                        </p:row>
                        <p:row>
                            <p:column colspan="2">
@@ -115,6 +115,9 @@
 			</p:panel>
 		</p:dataGrid>
 	</p:fieldset>
+	<p:panel header="Résultat de recherche" rendered="#{mbRechercheProduit.aucunResultat}">
+	   <h:outputText value="La recherche n'a renvoyé aucun résultat" />
+	</p:panel>
 </h:form>
 </ui:define>
 </ui:composition>

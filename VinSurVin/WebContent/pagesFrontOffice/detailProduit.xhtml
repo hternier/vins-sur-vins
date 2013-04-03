@@ -1,17 +1,63 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:p="http://primefaces.org/ui"
-      template="/layoutsFO/detailProduitLayout.xhtml"> 
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	template="/layoutsFO/detailProduitLayout.xhtml">
 
-<h:head></h:head> 
-<body> 
-<ui:define name="body">
-<h:form id="detailProduit">
-	<h:outputText value="#{mbDetailProduit.produit.libelle}" />
-</h:form>
-</ui:define>
-</body> 
+	<ui:define name="body">
+		<h:form id="detailProduit">
+			<p:fieldset legend="#{mbDetailProduit.produit.libelle}">
+				<p:panelGrid styleClass="panelDetailCommun">
+					<p:row>
+	                    <p:column rowspan="3">
+	                        <p:graphicImage value="#{mbDetailProduit.produit.image}" />
+	                    </p:column>
+	                    <p:column colspan="2">
+	                        <h:outputText value="#{mbDetailProduit.produit.description}" />
+	                    </p:column>
+                        <p:column colspan="2">
+                            <h:outputText value="Ajouter au panier :" />
+                        </p:column>
+					</p:row>
+					<p:row>
+	                    <p:column>
+	                        <h:outputText value="Catégorie : #{mbDetailProduit.produit.categorie}" />
+	                    </p:column>
+	                    <p:column>
+	                        <h:outputText value="Prix HT : " />
+	                        <h:outputText value="#{mbDetailProduit.produit.prixHT}">
+	                            <f:convertNumber type="currency" />
+	                        </h:outputText>
+	                    </p:column>
+                        <p:column>
+                            <h:outputText value="Quantité :" />
+                        </p:column>
+                        <p:column>
+                            <p:spinner styleClass="quantiteVignetteDetail" value="#{mbDetailProduit.produit.quantite}" stepFactor="1" min="1" max="#{mbDetailProduit.produit.stock}" />
+                        </p:column>
+					</p:row>
+					<p:row>
+					    <p:column rendered="#{mbDetailProduit.produit.produitIsVin}">
+					        <h:outputText value="Région : #{mbDetailProduit.produit.region}" />
+					    </p:column>
+					    <p:column rendered="#{!mbDetailProduit.produit.produitIsVin}"></p:column>
+					    <p:column>
+					        <h:outputText value="Prix TTC : " />
+					        <h:outputText value="#{mbDetailProduit.produit.prixTTC}">
+					            <f:convertNumber type="currency" />
+					        </h:outputText>
+					    </p:column>
+                        <p:column colspan="2">
+                            <p:commandButton value="Ajouter au panier" actionListener="#{mbPanier.ajoutPanier}" update=":panelPanierAccueil,:general_growl_form:general_growl">
+                                <f:attribute name="produit" value="#{mbDetailProduit.produit.produit}" />
+                                <f:attribute name="quantite" value="#{mbDetailProduit.produit.quantite}" />
+                            </p:commandButton>
+                        </p:column>
+					</p:row>
+				</p:panelGrid>
+			</p:fieldset>
+		</h:form>
+	</ui:define>
 </ui:composition>

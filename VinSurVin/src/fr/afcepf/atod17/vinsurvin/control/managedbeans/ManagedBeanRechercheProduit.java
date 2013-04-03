@@ -6,6 +6,7 @@ import java.util.List;
 import javax.faces.event.ActionEvent;
 
 import fr.afcepf.atod17.vinsurvin.control.entities.AccessoireVueRecherche;
+import fr.afcepf.atod17.vinsurvin.control.entities.ProduitVueDetail;
 import fr.afcepf.atod17.vinsurvin.control.entities.SpiritueuxVueRecherche;
 import fr.afcepf.atod17.vinsurvin.control.entities.VinVueRecherche;
 import fr.afcepf.atod17.vinsurvin.entitybeans.produit.Accessoire;
@@ -68,6 +69,10 @@ public class ManagedBeanRechercheProduit extends AbstractManagedBean {
 	public void setMbDetailProduit(ManagedBeanDetailProduit mbDetailProduit) {
 		this.mbDetailProduit = mbDetailProduit;
 	}
+	
+	public boolean getAucunResultat() {
+		return this.listeVins.isEmpty() && this.listeAccessoires.isEmpty() && this.listeSpiritueux.isEmpty();
+	}
 
 	public void remplirListes (List<Produit> paramListe) {
 		this.listeVins.clear();
@@ -91,17 +96,17 @@ public class ManagedBeanRechercheProduit extends AbstractManagedBean {
 	
 	public void loadDetailManagedBeanVin (ActionEvent ae) {
 		VinVueRecherche p = (VinVueRecherche) ae.getComponent().getAttributes().get("produit");
-		mbDetailProduit.setProduit(p.getVin());
+		mbDetailProduit.setProduit(new ProduitVueDetail(p.getVin()));
 	}
 	
 	public void loadDetailManagedBeanSpiritueux (ActionEvent ae) {
 		SpiritueuxVueRecherche p = (SpiritueuxVueRecherche) ae.getComponent().getAttributes().get("produit");
-		mbDetailProduit.setProduit(p.getSpiritueux());
+		mbDetailProduit.setProduit(new ProduitVueDetail(p.getSpiritueux()));
 	}
 	
 	public void loadDetailManagedBeanAccessoire (ActionEvent ae) {
 		AccessoireVueRecherche p = (AccessoireVueRecherche) ae.getComponent().getAttributes().get("produit");
-		mbDetailProduit.setProduit(p.getAccessoire());
+		mbDetailProduit.setProduit(new ProduitVueDetail(p.getAccessoire()));
 	}
 	
 }

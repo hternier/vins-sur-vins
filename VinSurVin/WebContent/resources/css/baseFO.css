@@ -114,11 +114,11 @@
 }
 
 .quantiteVignette {
-	width: 50px;
+    width: 50px;
 }
 
 .quantiteVignette input {
-	width: 24px;
+    width: 24px;
 }
 
 .panelPanier {
@@ -128,3 +128,16 @@
 .panelProduitRecherche {
 	
 }
+
+.panelDetailCommun {
+	float:left;
+}
+
+.quantiteVignetteDetail {
+    width: 65px;
+}
+
+.quantiteVignetteDetail input {
+    width: 39px;
+}
+
