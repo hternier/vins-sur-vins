@@ -9,6 +9,10 @@
 	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
 	template="../layoutsFO/accueilLayout.xhtml">
 	<ui:define name="body">
+	<center><h1>BIENVENUE !!!</h1></center>
+	<center><p:galleria value="#{mbAccueil.images}" var="image" panelWidth="500" panelHeight="313" showCaption="true">
+ <p:graphicImage value="../resources/images/#{image}" alt="" title="" /> 
+</p:galleria></center>
 	</ui:define>
-	<h1>Bienvenue!</h1>
+	
 </ui:composition>

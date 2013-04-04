@@ -3,6 +3,7 @@ package fr.afcepf.atod17.vinsurvin.control.managedbeans;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.faces.model.SelectItem;
@@ -27,6 +28,7 @@ public class ManagedBeanAccueil extends AbstractManagedBean {
 	private String recherchePrixMax;
 	private String rechercheMillesime;
 	private String rechercheRegion;
+	private List<String> images;  
 	private List<SelectItem> listeRegion = new ArrayList<SelectItem>();
 	
 	public ManagedBeanAccueil() {
@@ -123,6 +125,10 @@ public class ManagedBeanAccueil extends AbstractManagedBean {
 
 	public void setClientConnected(CompteClient clientConnected) {
 		this.clientConnected = clientConnected;
+	}
+
+	public List<String> getImages() {
+		return images;
 	}
 
 	public String rechercheMulticritere () {
@@ -356,6 +362,9 @@ public class ManagedBeanAccueil extends AbstractManagedBean {
 	public String creerCompte() {
 		return "CreerCompte";
 	}
+	public String allerAccueil() {
+		return "GoAccueil";
+	}
 	
 	public String gestionPanier() {
         return "gestionPanier";
@@ -369,4 +378,11 @@ public class ManagedBeanAccueil extends AbstractManagedBean {
 		return "gestionCompte";
 	}
 	
-}
+	 @PostConstruct  
+	    public void init() {  
+	        images = new ArrayList<String>();  
+	  
+	        for(int i=1;i<=3;i++) {  
+	            images.add("vinsurvin" + i + ".jpg");  
+	        }  
+}}
