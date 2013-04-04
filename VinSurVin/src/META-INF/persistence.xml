@@ -34,7 +34,7 @@
 		
 		<class>fr.afcepf.atod17.vinsurvin.entitybeans.misc.TypeProduit</class>
 		<class>fr.afcepf.atod17.vinsurvin.entitybeans.misc.TypeCompte</class>
-		
+		<shared-cache-mode>NONE</shared-cache-mode>
 		<properties>
 			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />
 <!-- 			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://127.0.0.1:3306/atod17_g2_vins" /> -->
@@ -44,5 +44,6 @@
 			<property name="hibernate.hbm2ddl.auto" value="validate" />
 			<property name="hibernate.show_sql" value="true" />
 		</properties>
+        
 	</persistence-unit>
 </persistence>

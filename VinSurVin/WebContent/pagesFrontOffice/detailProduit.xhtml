@@ -11,10 +11,10 @@
 			<p:fieldset legend="#{mbDetailProduit.produit.libelle}">
 				<p:panelGrid styleClass="panelDetailCommun">
 					<p:row>
-	                    <p:column rowspan="3">
-	                        <p:graphicImage value="#{mbDetailProduit.produit.image}" />
-	                    </p:column>
-	                    <p:column colspan="2">
+                        <p:column rowspan="#{mbDetailProduit.imageRowSpan}">
+                            <p:graphicImage value="#{mbDetailProduit.produit.image}" />
+                        </p:column>
+	                    <p:column colspan="2" style="max-width:150px;">
 	                        <h:outputText value="#{mbDetailProduit.produit.description}" />
 	                    </p:column>
                         <p:column colspan="2">
@@ -39,10 +39,12 @@
                         </p:column>
 					</p:row>
 					<p:row>
-					    <p:column rendered="#{mbDetailProduit.produit.produitIsVin}">
-					        <h:outputText value="Région : #{mbDetailProduit.produit.region}" />
+					    <p:column>
+					        <h:outputText value="TVA : " />
+					        <h:outputText value="#{mbDetailProduit.produit.TVA}">
+					           <f:convertNumber type="percent" maxFractionDigits="2" />
+					        </h:outputText>
 					    </p:column>
-					    <p:column rendered="#{!mbDetailProduit.produit.produitIsVin}"></p:column>
 					    <p:column>
 					        <h:outputText value="Prix TTC : " />
 					        <h:outputText value="#{mbDetailProduit.produit.prixTTC}">
@@ -56,6 +58,57 @@
                             </p:commandButton>
                         </p:column>
 					</p:row>
+				    <p:row rendered="#{mbDetailProduit.produit.isVin}">
+				        <p:column>
+				            <h:outputText value="Appelation : #{mbDetailProduit.produit.appelationVin}" />
+				        </p:column>
+				        <p:column>
+				            <h:outputText value="Millesime : #{mbDetailProduit.produit.millesimeVin}" />
+				        </p:column>
+                        <p:column colspan="2" rowspan="3"></p:column>
+				    </p:row>
+				    <p:row rendered="#{mbDetailProduit.produit.isVin}">
+				        <p:column>
+				            <h:outputText value="Pays : #{mbDetailProduit.produit.paysVin}" />
+				        </p:column>
+				        <p:column>
+				            <h:outputText value="Contenance : #{mbDetailProduit.produit.contenanceVin} cl" />
+				        </p:column>
+				    </p:row>
+				    <p:row rendered="#{mbDetailProduit.produit.isVin}">
+				        <p:column>
+				            <h:outputText value="Région : #{mbDetailProduit.produit.regionVin}" />
+				        </p:column>
+				        <p:column>
+				            <h:outputText value="Degrés : #{mbDetailProduit.produit.degresVin} °" />
+				        </p:column>
+				    </p:row>
+                    <p:row rendered="#{mbDetailProduit.produit.isSpiritueux}">
+                        <p:column>
+                            <h:outputText value="Appelation : #{mbDetailProduit.produit.appellationSpiritueux}" />
+                        </p:column>
+                        <p:column>
+                            <h:outputText value="Contenance : #{mbDetailProduit.produit.contenanceSpiritueux} cl" />
+                        </p:column>
+                        <p:column colspan="2" rowspan="2"></p:column>
+                    </p:row>
+                    <p:row rendered="#{mbDetailProduit.produit.isSpiritueux}">
+                        <p:column>
+                            <h:outputText value="Millesime : #{mbDetailProduit.produit.millesimeSpiritueux}" />
+                        </p:column>
+                        <p:column>
+                            <h:outputText value="Degrés : #{mbDetailProduit.produit.degresSpiritueux} °" />
+                        </p:column>
+                    </p:row>
+                    <p:row rendered="#{mbDetailProduit.produit.isAccessoire}">
+                        <p:column>
+                            <h:outputText value="Marque : #{mbDetailProduit.produit.marque}" />
+                        </p:column>
+                        <p:column>
+                            <h:outputText value="Poids : #{mbDetailProduit.produit.poids} g" />
+                        </p:column>
+                        <p:column colspan="2"></p:column>
+                    </p:row>
 				</p:panelGrid>
 			</p:fieldset>
 		</h:form>
