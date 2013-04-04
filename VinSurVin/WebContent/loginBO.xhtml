@@ -16,7 +16,8 @@
 		<link rel="stylesheet" href="resources/css/theme.css" type="text/css" />
 		<link rel="stylesheet" href="resources/css/primefaces.css" type="text/css" />
 		<link rel="stylesheet" href="resources/css/style.css" type="text/css" />
-
+        <link rel="icon" href="../resources/images/favicon.png"
+            type="image/x-icon" />
 	</h:head>
 
 	<h:body>
@@ -45,7 +46,7 @@
 						<h:inputSecret id="password" type="password" name="pswd" value="#{mbLoginBO.mdp}" required="true"   
                         requiredMessage="Votre mot de passe est obligatoire" />
 						<br />
-						<h:commandLink action="#{mbLoginBO.authentificationBO }" value="Se connecter" styleClass="actionNavigationButton" />				
+						<h:commandLink action="#{mbLoginBO.authentificationBO }" value="Se connecter" styleClass="linkAsButton" />				
 					</h:form>
 				</p:panel>
 			</p:panel>

@@ -15,14 +15,6 @@
 		<link rel="icon" href="../resources/images/favicon.png"
 			type="image/x-icon" />
 
-		<link rel="stylesheet" href="../resources/css/styleFO.css"
-			type="text/css" />
-		<link rel="stylesheet" href="../resources/css/vsvFO.css"
-			type="text/css" />
-		<link rel="stylesheet" href="../resources/css/themeFO.css"
-			type="text/css" />
-		<link rel="stylesheet" href="../resources/css/primefacesFO.css"
-			type="text/css" />
 		<link rel="stylesheet" href="../resources/css/baseFO.css"
 			type="text/css" />
 	</h:head>
@@ -30,54 +22,118 @@
 	<h:body>
 		<p:panel id="page" styleClass="page">
 			<h:form id="panelConnexion">
-				<p:panel styleClass="header_deconnexion" rendered="#{mbAccueil.clientConnected != null}">
-					<p:commandButton styleClass="topmenu_button" value="Déconnexion" action="#{mbAccueil.deconnexion }" update=":panelConnexion" />
+				<p:panel styleClass="header_deconnexion"
+					rendered="#{mbAccueil.clientConnected != null}">
+					<p:commandButton styleClass="topmenu_button" value="Déconnexion"
+						action="#{mbAccueil.deconnexion }" update=":panelConnexion" />
 				</p:panel>
-				<p:panel styleClass="header_connexion" rendered="#{mbAccueil.clientConnected == null}">
+				<p:panel styleClass="header_connexion"
+					rendered="#{mbAccueil.clientConnected == null}">
 					<h:outputLabel value="Identifiant" />
-					<p:inputText id="identifiant_inputText" value="#{mbAccueil.connexionMail }" style="margin-left:10px;" />
+					<p:inputText id="identifiant_inputText"
+						value="#{mbAccueil.connexionMail }" style="margin-left:10px;" />
 					<h:outputLabel value="Mot de passe" />
-					<p:password style="margin-left:10px;" id="mdp_inputText" value="#{mbAccueil.connexionMdp }" />
-					<p:commandButton styleClass="topmenu_button" value="Connexion" action="#{mbAccueil.connexion }" update=":panelConnexion,:general_growl_form:general_growl" />
-					<p:commandButton styleClass="topmenu_button" value="Inscription" action="#{mbAccueil.creerCompte}"/>
+					<p:password style="margin-left:10px;" id="mdp_inputText"
+						value="#{mbAccueil.connexionMdp }" />
+					<p:commandButton styleClass="topmenu_button" value="Connexion"
+						action="#{mbAccueil.connexion }"
+						update=":panelConnexion,:general_growl_form:general_growl" />
+					<p:commandButton styleClass="topmenu_button" value="Inscription"
+						action="#{mbAccueil.creerCompte}" />
 				</p:panel>
 			</h:form>
-			<p:panel id="header" styleClass="header">
-				<div class="logoAndrecherche">
-					<h1 class="header-logo">
+
+
+			<h:panelGrid columns="3" columnClasses="twenty, sixty, twenty">
+				<h:column id="colonne_gauche_header" styleClass="header">
+					<h:panelGrid columns="1">
 						<a href="#" title="Vin sur Vin" class="logo-one"> <img
-							src="../resources/images/logo.png" alt="Vin sur Vin" />
+							src="../resources/images/logo.png" alt="Vin sur Vin"
+							height="115px" />
 						</a>
-					</h1>
-					<p:panel styleClass="panelRecherche">
+					</h:panelGrid>
+				</h:column>
+
+				<h:column>
+					<fieldset>
+						<legend>Recherche</legend>
 						<h:form>
-							<h:outputText value="Recherche : " style="font-weight:bold;" />
-							<p:inputText value="#{mbAccueil.rechercheTextuelle }" />
-							<b>Gamme de prix : </b>entre : 
-							<p:inputText value="#{mbAccueil.recherchePrixMin}" styleClass="recherchePrixInput" />
-							euros et 
-							<p:inputText value="#{mbAccueil.recherchePrixMax}" styleClass="recherchePrixInput" />
-							euros
-							<h:outputText value="Millésime : " style="font-weight:bold;float:left;" />
-							<p:inputText value="#{mbAccueil.rechercheMillesime }" styleClass="rechercheMillesime" />
-							<h:outputText value="Région : " styleClass="labelRegion" />
-							<p:selectOneMenu value="#{mbAccueil.rechercheRegion }" styleClass="rechercheRegion">
-								<f:selectItem itemLabel="" itemValue="" />
-								<f:selectItems value="#{mbAccueil.listeRegion }" />
-							</p:selectOneMenu>
-							<p:commandButton value="Rechercher" action="#{mbAccueil.rechercheMulticritere}" update=":general_growl_form:general_growl" styleClass="boutonRechercheMain" />
+							<h:panelGrid columns="8">
+								<p:panelGrid columns="2">
+									<h:outputLabel value="Nom :"
+										style="font-weight:bold;float:left;" />
+									<p:inputText value="#{mbAccueil.rechercheTextuelle }" />
+								</p:panelGrid>
+
+								<p:panelGrid columns="6">
+									<h:outputLabel style="font-weight:bold;float:left;"
+										value="Gamme de prix :" />
+									<h:outputLabel value="entre :" />
+									<p:inputText value="#{mbAccueil.recherchePrixMin}"
+										styleClass="recherchePrixInput" />
+									<h:outputLabel value="euros et" />
+									<p:inputText value="#{mbAccueil.recherchePrixMax}"
+										styleClass="recherchePrixInput" />
+									<h:outputLabel value="euros" />
+								</p:panelGrid>
+							</h:panelGrid>
+							<h:panelGrid columns="8">
+								<p:panelGrid columns="2">
+									<h:outputText value="Millésime : "
+										style="font-weight:bold;float:left;" />
+									<p:inputText value="#{mbAccueil.rechercheMillesime }"
+										styleClass="rechercheMillesime" />
+								</p:panelGrid>
+								<p:panelGrid columns="5">
+									<h:outputText value="Région : " styleClass="labelRegion" />
+									<p:selectOneMenu value="#{mbAccueil.rechercheRegion }"
+										styleClass="rechercheRegion">
+										<f:selectItem itemLabel="" itemValue="" />
+										<f:selectItems value="#{mbAccueil.listeRegion }" />
+									</p:selectOneMenu>
+								</p:panelGrid>
+								<h:panelGrid>
+									<p:commandButton value="Rechercher"
+										action="#{mbAccueil.rechercheMulticritere}"
+										update=":general_growl_form:general_growl"
+										styleClass="boutonRechercheMain" />
+								</h:panelGrid>
+							</h:panelGrid>
 						</h:form>
-					</p:panel>
-				<p:panel id="panelPanierAccueil" styleClass="panelPanier">
+					</fieldset>
+				</h:column>
+
+
+
+
+				<h:column id="colonne_droite_header">
+					<h:panelGrid columns="1" id="panelPanierAccueil"
+						styleClass="panelPanier">
 						<h:form>
-							<h:outputText value="Panier : " style="font-weight:bold;" /><br/>
-							<h:outputText value="#{mbPanier.nbrProduitPanier}"/><br/>
-							<h:commandLink value="Voir mon panier" action="#{mbAccueil.gestionPanier}">
+							<h:outputText value="Panier : " style="font-weight:bold;" />
+							<br />
+							<h:outputText value="#{mbPanier.nbrProduitPanier}" />
+							<br />
+							<h:commandLink value="Voir mon panier"
+								action="#{mbAccueil.gestionPanier}">
 							</h:commandLink>
 						</h:form>
-					</p:panel>
-				</div>
-			</p:panel>
+					</h:panelGrid>
+				</h:column>
+			</h:panelGrid>
+
+
+
+
+
+
+
+
+
+
+
+
+
 			<p:panel id="nav" styleClass="nav">
 				<h:form id="bandeauCommande" styleClass="nav_bandeau">
 					<p:commandButton id="accueil_button" value="Accueil"
@@ -105,29 +161,35 @@
 				<ui:insert name="bodyGeneral" id="conteneurPage" />
 			</p:panel>
 
-			<div id="footer" class="footer">
+			<p:panel id="footer" styleClass="footer">
 				<h:form>
-					<h:panelGrid columns="3">
-						<h:panelGroup columns="3">
-							<h:outputLabel value="Dernière connexion le"
-								rendered="" />
-							<h:outputLabel id="footer_connexion_dateHeure_outputText"
-								value=""
-								rendered="" />
-						</h:panelGroup>
-						<h:panelGroup columns="3">
-							<h:outputLabel value="Contact technique : " />
-							<h:outputLink value="mailto:contact@vinsurvin.fr">contact@vinsurvin.fr</h:outputLink>
-						</h:panelGroup>
+					<h:panelGrid columns="2" columnClasses="fifty, fifty">
+						<h:column id="colonne_gauche_footer">
+							<h:panelGrid columns="2">
+								<h:outputLabel value="Dernière connexion le" rendered="" />
+								<h:outputLabel id="footer_connexion_dateHeure_outputText"
+									value="" rendered="" />
+							</h:panelGrid>
+							<h:panelGrid columns="1">
+								<h:commandLink value="Conditions générales de vente" />
+								<h:commandLink value="Aide en ligne" />
+								<h:outputText value="Copyright 2013 Vin sur Vin" />
+							</h:panelGrid>
+						</h:column>
 
-						<h:commandLink value="Aide en ligne" />
-						<h:commandLink value="Conditions générales de vente" />
-						<h:commandLink value="Mentions légales" />
-						<h:commandLink value="Plan du site" />
-						<h:outputText value="Copyright 2013 Vin sur Vin. Tous droits réservés " />
+						<h:column id="colonne_droite_footer">
+							<h:panelGrid columns="1">
+								<h:panelGrid columns="2">
+									<h:outputLabel value="Contact technique : " />
+									<h:outputLink value="mailto:contact@vinsurvin.fr">contact@vinsurvin.fr</h:outputLink>
+								</h:panelGrid>
+								<h:commandLink value="Plan du site" />
+								<h:commandLink value="Mentions légales" />
+							</h:panelGrid>
+						</h:column>
 					</h:panelGrid>
 				</h:form>
-			</div>
+			</p:panel>
 		</p:panel>
 	</h:body>
 

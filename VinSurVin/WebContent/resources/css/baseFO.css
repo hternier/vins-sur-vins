@@ -1,33 +1,65 @@
+body {
+	margin: 0;
+	padding: 0;
+	font: normal 11px/14px Arial, Verdana, sans-serif;
+	background: white;
+	border: none;
+}
+
 .header-logo {
 	width: 20%;
 	float: left;
+	padding-top: 0px;
 }
 
 .panelRecherche {
-	width: 55%;
+	/*width: 55%;*/
 	float: left;
-	font-size: medium !important;
+	/*font-size: medium !important;*/
 	line-height: 230%;
+	border: none;
+	font: normal 11px/14px Arial, Verdana, sans-serif;
+}
+
+.ui-panelgrid {
+	border: none;
+}
+
+.ui-panelgrid td {
+	border-collapse: collapse;
+	border: none;
+}
+
+.ui-widget-content {
+	border-collapse: collapse;
+	border: none;
+	background: none;
 }
 
 .header_deconnexion {
 	float: left;
 	width: 100%;
 	max-height: 50px;
+	border: none;
 }
 
 .header_deconnexion div {
 	padding: 0em !important;
+	border: none;
+	background-color: #8a072e;
 }
 
 .header_connexion {
 	float: left;
 	width: 100%;
 	max-height: 50px;
+	border: none;
 }
 
 .header_connexion div {
 	padding: 0em !important;
+	border: none;
+	background-color: #8a072e;
 }
 
 .topmenu_button {
@@ -40,46 +72,93 @@
 }
 
 .nav {
-	float:left;
+	float: left;
 	width: 100%;
+	border: none;
 }
 
 .main {
 	float: left;
+	position: relative;
+	min-height: 500px;
+	/*min-width: 800px; 
+	max-width : 1000px;*/
+	width: 100%;
+	border-top: 0px solid white;
+	border-bottom: 0px solid #a9c2ca;
+	background-color: #8a072e;
 }
 
 .footer {
 	float: left;
+	position: relative;
+	height: 100px;
+	border-top: 1px solid white;
+	background: black;
+	/*min-width: 800px;
+	max-width: 1000px;*/
+	width: 100%;
+	text-align: center;
+}
+
+.footer form {
+	float: left;
+	/*position: relative;*/
+	height: 100px;
+	width: 100%;
+	text-align: center;
+	color: white;
+	font-size: medium;
+}
+
+.footer form a {
+	color: white;
+	font-size: medium;
+}
+
+.fifty {
+	size: 50%;
+	min-width: 499px;
+}
+
+.twenty {
+	size: 20%;
+	min-width: 150px;
+}
+
+.sixty {
+	size: 60%;
+	min-width: 700px;
 }
 
 .page {
-	float: left;	
+	float: left;
 }
 
 .logoAndrecherche {
-	float:left;
+	float: left;
 	width: 100%;
 }
 
 .recherchePrixInput {
-	width:25px;
+	width: 25px;
 }
 
 .rechercheMillesime {
-	margin-left:14px;
-	float:left;
+	margin-left: 14px;
+	float: left;
 	max-width: 100px;
 }
 
 .rechercheRegion {
 	height: 27px;
-	margin-left:10px;
+	margin-left: 10px;
 	max-width: 200px;
-	float:left;
+	float: left;
 }
 
 .rechercheRegion label {
-	height:27px;
+	height: 27px;
 	padding: 0;
 	line-height: 200%;
 }
@@ -87,12 +166,12 @@
 .labelRegion {
 	font-weight: bold;
 	float: left;
-	margin-left:5px;
+	margin-left: 5px;
 }
 
 .boutonRechercheMain {
-	float:left;
-	height:29px;
+	float: left;
+	height: 29px;
 	margin-left: 3px;
 }
 
@@ -104,40 +183,52 @@
 	width: 100%;
 }
 
-.main {
-	width: 100%;
-}
-
 .imageCatalogue {
 	width: 144px;
 	height: 144px;
 }
 
 .quantiteVignette {
-    width: 50px;
+	width: 50px;
 }
 
 .quantiteVignette input {
-    width: 24px;
+	width: 24px;
 }
 
 .panelPanier {
-	text-align: right;
+	text-align: center;
+	border: groove;
+	border-collapse: collapse;
+	width: 180px;
+	height: 113px;
+	border: threedlightshadow;
+	background-color: black;
+	color: white;
+	font-size: medium;
+	border-top: 0px solid white;
+	border-bottom: 0px solid #a9c2ca;
+	   border-radius: 5px;
+}
+
+.panelPanier a {
+	color: white;
+	font-size: medium;
 }
 
 .panelProduitRecherche {
-	
+	border: none;
 }
 
 .panelDetailCommun {
-	float:left;
+	float: left;
+	border: none;
 }
 
 .quantiteVignetteDetail {
-    width: 65px;
+	width: 65px;
 }
 
 .quantiteVignetteDetail input {
-    width: 39px;
+	width: 39px;
 }
-

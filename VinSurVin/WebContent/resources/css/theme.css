@@ -23,8 +23,17 @@ a {
 	{
 	font-family: Arial, sans-serif;
 	font-size: 1em;
+	text-align: center;
 }
-
+.ui-widget img {
+    float: left;
+    padding-left: 0px;
+}
+.ui-widget button #deconnexion_button{
+    float: right;
+    padding-right: 0px;
+    padding: 8px 15px;
+}
 .ui-widget-content {
 	border: 0px solid #a8a8a8;
 	background: #ffffff;
