@@ -163,7 +163,5 @@ public class ServiceCommandeImpl implements IServiceCommande{
     public void setDaoProduit(IDaoProduit paramDaoProduit) {
         daoProduit = paramDaoProduit;
     }
-    
-    
 
 }

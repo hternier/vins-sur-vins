@@ -64,20 +64,6 @@ public class DaoCompteImpl implements IDaoCompte {
 		return em.find(CompteClient.class, paramCompteClient.getId());
 	}
 
-	@PostConstruct
-	public void init() throws IOException {
-		this.emf = Persistence.createEntityManagerFactory("VinSurVin");
-		this.em = emf.createEntityManager();
-		this.tx = em.getTransaction();
-
-	}
-
-	@PreDestroy
-	public void destroy() throws IOException {
-		this.em.close();
-		this.emf.close();
-	}
-
 	private final String REQ_AUTHENTIFICATIONGESTIONNAIRE = "FROM CompteSysteme c WHERE idetatcompte=1 and mailcompte=? and mdpcompte=?";
 
 	@Override
@@ -108,6 +94,20 @@ public class DaoCompteImpl implements IDaoCompte {
 			retour = null;
 		}
 		return retour;
+	}
+
+	@PostConstruct
+	public void init() throws IOException {
+		this.emf = Persistence.createEntityManagerFactory("VinSurVin");
+		this.em = emf.createEntityManager();
+		this.tx = em.getTransaction();
+
+	}
+
+	@PreDestroy
+	public void destroy() throws IOException {
+		this.em.close();
+		this.emf.close();
 	}
 
 }
