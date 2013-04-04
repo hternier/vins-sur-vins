@@ -49,6 +49,8 @@ body {
 #resultatRecherche {
 	width: 95%;
 	background-color: white;
+	   max-width: 900px;
+	
 }
 
 .ui-datagrid {
