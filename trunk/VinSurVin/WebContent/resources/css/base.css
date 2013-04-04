@@ -281,6 +281,7 @@ ol,ul {
 	padding: 35px;
 	box-shadow: 1px 4px 4px #a1bfc9;
 	background: white;
+
 }
 /* line 146, ../sass/base.sass */
 #main .block-login h1 {
@@ -296,24 +297,32 @@ ol,ul {
 }
 /* line 154, ../sass/base.sass */
 #main .block-login input[type="text"] {
-	width: 230px;
+	width: 200px;
 	height: 29px;
 	margin-left: 5px;
 	padding-left: 7px;
 	margin-top: -15px;
-	border: 0;
-	background: url(bg_input_text.png) 0 0 no-repeat;
+	/*border: 0;
+	background: url(bg_input_text.png) 0 0 no-repeat;*/
+	background-color: #dfdfdf;
+	   -moz-box-shadow: inset 0px 1px 0px 0px #ffffff;
+    -webkit-box-shadow: inset 0px 1px 0px 0px #ffffff;
+    box-shadow: inset 0px 1px 0px 0px #ffffff;
 }
 /* line 160, ../sass/base.sass */
 #main .block-login input[type="password"] {
-	width: 230px;
+	width: 200px;
 	height: 29px;
 	margin-left: 5px;
 	padding-left: 7px;
 	margin-top: -15px;
 	margin-bottom: 15px;
-	border: 0;
-	background: url(bg_input_text.png) 0 0 no-repeat;
+	background-color: #dfdfdf;
+/*	border: 0;
+	background: url(bg_input_text.png) 0 0 no-repeat;*/
+	   -moz-box-shadow: inset 0px 1px 0px 0px #ffffff;
+    -webkit-box-shadow: inset 0px 1px 0px 0px #ffffff;
+    box-shadow: inset 0px 1px 0px 0px #ffffff;
 }
 /* line 166, ../sass/base.sass */
 #main .block-login input[type="submit"] {

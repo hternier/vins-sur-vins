@@ -57,27 +57,27 @@
 					paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 					rowsPerPageTemplate="10,25,50,100" paginatorAlwaysVisible="true"
 					emptyMessage="Il n'y a pas de produit dans la base">
-					<p:column headerText="Id" style="width:5%;">
+					<p:column headerText="Id" style="width:5%" sortBy="#{produit.id}">
 						<h:outputText value="#{produit.id}" />
 					</p:column>
-					<p:column headerText="Libellé" style="width:37%;">
+					<p:column headerText="Libellé" style="width:37%" sortBy="#{produit.libelle}">
 						<h:outputText value="#{produit.libelle}" />
 					</p:column>
-					<p:column headerText="Categorie" style="width:10%;">
+					<p:column headerText="Categorie" style="width:10%" sortBy="#{produit.categoriePrimaire}">
 						<h:outputText value="#{produit.categoriePrimaire}" />
 					</p:column>
-					<p:column headerText="Sous-Categorie" style="width:15%;">
+					<p:column headerText="Sous-Categorie" style="width:15%" sortBy="#{produit.categorie.valeur}">
 						<h:outputText value="#{produit.categorie.valeur}" />
 					</p:column>
-					<p:column headerText="Stock" style="width:6%;">
+					<p:column headerText="Stock" style="width:6%" sortBy="#{produit.stock}">
 						<h:outputText value="#{produit.stock}" />
 					</p:column>
-					<p:column headerText="Mise en ligne" style="width:15%;">
+					<p:column headerText="Mise en ligne" style="width:15%" sortBy="#{produit.dateMiseEnLigne}">
 						<h:outputText value="#{produit.dateMiseEnLigne}">
 							<f:convertDateTime pattern="dd/MM/yyyy" />
 						</h:outputText>
 					</p:column>
-					<p:column headerText="Modifier" style="width:12%;">
+					<p:column headerText="Modifier" style="width:12%;" >
 						<p:commandButton id="modifier_produit_button" value="modifier"
 							process="@this">
 							<f:setPropertyActionListener value="#{produit}"
