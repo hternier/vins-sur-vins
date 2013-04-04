@@ -298,3 +298,14 @@ body {
 	margin: 4px 0 0 10px;;
 	float: right;
 }
+
+.choixVille {
+    min-width: 170px !important;
+    max-width: 170px !important;
+}
+
+.boutonAjoutClient  {
+	float:left;
+    margin-left: -105px;
+    margin-top: 340px;
+}

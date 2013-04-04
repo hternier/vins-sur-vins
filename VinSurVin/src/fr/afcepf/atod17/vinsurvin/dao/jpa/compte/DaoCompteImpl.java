@@ -38,7 +38,11 @@ public class DaoCompteImpl implements IDaoCompte {
 	@Override
 	public CompteClient setCompte(CompteClient compte) {
 		this.tx.begin();
-		em.persist(compte.getAdresseFacturation());
+		if (!compte.getAdresseFacturation().getAdresse1().isEmpty()) {
+			em.persist(compte.getAdresseFacturation());
+		} else {
+			compte.setAdresseFacturation(null);
+		}
 		em.persist(compte);
 		em.flush();
 		this.tx.commit();

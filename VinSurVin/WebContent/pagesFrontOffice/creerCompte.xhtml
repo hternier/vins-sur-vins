@@ -8,54 +8,53 @@
 	
 	<ui:define name="body">
 		<h:form>
-<!-- 		<p:messages id="msgs"/> -->
-        <p:messages id="messages" showDetail="true" autoUpdate="true"/>  
-<p:growl id="growl" showDetail="true"/>  
 			<p:panel id="panel" header="Inscription" style="margin-bottom:10px;float:left;">
 				<h:panelGrid>
-					<h:outputLabel for="Nom" value="Nom: " />
+					<h:outputLabel for="Nom" value="Nom : " />
 					<p:inputText id="Nom" value="#{mbCreerCompte.compteClient.nom}" />
-					<h:outputLabel for="Prenom" value="Prénom: " />
+					<h:outputLabel for="Prenom" value="Prénom : " />
 					<p:inputText id="Prenom"
 						value="#{mbCreerCompte.compteClient.prenom}" />
-					<h:outputLabel for="email1" value="Email: " />
+					<h:outputLabel for="email1" value="Email : " />
 					<p:inputText id="email1" value="#{mbCreerCompte.mail1}"
-					 label="email1" required="true" />
-					<h:outputLabel for="email2" value="Confirmer email: *" />
+					 label="email1" />
+					<h:outputLabel for="email2" value="Confirmer email : *" />
 					<p:inputText id="email2" value="#{mbCreerCompte.mail2}"
-						label="email2" required="true" />
-					<h:outputLabel for="pwd1" value="Password 1: " />
-					<p:password id="pwd1" value="#{mbCreerCompte.compteClient.mdp}"
-						feedback="true" match="pwd2" label="Password 1" required="true" />
-					<h:outputLabel for="pwd2" value="Password 2: " />
-					<p:password id="pwd2" value="#{mbCreerCompte.compteClient.mdp}"
-						feedback="true" label="Password 2" required="true" />
-					<h:outputText value="Phone: " />
+						label="email2" />
+					<h:outputLabel value="Mot de passe 1 : " />
+					<p:password id="pwd1" value="#{mbCreerCompte.mdp1}" />
+					<h:outputLabel value="Mot de passe 2 : " />
+					<p:password id="pwd2" value="#{mbCreerCompte.mdp2}" />
+					<h:outputText value="Téléphone : " />
 					<p:inputMask value="#{mbCreerCompte.compteClient.tel}"
 						mask="99-99-99-99-99" />
-					<h:outputText value="Adresse 1: " />
-					<p:inputText
-						value="#{mbCreerCompte.compteClient.adresseFacturation.adresse1}"
-						name="Adresse1" />
-					<h:outputText value="Adresse 2: " />
-					<p:inputText
-						value="#{mbCreerCompte.compteClient.adresseFacturation.adresse2}"
-						name="Adresse2" />
-					<h:outputText value="Code postal: " />
-					<p:inputText value="#{mbCreerCompte.cp}">
-						<p:ajax event="keyup" update="listeVille"
-							listener="#{mbCreerCompte.villeParCP}" />
-					</p:inputText>
-					<h:outputText value="Ville: " />
-					<p:selectOneMenu id="listeVille" value="#{mbCreerCompte.ville}" styleClass="choixVille">
-						<f:selectItem itemLabel="" itemValue=""  />
-						<f:selectItems value="#{mbCreerCompte.listVille}" />
-					</p:selectOneMenu>
+						
+					
 
 				</h:panelGrid>
 			</p:panel>
+			<p:panel toggleable="true" header="Adresse de facturation" toggleSpeed="1" collapsed="true" style="float:left;">
+			    <h:panelGrid>
+	                 <h:outputText value="Adresse 1: " />
+	                 <p:inputText
+	                     value="#{mbCreerCompte.compteClient.adresseFacturation.adresse1}"
+	                     name="Adresse1" />
+	                 <h:outputText value="Adresse 2: " />
+	                 <p:inputText value="#{mbCreerCompte.compteClient.adresseFacturation.adresse2}" name="Adresse2" />
+	                 <h:outputText value="Code postal: " />
+	                 <p:inputText value="#{mbCreerCompte.cp}">
+	                     <p:ajax event="keyup" update="listeVille"
+	                         listener="#{mbCreerCompte.villeParCP}" />
+	                 </p:inputText>
+	                 <h:outputText value="Ville: " />
+	                 <p:selectOneMenu id="listeVille" value="#{mbCreerCompte.ville}" styleClass="choixVille">
+	                     <f:selectItem itemLabel="" itemValue=""  />
+	                     <f:selectItems value="#{mbCreerCompte.listVille}" />
+	                 </p:selectOneMenu>
+	              </h:panelGrid>
+             </p:panel>
 			<p:commandButton value="S'enregistrer"
-				action="#{mbCreerCompte.creerCompte() }" update="panel,growl" />
+				action="#{mbCreerCompte.creerCompte }" update=":general_growl_form:general_growl" styleClass="boutonAjoutClient" />
 		</h:form>
 	</ui:define>
 
