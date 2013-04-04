@@ -26,20 +26,22 @@
 					rendered="#{mbAccueil.clientConnected != null}">
 					<p:commandButton styleClass="topmenu_button" value="Déconnexion"
 						action="#{mbAccueil.deconnexion }" update=":panelConnexion" />
+					<p:commandButton styleClass="topmenu_button" value="Mon Compte" action="#{mbAccueil.gestionCompte}" />
+					<p:commandButton styleClass="topmenu_button" action="#{mbAccueil.gestionCommandes }" value="Mes commandes"  />
 				</p:panel>
 				<p:panel styleClass="header_connexion"
 					rendered="#{mbAccueil.clientConnected == null}">
-					<h:outputLabel value="Identifiant" />
-					<p:inputText id="identifiant_inputText"
-						value="#{mbAccueil.connexionMail }" style="margin-left:10px;" />
-					<h:outputLabel value="Mot de passe" />
-					<p:password style="margin-left:10px;" id="mdp_inputText"
-						value="#{mbAccueil.connexionMdp }" />
+					<p:commandButton styleClass="topmenu_button" value="Inscription"
+						action="#{mbAccueil.creerCompte}" />
 					<p:commandButton styleClass="topmenu_button" value="Connexion"
 						action="#{mbAccueil.connexion }"
 						update=":panelConnexion,:general_growl_form:general_growl" />
-					<p:commandButton styleClass="topmenu_button" value="Inscription"
-						action="#{mbAccueil.creerCompte}" />
+					<p:password styleClass="textFieldConnexion" id="mdp_inputText"
+						value="#{mbAccueil.connexionMdp }" />
+					<h:outputLabel value="Mot de passe" styleClass="labelConnexion" />
+					<p:inputText id="identifiant_inputText"
+						value="#{mbAccueil.connexionMail }" styleClass="textFieldConnexion" />
+					<h:outputLabel value="Identifiant" styleClass="labelConnexion" />
 				</p:panel>
 			</h:form>
 

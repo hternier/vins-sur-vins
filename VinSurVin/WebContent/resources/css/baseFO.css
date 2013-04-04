@@ -65,6 +65,7 @@ body {
 .topmenu_button {
 	margin-left: 10px;
 	height: 33px;
+	float:right;
 }
 
 .topmenu_button span {
@@ -231,4 +232,14 @@ body {
 
 .quantiteVignetteDetail input {
 	width: 39px;
+}
+
+.labelConnexion {
+	float: right;
+	margin: 10px 0 0 10px;
+}
+
+.textFieldConnexion {
+	margin: 4px 0 0 10px;;
+	float: right;
 }
