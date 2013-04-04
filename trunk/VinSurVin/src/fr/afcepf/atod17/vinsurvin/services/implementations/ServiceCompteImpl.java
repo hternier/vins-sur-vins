@@ -32,11 +32,6 @@ public class ServiceCompteImpl implements IServiceCompte {
 		return daoCompte.getCompteClient(paramCompte);
 	}
 
-	@Override
-	public Long testEmail(String mail) {
-		return daoCompte.testEmail(mail);
-	}
-
 	public IDaoCompte getDaoCompte() {
 		return daoCompte;
 	}
@@ -56,6 +51,15 @@ public class ServiceCompteImpl implements IServiceCompte {
 	public CompteClient authentificationFO(CompteAbstrait paramCompte) {
 		return daoCompte.authentificationFO(paramCompte.getMail(),
 				paramCompte.getMdp());
+	}
+
+	@Override
+	public boolean testEmail(String mail) {
+		boolean retour = false;
+		if (daoCompte.testEmail(mail) == 0) {
+			retour = true;
+		}
+		return retour;
 	}
 
 }
