@@ -127,6 +127,11 @@
             <to-view-id>/pagesFrontOffice/gestionPanier.xhtml</to-view-id>
             <redirect />
         </navigation-case>
+           <navigation-case>
+            <from-outcome>GoAccueil</from-outcome>
+            <to-view-id>/pagesFrontOffice/accueil.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
         <navigation-case>
             <from-outcome>CreerCompte</from-outcome>
             <to-view-id>/pagesFrontOffice/creerCompte.xhtml</to-view-id>

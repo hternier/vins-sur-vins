@@ -50,7 +50,7 @@
 			<h:panelGrid columns="3" columnClasses="twenty, sixty, twenty">
 				<h:column id="colonne_gauche_header" styleClass="header">
 					<h:panelGrid columns="1">
-						<a href="#" title="Vin sur Vin" class="logo-one"> <img
+						<a href="../pagesFrontOffice/accueil.xhtml" title="Vin sur Vin" class="logo-one"> <img
 							src="../resources/images/logo.png" alt="Vin sur Vin"
 							height="115px" />
 						</a>
@@ -140,7 +140,7 @@
 			<p:panel id="nav" styleClass="nav">
 				<h:form id="bandeauCommande" styleClass="nav_bandeau">
 					<p:commandButton id="accueil_button" value="Accueil"
-						action="goAccueil" styleClass="ui-button-home" />
+						action="#{mbAccueil.allerAccueil}" styleClass="ui-button-home" />
 					<p:commandButton id="vinRouge_button" value="Vins rouges"
 						action="#{mbAccueil.rechercheVinRouges}" />
 					<p:commandButton id="vinRose_button" value="Vins rosés"
