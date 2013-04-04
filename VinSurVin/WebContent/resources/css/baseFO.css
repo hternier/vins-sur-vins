@@ -47,10 +47,10 @@ body {
 }
 
 #resultatRecherche {
-	width: 95%;
+/*	width: 95%;
 	background-color: white;
 	   max-width: 900px;
-	
+*/	
 }
 
 .ui-datagrid {
@@ -131,12 +131,7 @@ body {
 
 .main fieldset {
 	width: 95%;
-	max-width: 850px;
-}
-
-#main fieldset {
-	width: 95%;
-	max-width: 850px;
+/*	max-width: 850px;*/
 }
 
 .main-content {
@@ -154,6 +149,7 @@ body {
 	max-width: 1100px;
 	width: 100%;
 	text-align: center;
+
 }
 
 .footer form {
@@ -164,6 +160,7 @@ body {
 	text-align: center;
 	color: white;
 	font-size: medium;
+	   margin-left: 70px;
 }
 
 .footer form a {
