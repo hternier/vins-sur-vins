@@ -63,15 +63,15 @@
 						<h:form>
 							<h:panelGrid columns="8">
 								<p:panelGrid columns="2">
-									<h:outputLabel value="Nom :"
+									<h:outputLabel value="Nom:"
 										style="font-weight:bold;float:left;" />
 									<p:inputText value="#{mbAccueil.rechercheTextuelle }" />
 								</p:panelGrid>
 
 								<p:panelGrid columns="6">
 									<h:outputLabel style="font-weight:bold;float:left;"
-										value="Gamme de prix :" />
-									<h:outputLabel value="entre :" />
+										value="Gamme de prix:" />
+									<h:outputLabel value="entre:" />
 									<p:inputText value="#{mbAccueil.recherchePrixMin}"
 										styleClass="recherchePrixInput" />
 									<h:outputLabel value="euros et" />
@@ -82,13 +82,13 @@
 							</h:panelGrid>
 							<h:panelGrid columns="8">
 								<p:panelGrid columns="2">
-									<h:outputText value="Millésime : "
+									<h:outputText value="Millésime: "
 										style="font-weight:bold;float:left;" />
 									<p:inputText value="#{mbAccueil.rechercheMillesime }"
 										styleClass="rechercheMillesime" />
 								</p:panelGrid>
 								<p:panelGrid columns="5">
-									<h:outputText value="Région : " styleClass="labelRegion" />
+									<h:outputText value="Région: " styleClass="labelRegion" />
 									<p:selectOneMenu value="#{mbAccueil.rechercheRegion }"
 										styleClass="rechercheRegion">
 										<f:selectItem itemLabel="" itemValue="" />
