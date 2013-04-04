@@ -7,75 +7,82 @@
 	xmlns:p="http://primefaces.org/ui"
 	template="../layoutsBackOffice/gestionProduitsBOLayout.xhtml">
 	<ui:define name="body">
-		<h:form id="accueilBO_form">
-			<p:fieldset legend="Gestion des produits">
-				<p:panel id="gestion_produits_panel" styleClass="panel">
-					<h2>Gestion des produits</h2>
-					<h:outputLabel value="Rechercher" />
-					<h:inputText id="recherche_inputText" />
-					<h:outputLabel for="categorie_outputLabel" value="Catégorie :" />
-					<h:selectOneMenu id="categorie_select"
-						value="#{gestionProduitManagedBean.categorie}" >
-						<f:selectItem itemLabel="Selectionnez" itemValue="" />
-						<f:selectItems
-							value="#{gestionProduitManagedBean.listeCategories}" />
-					</h:selectOneMenu>
+        <h:form id="accueilBO_form">
+            <p:panel id="gestionProduits_panel" styleClass="vsvPanel">
+                <h2>Gestion des produits</h2>
+                <h:outputLabel value="Rechercher " />
+                <h:inputText id="recherche_inputText"
+                    value="#{mbGestionProduits.rechercheTextuelle }" />
+                <h:outputLabel for="categorie_select" value="Catégorie :" />
+                <h:selectOneMenu id="categorie_select"
+                    value="#{mbGestionProduits.listeCategoriesSelected }">
+                    <f:selectItem itemLabel="Selectionnez" itemValue="" />
+                    <f:selectItems value="#{mbGestionProduits.listeCategories }" />
+                </h:selectOneMenu>
 
-					<h:outputLabel for="sousCategorie_outputLabel"
-						value="Sous-catégorie :" />
-					<h:selectOneMenu id="sousCategorie_select"
-						value="#{gestionProduitManagedBean.sousCategorie}">
-						<f:selectItem itemLabel="Selectionnez" itemValue="" />
-						<f:selectItems
-							value="#{gestionProduitManagedBean.listeSousCategories}" />
-					</h:selectOneMenu>
+                <h:outputLabel for="sousCategorie_select" value="Sous-catégorie :" />
+                <h:selectOneMenu id="sousCategorie_select"
+                    value="#{mbGestionProduits.listeSousCategoriesSelected }">
+                    <f:selectItem itemLabel="Selectionnez" itemValue="" />
+                    <f:selectItems value="#{mbGestionProduits.listeSousCategories }" />
+                </h:selectOneMenu>
 
-					<h:commandButton value="OK" id="filtrerProduits_button" rendered="true" />
-					<h:commandButton value="Tout afficher" id="afficherTout_button" rendered="true" />
-					
-					<br/>
-					<h:form id="nouveauProduit">
-					<p:messages id="erreursLol" />
-						<h:outputLabel for="nouveauProduitCategorie_select" value="Créer un nouveau produit de type : " />
-						<h:selectOneMenu id="nouveauProduitCategorie_select" value="#{mbGestionProduits.listeCategoriesSelected}">
-							<f:selectItem itemLabel="Selectionnez" itemValue="" />
-							<f:selectItems value="#{mbGestionProduits.listeCategories}" />
-						</h:selectOneMenu>
-						<p:commandButton value="Ok" action="#{mbGestionProduits.nouveauProduit}" update="erreursLol"/>
-					</h:form>
-					
-					<p:dataTable var="produit" paginator="true" rendered="true"
-						>
-						<p:column headerText="Id produit" />
-						<p:column headerText="Libellé" />
-						<p:column headerText="Catégorie" />
-						<p:column headerText="Sous-catégorie" />
-						<p:column headerText="Stock" />
-						<p:column headerText=" Date de mise en ligne" />
-						<p:column headerText="Modifier" />
-					</p:dataTable>
+                
+                <h:commandButton value="OK" id="filtrerProduits_button"
+                    action="#{mbGestionProduits.rechercheMulticritere }" />
 
 
+                <h:commandButton value="Tout afficher" id="afficherTout_button"
+                    action="#{mbGestionProduits.rechercheTout }" />
 
-					<p:dataTable value="#{mbTest.listeProduit}" var="produit"
-						resizableColumns="true" paginator="true">
-						<p:column headerText="Id">
-							<h:outputText value="#{produit.id}" />
-						</p:column>
-						<p:column headerText="Libellé">
-							<h:outputText value="#{produit.libelle}" />
-						</p:column>
-						<p:column headerText="Categorie">
-							<h:outputText value="#{produit.categorie.valeur}" />
-						</p:column>
-						<p:column headerText="Stock">
-							<h:outputText value="#{produit.stock}" />
-						</p:column>
-					</p:dataTable>
-				</p:panel>
-			</p:fieldset>
 
-		</h:form>
+                <br/>
+                <h:form id="nouveauProduit">
+                    <h:outputLabel for="nouveauProduitCategorie_select" value="Créer un nouveau produit de type : " />
+                    <h:selectOneMenu id="nouveauProduitCategorie_select" value="#{mbGestionProduits.listeCategoriesSelected}">
+                        <f:selectItem itemLabel="Selectionnez" itemValue="" />
+                        <f:selectItems value="#{mbGestionProduits.listeCategories}" />
+                    </h:selectOneMenu>
+                    <h:commandButton value="Ok" action="#{mbGestionProduits.nouveauProduit}"/>
+                </h:form>
 
-	</ui:define>
+                <p:dataTable value="#{mbGestionProduits.listeProduits}"
+                    var="produit" id="datatable_listeProduitGestion"
+                    resizableColumns="true" paginator="true" paginatorPosition="bottom"
+                    rows="7" sortBy="#{produit.libelle}" sortOrder="ascending"
+                    paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                    rowsPerPageTemplate="10,25,50,100" paginatorAlwaysVisible="true"
+                    emptyMessage="Il n'y a pas de produit dans la base">
+                    <p:column headerText="Id" style="width:5%" sortBy="#{produit.id}">
+                        <h:outputText value="#{produit.id}" />
+                    </p:column>
+                    <p:column headerText="Libellé" style="width:37%" sortBy="#{produit.libelle}">
+                        <h:outputText value="#{produit.libelle}" />
+                    </p:column>
+                    <p:column headerText="Categorie" style="width:10%" sortBy="#{produit.categoriePrimaire}">
+                        <h:outputText value="#{produit.categoriePrimaire}" />
+                    </p:column>
+                    <p:column headerText="Sous-Categorie" style="width:15%" sortBy="#{produit.categorie.valeur}">
+                        <h:outputText value="#{produit.categorie.valeur}" />
+                    </p:column>
+                    <p:column headerText="Stock" style="width:6%" sortBy="#{produit.stock}">
+                        <h:outputText value="#{produit.stock}" />
+                    </p:column>
+                    <p:column headerText="Mise en ligne" style="width:15%" sortBy="#{produit.dateMiseEnLigne}">
+                        <h:outputText value="#{produit.dateMiseEnLigne}">
+                            <f:convertDateTime pattern="dd/MM/yyyy" />
+                        </h:outputText>
+                    </p:column>
+                    <p:column headerText="Modifier" style="width:12%;" >
+                        <p:commandButton id="modifier_produit_button" value="modifier"
+                            process="@this">
+                            <f:setPropertyActionListener value="#{produit}"
+                                target="#{mbTest.listeProduit}" />
+                        </p:commandButton>
+                    </p:column>
+                </p:dataTable>
+            </p:panel>
+        </h:form>
+
+    </ui:define>
 </ui:composition>

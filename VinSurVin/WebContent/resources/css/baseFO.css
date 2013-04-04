@@ -30,10 +30,38 @@ body {
 	border: none;
 }
 
+.ui-datatable {
+	width: 95%;
+	background-color: white;
+}
+
+.ui-datatable td {
+	background-color: white;
+}
+
 .ui-widget-content {
 	border-collapse: collapse;
 	border: none;
 	background: none;
+	width: 95%;
+}
+
+#resultatRecherche {
+	width: 95%;
+	background-color: white;
+}
+
+.ui-datagrid {
+	width: 95%;
+	background-color: white;
+}
+
+.ui-paginator {
+	width: 95%;
+	background-color: white;
+}
+.table {
+	width: 95%;
 }
 
 .header_deconnexion {
@@ -41,6 +69,8 @@ body {
 	width: 100%;
 	max-height: 50px;
 	border: none;
+	min-width: 800px;
+	max-width: 1100px;
 }
 
 .header_deconnexion div {
@@ -54,6 +84,8 @@ body {
 	width: 100%;
 	max-height: 50px;
 	border: none;
+	min-width: 800px;
+	max-width: 1100px;
 }
 
 .header_connexion div {
@@ -65,11 +97,16 @@ body {
 .topmenu_button {
 	margin-left: 10px;
 	height: 33px;
-	float:right;
+	float: right;
 }
 
 .topmenu_button span {
 	display: inline !important;
+}
+
+.ui-fieldset {
+	width: 95%;
+	/*background-color: white;*/
 }
 
 .nav {
@@ -82,12 +119,27 @@ body {
 	float: left;
 	position: relative;
 	min-height: 500px;
-	/*min-width: 800px; 
-	max-width : 1000px;*/
+	min-width: 800px;
+	max-width: 1100px;
 	width: 100%;
 	border-top: 0px solid white;
 	border-bottom: 0px solid #a9c2ca;
 	background-color: #8a072e;
+}
+
+.main fieldset {
+	width: 95%;
+	max-width: 850px;
+}
+
+#main fieldset {
+	width: 95%;
+	max-width: 850px;
+}
+
+.main-content {
+	width: 95%;
+	max-width: 850px;
 }
 
 .footer {
@@ -96,8 +148,8 @@ body {
 	height: 100px;
 	border-top: 1px solid white;
 	background: black;
-	/*min-width: 800px;
-	max-width: 1000px;*/
+	min-width: 800px;
+	max-width: 1100px;
 	width: 100%;
 	text-align: center;
 }
@@ -129,11 +181,14 @@ body {
 
 .sixty {
 	size: 60%;
-	min-width: 700px;
+	min-width: 650px;
 }
 
 .page {
 	float: left;
+	min-width: 800px;
+	max-width: 1100px;
+	width: 100%;
 }
 
 .logoAndrecherche {
@@ -209,7 +264,7 @@ body {
 	font-size: medium;
 	border-top: 0px solid white;
 	border-bottom: 0px solid #a9c2ca;
-	   border-radius: 5px;
+	border-radius: 5px;
 }
 
 .panelPanier a {
