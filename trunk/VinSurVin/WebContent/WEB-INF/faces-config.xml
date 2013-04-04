@@ -132,6 +132,11 @@
             <to-view-id>/pagesFrontOffice/creerCompte.xhtml</to-view-id>
             <redirect />
         </navigation-case>
+        <navigation-case>
+            <from-outcome>gestionCommande</from-outcome>
+            <to-view-id>/pagesFrontOffice/gestionCommande.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
     </navigation-rule>
 
 

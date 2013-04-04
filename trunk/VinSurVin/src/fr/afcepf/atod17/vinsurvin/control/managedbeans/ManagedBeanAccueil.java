@@ -361,4 +361,12 @@ public class ManagedBeanAccueil extends AbstractManagedBean {
         return "gestionPanier";
     }
 	
+	public String gestionCommandes() {
+		return "gestionCommande";
+	}
+	
+	public String gestionCompte() {
+		return "gestionCompte";
+	}
+	
 }
