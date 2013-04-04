@@ -10,7 +10,7 @@
 	template="gestionPanierLayout.xhtml">
 	<ui:define name="body">
 		<h:form id="form">
-			<p:fieldset legend="Récapitulatife du panier">
+			<p:fieldset legend="Récapitulatif du panier">
 				<h:outputText value="Votre panier :" />
 				<p:dataTable id="dtProduits" value="#{mbPanier.listeProduits}" var="produitPanier"
 					resizableColumns="true" paginator="true">

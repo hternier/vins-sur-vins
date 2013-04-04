@@ -59,10 +59,10 @@ public class ManagedBeanCommande extends AbstractManagedBean {
     
     public Commande getCommande() {
         
-        if(this.commande.getId() == 0) {
+        if(this.commande.getId() == 0 && mbPanier.getCommande() == null) {
             setCommande(mbPanier.getCommande());
+            System.out.println("Init commande : " + commande.getDateCommande() + ", " + commande.getEtatCommande().getLibelle());
         }
-        System.out.println("Init commande : " + commande.getDateCommande() + ", " + commande.getEtatCommande().getLibelle());
         return this.commande;
     }
     
@@ -170,9 +170,9 @@ public class ManagedBeanCommande extends AbstractManagedBean {
      * "En attente de validation" et "En attente de paiement"
      */
     public List<VueCommande> getCommandesEnCours() {
-        if(commandesEnCours == null) {
+        //if(commandesEnCours == null) {
             setCommandesEnCours();
-        }
+        //}
         return commandesEnCours;
     }
 
@@ -199,9 +199,9 @@ public class ManagedBeanCommande extends AbstractManagedBean {
      */
     public List<VueCommande> getCommandesHistoriques() {
         
-        if(commandesHistoriques == null) {
+        //if(commandesHistoriques == null) {
             setCommandesHistoriques();
-        }
+        //}
         return commandesHistoriques;
     }
 

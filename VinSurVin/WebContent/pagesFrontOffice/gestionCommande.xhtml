@@ -35,6 +35,7 @@
 				</p:dataTable>
 				<br/>
 				<br/>
+				<p:panel styleClass="detail_commande" rendered="#{mbCommande.commande.id != 0}">
 				<h:form id="form">
 				<h:outputText value="Detail de la commande n°" /><h:outputText value="#{mbCommande.commande.id}" /><h:outputText value=" : " />
 				<p:dataTable value="#{mbCommande.commande.produitsEnCommande}"
@@ -67,6 +68,7 @@
 						</p:commandButton>
 					</p:column>
 				</p:panelGrid>
+				</p:panel>
 				
 				<br/>
 				<br/>
