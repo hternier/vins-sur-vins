@@ -1,6 +1,8 @@
 package fr.afcepf.atod17.vinsurvin.control.entities;
 
+import fr.afcepf.atod17.vinsurvin.entitybeans.produit.Accessoire;
 import fr.afcepf.atod17.vinsurvin.entitybeans.produit.Produit;
+import fr.afcepf.atod17.vinsurvin.entitybeans.produit.Spiritueux;
 import fr.afcepf.atod17.vinsurvin.entitybeans.produit.Vin;
 import fr.afcepf.atod17.vinsurvin.services.implementations.ServiceProduitImpl;
 import fr.afcepf.atod17.vinsurvin.utils.VinSurVinContext;
@@ -58,16 +60,72 @@ public class ProduitVueDetail {
 		return VinSurVinContext.getSpringContext().getBean(ServiceProduitImpl.class).getPrixActuelTTC(produit);
 	}
 	
-	public boolean getProduitIsVin() {
+	public boolean getIsVin() {
 		return this.produit.getClass().getSimpleName().equals(Vin.class.getSimpleName());
 	}
 	
-	public String getRegion() {
+	public boolean getIsSpiritueux() {
+		return this.produit.getClass().getSimpleName().equals(Spiritueux.class.getSimpleName());
+	}
+	
+	public boolean getIsAccessoire() {
+		return this.produit.getClass().getSimpleName().equals(Accessoire.class.getSimpleName());
+	}
+	
+	public String getRegionVin() {
 		return ((Vin) this.produit).getRegion();
 	}
 	
 	public int getStock() {
 		return this.produit.getStock();
+	}
+	
+	public double getTVA() {
+		return this.produit.getTva().getValeur();
+	}
+	
+	public String getAppelationVin() {
+		return ((Vin) this.produit).getAppelation();
+	}
+	
+	public String getMillesimeVin() {
+		return ((Vin) this.produit).getMillesime();
+	}
+	
+	public String getPaysVin() {
+		return ((Vin) this.produit).getPays();
+	}
+	
+	public int getContenanceVin() {
+		return ((Vin) this.produit).getContenance();
+	}
+	
+	public String getDegresVin() {
+		return ((Vin) this.produit).getDegres();
+	}
+	
+	public String getAppellationSpiritueux() {
+		return ((Spiritueux) this.produit).getAppellation();
+	}
+	
+	public int getContenanceSpiritueux() {
+		return ((Spiritueux) this.produit).getContenance();
+	}
+	
+	public String getDegresSpiritueux() {
+		return ((Spiritueux) this.produit).getDegres();
+	}
+	
+	public String getMillesimeSpiritueux() {
+		return ((Spiritueux) this.produit).getMillesime();
+	}
+	
+	public String getMarque() {
+		return ((Accessoire) this.produit).getMarque();
+	}
+	
+	public int getPoids() {
+		return ((Accessoire) this.produit).getPoids();
 	}
 	
 }

@@ -67,5 +67,13 @@ public class Vin extends Produit {
 	public void setContenance(int contenance) {
 		this.contenance = contenance;
 	}
+
+	public String getDegres() {
+		return degres;
+	}
+
+	public void setDegres(String degres) {
+		this.degres = degres;
+	}
 	
 }
