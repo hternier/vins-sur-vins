@@ -11,7 +11,7 @@
 	<ui:define name="body">
 		<h:form id="form">
 			<p:fieldset legend="Gestion de vos commandes">
-				<h:outputText value="Vos commandes en cours :" />
+				<h:outputLabel value="Vos commandes en cours :" />
 
 				<p:growl id="msgs" showDetail="true" />
 				<p:dataTable value="#{mbCommande.commandesEnCours}"
@@ -37,7 +37,7 @@
 				<br/>
 				<p:panel styleClass="detail_commande" rendered="#{mbCommande.commande.id != 0}">
 				<h:form id="form">
-				<h:outputText value="Detail de la commande n°" /><h:outputText value="#{mbCommande.commande.id}" /><h:outputText value=" : " />
+				<h:outputLabel value="Detail de la commande n°" /><h:outputText value="#{mbCommande.commande.id}" /><h:outputText value=" : " />
 				<p:dataTable value="#{mbCommande.commande.produitsEnCommande}"
 					var="produitEnCommande" resizableColumns="true" paginator="false">
 					<p:column headerText="Libellé">
@@ -72,7 +72,7 @@
 				
 				<br/>
 				<br/>
-				<h:outputText value="Historique de vos commandes :" />
+				<h:outputLabel value="Historique de vos commandes :" />
 				<p:dataTable value="#{mbCommande.commandesHistoriques}"
 					var="commandeHistorique" resizableColumns="true" paginator="true">
 					<p:column headerText="N° de commande">
