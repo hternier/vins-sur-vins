@@ -21,7 +21,7 @@
 						<h:outputText value="#{produitPanier.produit.prixActuelTTC}"><f:convertNumber type="currency" /></h:outputText>
 					</p:column>
 					<p:column headerText="Quantité">
-						<p:inputText value="#{produitPanier.quantite}" />
+						<p:inputText value="#{produitPanier.quantite}" styleClass="quantiteVignette"/>
 						<p:commandButton ajax="false" value="Ok" actionListener="mbPanier.setQuantite">
 							<f:attribute name="produit" value="#{produitPanier.produit}" />
 							<f:attribute name="quantite" value="#{produitPanier.quantite}"/>
@@ -53,7 +53,7 @@
 						</p:commandButton>
 					</p:column>
 					<p:column >
-						<p:commandButton styleClass="btnRight" ajax="true" value="Valider mon panier" action="#{mbPanier.validerPanier}" update=":general_growl_form:general_growl">
+						<p:commandButton styleClass="btnRight" ajax="true" value="Valider mon panier" action="#{mbPanier.validerPanier}" update=":general_growl_form:general_growl" disabled="#{mbAccueil.clientConnected == null }">
 						</p:commandButton>
 					</p:column>
 				

@@ -13,10 +13,7 @@
 			<p:fieldset legend="Récapitulatife de la commande">
 				<h:outputLabel value="Votre commande :" />
 				<p:dataTable value="#{mbCommande.commande.produitsEnCommande}"
-					var="produitEnCommande" resizableColumns="true" paginator="true">
-					<p:column headerText="Image">
-						<h:outputText value="#{produitEnCommande.produit.image}" />
-					</p:column>
+					var="produitEnCommande" resizableColumns="true" paginator="false">
 					<p:column headerText="Libellé">
 						<h:outputText value="#{produitEnCommande.produit.libelle}" />
 					</p:column>
