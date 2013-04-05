@@ -17,16 +17,19 @@
 			type="image/x-icon" />
 
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-		<link rel="stylesheet" href="../resources/css/vsvBO.style.css"
-			type="text/css" />
-		<link rel="stylesheet" href="../resources/css/base.css"
-			type="text/css" />
-		<link rel="stylesheet" href="../resources/css/theme.css"
-			type="text/css" />
-		<link rel="stylesheet" href="../resources/css/primefaces.css"
-			type="text/css" />
-		<link rel="stylesheet" href="../resources/css/style.css"
-			type="text/css" />
+<!-- 		<link rel="stylesheet" href="../resources/css/vsvBO.style.css" -->
+<!-- 			type="text/css" /> -->
+<!-- 		<link rel="stylesheet" href="../resources/css/base.css" -->
+<!-- 			type="text/css" /> -->
+<!-- 		<link rel="stylesheet" href="../resources/css/theme.css" -->
+<!-- 			type="text/css" /> -->
+<!-- 		<link rel="stylesheet" href="../resources/css/primefaces.css" -->
+<!-- 			type="text/css" /> -->
+<!-- 		<link rel="stylesheet" href="../resources/css/style.css" -->
+<!-- 			type="text/css" /> -->
+
+       <link rel="stylesheet" href="../resources/css/cssBO.css"
+           type="text/css" />
 
 	</h:head>
 
@@ -35,12 +38,13 @@
 
 			<p:panel id="header" >
 				<h:form styleClass="topmenu_form">
-					<h:panelGrid columns="3"></h:panelGrid>
+					<h:panelGrid columns="2">
 					<img src="../resources/images/logo.png" alt="Vin sur vin"
 						height="60px"  />
 					<p:commandButton type="button" id="deconnexion_button"
 						onclick="window.location.href='../faces/loginBO.xhtml';"
 						value="Déconnexion" />
+						</h:panelGrid>
 				</h:form>
 			</p:panel>
 
@@ -49,7 +53,7 @@
 				<p:panel id="navigation_menu_Cindy" style="size: 150px; top :-800px;">
 					<h:form>
 						<h:panelGrid id="panelGrid_menu_cindy">
-							<p:commandButton id="accueil_button" value="    Accueil   "
+							<p:commandButton id="accueil_button" value="      Accueil      "
 								onclick="window.location.href='../faces/gestionProduitsBO.xhtml';"
 								styleClass="boutonMenu" ajax="false" immediate="true" />
 							<p:commandButton id="gestion_produits_button"
@@ -70,7 +74,7 @@
 								<ui:insert name="bodyGeneral" id="conteneurPage" />					
 				</p:panel>
 			</h:panelGrid>
-			<p:panel id="footer">
+			<p:panel id="footer" styleClass="footer">
 				<h:outputLabel value="Contact technique : " />
 				<h:outputLink value="mailto:contact@vinsurvin.fr">contact@vinsurvin.fr</h:outputLink>
 			</p:panel>
