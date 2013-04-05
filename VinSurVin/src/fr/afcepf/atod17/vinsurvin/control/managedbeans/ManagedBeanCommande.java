@@ -58,8 +58,9 @@ public class ManagedBeanCommande extends AbstractManagedBean {
     }
     
     public Commande getCommande() {
-        
-        if(this.commande.getId() == 0 && mbPanier.getCommande() != null) {
+    	
+    	//Si pas de commande en cours + commande créer dans le panier
+        if(this.commande.getId() == 0 && mbPanier.getCommande().getId() != 0) {
             setCommande(mbPanier.getCommande());
             System.out.println("Init commande : " + commande.getDateCommande() + ", " + commande.getEtatCommande().getLibelle());
         }
@@ -183,6 +184,8 @@ public class ManagedBeanCommande extends AbstractManagedBean {
     public void setCommandesEnCours() {
         Commande rechercheCommande = new Commande();
         
+        rechercheCommande.setClient(mbAccueil.getClientConnected());
+        
         EtatCommande etatCommande = new EtatCommande();
         etatCommande.setId(1);
         rechercheCommande.setEtatCommande(etatCommande);
@@ -211,6 +214,8 @@ public class ManagedBeanCommande extends AbstractManagedBean {
      */
     public void setCommandesHistoriques() {
         Commande rechercheCommande = new Commande();
+        
+        rechercheCommande.setClient(mbAccueil.getClientConnected());
         
         EtatCommande etatCommande = new EtatCommande();
         etatCommande.setId(3);
@@ -263,6 +268,14 @@ public class ManagedBeanCommande extends AbstractManagedBean {
         System.out.println("tarifLivraisonSelectionne : " + tarifLivraisonSelectionne.getId());
         commande.setTarifLivraison(tarifLivraisonSelectionne);
         commande = getContext().getBean(ServiceCommandeImpl.class).validationCommande(commande);
+        return "confirmationCommande";
+    }
+    
+    /**
+     * Retour à l'acceuil
+     * @return
+     */
+    public String retourAccueil() {
         return "Accueil";
     }
 

@@ -82,7 +82,7 @@ public class DaoCommandeImpl implements IDaoCommande {
             em.setProperty("id", id);
         } else {id = "%";}
         
-        if(paramCommande.getClient() != null) {
+        if(paramCommande.getClient().getId() != 0) {
             client = String.valueOf(paramCommande.getClient().getId());
         } else {client = "%";}
         

@@ -89,9 +89,18 @@
             <redirect />
         </navigation-case>
     </navigation-rule>
-    <!-- Depuis ajout commande, redirection vers l'index -->
+    <!-- Depuis ajout commande, redirection vers confirmation Commande -->
     <navigation-rule>
         <from-view-id>/pagesFrontOffice/ajoutCommande.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>confirmationCommande</from-outcome>
+            <to-view-id>/pagesFrontOffice/confirmationCommande.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+    </navigation-rule>
+    <!-- Depuis confirmation Commande, redirection vers accueil  -->
+    <navigation-rule>
+        <from-view-id>/pagesFrontOffice/confirmationCommande.xhtml</from-view-id>
         <navigation-case>
             <from-outcome>Accueil</from-outcome>
             <to-view-id>/pagesFrontOffice/accueil.xhtml</to-view-id>
