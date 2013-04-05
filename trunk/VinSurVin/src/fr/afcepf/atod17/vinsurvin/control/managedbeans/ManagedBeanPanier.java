@@ -171,21 +171,41 @@ public class ManagedBeanPanier extends AbstractManagedBean {
      */
     public String validerPanier() {
         String retour = "";
-        
-        if (mbAccueil.getClientConnected() != null) {
-            //Ajout des infos à la commande
+    	String msgError = "";
+    	
+    	//Controle de saisie
+    	if(mbAccueil.getClientConnected() == null) {
+    		msgError = "Impossible de créer une commande si pas authetifier. ";
+    	}
+    	else if(mbAccueil.getClientConnected().getAdresseLivraison() == null) {
+    		msgError = "Il manque l'adresse de livraison dans le compte. ";
+    	}
+    	else if(panier.getProduits().isEmpty()) {
+    		msgError = "Il n'y a pas de produit dans le panier. ";
+    	}
+    	
+        //Ajout des infos à la commande si pas d'erreur
+    	else {
             commande.setClient(mbAccueil.getClientConnected());
             commande.setAdresseCommande(mbAccueil.getClientConnected().getAdresseLivraison());
             commande.setProduitsEnCommande(panier.getProduits());
             commande = getContext().getBean(ServiceCommandeImpl.class).ajoutCommande(commande);
-            
-            //Création d'un nouveau panier
+    	}
+        
+    	//Vérification de la création de la commande
+        if (commande.getId() == 0 && msgError.equals("")) {
+        	msgError = "Il n'y a pas assez de produit en stock. ";
+
+        } else if (msgError.equals("")) {
+        	//Création d'un nouveau panier et redirection vers ajoutCommande
             panier = new Panier();
-            
             retour = "ajoutCommande";
-        } else {
-            System.err.println("Impossible de créer une commande si pas authetifier");
-            VinSurVinContext.afficherMessage("Erreur", "Il faut être authentifié pour valider son panier.");
+        }
+        
+        //Si erreur, affichage du message
+        if (!msgError.equals("")) {
+            System.err.println("Impossible de créer une commande : " + msgError);
+            VinSurVinContext.afficherMessage("Erreur", "Création de commande impossible! " + msgError);
         }
         
         return retour;
