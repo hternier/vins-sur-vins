@@ -33,23 +33,14 @@
 
 				
 				<p:commandButton value="OK" id="filtrerProduits_button"
-					action="#{mbGestionProduits.rechercheMulticritere }" styleClass="ui-button"/>
+					action="#{mbGestionProduits.rechercheMulticritere }" styleClass="ui-button" update="accueilBO_form" />
 
 
 				<p:commandButton value="Tout afficher" id="afficherTout_button"
 					action="#{mbGestionProduits.rechercheTout }" />
 
 
-				<br/>
-				<h:panelGrid columns="3" id="nouveauProduit">
-					<h:outputLabel for="nouveauProduitCategorie_select" value="Créer un nouveau produit de type : " />
-					<h:selectOneMenu id="nouveauProduitCategorie_select" value="#{mbGestionProduits.listeCategoriesSelected}">
-						<f:selectItem itemLabel="Selectionnez" itemValue="" />
-						<f:selectItems value="#{mbGestionProduits.listeCategories}" />
-					</h:selectOneMenu>
-					<p:commandButton value="Ok" action="#{mbGestionProduits.nouveauProduit}"/>
-				</h:panelGrid>
-
+				
 				<p:dataTable value="#{mbGestionProduits.listeProduits}"
 					var="produit" id="datatable_listeProduitGestion"
 					resizableColumns="true" paginator="true" paginatorPosition="bottom"
