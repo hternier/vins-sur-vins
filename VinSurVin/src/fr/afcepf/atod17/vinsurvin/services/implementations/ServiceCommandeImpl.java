@@ -12,6 +12,7 @@ import fr.afcepf.atod17.vinsurvin.entitybeans.commande.ProduitEnCommande;
 import fr.afcepf.atod17.vinsurvin.entitybeans.commande.TarifLivraison;
 import fr.afcepf.atod17.vinsurvin.entitybeans.produit.Produit;
 import fr.afcepf.atod17.vinsurvin.services.interfaces.IServiceCommande;
+import fr.afcepf.atod17.vinsurvin.utils.VinSurVinContext;
 
 public class ServiceCommandeImpl implements IServiceCommande{
 
@@ -41,7 +42,8 @@ public class ServiceCommandeImpl implements IServiceCommande{
                 if (pec.getQuantite() > produitEnStock.getStock()) {
                     System.err.println("Erreur de quantité commandé. Produit :" + pec.getProduit().getLibelle()
                             + ", quantité désiré : " + pec.getQuantite() + ", quantité disponible : " + produitEnStock.getStock());
-                    return null;
+                    paramCommande = new Commande();
+                    return paramCommande;
                 } else {
                     produitEnStock.setStock(produitEnStock.getStock() - pec.getQuantite());
                     daoProduit.setProduit(produitEnStock);
@@ -59,10 +61,11 @@ public class ServiceCommandeImpl implements IServiceCommande{
             
             //Percistance de la commande
             paramCommande = daoCommande.addCommande(paramCommande);
+            System.out.println("Création d'une commande : id : " + paramCommande.getId() + ", id client : " + paramCommande.getClient().getId());
         } else {
+        	paramCommande = new Commande();
             System.err.println("Création de commande impossible, il manque des informations !");
         }
-        
         return paramCommande;
     }
     

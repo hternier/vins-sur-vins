@@ -112,7 +112,7 @@
         <from-view-id>/pagesFrontOffice/gestionPanier.xhtml</from-view-id>
         <navigation-case>
             <from-outcome>Accueil</from-outcome>
-            <to-view-id>/index.xhtml</to-view-id>
+            <to-view-id>/pagesFrontOffice/accueil.xhtml</to-view-id>
             <redirect />
         </navigation-case>
         <!-- Depuis gestion panier, redirection vers l'ajout de commande -->
