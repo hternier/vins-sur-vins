@@ -51,6 +51,11 @@
         <managed-bean-name>mbCreerCompte</managed-bean-name>
         <managed-bean-class>fr.afcepf.atod17.vinsurvin.control.managedbeans.ManagedBeanCreerCompte</managed-bean-class>
         <managed-bean-scope>session</managed-bean-scope>
+        <managed-property>
+            <property-name>mbAccueil</property-name>
+            <property-class>fr.afcepf.atod17.vinsurvin.control.managedbeans.ManagedBeanAccueil</property-class>
+            <value>#{mbAccueil}</value>
+        </managed-property>
     </managed-bean>
 
     <managed-bean>
@@ -88,7 +93,7 @@
         <from-view-id>/pagesFrontOffice/ajoutCommande.xhtml</from-view-id>
         <navigation-case>
             <from-outcome>Accueil</from-outcome>
-            <to-view-id>/pagesFrontOffice/generalLayoutFO.xhtml</to-view-id>
+            <to-view-id>/pagesFrontOffice/accueil.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
     <!-- Depuis gestion panier, redirection vers l'index -->
@@ -98,10 +103,7 @@
             <from-outcome>Accueil</from-outcome>
             <to-view-id>/index.xhtml</to-view-id>
         </navigation-case>
-    </navigation-rule>
     <!-- Depuis gestion panier, redirection vers l'ajout de commande -->
-    <navigation-rule>
-        <from-view-id>/pagesFrontOffice/gestionPanier.xhtml</from-view-id>
         <navigation-case>
             <from-outcome>ajoutCommande</from-outcome>
             <to-view-id>/pagesFrontOffice/ajoutCommande.xhtml</to-view-id>
@@ -112,6 +114,14 @@
         <navigation-case>
             <from-outcome>success</from-outcome>
             <to-view-id>/pagesFrontOffice/detailProduit.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/pagesFrontOffice/creerCompte.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>success</from-outcome>
+            <to-view-id>/pagesFrontOffice/accueil.xhtml</to-view-id>
             <redirect />
         </navigation-case>
     </navigation-rule>
@@ -127,7 +137,7 @@
             <to-view-id>/pagesFrontOffice/gestionPanier.xhtml</to-view-id>
             <redirect />
         </navigation-case>
-           <navigation-case>
+        <navigation-case>
             <from-outcome>GoAccueil</from-outcome>
             <to-view-id>/pagesFrontOffice/accueil.xhtml</to-view-id>
             <redirect />

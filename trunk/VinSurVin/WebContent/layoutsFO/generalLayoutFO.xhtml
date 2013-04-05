@@ -28,6 +28,7 @@
                         action="#{mbAccueil.deconnexion }" update=":panelConnexion" />
                     <p:commandButton styleClass="topmenu_button" value="Mon Compte" action="#{mbAccueil.gestionCompte}" />
                     <p:commandButton styleClass="topmenu_button" action="#{mbAccueil.gestionCommandes }" value="Mes commandes"  />
+                    <h:outputText value="Bienvenue #{mbAccueil.clientConnected.prenom} #{mbAccueil.clientConnected.nom}" styleClass="lblBienvenue" />
                 </p:panel>
                 <p:panel styleClass="header_connexion"
                     rendered="#{mbAccueil.clientConnected == null}">

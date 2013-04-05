@@ -20,47 +20,41 @@ public class ManagedBeanCreerCompte extends AbstractManagedBean {
 	private String mail2;
 	private String mdp1;
 	private String mdp2;
+	private Adresse adresse = new Adresse();
 	private List<SelectItem> listVille = new ArrayList<SelectItem>();
+	private ManagedBeanAccueil mbAccueil;
 
 	private CompteClient compteClient = new CompteClient();
-	{
-		compteClient.setAdresseFacturation(new Adresse());
-	}
 
 	public String creerCompte() {
+		
+		String retour = "";
 
-//		verifEmail = getContext().getBean(ServiceCompteImpl.class).testEmail(this.mail1.trim());
-//		if (verifEmail == 0) {
-//			if (getMail1().equals(getMail2())) {
-//				compteClient.setMail(getMail1());
-//				compteClient.setDroitAcces("Client");
-//				Ville v = new Ville();
-//				v.setId(ville);
-//				compteClient.getAdresseFacturation().setVille(v);
-//				this.compteClient = getContext().getBean(ServiceCompteImpl.class).addCompteClient(compteClient);
-//			} else {
-//				FacesContext context = FacesContext.getCurrentInstance();  
-//		          
-//		        context.addMessage(null, new FacesMessage("Attention !","Vos emails ne sont pas identiques ! ")); 
-//			}
-//		}else{
-//			FacesContext context = FacesContext.getCurrentInstance();  
-//	          
-//	        context.addMessage(null, new FacesMessage("Attention !","Cet email existe déja ")); 
-//		}
 		if (champsValides()) {
 			this.compteClient.setMail(this.mail1.trim());
 			this.compteClient.setDroitAcces("Client");
 			this.compteClient.setMdp(this.mdp1.trim());
-			this.compteClient = getContext().getBean(ServiceCompteImpl.class).addCompteClient(compteClient);
+			
+			if (!this.adresse.getAdresse1().trim().isEmpty()) {
+				Ville ville = new Ville();
+				ville.setId(this.ville);
+				this.adresse.setVille(ville);
+				this.compteClient.setAdresseFacturation(adresse);
+			}
+			
+			compteClient = getContext().getBean(ServiceCompteImpl.class).addCompteClient(compteClient);
+			mbAccueil.setClientConnected(compteClient);
+			viderChamps();
+			retour = "success";
+			VinSurVinContext.afficherMessage("Inscription", "Inscription terminée avec succès");
 		}
 		
-		return "";
+		return retour;
 	}
 	
 	private boolean champsValides() {
 		boolean retour = false;
-		if (eMailValide() & champsRemplis() & mdpValide()) {
+		if (eMailValide() & champsRemplis() & mdpValide() & adresseValide()) {
 			retour = true;
 		}
 		return retour;
@@ -123,17 +117,36 @@ public class ManagedBeanCreerCompte extends AbstractManagedBean {
 		return retour;
 	}
 	
+	private boolean adresseValide() {
+		boolean retour = true;
+		if (!adresse.getAdresse1().trim().isEmpty() || !adresse.getAdresse2().trim().isEmpty() || !cp.trim().isEmpty()) {
+			if (adresse.getAdresse1().trim().isEmpty() || cp.trim().isEmpty() || ville == 0) {
+				retour = false;
+				VinSurVinContext.afficherMessage("Erreur", "Si un champ de l'adresse est renseigné, les champs adresse1 et ville sont requis");
+			}
+		}
+		return retour;
+	}
+	
+	private void viderChamps() {
+		this.compteClient = new CompteClient();
+		this.adresse = new Adresse();
+		mail1 = "";
+		mail2 = "";
+		cp = "";
+		ville = 0;
+	}
+	
 	public void villeParCP() {
 		List<Ville> listeVille = new ArrayList<Ville>();
 		this.listVille.clear();
-		if (getCp().trim().matches(EnumRegex.CODE_POSTAL.getPattern())) {
+		if (this.cp.trim().matches(EnumRegex.CODE_POSTAL.getPattern())) {
 			listeVille = getContext().getBean(ServiceCompteImpl.class)
 					.getVilleParCP(getCp());
 			for (Ville ville : listeVille) {
 				this.listVille.add(new SelectItem(ville.getId(), ville.getVille()));
 			}
 		}
-
 	}
 
 	public String getCp() {
@@ -198,6 +211,26 @@ public class ManagedBeanCreerCompte extends AbstractManagedBean {
 
 	public void setMdp2(String mail2) {
 		this.mdp2 = mail2;
+	}
+
+	public Adresse getAdresse() {
+		return adresse;
+	}
+
+	public void setAdresse(Adresse adresse) {
+		this.adresse = adresse;
+	}
+	
+	public ManagedBeanAccueil getMbAccueil() {
+		return mbAccueil;
+	}
+
+	public void setMbAccueil(ManagedBeanAccueil mbAccueil) {
+		this.mbAccueil = mbAccueil;
+	}
+
+	public boolean getListeVillesEstRemplie() {
+		return !this.listVille.isEmpty();
 	}
 
 }

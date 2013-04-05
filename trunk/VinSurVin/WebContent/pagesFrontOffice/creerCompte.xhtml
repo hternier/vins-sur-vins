@@ -22,39 +22,36 @@
 					<p:inputText id="email2" value="#{mbCreerCompte.mail2}"
 						label="email2" />
 					<h:outputLabel value="Mot de passe 1 : " />
-					<p:password id="pwd1" value="#{mbCreerCompte.mdp1}" feedback="true" />
+					<p:password id="pwd1" value="#{mbCreerCompte.mdp1}" />
 					<h:outputLabel value="Mot de passe 2 : " />
 					<p:password id="pwd2" value="#{mbCreerCompte.mdp2}" />
 					<h:outputText value="Téléphone : " />
 					<p:inputMask value="#{mbCreerCompte.compteClient.tel}"
 						mask="99-99-99-99-99" />
-						
-					
-
 				</h:panelGrid>
 			</p:panel>
-			<p:panel toggleable="true" header="Adresse de facturation" toggleSpeed="1" collapsed="true" style="float:left;">
+			<p:panel id="panelAdresse" toggleable="true" header="Adresse de facturation" toggleSpeed="1" collapsed="true" styleClass="panelCreerCompte">
 			    <h:panelGrid>
 	                 <h:outputText value="Adresse 1: " />
 	                 <p:inputText
-	                     value="#{mbCreerCompte.compteClient.adresseFacturation.adresse1}"
+	                     value="#{mbCreerCompte.adresse.adresse1}"
 	                     name="Adresse1" />
 	                 <h:outputText value="Adresse 2: " />
-	                 <p:inputText value="#{mbCreerCompte.compteClient.adresseFacturation.adresse2}" name="Adresse2" />
+	                 <p:inputText value="#{mbCreerCompte.adresse.adresse2}" name="Adresse2" />
 	                 <h:outputText value="Code postal: " />
 	                 <p:inputText value="#{mbCreerCompte.cp}">
 	                     <p:ajax event="keyup" update="listeVille"
 	                         listener="#{mbCreerCompte.villeParCP}" />
 	                 </p:inputText>
 	                 <h:outputText value="Ville: " />
-	                 <p:selectOneMenu id="listeVille" value="#{mbCreerCompte.ville}" styleClass="choixVille">
+	                 <p:selectOneMenu id="listeVille" value="#{mbCreerCompte.ville}" styleClass="choixVille" disabled="#{!mbCreerCompte.listeVillesEstRemplie}">
 	                     <f:selectItem itemLabel="" itemValue=""  />
 	                     <f:selectItems value="#{mbCreerCompte.listVille}" />
 	                 </p:selectOneMenu>
 	              </h:panelGrid>
              </p:panel>
 			<p:commandButton value="S'enregistrer"
-				action="#{mbCreerCompte.creerCompte }" update=":general_growl_form:general_growl" styleClass="boutonAjoutClient" />
+				action="#{mbCreerCompte.creerCompte }" update=":general_growl_form:general_growl,:panelConnexion" styleClass="boutonAjoutClient" />
 		</h:form>
 	</ui:define>
 
