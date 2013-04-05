@@ -195,7 +195,7 @@ public class ManagedBeanAccueil extends AbstractManagedBean {
 	
 	public String deconnexion() {
 		this.clientConnected = null;
-		return "";
+		return "GoAccueil";
 	}
 	
 	private boolean champsValides() {

@@ -9,7 +9,7 @@
 <ui:define name="body">
 <h:form id="resultatRecherche">
 	<p:fieldset legend="Vin" rendered="#{mbRechercheProduit.listeVinsLength > 0}">
-		<p:dataGrid columns="2" value="#{mbRechercheProduit.listeVins}" var="vin" styleClass="panelResultatProduit" paginator="true" paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}" rowsPerPageTemplate="4,6,8,16,30,50" paginatorPosition="bottom"  >
+		<p:dataGrid columns="2" value="#{mbRechercheProduit.listeVins}" var="vin" styleClass="panelResultatProduit" paginator="true" paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}" rowsPerPageTemplate="4,6,8,16,30,50" paginatorPosition="bottom" paginatorAlwaysVisible="false" >
 			<p:panel header="#{vin.libelle}" style="padding: 4px 4px;">
 				<p:panelGrid columns="2" >
 					<p:panelGrid columns="1" style="text-align:center">
@@ -45,7 +45,7 @@
 		</p:dataGrid>
 	</p:fieldset>
 	<p:fieldset legend="Spiritueux" rendered="#{mbRechercheProduit.listeSpiritueuxLength > 0}">
-		<p:dataGrid columns="2" value="#{mbRechercheProduit.listeSpiritueux}" var="spritueux" styleClass="panelResultatProduit" paginator="true" paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}" rowsPerPageTemplate="4,6,8,16,30,50" paginatorPosition="bottom"  >
+		<p:dataGrid columns="2" value="#{mbRechercheProduit.listeSpiritueux}" var="spritueux" styleClass="panelResultatProduit" paginator="true" paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}" rowsPerPageTemplate="4,6,8,16,30,50" paginatorPosition="bottom" paginatorAlwaysVisible="false" >
 			<p:panel header="#{spritueux.libelle}" styleClass="panelProduitRecherche">
 				<p:panelGrid columns="2" >
 					<p:panelGrid columns="1" style="text-align:center">
@@ -81,7 +81,7 @@
 		</p:dataGrid>
 	</p:fieldset>
 	<p:fieldset legend="Accessoires" rendered="#{mbRechercheProduit.listeAccessoiresLength > 0}">
-		<p:dataGrid columns="2" value="#{mbRechercheProduit.listeAccessoires}" var="accessoire" styleClass="panelResultatProduit" paginator="true" paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}" rowsPerPageTemplate="4,6,8,16,30,50" paginatorPosition="bottom"   >
+		<p:dataGrid columns="2" value="#{mbRechercheProduit.listeAccessoires}" var="accessoire" styleClass="panelResultatProduit" paginator="true" paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}" rowsPerPageTemplate="4,6,8,16,30,50" paginatorPosition="bottom" paginatorAlwaysVisible="false" >
 			<p:panel header="#{accessoire.libelle}" styleClass="aze">
 				<p:panelGrid columns="2" >
 					<p:panelGrid columns="1" style="text-align:center">
