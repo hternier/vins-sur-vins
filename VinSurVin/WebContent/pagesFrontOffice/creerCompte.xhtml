@@ -25,25 +25,25 @@
 					<p:password id="pwd1" value="#{mbCreerCompte.mdp1}" />
 					<h:outputLabel value="Mot de passe 2 : " />
 					<p:password id="pwd2" value="#{mbCreerCompte.mdp2}" />
-					<h:outputText value="Téléphone : " />
+					<h:outputLabel value="Téléphone : " />
 					<p:inputMask value="#{mbCreerCompte.compteClient.tel}"
 						mask="99-99-99-99-99" />
 				</h:panelGrid>
 			</p:panel>
 			<p:panel id="panelAdresse" toggleable="true" header="Adresse de facturation" toggleSpeed="1" collapsed="true" styleClass="panelCreerCompte">
 			    <h:panelGrid>
-	                 <h:outputText value="Adresse 1: " />
+	                 <h:outputLabel value="Adresse 1: " />
 	                 <p:inputText
 	                     value="#{mbCreerCompte.adresse.adresse1}"
 	                     name="Adresse1" />
-	                 <h:outputText value="Adresse 2: " />
+	                 <h:outputLabel value="Adresse 2: " />
 	                 <p:inputText value="#{mbCreerCompte.adresse.adresse2}" name="Adresse2" />
-	                 <h:outputText value="Code postal: " />
+	                 <h:outputLabel value="Code postal: " />
 	                 <p:inputText value="#{mbCreerCompte.cp}">
 	                     <p:ajax event="keyup" update="listeVille"
 	                         listener="#{mbCreerCompte.villeParCP}" />
 	                 </p:inputText>
-	                 <h:outputText value="Ville: " />
+	                 <h:outputLabel value="Ville: " />
 	                 <p:selectOneMenu id="listeVille" value="#{mbCreerCompte.ville}" styleClass="choixVille" disabled="#{!mbCreerCompte.listeVillesEstRemplie}">
 	                     <f:selectItem itemLabel="" itemValue=""  />
 	                     <f:selectItems value="#{mbCreerCompte.listVille}" />

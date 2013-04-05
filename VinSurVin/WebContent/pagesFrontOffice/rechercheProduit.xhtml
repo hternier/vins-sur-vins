@@ -14,21 +14,21 @@
 				<p:panelGrid columns="2" >
 					<p:panelGrid columns="1" style="text-align:center">
 						<p:graphicImage value="#{vin.image}" alt="image produit" styleClass="imageCatalogue" />
-						<h:outputText value="#{vin.millesime}" />
-						<h:outputText value="#{vin.prix}">
+						<h:outputLabel value="#{vin.millesime}" />
+						<h:outputLabel value="#{vin.prix}">
 							<f:convertNumber type="currency"/>
-						</h:outputText>
+						</h:outputLabel>
 						<p:commandLink actionListener="#{mbRechercheProduit.loadDetailManagedBeanVin}" action="#{mbRechercheProduit.showDetail}">
 						 	<f:attribute name="produit" value="#{vin }"/>
-							<h:outputText styleClass="ui-icon ui-icon-search" style="margin:0 auto;" />
+							<h:outputLabel styleClass="ui-icon ui-icon-search" style="margin:0 auto;" />
 						</p:commandLink>
 					</p:panelGrid>
 					<p:panelGrid style="font-size:small;">
 					   <p:row>
-					       <p:column colspan="3"><h:outputText value="Ajouter au panier :" /></p:column>
+					       <p:column colspan="3"><h:outputLabel value="Ajouter au panier :" /></p:column>
 					   </p:row>
 					   <p:row>
-					       <p:column style="padding-left:2px;"><h:outputText value="Quantité :" /></p:column>
+					       <p:column style="padding-left:2px;"><h:outputLabel value="Quantité :" /></p:column>
 					       <p:column><p:spinner id="quantiteVignette" styleClass="quantiteVignette" value="#{vin.quantite}" stepFactor="1" min="1" max="#{vin.stock}" /></p:column>
 					   </p:row>
 					   <p:row>
@@ -50,21 +50,21 @@
 				<p:panelGrid columns="2" >
 					<p:panelGrid columns="1" style="text-align:center">
 						<p:graphicImage value="#{spritueux.image}" alt="image produit" styleClass="imageCatalogue" />
-						<h:outputText value="#{spritueux.millesime}" />
-						<h:outputText value="#{spritueux.prix}">
+						<h:outputLabel value="#{spritueux.millesime}" />
+						<h:outputLabel value="#{spritueux.prix}">
 							<f:convertNumber type="currency"/>
-						</h:outputText>
+						</h:outputLabel>
 						<p:commandLink actionListener="#{mbRechercheProduit.loadDetailManagedBeanSpiritueux}" action="#{mbRechercheProduit.showDetail}">
 						 	<f:attribute name="produit" value="#{spritueux }"/>
-							<h:outputText styleClass="ui-icon ui-icon-search" style="margin:0 auto;" />
+							<h:outputLabel styleClass="ui-icon ui-icon-search" style="margin:0 auto;" />
 						</p:commandLink>
 					</p:panelGrid>
                     <p:panelGrid style="font-size:small;">
                        <p:row>
-                           <p:column colspan="3"><h:outputText value="Ajouter au panier :" /></p:column>
+                           <p:column colspan="3"><h:outputLabel value="Ajouter au panier :" /></p:column>
                        </p:row>
                        <p:row>
-                           <p:column><h:outputText value="Quantité : " /></p:column>
+                           <p:column><h:outputLabel value="Quantité : " /></p:column>
                            <p:column><p:spinner id="quantiteVignette" styleClass="quantiteVignette" value="#{spritueux.quantite}" stepFactor="1" min="1" max="#{spritueux.stock}" /></p:column>
                        </p:row>
                        <p:row>
@@ -86,20 +86,20 @@
 				<p:panelGrid columns="2" >
 					<p:panelGrid columns="1" style="text-align:center">
 						<p:graphicImage value="#{accessoire.image}" alt="image produit" styleClass="imageCatalogue" />
-						<h:outputText value="#{accessoire.prix}">
+						<h:outputLabel value="#{accessoire.prix}">
 							<f:convertNumber type="currency"/>
-						</h:outputText>
+						</h:outputLabel>
 						<p:commandLink actionListener="#{mbRechercheProduit.loadDetailManagedBeanAccessoire}" action="#{mbRechercheProduit.showDetail}">
 						 	<f:attribute name="produit" value="#{accessoire }"/>
-							<h:outputText styleClass="ui-icon ui-icon-search" style="margin:0 auto;" />
+							<h:outputLabel styleClass="ui-icon ui-icon-search" style="margin:0 auto;" />
 						</p:commandLink>
 					</p:panelGrid>
                     <p:panelGrid style="font-size:small;">
                        <p:row>
-                           <p:column colspan="3"><h:outputText value="Ajouter au panier :" /></p:column>
+                           <p:column colspan="3"><h:outputLabel value="Ajouter au panier :" /></p:column>
                        </p:row>
                        <p:row>
-                           <p:column><h:outputText value="Quantité : " /></p:column>
+                           <p:column><h:outputLabel value="Quantité : " /></p:column>
                            <p:column><p:spinner id="quantiteVignette" styleClass="quantiteVignette" value="#{accessoire.quantite}" stepFactor="1" min="1" max="#{accessoire.stock}" /></p:column>
                        </p:row>
                        <p:row>
@@ -116,7 +116,7 @@
 		</p:dataGrid>
 	</p:fieldset>
 	<p:panel header="Résultat de recherche" rendered="#{mbRechercheProduit.aucunResultat}">
-	   <h:outputText value="La recherche n'a renvoyé aucun résultat" />
+	   <h:outputLabel value="La recherche n'a renvoyé aucun résultat" />
 	</p:panel>
 </h:form>
 </ui:define>
