@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+	template="/layoutsFO/ajoutCommandeLayout.xhtml">
+	<ui:define name="body">
+		<h:form id="form">
+			<p:fieldset legend="Votre commande à bien été enregistrée">
+				<h:outputText value="Votre commande :" />
+				<p:dataTable value="#{mbCommande.commande.produitsEnCommande}"
+					var="produitEnCommande" resizableColumns="true" paginator="false">
+					<p:column headerText="Image">
+						<h:outputText value="#{produitEnCommande.produit.image}" />
+					</p:column>
+					<p:column headerText="Libellé">
+						<h:outputText value="#{produitEnCommande.produit.libelle}" />
+					</p:column>
+					<p:column headerText="Prix unitaire">
+						<h:outputText value="#{produitEnCommande.produit.prixActuelTTC}">
+							<f:convertNumber type="currency" />
+						</h:outputText>
+					</p:column>
+					<p:column headerText="Quantité">
+						<h:outputText value="#{produitEnCommande.quantite}" />
+					</p:column>
+					<p:column headerText="Prix total">
+						<h:outputText
+							value="#{produitEnCommande.produit.prixActuelTTC * produitEnCommande.quantite}" >
+							<f:convertNumber type="currency" />
+						</h:outputText>
+					</p:column>
+				</p:dataTable>
+
+				<h:outputText value="Total commande H.T. : " />
+				<h:outputText value="#{mbCommande.totalCommandeHT}">
+					<f:convertNumber type="currency" />
+				</h:outputText>
+				<br />
+				<h:outputText value="Total commande T.T.C. : " />
+				<h:outputText value="#{mbCommande.totalCommandeTTC}">
+					<f:convertNumber type="currency" />
+				</h:outputText>
+				</p:fieldset>
+
+				<br />
+				<br />
+				<h:outputText value="Adresse :" />
+				<br />
+				<p:panelGrid columns="2">
+					<p:row>
+						<p:column>
+							<p:fieldset legend="Adresse de livraison:">
+								<h:outputText value="#{mbCommande.adresse1}" />
+								<br />
+								<h:outputText value="#{mbCommande.adresse2}" />
+								<br />
+								<h:outputText value="#{mbCommande.ville}" />
+							</p:fieldset>
+						</p:column>
+					</p:row>
+					<p:row>
+						<p:column>
+							<p:fieldset legend="Adresse de facturation">
+								<h:outputText value="#{mbCommande.adresse1}" />
+								<br />
+								<h:outputText value="#{mbCommande.adresse2}" />
+								<br />
+								<h:outputText value="#{mbCommande.ville}" />
+							</p:fieldset>
+						</p:column>
+					</p:row>
+				</p:panelGrid>
+
+				<br />
+				<br />
+				<h:outputText value="Mode de livraison :" />
+				<br />
+				<p:dataTable id="tabLivraison" value="#{mbCommande.commande.tarifLivraison}" var="tarif">
+					<p:column headerText="Transporteur">
+						#{tarif.societe}
+					</p:column>
+					<p:column headerText="Description">
+						#{tarif.typeLivraison.libelle}
+					</p:column>
+					<p:column headerText="Prix">
+						<h:outputText value="#{tarif.tarif}"><f:convertNumber type="currency" /></h:outputText>
+					</p:column>
+				</p:dataTable>
+				
+				<br />
+				<br />
+				<p:commandButton ajax="false" value="Retour accueil" action="#{mbCommande.retourAccueil}">
+				</p:commandButton>
+
+			
+		</h:form>
+	</ui:define>
+</ui:composition>
