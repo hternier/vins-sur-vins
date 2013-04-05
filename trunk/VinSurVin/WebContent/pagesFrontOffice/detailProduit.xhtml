@@ -8,31 +8,32 @@
 
 	<ui:define name="body">
 		<h:form id="detailProduit">
-			<p:fieldset legend="#{mbDetailProduit.produit.libelle}">
+			<fieldset class="fieldsetBlanc">
+			    <legend><h:outputLabel value="#{mbDetailProduit.produit.libelle}" /></legend>
 				<p:panelGrid styleClass="panelDetailCommun">
 					<p:row>
                         <p:column rowspan="#{mbDetailProduit.imageRowSpan}">
                             <p:graphicImage value="#{mbDetailProduit.produit.image}" />
                         </p:column>
 	                    <p:column colspan="2" style="max-width:150px;">
-	                        <h:outputText value="#{mbDetailProduit.produit.description}" />
+	                        <h:outputLabel value="#{mbDetailProduit.produit.description}" />
 	                    </p:column>
                         <p:column colspan="2">
-                            <h:outputText value="Ajouter au panier :" />
+                            <h:outputLabel value="Ajouter au panier :" />
                         </p:column>
 					</p:row>
 					<p:row>
 	                    <p:column>
-	                        <h:outputText value="Catégorie : #{mbDetailProduit.produit.categorie}" />
+	                        <h:outputLabel value="Catégorie : #{mbDetailProduit.produit.categorie}" />
 	                    </p:column>
 	                    <p:column>
-	                        <h:outputText value="Prix HT : " />
-	                        <h:outputText value="#{mbDetailProduit.produit.prixHT}">
+	                        <h:outputLabel value="Prix HT : " />
+	                        <h:outputLabel value="#{mbDetailProduit.produit.prixHT}">
 	                            <f:convertNumber type="currency" />
-	                        </h:outputText>
+	                        </h:outputLabel>
 	                    </p:column>
                         <p:column>
-                            <h:outputText value="Quantité :" />
+                            <h:outputLabel value="Quantité :" />
                         </p:column>
                         <p:column>
                             <p:spinner styleClass="quantiteVignetteDetail" value="#{mbDetailProduit.produit.quantite}" stepFactor="1" min="1" max="#{mbDetailProduit.produit.stock}" />
@@ -40,16 +41,16 @@
 					</p:row>
 					<p:row>
 					    <p:column>
-					        <h:outputText value="TVA : " />
-					        <h:outputText value="#{mbDetailProduit.produit.TVA}">
+					        <h:outputLabel value="TVA : " />
+					        <h:outputLabel value="#{mbDetailProduit.produit.TVA}">
 					           <f:convertNumber type="percent" maxFractionDigits="2" />
-					        </h:outputText>
+					        </h:outputLabel>
 					    </p:column>
 					    <p:column>
-					        <h:outputText value="Prix TTC : " />
-					        <h:outputText value="#{mbDetailProduit.produit.prixTTC}">
+					        <h:outputLabel value="Prix TTC : " />
+					        <h:outputLabel value="#{mbDetailProduit.produit.prixTTC}">
 					            <f:convertNumber type="currency" />
-					        </h:outputText>
+					        </h:outputLabel>
 					    </p:column>
                         <p:column colspan="2">
                             <p:commandButton value="Ajouter au panier" actionListener="#{mbPanier.ajoutPanier}" update=":panelPanierAccueil,:general_growl_form:general_growl">
@@ -60,57 +61,57 @@
 					</p:row>
 				    <p:row rendered="#{mbDetailProduit.produit.isVin}">
 				        <p:column>
-				            <h:outputText value="Appelation : #{mbDetailProduit.produit.appelationVin}" />
+				            <h:outputLabel value="Appelation : #{mbDetailProduit.produit.appelationVin}" />
 				        </p:column>
 				        <p:column>
-				            <h:outputText value="Millesime : #{mbDetailProduit.produit.millesimeVin}" />
+				            <h:outputLabel value="Millesime : #{mbDetailProduit.produit.millesimeVin}" />
 				        </p:column>
                         <p:column colspan="2" rowspan="3"></p:column>
 				    </p:row>
 				    <p:row rendered="#{mbDetailProduit.produit.isVin}">
 				        <p:column>
-				            <h:outputText value="Pays : #{mbDetailProduit.produit.paysVin}" />
+				            <h:outputLabel value="Pays : #{mbDetailProduit.produit.paysVin}" />
 				        </p:column>
 				        <p:column>
-				            <h:outputText value="Contenance : #{mbDetailProduit.produit.contenanceVin} cl" />
+				            <h:outputLabel value="Contenance : #{mbDetailProduit.produit.contenanceVin} cl" />
 				        </p:column>
 				    </p:row>
 				    <p:row rendered="#{mbDetailProduit.produit.isVin}">
 				        <p:column>
-				            <h:outputText value="Région : #{mbDetailProduit.produit.regionVin}" />
+				            <h:outputLabel value="Région : #{mbDetailProduit.produit.regionVin}" />
 				        </p:column>
 				        <p:column>
-				            <h:outputText value="Degrés : #{mbDetailProduit.produit.degresVin} °" />
+				            <h:outputLabel value="Degrés : #{mbDetailProduit.produit.degresVin} °" />
 				        </p:column>
 				    </p:row>
                     <p:row rendered="#{mbDetailProduit.produit.isSpiritueux}">
                         <p:column>
-                            <h:outputText value="Appelation : #{mbDetailProduit.produit.appellationSpiritueux}" />
+                            <h:outputLabel value="Appelation : #{mbDetailProduit.produit.appellationSpiritueux}" />
                         </p:column>
                         <p:column>
-                            <h:outputText value="Contenance : #{mbDetailProduit.produit.contenanceSpiritueux} cl" />
+                            <h:outputLabel value="Contenance : #{mbDetailProduit.produit.contenanceSpiritueux} cl" />
                         </p:column>
                         <p:column colspan="2" rowspan="2"></p:column>
                     </p:row>
                     <p:row rendered="#{mbDetailProduit.produit.isSpiritueux}">
                         <p:column>
-                            <h:outputText value="Millesime : #{mbDetailProduit.produit.millesimeSpiritueux}" />
+                            <h:outputLabel value="Millesime : #{mbDetailProduit.produit.millesimeSpiritueux}" />
                         </p:column>
                         <p:column>
-                            <h:outputText value="Degrés : #{mbDetailProduit.produit.degresSpiritueux} °" />
+                            <h:outputLabel value="Degrés : #{mbDetailProduit.produit.degresSpiritueux} °" />
                         </p:column>
                     </p:row>
                     <p:row rendered="#{mbDetailProduit.produit.isAccessoire}">
                         <p:column>
-                            <h:outputText value="Marque : #{mbDetailProduit.produit.marque}" />
+                            <h:outputLabel value="Marque : #{mbDetailProduit.produit.marque}" />
                         </p:column>
                         <p:column>
-                            <h:outputText value="Poids : #{mbDetailProduit.produit.poids} g" />
+                            <h:outputLabel value="Poids : #{mbDetailProduit.produit.poids} g" />
                         </p:column>
                         <p:column colspan="2"></p:column>
                     </p:row>
 				</p:panelGrid>
-			</p:fieldset>
+			</fieldset>
 		</h:form>
 	</ui:define>
 </ui:composition>

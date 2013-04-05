@@ -7,6 +7,7 @@ import javax.faces.model.SelectItem;
 
 import fr.afcepf.atod17.vinsurvin.entitybeans.compte.Adresse;
 import fr.afcepf.atod17.vinsurvin.entitybeans.compte.CompteClient;
+import fr.afcepf.atod17.vinsurvin.entitybeans.compte.EtatCompte;
 import fr.afcepf.atod17.vinsurvin.entitybeans.compte.Ville;
 import fr.afcepf.atod17.vinsurvin.services.implementations.ServiceCompteImpl;
 import fr.afcepf.atod17.vinsurvin.utils.VinSurVinContext;
@@ -33,6 +34,9 @@ public class ManagedBeanCreerCompte extends AbstractManagedBean {
 		if (champsValides()) {
 			this.compteClient.setMail(this.mail1.trim());
 			this.compteClient.setDroitAcces("Client");
+			EtatCompte etat = new EtatCompte();
+			etat.setId(1);
+			compteClient.setEtatCompte(etat);
 			this.compteClient.setMdp(this.mdp1.trim());
 			
 			if (!this.adresse.getAdresse1().trim().isEmpty()) {
