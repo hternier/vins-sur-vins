@@ -12,6 +12,7 @@ import fr.afcepf.atod17.vinsurvin.entitybeans.compte.CompteClient;
 import fr.afcepf.atod17.vinsurvin.entitybeans.produit.Produit;
 import fr.afcepf.atod17.vinsurvin.services.implementations.ServiceCompteImpl;
 import fr.afcepf.atod17.vinsurvin.services.implementations.ServiceProduitImpl;
+import fr.afcepf.atod17.vinsurvin.services.interfaces.IServiceCompte;
 import fr.afcepf.atod17.vinsurvin.services.interfaces.IServiceProduit;
 import fr.afcepf.atod17.vinsurvin.utils.VinSurVinContext;
 import fr.afcepf.atod17.vinsurvin.utils.enums.EnumRegex;
@@ -184,7 +185,7 @@ public class ManagedBeanAccueil extends AbstractManagedBean {
 		CompteClient compte = new CompteClient();
 		compte.setMail(connexionMail);
 		compte.setMdp(connexionMdp);
-		clientConnected = getContext().getBean(ServiceCompteImpl.class).authentificationFO(compte);
+		clientConnected = getContext().getBean(IServiceCompte.class).authentificationFO(compte);
 		
 		if (clientConnected == null) {
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Erreur", "Nous ne parvenons pas à vous identifier"));

@@ -1,15 +1,12 @@
 package fr.afcepf.atod17.vinsurvin.dao.jpa.compte;
 
-import java.io.IOException;
 import java.util.List;
 
-import javax.annotation.PostConstruct;
-import javax.annotation.PreDestroy;
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityTransaction;
 import javax.persistence.NoResultException;
-import javax.persistence.Persistence;
+import javax.persistence.PersistenceContext;
+
+import org.springframework.transaction.annotation.Transactional;
 
 import fr.afcepf.atod17.vinsurvin.dao.interfaces.compte.IDaoCompte;
 import fr.afcepf.atod17.vinsurvin.entitybeans.compte.CompteAbstrait;
@@ -17,10 +14,10 @@ import fr.afcepf.atod17.vinsurvin.entitybeans.compte.CompteClient;
 import fr.afcepf.atod17.vinsurvin.entitybeans.compte.CompteSysteme;
 import fr.afcepf.atod17.vinsurvin.entitybeans.compte.Ville;
 
+@Transactional
 public class DaoCompteImpl implements IDaoCompte {
 
-	private EntityManagerFactory emf;
-	private EntityTransaction tx;
+	@PersistenceContext()
 	private EntityManager em;
 
 	public DaoCompteImpl() {
@@ -37,7 +34,6 @@ public class DaoCompteImpl implements IDaoCompte {
 
 	@Override
 	public CompteClient setCompte(CompteClient compte) {
-		this.tx.begin();
 		if (compte.getAdresseFacturation() != null) {
 			em.persist(compte.getAdresseFacturation());
 		} else {
@@ -45,7 +41,6 @@ public class DaoCompteImpl implements IDaoCompte {
 		}
 		em.persist(compte);
 		em.flush();
-		this.tx.commit();
 		return compte;
 	}
 
@@ -91,27 +86,13 @@ public class DaoCompteImpl implements IDaoCompte {
 	public CompteClient authentificationFO(String paramMail, String paramMdp) {
 		CompteClient retour;
 		try {
-			retour = em.createQuery(REQ_AUTHENTIFICATIONFO, CompteClient.class)
+			retour = (CompteClient) em.createQuery(REQ_AUTHENTIFICATIONFO)
 					.setParameter(1, paramMail).setParameter(2, paramMdp)
 					.getSingleResult();
 		} catch (NoResultException e) {
 			retour = null;
 		}
 		return retour;
-	}
-
-	@PostConstruct
-	public void init() throws IOException {
-		this.emf = Persistence.createEntityManagerFactory("VinSurVin");
-		this.em = emf.createEntityManager();
-		this.tx = em.getTransaction();
-
-	}
-
-	@PreDestroy
-	public void destroy() throws IOException {
-		this.em.close();
-		this.emf.close();
 	}
 
 }
