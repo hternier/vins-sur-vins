@@ -32,7 +32,8 @@ public class DaoCommandeImpl implements IDaoCommande {
         System.out.println("Création d'une nouvelle commande : " + paramCommande.getEtatCommande().getLibelle());
 
         em.persist(paramCommande);
-        for (ProduitEnCommande pec : paramCommande.getProduitsEnCommande()) {
+        List<ProduitEnCommande> liste = paramCommande.getProduitsEnCommande();
+        for (ProduitEnCommande pec : liste) {
             ProduitEnCommandePK id = new ProduitEnCommandePK();
             id.setIdCommande(paramCommande.getId());
             id.setIdProduit(pec.getProduit().getId());

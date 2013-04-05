@@ -59,7 +59,7 @@ public class ManagedBeanCommande extends AbstractManagedBean {
     
     public Commande getCommande() {
         
-        if(this.commande.getId() == 0 && mbPanier.getCommande() == null) {
+        if(this.commande.getId() == 0 && mbPanier.getCommande() != null) {
             setCommande(mbPanier.getCommande());
             System.out.println("Init commande : " + commande.getDateCommande() + ", " + commande.getEtatCommande().getLibelle());
         }
