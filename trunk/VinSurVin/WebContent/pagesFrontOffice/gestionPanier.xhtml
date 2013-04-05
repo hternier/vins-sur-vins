@@ -7,16 +7,13 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
-	template="gestionPanierLayout.xhtml">
+	template="../layoutsFO/gestionPanierLayout.xhtml">
 	<ui:define name="body">
 		<h:form id="form">
 			<p:fieldset legend="Récapitulatif du panier">
 				<h:outputText value="Votre panier :" />
-				<p:dataTable id="dtProduits" value="#{mbPanier.listeProduits}" var="produitPanier"
+				<p:dataTable emptyMessage="Le panier est vide." id="dtProduits" value="#{mbPanier.listeProduits}" var="produitPanier"
 					resizableColumns="true" paginator="true">
-					<p:column headerText="Image">
-						<h:outputText value="#{produitPanier.produit.image}" />
-					</p:column>
 					<p:column headerText="Libellé">
 						<h:outputText value="#{produitPanier.produit.libelle}" />
 					</p:column>
@@ -56,7 +53,7 @@
 						</p:commandButton>
 					</p:column>
 					<p:column >
-						<p:commandButton styleClass="btnRight" ajax="false" value="Valider mon panier" action="#{mbPanier.validerPanier}">
+						<p:commandButton styleClass="btnRight" ajax="true" value="Valider mon panier" action="#{mbPanier.validerPanier}" update=":general_growl_form:general_growl">
 						</p:commandButton>
 					</p:column>
 				

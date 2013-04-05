@@ -170,7 +170,7 @@ public class ManagedBeanPanier extends AbstractManagedBean {
      * @return La d'ajout de commande
      */
     public String validerPanier() {
-        String retour = "creerCompte";
+        String retour = "";
         
         if (mbAccueil.getClientConnected() != null) {
             //Ajout des infos à la commande
@@ -185,7 +185,7 @@ public class ManagedBeanPanier extends AbstractManagedBean {
             retour = "ajoutCommande";
         } else {
             System.err.println("Impossible de créer une commande si pas authetifier");
-          //TODO : (HT) redirection création compte
+            VinSurVinContext.afficherMessage("Erreur", "Il faut être authentifié pour valider son panier.");
         }
         
         return retour;

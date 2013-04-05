@@ -86,6 +86,7 @@
         <navigation-case>
             <from-outcome>ajoutCommande</from-outcome>
             <to-view-id>/pagesFrontOffice/ajoutCommande.xhtml</to-view-id>
+            <redirect />
         </navigation-case>
     </navigation-rule>
     <!-- Depuis ajout commande, redirection vers l'index -->
@@ -94,6 +95,7 @@
         <navigation-case>
             <from-outcome>Accueil</from-outcome>
             <to-view-id>/pagesFrontOffice/accueil.xhtml</to-view-id>
+            <redirect />
         </navigation-case>
     </navigation-rule>
     <!-- Depuis gestion panier, redirection vers l'index -->
@@ -102,11 +104,13 @@
         <navigation-case>
             <from-outcome>Accueil</from-outcome>
             <to-view-id>/index.xhtml</to-view-id>
+            <redirect />
         </navigation-case>
     <!-- Depuis gestion panier, redirection vers l'ajout de commande -->
         <navigation-case>
             <from-outcome>ajoutCommande</from-outcome>
             <to-view-id>/pagesFrontOffice/ajoutCommande.xhtml</to-view-id>
+            <redirect />
         </navigation-case>
     </navigation-rule>
     <navigation-rule>
