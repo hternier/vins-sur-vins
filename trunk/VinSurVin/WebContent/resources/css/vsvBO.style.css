@@ -100,6 +100,7 @@
 	/*margin-top: -150px;*/
 	background-color: #2e6777;
 	min-height: 500px;
+	float: left;
 }
 
 #nav .error {
