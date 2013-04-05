@@ -3,6 +3,17 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 	
+    
+    <bean name="emfVinSurVin" factory-method="createEntityManagerFactory" class="javax.persistence.Persistence">
+        <constructor-arg index="0" type="java.lang.String" value="VinSurVin" />
+    </bean>
+    
+    <bean name="txManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+        <property name="entityManagerFactory" ref="emfVinSurVin"/>
+    </bean>
+    
+    <bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor" />
+    
 	<bean class="org.springframework.context.annotation.CommonAnnotationBeanPostProcessor" />
 	
 	<bean name="daoProduit" class="fr.afcepf.atod17.vinsurvin.dao.jpa.produit.DaoProduitImpl" />
@@ -34,7 +45,7 @@
 	
 	<bean name="daoTVA" class="fr.afcepf.atod17.vinsurvin.dao.jpa.tva.DaoTVAProduitImpl" />
 
-<bean name="listeTarifsLivraison" class="fr.afcepf.atod17.vinsurvin.entitybeans.commande.ListeTarifsLivraison" scope="prototype">
+    <bean name="listeTarifsLivraison" class="fr.afcepf.atod17.vinsurvin.entitybeans.commande.ListeTarifsLivraison" scope="prototype">
 		<property name="serviceCommande" ref="serviceCommande" />
 	</bean>
 </beans>
