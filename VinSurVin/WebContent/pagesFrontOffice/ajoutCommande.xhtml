@@ -11,7 +11,7 @@
 	<ui:define name="body">
 		<h:form id="form">
 			<p:fieldset legend="Récapitulatife de la commande">
-				<h:outputText value="Votre commande :" />
+				<h:outputLabel value="Votre commande :" />
 				<p:dataTable value="#{mbCommande.commande.produitsEnCommande}"
 					var="produitEnCommande" resizableColumns="true" paginator="true">
 					<p:column headerText="Image">
@@ -36,40 +36,40 @@
 					</p:column>
 				</p:dataTable>
 
-				<h:outputText value="Total commande H.T. : " />
-				<h:outputText value="#{mbCommande.totalCommandeHT}">
+				<h:outputLabel value="Total commande H.T. : " />
+				<h:outputLabel value="#{mbCommande.totalCommandeHT}">
 					<f:convertNumber type="currency" />
-				</h:outputText>
+				</h:outputLabel>
 				<br />
-				<h:outputText value="Total commande T.T.C. : " />
-				<h:outputText value="#{mbCommande.totalCommandeTTC}">
+				<h:outputLabel value="Total commande T.T.C. : " />
+				<h:outputLabel value="#{mbCommande.totalCommandeTTC}">
 					<f:convertNumber type="currency" />
-				</h:outputText>
+				</h:outputLabel>
 
 				<br />
 				<br />
-				<h:outputText value="Adresse :" />
+				<h:outputLabel value="Adresse :" />
 				<br />
 				<p:panelGrid columns="2">
 					<p:row>
 						<p:column>
 							<p:fieldset legend="Adresse de livraison:">
-								<h:outputText value="#{mbCommande.adresse1}" />
+								<h:outputLabel value="#{mbCommande.adresse1}" />
 								<br />
-								<h:outputText value="#{mbCommande.adresse2}" />
+								<h:outputLabel value="#{mbCommande.adresse2}" />
 								<br />
-								<h:outputText value="#{mbCommande.ville}" />
+								<h:outputLabel value="#{mbCommande.ville}" />
 							</p:fieldset>
 						</p:column>
 					</p:row>
 					<p:row>
 						<p:column>
 							<p:fieldset legend="Adresse de facturation">
-								<h:outputText value="#{mbCommande.adresse1}" />
+								<h:outputLabel value="#{mbCommande.adresse1}" />
 								<br />
-								<h:outputText value="#{mbCommande.adresse2}" />
+								<h:outputLabel value="#{mbCommande.adresse2}" />
 								<br />
-								<h:outputText value="#{mbCommande.ville}" />
+								<h:outputLabel value="#{mbCommande.ville}" />
 							</p:fieldset>
 						</p:column>
 					</p:row>
@@ -77,7 +77,7 @@
 
 				<br />
 				<br />
-				<h:outputText value="Mode de livraison :" />
+				<h:outputLabel value="Mode de livraison :" />
 				<br />
 				<p:dataTable id="tabLivraison" value="#{mbCommande.tarifsLivraisonCommande}" var="tarif"
 				selection="#{mbCommande.tarifLivraisonSelectionne}">
@@ -95,7 +95,7 @@
 
 				<br />
 				<br />
-				<h:outputText value="Mode de paiement :" />
+				<h:outputLabel value="Mode de paiement :" />
 				<br />
 				<h:panelGrid columns="2"  style="margin-bottom:10px" cellpadding="5">
 					<p:selectOneRadio id="choixPaiement">

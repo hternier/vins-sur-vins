@@ -11,7 +11,7 @@
 	<ui:define name="body">
 		<h:form id="form">
 			<p:fieldset legend="Récapitulatif du panier">
-				<h:outputText value="Votre panier :" />
+				<h:outputLabel value="Votre panier :" />
 				<p:dataTable emptyMessage="Le panier est vide." id="dtProduits" value="#{mbPanier.listeProduits}" var="produitPanier"
 					resizableColumns="true" paginator="true">
 					<p:column headerText="Libellé">
@@ -42,9 +42,9 @@
 				</p:fieldset>
 				
 				<br />
-				<h:outputText value="Total commande T.T.C. : " />
-				<h:outputText value="#{mbPanier.totalPanier}"><f:convertNumber type="currency" />
-				</h:outputText>
+				<h:outputLabel value="Total commande T.T.C. : " />
+				<h:outputLabel value="#{mbPanier.totalPanier}"><f:convertNumber type="currency" />
+				</h:outputLabel>
 				<br /><br />
 				
 				<p:panelGrid columns="2">
