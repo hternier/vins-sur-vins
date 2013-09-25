@@ -3,7 +3,7 @@
   <parent>
     <groupId>fr.afcepf.al18</groupId>
     <artifactId>controleDeStock</artifactId>
-    <version>0.0.1</version>
+    <version>${controleDeStock-version}</version>
   </parent>
   <artifactId>controleDeStock-services</artifactId>
   <name>Contrôle de stock : Persistence</name>
