@@ -14,6 +14,7 @@
     <properties>
         <spring-version>3.2.4.RELEASE</spring-version>
         <controleDeStock-version>0.0.1</controleDeStock-version>
+        <cxf-api-version>2.7.7</cxf-api-version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     </properties>
@@ -104,6 +105,16 @@
                 <groupId>commons-io</groupId>
                 <artifactId>commons-io</artifactId>
                 <version>2.4</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.cxf</groupId>
+                <artifactId>cxf-rt-frontend-jaxws</artifactId>
+                <version>${cxf-api-version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.cxf</groupId>
+                <artifactId>cxf-rt-transports-http</artifactId>
+                <version>${cxf-api-version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
