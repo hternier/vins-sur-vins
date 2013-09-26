@@ -8,6 +8,7 @@
     <modules>
         <module>controleDeStock-services</module>
         <module>controleDeStock-serveur</module>
+        <module>controleDeStock-commun</module>
     </modules>
     <name>Contrôle de stock</name>
     
