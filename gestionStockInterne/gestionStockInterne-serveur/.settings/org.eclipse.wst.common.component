@@ -6,6 +6,15 @@
         <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
+        <dependent-module archiveName="gestionStockInterne-service-0.0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/gestionStockInterne-service/gestionStockInterne-service">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="gestionStockInterne-persistance-0.0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/gestionStockInterne-persistance/gestionStockInterne-persistance">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="gestionStockInterne-commun-0.0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/gestionStockInterne-commun/gestionStockInterne-commun">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
         <property name="context-root" value="gestionStockInterne-serveur"/>
         <property name="java-output-path" value="/gestionStockInterne-serveur/target/classes"/>
     </wb-module>
