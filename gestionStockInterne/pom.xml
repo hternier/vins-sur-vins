@@ -12,14 +12,15 @@
         <module>gestionStockInterne-commun</module>
     </modules>
     <name>Gestion du stock interne</name>
-    
+
     <properties>
         <spring-version>3.2.4.RELEASE</spring-version>
         <gestionStockInterne-version>0.0.1</gestionStockInterne-version>
+        <cxf-api-version>2.7.7</cxf-api-version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     </properties>
-    
+
     <build>
         <pluginManagement>
             <plugins>
@@ -50,9 +51,20 @@
             </plugins>
         </pluginManagement>
     </build>
-    
+
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>fr.afcepf.atod18</groupId>
+                <artifactId>gestionStockInterne-persistance</artifactId>
+                <version>${gestionStockInterne-version}</version>
+            </dependency>
+            <dependency>
+                <groupId>fr.afcepf.atod18</groupId>
+                <artifactId>gestionStockInterne-service</artifactId>
+                <version>${gestionStockInterne-version}</version>
+            </dependency>
+            
             <dependency>
                 <groupId>mysql</groupId>
                 <artifactId>mysql-connector-java</artifactId>
@@ -89,6 +101,11 @@
                 <version>${spring-version}</version>
             </dependency>
             <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-orm</artifactId>
+                <version>${spring-version}</version>
+            </dependency>
+            <dependency>
                 <groupId>org.hibernate</groupId>
                 <artifactId>hibernate-core</artifactId>
                 <version>4.2.5.Final</version>
@@ -107,6 +124,22 @@
                 <groupId>commons-io</groupId>
                 <artifactId>commons-io</artifactId>
                 <version>2.4</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.cxf</groupId>
+                <artifactId>cxf-rt-frontend-jaxws</artifactId>
+                <version>${cxf-api-version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.cxf</groupId>
+                <artifactId>cxf-rt-transports-http</artifactId>
+                <version>${cxf-api-version}</version>
+            </dependency>
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>4.11</version>
+                <scope>test</scope>
             </dependency>
         </dependencies>
     </dependencyManagement>
