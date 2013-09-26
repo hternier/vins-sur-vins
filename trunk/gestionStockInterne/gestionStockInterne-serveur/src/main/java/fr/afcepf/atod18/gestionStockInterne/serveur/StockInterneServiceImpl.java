@@ -16,7 +16,7 @@ public class StockInterneServiceImpl implements StockInterneService {
 	private StockService stockService;
 	
 	@Override
-	public ProduitStockDto fillProduitStock(ProduitStockDto paramProduit) {
+	public void fillProduitStock(ProduitStockDto paramProduit) {
 		
 		ProduitStock produitStockBean = new ProduitStock();
 		produitStockBean.setId(paramProduit.getId());
@@ -25,8 +25,6 @@ public class StockInterneServiceImpl implements StockInterneService {
 		
 		paramProduit.setQuantiteStock(produitStockBean.getQuantiteStock());
 		paramProduit.setQuantiteMinimal(produitStockBean.getQuantiteMinimal());
-		
-		return paramProduit;
 	}
 	
 	@Override
