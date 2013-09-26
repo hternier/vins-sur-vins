@@ -5,7 +5,7 @@ package fr.afcepf.atod18.gestionStockInterne.commun.entitees;
  * Utilisée pour les Web services.
  * @author Administrateur
  */
-public class ProduitStock {
+public class ProduitStockDto {
 
 	/**
 	 * Identifiant du produit
