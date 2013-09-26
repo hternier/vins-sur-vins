@@ -18,18 +18,14 @@ public class StockServiceImpl implements StockService {
 	public ProduitStock fillProduitStock(ProduitStock paramProduit) {
 		
 		paramProduit = produitStockDao.consulterParId(paramProduit.getId());
-		
 		return paramProduit;
 	}
 	
 	@Override
 	public Integer getStock(Integer paramIdProduit) {
 		
-		
-		//ProduitStock paramProduit = produitStockDao.consulterParId(paramIdProduit);
-		//return paramProduit.getQuantiteStock();
-		
-		return 100;
+		ProduitStock paramProduit = produitStockDao.consulterParId(paramIdProduit);
+		return paramProduit.getQuantiteStock();
 	}
 
 }
