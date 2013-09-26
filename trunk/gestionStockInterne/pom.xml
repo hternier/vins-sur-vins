@@ -64,6 +64,11 @@
                 <artifactId>gestionStockInterne-service</artifactId>
                 <version>${gestionStockInterne-version}</version>
             </dependency>
+            <dependency>
+                <groupId>fr.afcepf.atod18</groupId>
+                <artifactId>gestionStockInterne-commun</artifactId>
+                <version>${gestionStockInterne-version}</version>
+            </dependency>
             
             <dependency>
                 <groupId>mysql</groupId>
