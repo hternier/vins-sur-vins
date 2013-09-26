@@ -8,7 +8,7 @@ import fr.afcepf.atod18.gestionStockInterne.commun.entitees.ProduitStockDto;
 public interface StockInterneService {
 	
 	@WebMethod(operationName="fillProduitStock")
-	public ProduitStockDto fillProduitStock(ProduitStockDto paramProduit);
+	public void fillProduitStock(ProduitStockDto paramProduit);
 
 	@WebMethod(operationName="getStock")
 	public Integer getStock(Integer paramIdProduit);
