@@ -1,7 +1,6 @@
 package fr.afcepf.atod18.gestionStockInterne.commun.webService;
 
 import javax.jws.WebMethod;
-import javax.jws.WebResult;
 import javax.jws.WebService;
 
 import fr.afcepf.atod18.gestionStockInterne.commun.entitees.ProduitStockDto;
@@ -25,11 +24,22 @@ public interface StockInterneService {
 	@WebMethod(operationName="getStock")
 	public ProduitStockDto getStock(Integer paramIdProduit);
 	
+
 	/**
-	 * Permet de tester le fonctionnement du web service avec un ping.
-	 * @param paramString String en entrée.
-	 * @return String de retour.
+	 * Incrémente le stock pour l'id du produit en parametre.
+	 * @param paramIdProduit Produit à incrémenter.
+	 * @param paramQuantiteAjouter Quantité à ajouter au stock.
+	 * @return Le ProduitStockDto avec la nouvelle valeur du stock.
 	 */
-	@WebMethod(operationName="ping")
-	public String ping(String paramString);
+	@WebMethod(operationName="incrementeStock")
+	public ProduitStockDto incrementeStock(Integer paramIdProduit, Integer paramQuantiteAjouter);
+	
+	/**
+	 * Décrémente le stock pour l'id du produit en parametre.
+	 * @param paramIdProduit Produit à décrémenter.
+	 * @param paramQuantiteRetirer Quantité à retirer au stock.
+	 * @return Le ProduitStockDto avec la nouvelle valeur du stock.
+	 */
+	@WebMethod(operationName="decrementeStock")
+	public ProduitStockDto decrementeStock(Integer paramIdProduit, Integer paramQuantiteRetirer);
 }
