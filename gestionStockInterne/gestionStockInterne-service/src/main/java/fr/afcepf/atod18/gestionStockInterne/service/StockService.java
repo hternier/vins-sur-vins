@@ -8,13 +8,13 @@ public interface StockService {
 	 * Remplit le produit avec le stock restant du produit et la quantité minimale.
 	 * @param idProduit Le produit dont le stock et la quantité minimale sont à récupérer.
 	 */
-	public void fillProduitStock(ProduitStock paramProduit);
+	public ProduitStock getStock(ProduitStock paramProduit);
 	
 	/**
 	 * Récupère le stock restant d'un produit.
 	 * @param paramIdProduit L'id du produit dont le stock est à récupérer.
 	 * @return La quantité en stock.
 	 */
-	public Integer getStock(Integer paramIdProduit);
+	public ProduitStock getStock(Integer paramIdProduit);
 
 }
