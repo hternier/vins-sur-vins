@@ -5,6 +5,18 @@
         <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
+        <dependent-module archiveName="controleDeStock-commun-0.0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/controleDeStock-commun/controleDeStock-commun">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="controleDeStock-services-0.0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/controleDeStock-services/controleDeStock-services">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="gestionStockInterne-commun-0.0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/gestionStockInterne-commun/gestionStockInterne-commun">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="gestionFournisseur-commun-0.0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/gestionFournisseur-commun/gestionFournisseur-commun">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
         <property name="context-root" value="controleDeStock-serveur"/>
         <property name="java-output-path" value="/controleDeStock-serveur/target/classes"/>
         <property name="component.exclusion.patterns"/>

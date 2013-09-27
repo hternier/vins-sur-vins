@@ -16,6 +16,7 @@
         <spring-version>3.2.4.RELEASE</spring-version>
         <controleDeStock-version>0.0.1</controleDeStock-version>
         <gestionStockInterne-version>0.0.1</gestionStockInterne-version>
+        <gestionFournisseur-version>0.0.1</gestionFournisseur-version>
         <cxf-api-version>2.7.7</cxf-api-version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -57,6 +58,11 @@
                 <groupId>fr.afcepf.atod18</groupId>
                 <artifactId>gestionStockInterne-commun</artifactId>
                 <version>${gestionStockInterne-version}</version>
+            </dependency>
+            <dependency>
+                <groupId>fr.afcepf.al18</groupId>
+                <artifactId>gestionFournisseur-commun</artifactId>
+                <version>${gestionFournisseur-version}</version>
             </dependency>
             <dependency>
                 <groupId>fr.afcepf.al18</groupId>
@@ -138,6 +144,12 @@
                 <artifactId>junit</artifactId>
                 <version>4.11</version>
                 <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>javax.servlet</groupId>
+                <artifactId>servlet-api</artifactId>
+                <version>2.5</version>
+                <scope>provided</scope>
             </dependency>
         </dependencies>
     </dependencyManagement>

@@ -42,5 +42,25 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
         </dependency>
+        <dependency>
+            <groupId>fr.afcepf.al18</groupId>
+            <artifactId>controleDeStock-commun</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>fr.afcepf.al18</groupId>
+            <artifactId>controleDeStock-services</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>fr.afcepf.atod18</groupId>
+            <artifactId>gestionStockInterne-commun</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>fr.afcepf.al18</groupId>
+            <artifactId>gestionFournisseur-commun</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>servlet-api</artifactId>
+        </dependency>
     </dependencies>
 </project>
