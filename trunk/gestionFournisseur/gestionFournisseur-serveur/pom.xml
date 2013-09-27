@@ -61,5 +61,10 @@
 				<groupId>mysql</groupId>
 				<artifactId>mysql-connector-java</artifactId>
 			</dependency>
+			
+			<dependency>
+				<groupId>fr.afcepf.al18</groupId>
+				<artifactId>gestionFournisseur-services</artifactId>
+			</dependency>
 	</dependencies>
 </project>
