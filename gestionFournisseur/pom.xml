@@ -17,33 +17,33 @@
 	<properties>
 		<spring-version>3.2.4.RELEASE</spring-version>
 		<cxf-api-version>2.7.7</cxf-api-version>
-        <gestionFournisseur-version>0.0.1</gestionFournisseur-version>
+		<gestionFournisseur-version>0.0.1</gestionFournisseur-version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 	</properties>
 
 
 	<build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-source-plugin</artifactId>
-            </plugin>
-        </plugins>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+			</plugin>
+		</plugins>
 		<pluginManagement>
 			<plugins>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-source-plugin</artifactId>
-                    <executions>
-                        <execution>
-                            <id>attach-sources</id>
-                            <goals>
-                                <goal>jar</goal>
-                            </goals>
-                        </execution>
-                    </executions>
-                </plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-source-plugin</artifactId>
+					<executions>
+						<execution>
+							<id>attach-sources</id>
+							<goals>
+								<goal>jar</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
 				<plugin>
 					<artifactId>maven-compiler-plugin</artifactId>
 					<configuration>
@@ -138,6 +138,11 @@
 
 			<dependency>
 				<groupId>fr.afcepf.al18</groupId>
+				<artifactId>gestionFournisseur-services</artifactId>
+				<version>${gestionFournisseur-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>fr.afcepf.al18</groupId>
 				<artifactId>gestionFournisseur-persistance</artifactId>
 				<version>${gestionFournisseur-version}</version>
 			</dependency>
@@ -146,17 +151,17 @@
 				<artifactId>gestionFournisseur-commun</artifactId>
 				<version>${gestionFournisseur-version}</version>
 			</dependency>
-			
-			 <dependency>
-                <groupId>org.apache.cxf</groupId>
-                <artifactId>cxf-rt-frontend-jaxws</artifactId>
-                <version>${cxf-api-version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.cxf</groupId>
-                <artifactId>cxf-rt-transports-http</artifactId>
-                <version>${cxf-api-version}</version>
-            </dependency>
+
+			<dependency>
+				<groupId>org.apache.cxf</groupId>
+				<artifactId>cxf-rt-frontend-jaxws</artifactId>
+				<version>${cxf-api-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.cxf</groupId>
+				<artifactId>cxf-rt-transports-http</artifactId>
+				<version>${cxf-api-version}</version>
+			</dependency>
 		</dependencies>
 	</dependencyManagement>
 </project>

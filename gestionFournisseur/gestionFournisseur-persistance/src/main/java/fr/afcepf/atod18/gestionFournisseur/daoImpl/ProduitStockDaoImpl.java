@@ -1,5 +1,8 @@
 package fr.afcepf.atod18.gestionFournisseur.daoImpl;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.stereotype.Repository;
 
 import fr.afcepf.atod18.gestionFournisseur.bean.Produit;
@@ -14,5 +17,5 @@ public class ProduitStockDaoImpl extends AbstractDAOImpl<Produit, Integer> imple
 
 	/** Méthode de récupération de l'ID du fournisseur.**/
 //	public Integer getFournisseur (Integer idProduit);
-
+	
 }

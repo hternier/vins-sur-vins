@@ -3,7 +3,6 @@ package fr.afcepf.atod18.gestionFournisseur.bean;
 public class Produit {
 	private Integer id;
 	private Integer quantiteCommandee;	
-//	private Integer quantiteMini;
 	private Integer idFournisseur;
 
 	public Integer getId() {
@@ -37,15 +36,5 @@ public class Produit {
 	public void setIdFournisseur(Integer idFournisseur) {
 		this.idFournisseur = idFournisseur;
 	}
-
-//	public Integer getQuantiteMini() {
-//		return quantiteMini;
-//	}
-//
-//	public void setQuantiteMini(Integer quantiteMini) {
-//		this.quantiteMini = quantiteMini;
-//	}
-	
-	
 
 }
