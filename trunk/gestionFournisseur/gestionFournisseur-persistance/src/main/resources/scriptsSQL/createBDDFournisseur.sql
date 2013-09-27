@@ -8,7 +8,7 @@ DROP TABLE IF EXISTS `atod18_g1_gestionfournisseur.PRODUIT`;
 CREATE TABLE atod18_g1_gestionfournisseur.PRODUIT
 (
    IDPRODUIT            int not null,
-   NOMBRECOMMANDES      int not null,
+   QUANTITECOMMANDES      int not null,
    IDFOURNISSEUR  		int not null
    primary key (IDPRODUIT)
 );
