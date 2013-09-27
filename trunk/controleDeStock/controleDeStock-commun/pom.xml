@@ -3,7 +3,7 @@
   <parent>
     <groupId>fr.afcepf.al18</groupId>
     <artifactId>controleDeStock</artifactId>
-    <version>${controleDeStock-version}</version>
+    <version>0.0.1</version>
   </parent>
   <artifactId>controleDeStock-commun</artifactId>
   <name>Contrôle de stock : Commun</name>
