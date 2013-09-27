@@ -3,7 +3,7 @@
   <parent>
     <groupId>fr.afcepf.atod18</groupId>
     <artifactId>gestionStockInterne</artifactId>
-    <version>${gestionStockInterne-version}</version>
+    <version>0.0.1</version>
   </parent>
   <artifactId>gestionStockInterne-commun</artifactId>
   <name>Interfaces pour utiliser les web services Gestion stock interne</name>
