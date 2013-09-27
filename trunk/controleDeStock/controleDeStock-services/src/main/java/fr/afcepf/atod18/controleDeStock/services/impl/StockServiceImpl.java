@@ -3,6 +3,7 @@ package fr.afcepf.atod18.controleDeStock.services.impl;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +16,8 @@ import fr.afcepf.atod18.gestionStockInterne.commun.webService.StockInterneServic
 
 @Service
 public class StockServiceImpl implements StockService {
+	
+	private static Logger logger = Logger.getLogger(StockServiceImpl.class);
 	
 	@Autowired
 	private StockInterneService stockInterneService;
@@ -36,6 +39,7 @@ public class StockServiceImpl implements StockService {
 			ProduitStockDto produitStock = stockInterneService.getStock(idProduit);
 			
 			if (produitStock.getQuantiteStock() < produitCommande.getQuantite()) {
+				logger.error("Stock insuffisant pour le produit : " + idProduit);
 				confirmationCommandeRetour = false;
 				break;
 			}
@@ -50,6 +54,7 @@ public class StockServiceImpl implements StockService {
 		
 		for (Integer idProduit : produitsACommanderId) {
 			commandesFournisseursService.passerCommande(idProduit);
+			logger.info("Commande passée pour le produit : " + idProduit);
 		}
 		
 		return confirmationCommandeRetour;
