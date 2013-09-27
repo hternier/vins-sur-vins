@@ -5,14 +5,13 @@ import fr.afcepf.atod18.gestionStockInterne.persistance.beans.ProduitStock;
 public interface StockService {
 	
 	/**
-	 * Permet de récupérer le stock restant d'un produit.
-	 * @param idProduit L'id du produit dont le stock est à récupérer.
-	 * @return La quantité en stock.
+	 * Remplit le produit avec le stock restant du produit et la quantité minimale.
+	 * @param idProduit Le produit dont le stock et la quantité minimale sont à récupérer.
 	 */
-	public ProduitStock fillProduitStock(ProduitStock paramProduit);
+	public void fillProduitStock(ProduitStock paramProduit);
 	
 	/**
-	 * Permet de récupérer le stock restant d'un produit.
+	 * Récupère le stock restant d'un produit.
 	 * @param paramIdProduit L'id du produit dont le stock est à récupérer.
 	 * @return La quantité en stock.
 	 */

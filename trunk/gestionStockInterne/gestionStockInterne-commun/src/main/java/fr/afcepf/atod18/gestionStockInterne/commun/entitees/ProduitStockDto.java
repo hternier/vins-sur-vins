@@ -21,6 +21,29 @@ public class ProduitStockDto {
 	 * Quantité minimal à partire de laquelle le stock doit être réaprovisionné
 	 */
 	private Integer quantiteMinimal;
+	
+	
+	/** Constructeurs **/
+
+	public ProduitStockDto() {
+		super();
+	}
+	
+	public ProduitStockDto(Integer paramId) {
+		super();
+		id = paramId;
+	}
+	
+	public ProduitStockDto(Integer paramId, Integer paramQuantiteStock,
+			Integer paramQuantiteMinimal) {
+		super();
+		id = paramId;
+		quantiteStock = paramQuantiteStock;
+		quantiteMinimal = paramQuantiteMinimal;
+	}
+
+	
+	/** Getter setter **/
 
 	public Integer getId() {
 		return id;

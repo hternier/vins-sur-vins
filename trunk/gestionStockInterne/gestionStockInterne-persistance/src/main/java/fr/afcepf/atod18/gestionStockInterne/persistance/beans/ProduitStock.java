@@ -27,6 +27,29 @@ public class ProduitStock {
 	 */
 	@Column(name = "quantiteMinimal")
 	private Integer quantiteMinimal;
+	
+	
+	/** Constructeurs **/
+
+	public ProduitStock() {
+		super();
+	}
+	
+	public ProduitStock(Integer paramId) {
+		super();
+		id = paramId;
+	}
+	
+	public ProduitStock(Integer paramId, Integer paramQuantiteStock,
+			Integer paramQuantiteMinimal) {
+		super();
+		id = paramId;
+		quantiteStock = paramQuantiteStock;
+		quantiteMinimal = paramQuantiteMinimal;
+	}
+
+	
+	/** Getter setter **/
 
 	public Integer getId() {
 		return id;

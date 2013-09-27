@@ -15,10 +15,9 @@ public class StockServiceImpl implements StockService {
 	private ProduitStockDao produitStockDao;
 	
 	@Override
-	public ProduitStock fillProduitStock(ProduitStock paramProduit) {
+	public void fillProduitStock(ProduitStock paramProduit) {
 		
 		paramProduit = produitStockDao.consulterParId(paramProduit.getId());
-		return paramProduit;
 	}
 	
 	@Override
