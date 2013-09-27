@@ -5,11 +5,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import fr.afcepf.atod18.gestionFournisseur.dao.ProduitStockDao;
-import fr.afcepf.atod18.gestionFournisseur.service.StockService;
+import fr.afcepf.atod18.gestionFournisseur.service.CommandeService;
 
 @Service
 @Transactional(readOnly=true)
-public class StockServiceImpl implements StockService {
+public class CommandeServiceImpl implements CommandeService {
 	
 	@Autowired
 	private ProduitStockDao produitStockDao;

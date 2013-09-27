@@ -9,15 +9,15 @@ public class CommandesFournisseursServiceImpl implements CommandesFournisseursSe
 
 
 	@Override
-	public Boolean passerCommande(Integer idProduit, Integer nombreProduits) {
+	public Boolean passerCommande(Integer idProduit) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-//	@Override
-//	public Integer getFournisseur(Integer idProduitStock) {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
+
+	public Integer getFournisseur(Integer idProduit) {
+	
+		return null;
+	}
 
 }

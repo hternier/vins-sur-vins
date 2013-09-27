@@ -6,6 +6,5 @@ import javax.jws.WebService;
 public interface CommandesFournisseursService {
 	
 	/**Méthode permettant de passer une commande.**/
-	public Boolean passerCommande(Integer idProduit, Integer nombreProduits);
-	
+	public Boolean passerCommande(Integer idProduit);	
 }
