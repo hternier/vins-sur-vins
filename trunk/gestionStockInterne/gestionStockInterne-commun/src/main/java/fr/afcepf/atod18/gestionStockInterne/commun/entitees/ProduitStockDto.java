@@ -2,30 +2,33 @@ package fr.afcepf.atod18.gestionStockInterne.commun.entitees;
 
 import java.io.Serializable;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
 /**
  * Entité pour la gestion de stock.
  * Utilisée pour les Web services.
  * @author Administrateur
  */
+@XmlRootElement
 public class ProduitStockDto implements Serializable {
 
 	/**
-	 * 
+	 * Permet de sérialiser.
 	 */
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * Identifiant du produit
+	 * Identifiant du produit.
 	 */
 	private Integer id;
 
 	/**
-	 * Quantité du produit dans le stock
+	 * Quantité du produit dans le stock.
 	 */
 	private Integer quantiteStock;
 
 	/**
-	 * Quantité minimal à partire de laquelle le stock doit être réaprovisionné
+	 * Quantité minimal à partire de laquelle le stock doit être réaprovisionné.
 	 */
 	private Integer quantiteMinimal;
 	
