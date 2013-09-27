@@ -4,10 +4,8 @@ import javax.jws.WebService;
 
 @WebService
 public interface CommandesFournisseursService {
-
-	/** Méthode de test de la connexion au webservice. **/
-	public String ping (String pong);
 	
-	/** Méthode de **/
-	public Integer getStock (Integer idProduitStock);
+	/**Méthode permettant de passer une commande.**/
+	public Boolean passerCommande(Integer idProduit, Integer nombreProduits);
+	
 }

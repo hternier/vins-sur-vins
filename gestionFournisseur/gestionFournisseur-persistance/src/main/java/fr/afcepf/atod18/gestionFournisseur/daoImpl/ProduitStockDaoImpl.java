@@ -12,5 +12,7 @@ public class ProduitStockDaoImpl extends AbstractDAOImpl<ProduitStock, Integer> 
 		super(ProduitStock.class);
 	}
 
+	/** Méthode de récupération de l'ID du fournisseur.**/
+//	public Integer getFournisseur (Integer idProduit);
 
 }

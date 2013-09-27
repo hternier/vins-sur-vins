@@ -4,7 +4,8 @@ USE atod18_g1_gestionfournisseur;
 /*==============================================================*/
 /* Table : Produit                                             */
 /*==============================================================*/
-create table atod18_g1_gestionfournisseur.PRODUIT
+DROP TABLE IF EXISTS `atod18_g1_gestionfournisseur.PRODUIT`;
+CREATE TABLE atod18_g1_gestionfournisseur.PRODUIT
 (
    IDPRODUIT            int not null,
    NOMBRECOMMANDES      int not null,
@@ -15,9 +16,14 @@ create table atod18_g1_gestionfournisseur.PRODUIT
 /*==============================================================*/
 /* Table : Fournisseur                                          */
 /*==============================================================*/
+DROP TABLE IF EXISTS `atod18_g1_gestionfournisseur.FOURNISSEUR`;
 create table atod18_g1_gestionfournisseur.FOURNISSEUR
 (
    IDFOURNISSEUR            int not null,
    LIBELLEFOURNISSEUR      String not null
-   primary key (IDPRODUIT)
+   primary key (IDFOURNISSEUR)
 );
+
+alter table atod18_g1_gestionfournisseur.PRODUIT add constraint FK_PRODUIT_FOURNISSEUR foreign key (IDFOURNISSEUR)
+      references FOURNISSEUR (IDFOURNISSEUR) on delete restrict on update restrict;
+

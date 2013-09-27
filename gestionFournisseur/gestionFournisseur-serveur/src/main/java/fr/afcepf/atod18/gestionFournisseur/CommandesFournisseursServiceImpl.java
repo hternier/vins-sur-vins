@@ -7,16 +7,17 @@ import fr.afcepf.atod18.gestionFournisseur.gestionFournisseurWS.CommandesFournis
 @WebService (endpointInterface="fr.afcepf.atod18.gestionFournisseur.gestionFournisseurWS.CommandesFournisseursService")
 public class CommandesFournisseursServiceImpl implements CommandesFournisseursService {
 
+
 	@Override
-	public String ping(String pong) {
+	public Boolean passerCommande(Integer idProduit, Integer nombreProduits) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
-	public Integer getStock(Integer idProduitStock) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+//	@Override
+//	public Integer getFournisseur(Integer idProduitStock) {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
 
 }
