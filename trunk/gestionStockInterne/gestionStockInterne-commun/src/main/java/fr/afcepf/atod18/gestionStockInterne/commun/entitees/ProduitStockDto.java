@@ -1,11 +1,18 @@
 package fr.afcepf.atod18.gestionStockInterne.commun.entitees;
 
+import java.io.Serializable;
+
 /**
  * Entité pour la gestion de stock.
  * Utilisée pour les Web services.
  * @author Administrateur
  */
-public class ProduitStockDto {
+public class ProduitStockDto implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	/**
 	 * Identifiant du produit
