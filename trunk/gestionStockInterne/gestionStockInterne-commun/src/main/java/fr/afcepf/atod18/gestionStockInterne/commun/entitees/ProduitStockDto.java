@@ -28,9 +28,9 @@ public class ProduitStockDto implements Serializable {
 	private Integer quantiteStock;
 
 	/**
-	 * Quantité minimal à partire de laquelle le stock doit être réaprovisionné.
+	 * Quantité minimale à partire de laquelle le stock doit être réaprovisionné.
 	 */
-	private Integer quantiteMinimal;
+	private Integer quantiteMinimale;
 	
 	
 	/** Constructeurs **/
@@ -49,7 +49,7 @@ public class ProduitStockDto implements Serializable {
 		super();
 		id = paramId;
 		quantiteStock = paramQuantiteStock;
-		quantiteMinimal = paramQuantiteMinimal;
+		quantiteMinimale = paramQuantiteMinimal;
 	}
 
 	
@@ -71,12 +71,12 @@ public class ProduitStockDto implements Serializable {
 		quantiteStock = paramQuantiteStock;
 	}
 
-	public Integer getQuantiteMinimal() {
-		return quantiteMinimal;
+	public Integer getQuantiteMinimale() {
+		return quantiteMinimale;
 	}
 
-	public void setQuantiteMinimal(Integer paramQuantiteMinimal) {
-		quantiteMinimal = paramQuantiteMinimal;
+	public void setQuantiteMinimale(Integer paramQuantiteMinimale) {
+		quantiteMinimale = paramQuantiteMinimale;
 	}
 
 }
