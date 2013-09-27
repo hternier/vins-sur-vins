@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>fr.afcepf.al18</groupId>
 	<artifactId>gestionFournisseur</artifactId>
-	<version>${gestionFournisseur-version}</version>
+	<version>0.0.1</version>
 	<packaging>pom</packaging>
 	<name>Gestion Fournisseur</name>
 
@@ -16,8 +16,8 @@
 
 	<properties>
 		<spring-version>3.2.4.RELEASE</spring-version>
-		<gestionFournisseur-version>0.0.1</gestionFournisseur-version>
-		 <cxf-api-version>2.7.7</cxf-api-version>
+		<cxf-api-version>2.7.7</cxf-api-version>
+        <gestionFournisseur-version>0.0.1</gestionFournisseur-version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 	</properties>

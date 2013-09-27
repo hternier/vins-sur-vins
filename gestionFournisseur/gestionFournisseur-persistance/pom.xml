@@ -4,7 +4,7 @@
 	<parent>
 		<groupId>fr.afcepf.al18</groupId>
 		<artifactId>gestionFournisseur</artifactId>
-		<version>${gestionFournisseur-version}</version>
+		<version>0.0.1</version>
 	</parent>
 	<artifactId>gestionFournisseur-persistance</artifactId>
 	<name>Gestion fournisseur : Persistance</name>
