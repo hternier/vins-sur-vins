@@ -19,4 +19,7 @@ public interface ControleDeStockService {
 	@WebMethod(operationName = "passerCommande")
 	public boolean passerCommande(@WebParam(name = "commande")CommandeControleStock commande);
 	
+	@WebMethod(operationName = "ping")
+	public String ping(@WebParam(name = "string")String string);
+	
 }

@@ -38,7 +38,8 @@
     
     <bean id="commandesFournisseursService"
           class="fr.afcepf.atod18.gestionFournisseur.gestionFournisseurWS.CommandesFournisseursService"
-          factory-bean="CommandesFournisseursServiceFactory" factory-method="create" />
+          factory-bean="CommandesFournisseursServiceFactory"
+          factory-method="create" />
     
     <bean id="CommandesFournisseursServiceFactory"
             class="org.apache.cxf.jaxws.JaxWsProxyFactoryBean">
