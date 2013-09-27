@@ -39,4 +39,9 @@ public class ControleDeStockServiceImpl implements ControleDeStockService {
 		return stockService.passerCommande(commande);
 	}
 
+	@Override
+	public String ping(String string) {
+		return "pong : " + string;
+	}
+
 }
