@@ -1,5 +1,8 @@
 package fr.afcepf.atod18.controleDeStock.services.impl;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,6 +27,8 @@ public class StockServiceImpl implements StockService {
 		
 		boolean confirmationCommandeRetour = true;
 		
+		Set<Integer> produitsACommanderId = new HashSet<Integer>(commande.getProduits().size());
+		
 		for (ProduitControleStock produitCommande : commande.getProduits()) {
 			
 			Integer idProduit = produitCommande.getId();
@@ -37,7 +42,16 @@ public class StockServiceImpl implements StockService {
 			
 			produitStock = stockInterneService.decrementeStock(idProduit, produitCommande.getQuantite());
 			
+			if (produitStock.getQuantiteMinimale() > produitStock.getQuantiteStock()) {
+				produitsACommanderId.add(produitCommande.getId());
+			}
+			
 		}
+		
+		for (Integer idProduit : produitsACommanderId) {
+			commandesFournisseursService.passerCommande(idProduit);
+		}
+		
 		return confirmationCommandeRetour;
 	}
 
