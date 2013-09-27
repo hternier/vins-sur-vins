@@ -34,4 +34,9 @@ public class ProduitControleStock implements Serializable {
 		this.quantite = quantite;
 	}
 	
+	@Override
+	public boolean equals(Object obj) {
+		return id.equals(((ProduitControleStock)obj).getId());
+	}
+	
 }
