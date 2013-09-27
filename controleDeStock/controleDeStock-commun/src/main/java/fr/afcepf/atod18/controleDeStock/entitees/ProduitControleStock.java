@@ -9,8 +9,12 @@ public class ProduitControleStock implements Serializable {
 	private Integer id;
 	
 	private Integer quantite;
+	
+	public ProduitControleStock() {
+		
+	}
 
-	private ProduitControleStock(Integer id) {
+	public ProduitControleStock(Integer id) {
 		this.id = id;
 	}
 
