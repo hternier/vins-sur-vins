@@ -2,13 +2,19 @@ package fr.afcepf.atod18.controleDeStock.ws.impl;
 
 import javax.jws.WebService;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import fr.afcepf.atod18.controleDeStock.entitees.CommandeControleStock;
 import fr.afcepf.atod18.controleDeStock.entitees.ProduitControleStock;
+import fr.afcepf.atod18.controleDeStock.services.StockService;
 import fr.afcepf.atod18.controleDeStock.ws.ControleDeStockService;
 
 @WebService(endpointInterface = "fr.afcepf.atod18.controleDeStock.ws.ControleDeStockService")
 public class ControleDeStockServiceImpl implements ControleDeStockService {
 
+	@Autowired
+	private StockService stockService;
+	
 	@Override
 	public int getStockActuel(ProduitControleStock produit) {
 		int retour = 5;
@@ -30,11 +36,7 @@ public class ControleDeStockServiceImpl implements ControleDeStockService {
 
 	@Override
 	public boolean passerCommande(CommandeControleStock commande) {
-		if (commande != null) {
-			return true;
-		} else {
-			return false;
-		}
+		return stockService.passerCommande(commande);
 	}
 
 }
