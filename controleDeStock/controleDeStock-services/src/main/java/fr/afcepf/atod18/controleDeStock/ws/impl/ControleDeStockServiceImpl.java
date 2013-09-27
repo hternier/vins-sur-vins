@@ -2,6 +2,7 @@ package fr.afcepf.atod18.controleDeStock.ws.impl;
 
 import javax.jws.WebService;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import fr.afcepf.atod18.controleDeStock.entitees.CommandeControleStock;
@@ -12,6 +13,8 @@ import fr.afcepf.atod18.controleDeStock.ws.ControleDeStockService;
 @WebService(endpointInterface = "fr.afcepf.atod18.controleDeStock.ws.ControleDeStockService")
 public class ControleDeStockServiceImpl implements ControleDeStockService {
 
+	private static Logger logger = Logger.getLogger(ControleDeStockServiceImpl.class);
+	
 	@Autowired
 	private StockService stockService;
 	
@@ -36,6 +39,7 @@ public class ControleDeStockServiceImpl implements ControleDeStockService {
 
 	@Override
 	public boolean passerCommande(CommandeControleStock commande) {
+		logger.info("Connexion au webService effectuée, traitement ...");
 		return stockService.passerCommande(commande);
 	}
 
