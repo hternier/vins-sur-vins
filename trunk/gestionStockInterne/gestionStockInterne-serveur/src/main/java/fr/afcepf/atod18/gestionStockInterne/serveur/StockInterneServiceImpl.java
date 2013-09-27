@@ -26,7 +26,7 @@ public class StockInterneServiceImpl implements StockInterneService {
 		ProduitStock produitStockBean = new ProduitStock(paramIdProduit);
 
 		// Récupération du stock et quantité mini dans ProduitStock
-		stockService.fillProduitStock(produitStockBean);
+		produitStockBean = stockService.getStock(produitStockBean);
 
 		// Création de ProduitStockDto et conversion de ProduitStock en
 		// ProduitStockDto

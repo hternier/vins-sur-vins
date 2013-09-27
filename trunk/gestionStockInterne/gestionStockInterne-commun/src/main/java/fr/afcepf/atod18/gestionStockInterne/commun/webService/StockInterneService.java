@@ -1,7 +1,9 @@
 package fr.afcepf.atod18.gestionStockInterne.commun.webService;
 
 import javax.jws.WebMethod;
+import javax.jws.WebResult;
 import javax.jws.WebService;
+
 import fr.afcepf.atod18.gestionStockInterne.commun.entitees.ProduitStockDto;
 
 @WebService
