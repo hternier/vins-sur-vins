@@ -11,7 +11,6 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 
 import fr.afcepf.atod17.vinsurvin.dao.interfaces.tva.IDaoTVAProduit;
-import fr.afcepf.atod17.vinsurvin.entitybeans.produit.Categorie;
 import fr.afcepf.atod17.vinsurvin.entitybeans.produit.TVA;
 
 public class DaoTVAProduitImpl implements IDaoTVAProduit {

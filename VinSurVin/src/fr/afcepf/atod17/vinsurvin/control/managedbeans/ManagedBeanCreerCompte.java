@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.model.SelectItem;
-import javax.persistence.Persistence;
 
 import fr.afcepf.atod17.vinsurvin.entitybeans.compte.Adresse;
 import fr.afcepf.atod17.vinsurvin.entitybeans.compte.CompteClient;

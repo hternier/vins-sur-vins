@@ -1,13 +1,15 @@
 package fr.afcepf.atod17.vinsurvin.control.entities;
 
+import fr.afcepf.atod17.vinsurvin.control.managedbeans.AbstractManagedBean;
 import fr.afcepf.atod17.vinsurvin.entitybeans.produit.Accessoire;
 import fr.afcepf.atod17.vinsurvin.entitybeans.produit.Produit;
 import fr.afcepf.atod17.vinsurvin.entitybeans.produit.Spiritueux;
 import fr.afcepf.atod17.vinsurvin.entitybeans.produit.Vin;
 import fr.afcepf.atod17.vinsurvin.services.implementations.ServiceProduitImpl;
+import fr.afcepf.atod17.vinsurvin.services.implementations.ServiceStockImpl;
 import fr.afcepf.atod17.vinsurvin.utils.VinSurVinContext;
 
-public class ProduitVueDetail {
+public class ProduitVueDetail extends AbstractManagedBean {
 	
 	private Produit produit;
 	private int quantite = 1;
@@ -77,7 +79,8 @@ public class ProduitVueDetail {
 	}
 	
 	public int getStock() {
-		return this.produit.getStock();
+		//return this.produit.getStock();
+		return getContext().getBean(ServiceStockImpl.class).getStockActuel(this.produit);
 	}
 	
 	public double getTVA() {

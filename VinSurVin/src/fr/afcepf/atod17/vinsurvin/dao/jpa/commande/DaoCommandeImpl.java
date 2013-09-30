@@ -1,6 +1,7 @@
 package fr.afcepf.atod17.vinsurvin.dao.jpa.commande;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -9,12 +10,15 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
+
 import fr.afcepf.atod17.vinsurvin.dao.interfaces.commande.IDaoCommande;
 import fr.afcepf.atod17.vinsurvin.entitybeans.commande.Commande;
 import fr.afcepf.atod17.vinsurvin.entitybeans.commande.EtatCommande;
 import fr.afcepf.atod17.vinsurvin.entitybeans.commande.ProduitEnCommande;
 import fr.afcepf.atod17.vinsurvin.entitybeans.commande.ProduitEnCommandePK;
 import fr.afcepf.atod17.vinsurvin.entitybeans.commande.TarifLivraison;
+import fr.afcepf.atod18.controleDeStock.entitees.CommandeControleStock;
+import fr.afcepf.atod18.controleDeStock.entitees.ProduitControleStock;
 
 public class DaoCommandeImpl implements IDaoCommande {
 
@@ -120,5 +124,22 @@ public class DaoCommandeImpl implements IDaoCommande {
         this.em.close();
         this.emf.close();
     }
+
+
+	@Override
+	public CommandeControleStock toCommandeControleStock(Commande paramCommande) {
+		CommandeControleStock commandeControleStock = new CommandeControleStock();
+		
+		List<ProduitControleStock> lstProduitControleStock = new ArrayList<ProduitControleStock>();
+		for (ProduitEnCommande produits : paramCommande.getProduitsEnCommande() ) {
+			ProduitControleStock produitControleStock = new ProduitControleStock(produits.getProduit().getId());
+			produitControleStock.setQuantite(produits.getQuantite());
+			
+			lstProduitControleStock.add(produitControleStock);
+		}
+		commandeControleStock.setProduits(lstProduitControleStock);
+		
+		return commandeControleStock;
+	}
 
 }

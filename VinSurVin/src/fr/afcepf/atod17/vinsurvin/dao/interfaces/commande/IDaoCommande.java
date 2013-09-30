@@ -5,6 +5,7 @@ import java.util.List;
 import fr.afcepf.atod17.vinsurvin.entitybeans.commande.Commande;
 import fr.afcepf.atod17.vinsurvin.entitybeans.commande.EtatCommande;
 import fr.afcepf.atod17.vinsurvin.entitybeans.commande.TarifLivraison;
+import fr.afcepf.atod18.controleDeStock.entitees.CommandeControleStock;
 
 public interface IDaoCommande {
     
@@ -48,4 +49,12 @@ public interface IDaoCommande {
      * @return
      */
     public List<Commande> rechercheCommande(Commande paramCommande);
+    
+    /**
+     * Converti une Commande en CommandeControleStock.
+     * Utilisé pour le webservice.
+     * @param paramCommande La commande à converir.
+     * @return La commande converie.
+     */
+    public CommandeControleStock toCommandeControleStock(Commande paramCommande);
 }

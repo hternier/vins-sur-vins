@@ -10,7 +10,6 @@ import javax.faces.model.SelectItem;
 
 import fr.afcepf.atod17.vinsurvin.entitybeans.compte.CompteClient;
 import fr.afcepf.atod17.vinsurvin.entitybeans.produit.Produit;
-import fr.afcepf.atod17.vinsurvin.services.implementations.ServiceCompteImpl;
 import fr.afcepf.atod17.vinsurvin.services.implementations.ServiceProduitImpl;
 import fr.afcepf.atod17.vinsurvin.services.interfaces.IServiceCompte;
 import fr.afcepf.atod17.vinsurvin.services.interfaces.IServiceProduit;
@@ -32,8 +31,8 @@ public class ManagedBeanAccueil extends AbstractManagedBean {
 	private List<String> images;  
 	private List<SelectItem> listeRegion = new ArrayList<SelectItem>();
 	
+	
 	public ManagedBeanAccueil() {
-		
 	}
 
 	public ManagedBeanRechercheProduit getMbRechercheProduit() {
