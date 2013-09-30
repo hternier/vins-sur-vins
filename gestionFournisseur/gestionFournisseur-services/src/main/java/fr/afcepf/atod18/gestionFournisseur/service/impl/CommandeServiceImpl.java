@@ -28,6 +28,5 @@ public class CommandeServiceImpl implements CommandeService {
 			}
 		}
 		return commandeValide;
-
 	}
 }
