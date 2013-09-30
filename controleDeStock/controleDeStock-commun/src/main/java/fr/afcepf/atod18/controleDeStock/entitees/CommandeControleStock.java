@@ -1,6 +1,7 @@
 package fr.afcepf.atod18.controleDeStock.entitees;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 public class CommandeControleStock implements Serializable {
@@ -10,7 +11,7 @@ public class CommandeControleStock implements Serializable {
 	private List<ProduitControleStock> produits;
 	
 	public CommandeControleStock() {
-		
+		produits = new ArrayList<ProduitControleStock>(10);
 	}
 
 	public List<ProduitControleStock> getProduits() {

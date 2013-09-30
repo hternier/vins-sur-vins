@@ -28,6 +28,8 @@ public class StockServiceImpl implements StockService {
 	@Override
 	public boolean passerCommande(CommandeControleStock commande) {
 		
+		logger.info("Passage de commande : " + commande.getProduits().size() + "produits.");
+		
 		boolean confirmationCommandeRetour = true;
 		
 		Set<Integer> produitsACommanderId = new HashSet<Integer>(commande.getProduits().size());
@@ -44,17 +46,22 @@ public class StockServiceImpl implements StockService {
 				break;
 			}
 			
+			logger.info("Décrément du stock pour le produit : " + idProduit);
 			produitStock = stockInterneService.decrementeStock(idProduit, produitCommande.getQuantite());
 			
 			if (produitStock.getQuantiteMinimale() > produitStock.getQuantiteStock()) {
-				produitsACommanderId.add(produitCommande.getId());
+				logger.info("Seuil minimal franchis, ajout à la liste de commande : produit : " + idProduit);
+				produitsACommanderId.add(idProduit);
 			}
 			
 		}
 		
 		for (Integer idProduit : produitsACommanderId) {
-			commandesFournisseursService.passerCommande(idProduit);
-			logger.info("Commande passée pour le produit : " + idProduit);
+			if (commandesFournisseursService.passerCommande(idProduit)) {
+				logger.info("Commande passée pour le produit : " + idProduit);
+			} else {
+				logger.error("Erreur lors de l'envoie de la commande du produit : " + idProduit);
+			}
 		}
 		
 		return confirmationCommandeRetour;
