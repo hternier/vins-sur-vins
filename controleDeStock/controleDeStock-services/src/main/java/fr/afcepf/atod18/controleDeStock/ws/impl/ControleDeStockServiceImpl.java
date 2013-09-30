@@ -20,27 +20,26 @@ public class ControleDeStockServiceImpl implements ControleDeStockService {
 	
 	@Override
 	public int getStockActuel(ProduitControleStock produit) {
-		int retour = 5;
-		
-		if (produit == null) {
-			retour = 0;
-		}
-		
+		logger.info("Connexion au webService effectuée, traitement ...");
+		int retour = stockService.getStockActuel(produit);
+		logger.info("Sortie du webservice");
 		return retour;
 	}
 
 	@Override
 	public boolean verifierDisponibilite(ProduitControleStock produit, int quantiteStock) {
-		if (produit == null)
-			return false;
-		else
-			return true;
+		logger.info("Connexion au webService effectuée, traitement ...");
+		boolean retour = stockService.verifierDisponibilite(produit, quantiteStock);
+		logger.info("Sortie du webservice");
+		return retour;
 	}
 
 	@Override
 	public boolean passerCommande(CommandeControleStock commande) {
 		logger.info("Connexion au webService effectuée, traitement ...");
-		return stockService.passerCommande(commande);
+		boolean retour = stockService.passerCommande(commande);
+		logger.info("Sortie du webservice");
+		return retour;
 	}
 
 	@Override
