@@ -67,4 +67,20 @@ public class StockServiceImpl implements StockService {
 		return confirmationCommandeRetour;
 	}
 
+	@Override
+	public int getStockActuel(ProduitControleStock produit) {
+		ProduitStockDto produitStock = stockInterneService.getStock(produit.getId());
+		return produitStock.getQuantiteStock().intValue();
+	}
+
+	@Override
+	public boolean verifierDisponibilite(ProduitControleStock produit,
+			int quantiteStock) {
+		ProduitStockDto produitStock = stockInterneService.getStock(produit.getId());
+		
+		return produitStock.getQuantiteStock().intValue() >= quantiteStock;
+	}
+	
+	
+
 }
