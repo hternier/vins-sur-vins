@@ -17,9 +17,6 @@ public class CommandeServiceImpl implements CommandeService {
 	@Autowired
 	ProduitStockDao produitDAO;
 
-	@Autowired
-	private CommandeService commandeService;
-
 	@Override
 	public Boolean passerCommande(Integer idProduit) {
 		Boolean commandeValide = false;
