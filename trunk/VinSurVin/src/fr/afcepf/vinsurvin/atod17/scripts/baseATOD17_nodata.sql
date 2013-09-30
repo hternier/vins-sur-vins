@@ -104,6 +104,7 @@ create table atod17_g2_vins.PRODUIT
    IDTYPEPRODUIT        int,
    IDCATEGORIEPRODUIT   int,
    LIBELLEPRODUIT       varchar(255) not null,
+   STOCKPRODUIT         int not null,
    DATEMISEENLIGNEPRODUIT timestamp not null,
    DESCRIPTIONPRODUIT   varchar(1024) not null,
    IMAGEPRODUIT         varchar(255),
