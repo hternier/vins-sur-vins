@@ -1,5 +1,13 @@
 use atod18_g1_gestionfournisseur;
 
+INSERT INTO `fournisseur` (`IDFOURNISSEUR`,`LIBELLEFOURNISSEUR`) VALUES 
+ (1,'Chantovent'),
+ (2,'Castel'),
+ (3,'Cave de Ribeauvillé'),
+ (4,'Chassagnoux'),
+ (5,'Corton André'),
+ (6,'Codivia');
+
 INSERT INTO `produit` (`IDPRODUIT`,`QUANTITECOMMANDES`,`IDFOURNISSEUR`) VALUES 
  (1,12,1),
  (2,24,2),
@@ -9,10 +17,3 @@ INSERT INTO `produit` (`IDPRODUIT`,`QUANTITECOMMANDES`,`IDFOURNISSEUR`) VALUES
  (6,60,5),
  (7,60,6);
 
-INSERT INTO `fournisseur` (`IDFOURNISSEUR`,`LIBELLEFOURNISSEUR`) VALUES 
- (1,'Chantovent'),
- (2,'Castel'),
- (3,'Cave de Ribeauvillé'),
- (4,'Chassagnoux'),
- (5,'Corton André'),
- (6,'Codivia');
