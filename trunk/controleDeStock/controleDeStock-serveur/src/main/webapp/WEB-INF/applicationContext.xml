@@ -57,5 +57,9 @@
     <jaxws:endpoint id="controleDeStockServiceEndPoint"
                     implementor="#controleDeStockService"
                     address="/ControleDeStock" />
+
+    <context:component-scan base-package="fr.afcepf.atod18.controleDeStock" />
+
+    <mvc:annotation-driven />
     
 </beans>

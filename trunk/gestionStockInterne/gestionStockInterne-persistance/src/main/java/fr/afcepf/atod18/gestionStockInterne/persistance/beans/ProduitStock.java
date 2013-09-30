@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import fr.afcepf.atod18.gestionStockInterne.commun.entitees.ProduitStockDto;
+
 @Entity
 @Table(name = "produitstock")
 public class ProduitStock {
@@ -73,6 +75,10 @@ public class ProduitStock {
 
 	public void setQuantiteMinimal(Integer paramQuantiteMinimal) {
 		quantiteMinimal = paramQuantiteMinimal;
+	}
+	
+	public ProduitStockDto toDto() {
+		return new ProduitStockDto(id, quantiteStock, quantiteMinimal);
 	}
 
 }
