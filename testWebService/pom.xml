@@ -27,7 +27,7 @@
     <dependencies>
         <dependency>
             <groupId>fr.afcepf.al18</groupId>
-            <artifactId>controleDeStock-services</artifactId>
+            <artifactId>controleDeStock-commun</artifactId>
             <version>0.0.1</version>
         </dependency>
 
