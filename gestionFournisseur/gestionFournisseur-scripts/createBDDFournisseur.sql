@@ -20,7 +20,7 @@ DROP TABLE IF EXISTS `atod18_g1_gestionfournisseur.FOURNISSEUR`;
 create table atod18_g1_gestionfournisseur.FOURNISSEUR
 (
    IDFOURNISSEUR            int not null,
-   LIBELLEFOURNISSEUR      String not null
+   LIBELLEFOURNISSEUR      varchar(50) not null
    primary key (IDFOURNISSEUR)
 );
 
