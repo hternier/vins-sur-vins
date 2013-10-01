@@ -19,8 +19,13 @@ public class CommandesFournisseursServiceImpl implements CommandesFournisseursSe
 	
 	@Override
 	public Boolean passerCommande(Integer idProduit) {
+		logger.info("Entrée dans le webservice passerCommande");
 		Boolean retour = commandeService.passerCommande(idProduit);
-		logger.info("La méthode passerCommande retourne  : " + retour);
+		if(retour){
+			logger.info("La demande a bien été passée au fournisseur pour le produit : " + idProduit);
+		}else {
+			logger.error("La demande n'a pas pu être passée au fournisseur pour le produit : " + idProduit);
+		}
 		return retour;
 	}
 }
