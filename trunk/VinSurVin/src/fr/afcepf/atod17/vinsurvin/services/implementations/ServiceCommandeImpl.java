@@ -41,17 +41,16 @@ public class ServiceCommandeImpl extends AbstractManagedBean implements
 			Produit produitEnStock;
 			for (ProduitEnCommande pec : paramCommande.getProduitsEnCommande()) {
 				produitEnStock = daoProduit.getProduit(pec.getProduit());
+				int stockDispo = getContext().getBean(ServiceStockImpl.class).getStockActuel(produitEnStock);
 
 				// if (pec.getQuantite() > produitEnStock.getStock()) {
-				if (pec.getQuantite() > getContext().getBean(
-						ServiceStockImpl.class).getStockActuel(produitEnStock)) {
+				if (pec.getQuantite() > stockDispo) {
 					System.err.println("Erreur de quantité commandé. Produit :"
 							+ pec.getProduit().getLibelle()
 							+ ", quantité désiré : "
 							+ pec.getQuantite()
 							+ ", quantité disponible : "
-							+ getContext().getBean(ServiceStockImpl.class)
-									.getStockActuel(produitEnStock));
+							+ stockDispo);
 					paramCommande = new Commande();
 					return paramCommande;
 				} else {

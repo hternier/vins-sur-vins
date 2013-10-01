@@ -6,7 +6,6 @@ import fr.afcepf.atod17.vinsurvin.entitybeans.produit.Produit;
 import fr.afcepf.atod17.vinsurvin.entitybeans.produit.Spiritueux;
 import fr.afcepf.atod17.vinsurvin.entitybeans.produit.Vin;
 import fr.afcepf.atod17.vinsurvin.services.implementations.ServiceProduitImpl;
-import fr.afcepf.atod17.vinsurvin.services.implementations.ServiceStockImpl;
 import fr.afcepf.atod17.vinsurvin.utils.VinSurVinContext;
 
 public class ProduitVueDetail extends AbstractManagedBean {
@@ -78,9 +77,9 @@ public class ProduitVueDetail extends AbstractManagedBean {
 		return ((Vin) this.produit).getRegion();
 	}
 	
+	@Deprecated
 	public int getStock() {
-		//return this.produit.getStock();
-		return getContext().getBean(ServiceStockImpl.class).getStockActuel(this.produit);
+		return this.produit.getStock();
 	}
 	
 	public double getTVA() {

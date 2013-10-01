@@ -3,7 +3,6 @@ package fr.afcepf.atod17.vinsurvin.control.entities;
 import fr.afcepf.atod17.vinsurvin.control.managedbeans.AbstractManagedBean;
 import fr.afcepf.atod17.vinsurvin.entitybeans.produit.Vin;
 import fr.afcepf.atod17.vinsurvin.services.implementations.ServiceProduitImpl;
-import fr.afcepf.atod17.vinsurvin.services.implementations.ServiceStockImpl;
 import fr.afcepf.atod17.vinsurvin.utils.VinSurVinContext;
 
 public class VinVueRecherche extends AbstractManagedBean {
@@ -55,9 +54,9 @@ public class VinVueRecherche extends AbstractManagedBean {
 		this.quantite = quantite;
 	}
 	
+	@Deprecated
 	public int getStock() {
-		//return this.vin.getStock();
-		return getContext().getBean(ServiceStockImpl.class).getStockActuel(this.vin);
+		return this.vin.getStock();
 	}
 
 }

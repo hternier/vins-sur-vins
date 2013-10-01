@@ -85,6 +85,7 @@ public abstract class Produit implements Serializable {
 		this.stock = stock;
 	}
 
+	@Deprecated
 	public Date getDateMiseEnLigne() {
 		return dateMiseEnLigne;
 	}
