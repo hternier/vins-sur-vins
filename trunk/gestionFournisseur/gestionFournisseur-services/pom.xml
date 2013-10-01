@@ -17,5 +17,9 @@
 			<groupId>fr.afcepf.al18</groupId>
 			<artifactId>gestionFournisseur-persistance</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+		</dependency>
 	</dependencies>
 </project>
