@@ -26,15 +26,12 @@ public class ListeTarifsLivraison extends ListDataModel<Object> implements Selec
     public TarifLivraison getRowData(String paramRowKey) {
         TarifLivraison tarifRechercher = new TarifLivraison();
         tarifRechercher.setId(Integer.valueOf(paramRowKey));
-        System.out.println("getRowData : recherche : " + tarifRechercher.getId());
         tarifRechercher = serviceCommande.getTarifLivraison(tarifRechercher);
-        System.out.println("getRowData : result : " + tarifRechercher.getId());
         return tarifRechercher;
     }
 
     @Override
     public Object getRowKey(Object paramTarifLivraison) {
-        System.out.println("getRowKey : " + String.valueOf(paramTarifLivraison));
         return String.valueOf(paramTarifLivraison);
     }
 

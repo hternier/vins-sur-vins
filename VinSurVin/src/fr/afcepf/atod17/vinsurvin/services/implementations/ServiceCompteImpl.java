@@ -42,7 +42,6 @@ public class ServiceCompteImpl implements IServiceCompte {
 
 	@Override
 	public CompteSysteme authentificationBO(CompteSysteme paramCompteSysteme) {
-		System.out.println("entrée dans le service Compte implementation");
 		return daoCompte.authentificationBO(paramCompteSysteme.getMail(),
 				paramCompteSysteme.getMdp());
 	}

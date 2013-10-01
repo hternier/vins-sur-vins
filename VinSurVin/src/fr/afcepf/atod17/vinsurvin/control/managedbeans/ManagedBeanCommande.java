@@ -98,12 +98,9 @@ public class ManagedBeanCommande extends AbstractManagedBean {
     }
     
     public String getAdresse1() {
-        System.out.println("GETAdresse1");
         if (commande.getAdresseCommande() != null) {
             adresse1 =  this.commande.getAdresseCommande().getAdresse1();
-            System.out.println("GETAdresse1 : Adresse depuis commande : " + adresse1);
         }
-        System.out.println("GETAdresse1 : resultat : " + adresse1);
         return adresse1;
     }
     
@@ -122,10 +119,8 @@ public class ManagedBeanCommande extends AbstractManagedBean {
     }
     
     public ListeTarifsLivraison setTarifsLivraisonCommande() {
-        System.out.println("setTarifsLivraisonCommande");
         tarifsLivraisonCommande = 
                 new ListeTarifsLivraison(getContext().getBean(ServiceCommandeImpl.class).getTarifLivraisonCommande(this.commande));
-        System.out.println("setTarifsLivraisonCommande : nb lignes retournées : " + tarifsLivraisonCommande.getRowCount());
         return tarifsLivraisonCommande;
     }
     
@@ -265,7 +260,6 @@ public class ManagedBeanCommande extends AbstractManagedBean {
      * @return Vers l'accueil
      */
     public String validerCommande() {
-        System.out.println("tarifLivraisonSelectionne : " + tarifLivraisonSelectionne.getId());
         commande.setTarifLivraison(tarifLivraisonSelectionne);
         commande = getContext().getBean(ServiceCommandeImpl.class).validationCommande(commande);
         return "confirmationCommande";

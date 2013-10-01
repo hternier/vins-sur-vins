@@ -59,7 +59,7 @@ public class ManagedBeanAjoutModifProduit extends AbstractManagedBean {
 			List<SelectItem> liste = new ArrayList<SelectItem>();
 			for (TVA tva : getContext().getBean(ServiceProduitImpl.class).getAllTVA()) {				
 				liste.add(new SelectItem(tva.getId(), String.valueOf(tva.getValeur()*100)));
-				System.out.println("ajout d'un taux de tva");
+//				System.out.println("ajout d'un taux de tva");
 			}
 			this.listeTVA= liste;
 		}
@@ -73,14 +73,13 @@ public class ManagedBeanAjoutModifProduit extends AbstractManagedBean {
 		    }
 		  
 		  public String setImage(String paramImage) {
-              System.out.println("Image : " + paramImage);
+//              System.out.println("Image : " + paramImage);
               return paramImage;
           }
 		  
 		  
 		  
 		  public String validerProduit() {
-		      System.out.println("validationProduit");
 		      
 		      //Ajout de la sous-categorie
 		      if(listeSousCategoriesSelected != null) {
@@ -100,10 +99,8 @@ public class ManagedBeanAjoutModifProduit extends AbstractManagedBean {
 		      
 		      //Persistance ou mise à jour du produit
 		      if (produit.getId() == 0) {
-		          System.out.println("validationProduit : persist");
 		          produit = getContext().getBean(ServiceProduitImpl.class).ajoutProduit(produit);
 		      } else {
-		          System.out.println("validationProduit : merge");
 		          produit = getContext().getBean(ServiceProduitImpl.class).setProduit(produit);
 		      }
 		      
