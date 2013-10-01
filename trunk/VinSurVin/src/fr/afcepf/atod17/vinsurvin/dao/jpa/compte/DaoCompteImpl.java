@@ -78,9 +78,7 @@ public class DaoCompteImpl implements IDaoCompte {
 					.createQuery(REQ_AUTHENTIFICATIONGESTIONNAIRE,
 							CompteAbstrait.class).setParameter(1, login)
 					.setParameter(2, mdp).getSingleResult();
-			System.out.println(" est passé dans le dao compte impl");
 		} catch (NoResultException exception) {
-			System.out.println("no result exception dans le dao compte impl");
 		}
 		return retour;
 	}
