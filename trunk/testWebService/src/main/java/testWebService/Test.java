@@ -17,6 +17,7 @@ public class Test {
 		produit.setQuantite(5);
 		CommandeControleStock commande = new CommandeControleStock();
 		commande.getProduits().add(produit);
-		controleDeStockService.passerCommande(commande);
+		boolean salut = controleDeStockService.passerCommande(commande);
+		System.out.println(salut);
 	}
 }
