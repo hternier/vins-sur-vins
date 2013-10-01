@@ -15,7 +15,7 @@ import org.junit.Test;
  * @author stagiaire
  *
  */
-public class testFournisseur {
+public class FournisseurTest {
 
 	
 	@BeforeClass

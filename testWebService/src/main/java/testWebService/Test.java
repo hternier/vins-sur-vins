@@ -19,5 +19,4 @@ public class Test {
 		commande.getProduits().add(produit);
 		controleDeStockService.passerCommande(commande);
 	}
-
 }
