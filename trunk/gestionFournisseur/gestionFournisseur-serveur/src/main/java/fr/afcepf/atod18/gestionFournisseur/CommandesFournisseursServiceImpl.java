@@ -14,6 +14,7 @@ public class CommandesFournisseursServiceImpl implements CommandesFournisseursSe
 
 	@Autowired
 	private CommandeService commandeService;
+	
 	private static Logger logger = Logger.getLogger(CommandesFournisseursServiceImpl.class);
 	
 	@Override
