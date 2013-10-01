@@ -34,13 +34,7 @@ public class StockInterneServiceImpl implements StockInterneService {
 		// Récupération du stock et quantité mini dans ProduitStock
 		produitStockBean = stockService.getStock(produitStockBean);
 
-		// Création de ProduitStockDto et conversion de ProduitStock en
-		// ProduitStockDto
-		ProduitStockDto paramProduit = new ProduitStockDto(paramIdProduit,
-				produitStockBean.getQuantiteStock(),
-				produitStockBean.getQuantiteMinimal());
-
-		return paramProduit;
+		return produitStockBean.toDto();
 	}
 
 	@Override
@@ -51,13 +45,7 @@ public class StockInterneServiceImpl implements StockInterneService {
 		ProduitStock produitStockBean = stockService.incrementeStock(
 				paramIdProduit, paramQuantiteAjouter);
 
-		// Création de ProduitStockDto et conversion de produitStockBean en
-		// ProduitStockDto
-		ProduitStockDto produitStockDto = new ProduitStockDto(paramIdProduit,
-				produitStockBean.getQuantiteStock(),
-				produitStockBean.getQuantiteMinimal());
-
-		return produitStockDto;
+		return produitStockBean.toDto();
 	}
 
 	@Override
