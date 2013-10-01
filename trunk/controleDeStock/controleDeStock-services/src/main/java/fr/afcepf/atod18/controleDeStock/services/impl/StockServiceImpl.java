@@ -41,17 +41,21 @@ public class StockServiceImpl implements StockService {
 			ProduitStockDto produitStock = stockInterneService.getStock(idProduit);
 			
 			if (produitStock.getQuantiteStock() < produitCommande.getQuantite()) {
+				
 				logger.error("Stock insuffisant pour le produit : " + idProduit);
 				confirmationCommandeRetour = false;
-				break;
-			}
-			
-			logger.info("Décrément du stock pour le produit : " + idProduit);
-			produitStock = stockInterneService.decrementeStock(idProduit, produitCommande.getQuantite());
-			
-			if (produitStock.getQuantiteMinimale() > produitStock.getQuantiteStock()) {
-				logger.info("Seuil minimal franchis, ajout à la liste de commande : produit : " + idProduit);
 				produitsACommanderId.add(idProduit);
+				
+			} else if (confirmationCommandeRetour) {
+				
+				logger.info("Décrément du stock pour le produit : " + idProduit);
+				produitStock = stockInterneService.decrementeStock(idProduit, produitCommande.getQuantite());
+				
+				if (produitStock.getQuantiteMinimale() > produitStock.getQuantiteStock()) {
+					logger.info("Seuil minimal franchis, ajout à la liste de commande : produit : " + idProduit);
+					produitsACommanderId.add(idProduit);
+				}
+				
 			}
 			
 		}
