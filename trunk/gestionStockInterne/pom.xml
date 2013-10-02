@@ -63,7 +63,8 @@
                     <artifactId>maven-war-plugin</artifactId>
                     <configuration>
                         <webXml>src\main\webapp\WEB-INF\web.xml</webXml>
-                        <!-- <packagingExcludes>WEB-INF/lib/*.jar</packagingExcludes> -->
+                        <warName>gestionStockInterne-serveur</warName>
+<!--                         <packagingExcludes>WEB-INF/lib/*.jar</packagingExcludes> -->
                     </configuration>
                 </plugin>
             </plugins>

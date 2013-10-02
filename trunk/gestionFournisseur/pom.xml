@@ -60,14 +60,15 @@
 						<wtpversion>2.0</wtpversion>
 					</configuration>
 				</plugin>
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-war-plugin</artifactId>
-					<configuration>
-						<webXml>src\main\webapp\WEB-INF\web.xml</webXml>
-						<!-- <packagingExcludes>WEB-INF/lib/*.jar</packagingExcludes> -->
-					</configuration>
-				</plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-war-plugin</artifactId>
+                    <configuration>
+                        <webXml>src\main\webapp\WEB-INF\web.xml</webXml>
+                        <warName>gestionFournisseur-serveur</warName>
+<!--                         <packagingExcludes>WEB-INF/lib/*.jar</packagingExcludes> -->
+                    </configuration>
+                </plugin>
 			</plugins>
 		</pluginManagement>
 	</build>

@@ -64,6 +64,7 @@
                     <artifactId>maven-war-plugin</artifactId>
                     <configuration>
                         <webXml>src\main\webapp\WEB-INF\web.xml</webXml>
+                        <warName>controleDeStock-serveur</warName>
 <!--                         <packagingExcludes>WEB-INF/lib/*.jar</packagingExcludes> -->
                     </configuration>
                 </plugin>
