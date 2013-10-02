@@ -28,7 +28,7 @@ public class StockServiceImpl implements StockService {
 	@Override
 	public boolean passerCommande(CommandeControleStock commande) {
 		
-		logger.info("Passage de commande : " + commande.getProduits().size() + "produits.");
+		logger.info("Passage de commande : " + commande.getProduits().size() + " produits.");
 		
 		boolean confirmationCommandeRetour = true;
 		
