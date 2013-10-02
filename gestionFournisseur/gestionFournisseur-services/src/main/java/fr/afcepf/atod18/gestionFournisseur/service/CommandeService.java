@@ -9,6 +9,5 @@ public interface CommandeService {
 	 * @return true ou false.
 	 */
 	public Boolean passerCommande(Integer idProduit);
-	public String nomFournisseur(Integer idProduit);
 
 }
