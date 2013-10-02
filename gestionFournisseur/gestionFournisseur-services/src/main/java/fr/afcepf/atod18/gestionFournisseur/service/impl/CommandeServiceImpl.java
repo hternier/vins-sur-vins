@@ -33,4 +33,10 @@ public class CommandeServiceImpl implements CommandeService {
 		
 		return commandeValide;
 	}
+	
+	@Override
+	public String nomFournisseur(Integer idProduit) {
+		Produit produit = produitDAO.consulterParId(idProduit);	
+		return produit.getFournisseur().getLibelleFournisseur();		
+	}
 }
