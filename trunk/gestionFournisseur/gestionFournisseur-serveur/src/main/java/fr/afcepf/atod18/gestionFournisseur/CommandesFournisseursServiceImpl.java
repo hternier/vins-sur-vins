@@ -21,11 +21,10 @@ public class CommandesFournisseursServiceImpl implements CommandesFournisseursSe
 	public Boolean passerCommande(Integer idProduit) {
 		logger.info("Entrée dans le webservice passerCommande");
 		Boolean retour = commandeService.passerCommande(idProduit);
-		String nomFournisseur = commandeService.nomFournisseur(idProduit);
 		if(retour){
-			logger.info("La demande a bien été passée au fournisseur " + nomFournisseur +" pour le produit : " + idProduit);
+			logger.info("La demande a bien été passée au fournisseur pour le produit : " + idProduit);
 		}else {
-			logger.error("La demande n'a pas pu être passée au fournisseur " + nomFournisseur +"  pour le produit : " + idProduit);
+			logger.error("La demande n'a pas pu être passée au fournisseur pour le produit : " + idProduit);
 		}
 		return retour;
 	}
