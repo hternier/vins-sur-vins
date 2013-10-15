@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<racine>
+    <actions>
+        <action>
+            <action-name>fr.afcepf.atod18.testFramework.controller.ActionLogin</action-name>
+            <url-pattern>/loginAction.perform</url-pattern>
+            <form-name>loginForm</form-name>
+        </action>
+    </actions>
+    
+    <forms>
+        <form>
+            <form-class></form-class>
+            <from-name>loginForm</from-name>
+        </form>
+    </forms>
+</racine>
