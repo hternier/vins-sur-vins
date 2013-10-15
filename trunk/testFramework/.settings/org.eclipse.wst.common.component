@@ -5,6 +5,15 @@
         <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
+        <dependent-module archiveName="vingtSurStruts-configuration-0.0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/vingtSurStruts-configuration/vingtSurStruts-configuration">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="vingtSurStruts-core-0.0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/vingtSurStruts-core/vingtSurStruts-core">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="vingtSurStruts-factory-0.0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/vingtSurStruts-factory/vingtSurStruts-factory">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
         <property name="context-root" value="testFramework"/>
         <property name="java-output-path" value="/testFramework/target/classes"/>
     </wb-module>
