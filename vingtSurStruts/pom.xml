@@ -11,6 +11,12 @@
 		<module>vingtSurStruts-factory</module>
 		<module>vingtSurStruts-core</module>
 	</modules>
+	<dependencies>
+		<dependency>
+			<groupId>org.apache.tomcat</groupId>
+			<artifactId>servlet-api</artifactId>
+		</dependency>
+	</dependencies>
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
