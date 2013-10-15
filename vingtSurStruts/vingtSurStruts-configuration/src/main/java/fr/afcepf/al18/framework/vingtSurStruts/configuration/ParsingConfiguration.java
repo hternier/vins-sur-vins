@@ -22,34 +22,35 @@ public class ParsingConfiguration {
 	// Chemin du fichier de configuration XML
 	private static String config = "/WEB-INF/vingtSurStruts-config.xml";
 	
-	/*
-	 * Construction des maps
-	 */
+	// Construction des maps
 	private Map<String, ActionXml> actionsMap = new HashMap<String, ActionXml>();
 	private Map<String, FormXml> formMap = new HashMap<String, FormXml>();
 
-	// Singleton
-	private ParsingConfiguration() {
-		parse();
-	}
+	// Constructeur par defaut
+	private ParsingConfiguration() {}
 
-	private static ParsingConfiguration INSTANCE = new ParsingConfiguration();
+	private static ParsingConfiguration INSTANCE;
 
 	/**
 	 * Singleton de ParsingConfiguration.
-	 * 
 	 * @return La classe ParsingConfiguration instanciée.
+	 * @throws ParserConfigurationException Exception du traitement du fichier.
+	 * @throws IOException Exception de lecture de fichier.
+	 * @throws SAXException Exception lors du parsing du fichier.
 	 */
-	public static ParsingConfiguration getINSTANCE() {
+	public static ParsingConfiguration getINSTANCE() throws SAXException, IOException, ParserConfigurationException {
+		if (INSTANCE == null) {
+			INSTANCE = new ParsingConfiguration();
+			INSTANCE.parse();
+		}
 		return INSTANCE;
 	}
 
-	private void parse() {
-
-		/*
-		 * Initialisation du parsing du XML
-		 */
-		try {
+	private void parse() throws SAXException, IOException, ParserConfigurationException {
+		
+			/*
+			 * Initialisation du parsing du XML
+			 */
 			DocumentBuilderFactory factory = DocumentBuilderFactory
 					.newInstance();
 			DocumentBuilder builder;
@@ -59,10 +60,12 @@ public class ParsingConfiguration {
 			Document document = builder.parse(config);
 			Element racine = document.getDocumentElement();
 
+			actionsMap.clear();
+			formMap.clear();
 			
-
+			
 			/*
-			 * Les noeuds Actions
+			 * Parsing des noeuds Actions
 			 */
 			NodeList actions = racine.getElementsByTagName("actions");
 			for (int i = 0; i < actions.getLength(); i++) {
@@ -73,51 +76,43 @@ public class ParsingConfiguration {
 				for (int j = 0; j < actionElement.getLength(); j++) {
 					Node parametre = actionElement.item(j);
 					if (parametre.getNodeName().equals("action-name")) {
-						parametre.getTextContent();
+						actionXml.setActionName(parametre.getTextContent());
 					}
 					if (parametre.getNodeName().equals("url-pattern")) {
-						parametre.getTextContent();
+						actionXml.setUrlPattern(parametre.getTextContent());
 					}
 					if (parametre.getNodeName().equals("form-name")) {
-						parametre.getTextContent();
+						actionXml.setFormName(parametre.getTextContent());
 					}
 				}
+				actionsMap.put(actionXml.getUrlPattern(), actionXml);
 			}
 
 			/*
-			 * Les noeuds Forms
+			 * Parsing des noeuds Forms
 			 */
 			NodeList forms = racine.getElementsByTagName("forms");
 			for (int i = 0; i < forms.getLength(); i++) {
 				Node form = actions.item(i);
+				FormXml formXml = new FormXml();
 
 				NodeList formElement = form.getChildNodes();
 				for (int j = 0; j < formElement.getLength(); j++) {
 					Node parametre = formElement.item(j);
 					if (parametre.getNodeName().equals("form-class")) {
-						parametre.getTextContent();
+						formXml.setFormClass(parametre.getTextContent());
 					}
 					if (parametre.getNodeName().equals("form-name")) {
-						parametre.getTextContent();
+						formXml.setFormName(parametre.getTextContent());
 					}
 				}
+				formMap.put(formXml.getFormName(), formXml);
 			}
 
-		} catch (ParserConfigurationException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (SAXException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 	}
 
 	/**
 	 * Retourne le chemin du fichier de configuration XML de vingtSurStruts.
-	 * 
 	 * @return Chemin du fichier de configuration XML.
 	 */
 	public static String getConfig() {
@@ -127,7 +122,6 @@ public class ParsingConfiguration {
 	/**
 	 * Defini le chemin du fichier de configuration XML de vingtSurStruts. Par
 	 * default : /WEB-INF/vingtSurStruts-config.xml
-	 * 
 	 * @param paramConfig
 	 *            Chemin du fichier de configuration XML.
 	 */
@@ -135,10 +129,18 @@ public class ParsingConfiguration {
 		config = paramConfig;
 	}
 
+	/**
+	 * Liste des noeuds actions du fichier de configuration.
+	 * @return La map des actions.
+	 */
 	public Map<String, ActionXml> getActionsMap() {
 		return actionsMap;
 	}
 
+	/**
+	 * Liste des noeuds forms du fichier de configuration.
+	 * @return La map des forms.
+	 */
 	public Map<String, FormXml> getFormMap() {
 		return formMap;
 	}
