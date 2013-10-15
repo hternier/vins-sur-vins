@@ -9,7 +9,7 @@
 	</welcome-file-list>
 	<servlet>
 		<servlet-name>action</servlet-name>
-		<servlet-class>fr.afcepf.al18.vingtSurStruts-core.</servlet-class>
+		<servlet-class>fr.afcepf.al18.framework.vingtSurStruts.core.action.ActionServlet</servlet-class>
 		<load-on-startup>3</load-on-startup>
 	</servlet>
 	<servlet-mapping>
