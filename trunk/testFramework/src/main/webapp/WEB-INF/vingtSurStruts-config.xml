@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<racine>
+<vingtSurStruts-config>
     <actions>
         <action>
             <action-name>fr.afcepf.atod18.testFramework.controller.ActionLogin</action-name>
@@ -11,8 +11,8 @@
     
     <forms>
         <form>
-            <form-class></form-class>
+            <form-class>fr.afcepf.atod18.testFramework.controller.ActionLoginForm</form-class>
             <from-name>loginForm</from-name>
         </form>
     </forms>
-</racine>
+</vingtSurStruts-config>
