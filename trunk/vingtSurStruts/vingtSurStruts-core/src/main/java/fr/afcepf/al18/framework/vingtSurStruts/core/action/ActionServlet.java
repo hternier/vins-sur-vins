@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 public class ActionServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
+	
+	private String config = "/WEB-INF/vingtSurStruts-config.xml";
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
@@ -35,6 +37,14 @@ public class ActionServlet extends HttpServlet {
 	public void init() throws ServletException {
 		// TODO Auto-generated method stub
 		super.init();
+	}
+
+	public String getConfig() {
+		return config;
+	}
+
+	public void setConfig(String config) {
+		this.config = config;
 	}
 	
 	
