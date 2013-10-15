@@ -8,7 +8,6 @@
 	<packaging>pom</packaging>
 	<modules>
 		<module>vingtSurStruts-configuration</module>
-		<module>vingtSurStruts-factory</module>
 		<module>vingtSurStruts-core</module>
 	</modules>
 	<dependencies>
@@ -24,11 +23,6 @@
 				<artifactId>servlet-api</artifactId>
 				<version>6.0.37</version>
 				<scope>provided</scope>
-			</dependency>
-			<dependency>
-				<groupId>fr.afcepf.al18</groupId>
-				<artifactId>vingtSurStruts-factory</artifactId>
-				<version>0.0.1</version>
 			</dependency>
 			<dependency>
 				<groupId>fr.afcepf.al18</groupId>
