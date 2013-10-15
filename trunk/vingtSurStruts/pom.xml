@@ -25,6 +25,21 @@
 				<version>6.0.37</version>
 				<scope>provided</scope>
 			</dependency>
+			<dependency>
+				<groupId>fr.afcepf.al18</groupId>
+				<artifactId>vingtSurStruts-factory</artifactId>
+				<version>0.0.1</version>
+			</dependency>
+			<dependency>
+				<groupId>fr.afcepf.al18</groupId>
+				<artifactId>vingtSurStruts-core</artifactId>
+				<version>0.0.1</version>
+			</dependency>
+			<dependency>
+				<groupId>fr.afcepf.al18</groupId>
+				<artifactId>vingtSurStruts-configuration</artifactId>
+				<version>0.0.1</version>
+			</dependency>
 		</dependencies>
 	</dependencyManagement>
 </project>
