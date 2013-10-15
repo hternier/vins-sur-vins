@@ -17,6 +17,10 @@ import org.xml.sax.SAXException;
 import fr.afcepf.al18.framework.vingtSurStruts.configuration.entities.ActionXml;
 import fr.afcepf.al18.framework.vingtSurStruts.configuration.entities.FormXml;
 
+/**
+ * Classe de lecture du fichier de configuration vingtSurStruts-config.xml.
+ * @author Administrateur
+ */
 public class ParsingConfiguration {
 
 	// Chemin du fichier de configuration XML
@@ -29,6 +33,7 @@ public class ParsingConfiguration {
 	// Constructeur par defaut
 	private ParsingConfiguration() {}
 
+	// Singleton
 	private static ParsingConfiguration INSTANCE;
 
 	/**
