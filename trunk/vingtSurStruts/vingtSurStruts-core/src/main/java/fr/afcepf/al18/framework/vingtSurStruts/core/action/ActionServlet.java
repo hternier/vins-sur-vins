@@ -9,6 +9,9 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.xml.parsers.ParserConfigurationException;
+
+import org.xml.sax.SAXException;
 
 import fr.afcepf.al18.framework.vingtSurStruts.configuration.ParsingConfiguration;
 import fr.afcepf.al18.framework.vingtSurStruts.configuration.entities.ActionXml;
@@ -26,7 +29,11 @@ public class ActionServlet extends HttpServlet {
 
 	@Override
 	public void init() throws ServletException {
-		this.config = ParsingConfiguration.getINSTANCE();
+		try {
+			this.config = ParsingConfiguration.getINSTANCE();
+		} catch (Exception e) {
+			throw new ServletException();
+		}
 		this.actions = new HashMap<String, Action>(config.getActionsMap().size());
 		Map<String, ActionForm> forms = this.getForms();
 		this.initActions(forms);
