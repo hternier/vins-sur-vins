@@ -26,6 +26,10 @@ public class ActionLoginForm extends ActionForm {
         	// Redirection Success
         }
     	
+    	if (message.isEmpty()) {
+    		return null;
+    	}
+    	
     	return message.toArray(new String[message.size()]);
 	}
     

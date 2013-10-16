@@ -15,14 +15,14 @@ public class FormFeeder {
 	private FormFeeder() {}
 	
 	// Singleton
-	private FormFeeder INSTANCE = new FormFeeder();
+	private static FormFeeder INSTANCE = new FormFeeder();
 	
 	
 	/**
 	 * Singleton de FormFeeder.
 	 * @return L'instance de la classe FormFeeder.
 	 */
-	public FormFeeder getINSTANCE() {
+	public static FormFeeder getINSTANCE() {
 		return INSTANCE;
 	}
 
