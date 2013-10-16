@@ -19,7 +19,7 @@ import fr.afcepf.al18.framework.vingtSurStruts.configuration.entities.FormXml;
 
 /**
  * Classe de lecture du fichier de configuration vingtSurStruts-config.xml.
- * @author Administrateur
+ * @author Hadrien Ternier
  */
 public class ParsingConfiguration {
 

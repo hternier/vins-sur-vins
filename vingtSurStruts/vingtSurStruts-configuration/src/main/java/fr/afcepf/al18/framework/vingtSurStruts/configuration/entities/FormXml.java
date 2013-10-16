@@ -1,5 +1,10 @@
 package fr.afcepf.al18.framework.vingtSurStruts.configuration.entities;
 
+/**
+ * Entité utilisée pour stocker la configuration des forms du fichier de
+ * configuration vingtSurStruts-config.xml.
+ * @author Nicolas Chalet
+ */
 public class FormXml {
 	
 	private String formClass;

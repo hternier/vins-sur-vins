@@ -1,13 +1,18 @@
 package fr.afcepf.al18.framework.vingtSurStruts.configuration.entities;
 
+/**
+ * Entité utilisée pour stocker la configuration des actions du fichier de
+ * configuration vingtSurStruts-config.xml.
+ * @author Nicolas Chalet
+ */
 public class ActionXml {
-	
+
 	private String actionName;
 	private String urlPattern;
 	private String formName;
-	
+
 	public ActionXml() {
-		
+
 	}
 
 	public ActionXml(String actionName, String urlPattern, String formName) {
@@ -39,7 +44,5 @@ public class ActionXml {
 	public void setFormName(String formName) {
 		this.formName = formName;
 	}
-	
-	
 
 }
