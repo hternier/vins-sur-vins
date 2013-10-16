@@ -28,7 +28,7 @@ public class ParsingConfiguration {
 	private String config;
 	
 	// Message des exceptions
-	private static String msgEmptyValue = "Valeur manquante dans le fichier de configuration VingtSurStruts à l'emplacement ";
+	private static String msgEmptyValue = "Valeur manquante dans le fichier de configuration VingtSurStruts sur le noeud ";
 	
 	// Construction des maps
 	private Map<String, ActionXml> actionsMap = new HashMap<String, ActionXml>();
@@ -91,7 +91,7 @@ public class ParsingConfiguration {
 					if (parametre.getTextContent() == null
 							|| parametre.getTextContent().equals("")) {
 						throw new ParserConfigurationException(msgEmptyValue
-										+ parametre.getBaseURI());
+								+ parametre.getNodeName());
 					}
 					
 					// Si ok, récupération de la valeur
@@ -124,7 +124,7 @@ public class ParsingConfiguration {
 					if (parametre.getTextContent() == null
 							|| parametre.getTextContent().equals("")) {
 						throw new ParserConfigurationException(msgEmptyValue
-										+ parametre.getBaseURI());
+										+ parametre.getNodeName());
 					}
 					
 					// Si ok, récupération de la valeur
