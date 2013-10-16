@@ -9,9 +9,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.xml.parsers.ParserConfigurationException;
-
-import org.xml.sax.SAXException;
 
 import fr.afcepf.al18.framework.vingtSurStruts.configuration.ParsingConfiguration;
 import fr.afcepf.al18.framework.vingtSurStruts.configuration.entities.ActionXml;
