@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.ServletContext;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -24,14 +25,16 @@ import fr.afcepf.al18.framework.vingtSurStruts.configuration.entities.FormXml;
 public class ParsingConfiguration {
 
 	// Chemin du fichier de configuration XML
-	private static String config = "/WEB-INF/vingtSurStruts-config.xml";
+	private String config;
 	
 	// Construction des maps
 	private Map<String, ActionXml> actionsMap = new HashMap<String, ActionXml>();
 	private Map<String, FormXml> formMap = new HashMap<String, FormXml>();
 
 	// Constructeur par defaut
-	private ParsingConfiguration() {}
+	private ParsingConfiguration(ServletContext context) {
+		config = context.getRealPath("WEB-INF/vingtSurStruts-config.xml");
+	}
 
 	// Singleton
 	private static ParsingConfiguration INSTANCE;
@@ -43,9 +46,9 @@ public class ParsingConfiguration {
 	 * @throws IOException Exception de lecture de fichier.
 	 * @throws SAXException Exception lors du parsing du fichier.
 	 */
-	public static ParsingConfiguration getINSTANCE() throws SAXException, IOException, ParserConfigurationException {
+	public static ParsingConfiguration getINSTANCE(ServletContext context) throws SAXException, IOException, ParserConfigurationException {
 		if (INSTANCE == null) {
-			INSTANCE = new ParsingConfiguration();
+			INSTANCE = new ParsingConfiguration(context);
 			INSTANCE.parse();
 		}
 		return INSTANCE;
@@ -98,7 +101,7 @@ public class ParsingConfiguration {
 			 */
 			NodeList forms = racine.getElementsByTagName("forms");
 			for (int i = 0; i < forms.getLength(); i++) {
-				Node form = actions.item(i);
+				Node form = forms.item(i);
 				FormXml formXml = new FormXml();
 
 				NodeList formElement = form.getChildNodes();
@@ -120,7 +123,7 @@ public class ParsingConfiguration {
 	 * Retourne le chemin du fichier de configuration XML de vingtSurStruts.
 	 * @return Chemin du fichier de configuration XML.
 	 */
-	public static String getConfig() {
+	public String getConfig() {
 		return config;
 	}
 
@@ -130,7 +133,7 @@ public class ParsingConfiguration {
 	 * @param paramConfig
 	 *            Chemin du fichier de configuration XML.
 	 */
-	public static void setConfig(String paramConfig) {
+	public void setConfig(String paramConfig) {
 		config = paramConfig;
 	}
 
