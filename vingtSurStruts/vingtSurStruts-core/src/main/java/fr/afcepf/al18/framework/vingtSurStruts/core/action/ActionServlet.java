@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -26,10 +27,11 @@ public class ActionServlet extends HttpServlet {
 
 	@Override
 	public void init() throws ServletException {
+		ServletContext context = this.getServletContext();
 		try {
-			this.config = ParsingConfiguration.getINSTANCE();
+			this.config = ParsingConfiguration.getINSTANCE(context);
 		} catch (Exception e) {
-			throw new ServletException();
+			throw new ServletException(e);
 		}
 		this.actions = new HashMap<String, Action>(config.getActionsMap().size());
 		Map<String, ActionForm> forms = this.getForms();
