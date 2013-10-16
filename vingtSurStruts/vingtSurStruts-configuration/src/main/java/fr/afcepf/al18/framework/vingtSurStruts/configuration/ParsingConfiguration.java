@@ -27,6 +27,9 @@ public class ParsingConfiguration {
 	// Chemin du fichier de configuration XML
 	private String config;
 	
+	// Message des exceptions
+	private static String msgEmptyValue = "Valeur manquante dans le fichier de configuration VingtSurStruts à l'emplacement ";
+	
 	// Construction des maps
 	private Map<String, ActionXml> actionsMap = new HashMap<String, ActionXml>();
 	private Map<String, FormXml> formMap = new HashMap<String, FormXml>();
@@ -75,7 +78,7 @@ public class ParsingConfiguration {
 			/*
 			 * Parsing des noeuds Actions
 			 */
-			NodeList actions = racine.getElementsByTagName("actions");
+			NodeList actions = racine.getElementsByTagName("action");
 			for (int i = 0; i < actions.getLength(); i++) {
 				Node action = actions.item(i);
 				ActionXml actionXml = new ActionXml();
@@ -83,13 +86,22 @@ public class ParsingConfiguration {
 				NodeList actionElement = action.getChildNodes();
 				for (int j = 0; j < actionElement.getLength(); j++) {
 					Node parametre = actionElement.item(j);
-					if (parametre.getNodeName().equals("action-name")) {
+					
+					// Detection des paramètres vides
+					if (parametre.getTextContent() == null
+							|| parametre.getTextContent().equals("")) {
+						throw new ParserConfigurationException(msgEmptyValue
+										+ parametre.getBaseURI());
+					}
+					
+					// Si ok, récupération de la valeur
+					else if (parametre.getNodeName().equals("action-name")) {
 						actionXml.setActionName(parametre.getTextContent());
 					}
-					if (parametre.getNodeName().equals("url-pattern")) {
+					else if (parametre.getNodeName().equals("url-pattern")) {
 						actionXml.setUrlPattern(parametre.getTextContent());
 					}
-					if (parametre.getNodeName().equals("form-name")) {
+					else if (parametre.getNodeName().equals("form-name")) {
 						actionXml.setFormName(parametre.getTextContent());
 					}
 				}
@@ -99,7 +111,7 @@ public class ParsingConfiguration {
 			/*
 			 * Parsing des noeuds Forms
 			 */
-			NodeList forms = racine.getElementsByTagName("forms");
+			NodeList forms = racine.getElementsByTagName("form");
 			for (int i = 0; i < forms.getLength(); i++) {
 				Node form = forms.item(i);
 				FormXml formXml = new FormXml();
@@ -107,10 +119,19 @@ public class ParsingConfiguration {
 				NodeList formElement = form.getChildNodes();
 				for (int j = 0; j < formElement.getLength(); j++) {
 					Node parametre = formElement.item(j);
-					if (parametre.getNodeName().equals("form-class")) {
+					
+					// Detection des paramètres vides
+					if (parametre.getTextContent() == null
+							|| parametre.getTextContent().equals("")) {
+						throw new ParserConfigurationException(msgEmptyValue
+										+ parametre.getBaseURI());
+					}
+					
+					// Si ok, récupération de la valeur
+					else if (parametre.getNodeName().equals("form-class")) {
 						formXml.setFormClass(parametre.getTextContent());
 					}
-					if (parametre.getNodeName().equals("form-name")) {
+					else if (parametre.getNodeName().equals("form-name")) {
 						formXml.setFormName(parametre.getTextContent());
 					}
 				}
