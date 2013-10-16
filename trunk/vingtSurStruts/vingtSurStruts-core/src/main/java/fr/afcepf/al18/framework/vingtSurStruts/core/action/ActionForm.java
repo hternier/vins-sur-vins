@@ -27,6 +27,11 @@ public abstract class ActionForm implements Serializable {
 		}
 	}
 	
+	/**
+	 * 
+	 * @param request
+	 * @return null si la validation est réussie.
+	 */
 	public String[] validate(HttpServletRequest request) {
 		return null;
 	}

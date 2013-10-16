@@ -1,6 +1,7 @@
 package fr.afcepf.al18.framework.vingtSurStruts.core.action;
 
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -44,10 +45,28 @@ public class ActionServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 	}
 	
+	@SuppressWarnings("unchecked")
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		Action action = actions.get(req.getServletPath());
+		ActionForm form = action.getForm();
+		FormFeeder feeder = FormFeeder.getINSTANCE();
+		try {
+			action.setForm(feeder.feed(form, req.getParameterMap()));
+		} catch (IllegalAccessException e) {
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			e.printStackTrace();
+		}
+		
+		if (form.validate(req) != null) {
+			
+		} else {
+			String retourAction = action.execute(req, resp);
+			String finalUrl = getServletContext().getRealPath(retourAction);
+		}
+		
 		super.doPost(req, resp);
 	}
 

@@ -13,7 +13,7 @@ public class ActionLogin extends Action {
 	public String execute(HttpServletRequest paramRequest,
 			HttpServletResponse paramResponse) {
 		
-		ActionLoginForm loginForm = getForm(ActionLoginForm.class);
+		ActionLoginForm loginForm = this.getForm(ActionLoginForm.class);
 		
 		return "/success.jsp";
 	}

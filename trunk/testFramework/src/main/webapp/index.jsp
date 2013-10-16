@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Login</title>
 </head>
-	<form action="/loginAction.perform">
+	<form action="loginAction.perform" method="post">
 		Login :
 		<input name="login" type="text"/>
 		<br>
