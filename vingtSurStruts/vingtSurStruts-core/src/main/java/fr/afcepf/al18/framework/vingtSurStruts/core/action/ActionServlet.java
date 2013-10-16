@@ -39,11 +39,6 @@ public class ActionServlet extends HttpServlet {
 		this.initActions(forms);
 		
 	}
-
-	@Override
-	public void destroy() {
-		// TODO Auto-generated method stub
-	}
 	
 	@SuppressWarnings("unchecked")
 	@Override
