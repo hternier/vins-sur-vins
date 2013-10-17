@@ -57,18 +57,20 @@ public class ActionServlet extends HttpServlet {
 		}
 		
 		String[] messagesValidate = form.validate(req);
+		// Si form invalide
 		if (messagesValidate != null) {
-			// Si form invalide
 			
-			// Ajout des messages à la reponse
-			req.setAttribute("messagesError", messagesValidate);
+			// Ajout des messages de validation au form
+			form.setMessagesValidate(messagesValidate);
 			
-			// Renvoi de la page avec la requette
+			// Ajout des paramètres du form à la réponse (avec message Erreur)
+			req.setAttribute(form.getFormName(), form);
+			
+			// Renvoi de la page avec les paramètres
 			getServletContext().getRequestDispatcher(action.getInput()).forward(req, resp);
-			
-			
-		} else {
-			// Si form valide
+		} 
+		// Sinon form valide
+		else {
 			String retourAction = action.execute(req, resp);
 			getServletContext().getRequestDispatcher(action.getForwards().get(retourAction)).forward(req, resp);
 		}
@@ -104,6 +106,8 @@ public class ActionServlet extends HttpServlet {
 			action.setForm(actionForms.get(actionXml.getFormName()));
 			
 			action.setInput(actionXml.getInput());
+			
+			action.getForm().setFormName(actionXml.getFormName());
 			
 			Map<String, String> forwards = new HashMap<String, String>();
 			
