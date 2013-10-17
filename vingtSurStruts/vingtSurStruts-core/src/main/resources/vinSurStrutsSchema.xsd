@@ -8,6 +8,7 @@
 			<xs:sequence>
 				<xs:element ref="actions"/>
 				<xs:element ref="forms"/>
+				<xs:element ref="packagesName" minOccurs="0" maxOccurs="1" />
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
@@ -52,6 +53,13 @@
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
+	<xs:element name="packagesName">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="packageName" minOccurs="1" maxOccurs="unbounded" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
 	<xs:element name="action-name" type="xs:string"/>
 	<xs:element name="url-pattern" type="xs:string"/>
 	<xs:element name="form-name" type="xs:string"/>
@@ -59,4 +67,5 @@
 	<xs:element name="form-class" type="xs:string"/>
 	<xs:element name="name" type="xs:string"/>
 	<xs:element name="path" type="xs:string"/>
+	<xs:element name="packageName" type="xs:string"/>
 </xs:schema>
