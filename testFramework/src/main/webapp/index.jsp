@@ -23,6 +23,26 @@
 			</tr>
 		</c:forEach>
 	</form>
-
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+	<form action="loginActionAnnotated.perform" method="post">
+		Login :
+		<input name="login" type="text" value="${loginFormAnnotated.login}"/>
+		<br>
+		Password :
+		<input name="password" type="password" value="${loginFormAnnotated.password}"/>
+		<br>
+		<input type="submit" value="Submit">
+		<br>
+		
+		<c:forEach items="${loginFormAnnotated.messagesValidate}" var="message">
+			<tr>
+				<td><c:out value="Error : ${message}"/><br></td>
+			</tr>
+		</c:forEach>
+	</form>
 </body>
 </html>
