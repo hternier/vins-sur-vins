@@ -56,9 +56,19 @@ public class ActionServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 		
-		if (form.validate(req) != null) {
+		String[] messagesValidate = form.validate(req);
+		if (messagesValidate != null) {
+			// Si form invalide
+			
+			// Ajout des messages à la reponse
+			req.setAttribute("messagesError", messagesValidate);
+			
+			// Renvoi de la page avec la requette
+			getServletContext().getRequestDispatcher(action.getInput()).forward(req, resp);
+			
 			
 		} else {
+			// Si form valide
 			String retourAction = action.execute(req, resp);
 			getServletContext().getRequestDispatcher(action.getForwards().get(retourAction)).forward(req, resp);
 		}
