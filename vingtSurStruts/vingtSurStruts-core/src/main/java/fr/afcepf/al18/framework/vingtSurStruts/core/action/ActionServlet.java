@@ -59,10 +59,9 @@ public class ActionServlet extends HttpServlet {
 			
 		} else {
 			String retourAction = action.execute(req, resp);
-			String finalUrl = getServletContext().getRealPath(retourAction);
+			getServletContext().getRequestDispatcher(retourAction).forward(req, resp);
 		}
 		
-		super.doPost(req, resp);
 	}
 
 	@Override
