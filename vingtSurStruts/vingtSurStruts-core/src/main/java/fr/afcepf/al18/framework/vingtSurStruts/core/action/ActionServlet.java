@@ -93,6 +93,8 @@ public class ActionServlet extends HttpServlet {
 			
 			action.setForm(actionForms.get(actionXml.getFormName()));
 			
+			action.setInput(actionXml.getInput());
+			
 			Map<String, String> forwards = new HashMap<String, String>();
 			
 			for (ForwardXml forward : actionXml.getForwards()) {

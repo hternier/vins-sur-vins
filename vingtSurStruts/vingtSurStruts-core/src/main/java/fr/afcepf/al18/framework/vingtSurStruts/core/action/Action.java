@@ -12,6 +12,7 @@ public abstract class Action {
 	
 	private ActionForm form;
 	private Map<String, String> forwards;
+	private String input;
 
 	public ActionForm getForm() {
 		return form;
@@ -32,6 +33,14 @@ public abstract class Action {
 
 	public void setForwards(Map<String, String> forwards) {
 		this.forwards = forwards;
+	}
+
+	public String getInput() {
+		return input;
+	}
+
+	public void setInput(String input) {
+		this.input = input;
 	}
 
 	public abstract String execute(HttpServletRequest request, HttpServletResponse response);
