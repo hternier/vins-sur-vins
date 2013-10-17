@@ -12,7 +12,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import fr.afcepf.al18.framework.vingtSurStruts.configuration.ParsingAnnotation;
 import fr.afcepf.al18.framework.vingtSurStruts.configuration.ParsingConfiguration;
+import fr.afcepf.al18.framework.vingtSurStruts.configuration.annotations.Form;
+import fr.afcepf.al18.framework.vingtSurStruts.configuration.annotations.Forward;
 import fr.afcepf.al18.framework.vingtSurStruts.configuration.entities.ActionXml;
 import fr.afcepf.al18.framework.vingtSurStruts.configuration.entities.FormXml;
 import fr.afcepf.al18.framework.vingtSurStruts.configuration.entities.ForwardXml;
@@ -23,7 +26,9 @@ public class ActionServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 	
-	private ParsingConfiguration config;
+	private ParsingConfiguration configXml;
+	
+	private ParsingAnnotation configAnnotations;
 	
 	private Map<String, Action> actions;
 
@@ -31,14 +36,17 @@ public class ActionServlet extends HttpServlet {
 	public void init() throws ServletException {
 		ServletContext context = this.getServletContext();
 		try {
-			this.config = ParsingConfiguration.getINSTANCE(context);
+			this.configXml = ParsingConfiguration.getINSTANCE(context);
+			
+			if (configXml.getPackages() != null) {
+				configAnnotations = ParsingAnnotation.getInstance(configXml.getPackages());
+			}
 		} catch (Exception e) {
 			throw new ServletException(e);
 		}
-		this.actions = new HashMap<String, Action>(config.getActionsMap().size());
+		this.actions = new HashMap<String, Action>(configXml.getActionsMap().size());
 		Map<String, ActionForm> forms = this.getForms();
 		this.initActions(forms);
-		
 	}
 	
 	@SuppressWarnings("unchecked")
@@ -83,21 +91,41 @@ public class ActionServlet extends HttpServlet {
 		doPost(req, resp);
 	}
 	
+	@SuppressWarnings("rawtypes")
 	private Map<String, ActionForm> getForms() {
 		
-		Map<String, ActionForm> actionForms = new HashMap<String, ActionForm>(this.config.getFormMap().size());;
+		Map<String, ActionForm> actionForms = new HashMap<String, ActionForm>(this.configXml.getFormMap().size());
 		ActionFormFactory formFactory = ActionFormFactory.getInstance();
-		Map<String, FormXml> parsedMap = this.config.getFormMap();
-		for (Entry<String, FormXml> entry : parsedMap.entrySet()) {
+		
+		for (Entry<String, FormXml> entry : this.configXml.getFormMap().entrySet()) {
 			actionForms.put(entry.getKey(), formFactory.getActionForm(entry.getValue().getFormClass()));
+		}
+		
+		if (configAnnotations != null) {
+			for (Entry<String, Class> entry : configAnnotations.getFormMap().entrySet()) {
+				actionForms.put(entry.getKey(), this.classToForm(entry.getValue()));
+			}
 		}
 		
 		return actionForms;
 	}
 	
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	private ActionForm classToForm(Class clazz) {
+		ActionFormFactory formFactory = ActionFormFactory.getInstance();
+		
+		ActionForm returnForm = formFactory.getActionForm(clazz.getCanonicalName());
+		Form annotationForm = (Form) clazz.getAnnotation(Form.class);
+		returnForm.setFormName(annotationForm.value());
+		
+		return returnForm;
+		
+	}
+	
+	@SuppressWarnings("rawtypes")
 	private void initActions(Map<String, ActionForm> actionForms) {
 		ActionFactory actionFactory = ActionFactory.getInstance();
-		Map<String, ActionXml> parsedMap = this.config.getActionsMap();
+		Map<String, ActionXml> parsedMap = this.configXml.getActionsMap();
 		
 		for (Entry<String, ActionXml> entry : parsedMap.entrySet()) {
 			ActionXml actionXml = entry.getValue();
@@ -119,6 +147,37 @@ public class ActionServlet extends HttpServlet {
 			
 			actions.put(entry.getKey(), action);
 		}
+		
+		if (configAnnotations != null) {
+			for (Entry<String, Class> entry : configAnnotations.getActionsMap().entrySet()) {
+				actions.put(entry.getKey(), classToAction(entry.getValue(), actionForms));
+			}
+		}
 	}
+
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	private Action classToAction(Class value, Map<String, ActionForm> actionForms) {
+		ActionFactory actionFactory = ActionFactory.getInstance();
+		
+		Action actionRetour = actionFactory.getAction(value.getCanonicalName());
+		
+		fr.afcepf.al18.framework
+		.vingtSurStruts.configuration.annotations.
+		Action actionAnnonation = (fr.afcepf.al18.framework
+				.vingtSurStruts.configuration.annotations.
+				Action) value.getAnnotation(fr.afcepf.al18.framework
+						.vingtSurStruts.configuration.annotations.
+						Action.class);
+		
+		actionRetour.setForm(actionForms.get(actionAnnonation.formName()));
+		actionRetour.setInput(actionAnnonation.input());
+		
+		for (Forward forwardAnnotation : actionAnnonation.forwards()) {
+			actionRetour.getForwards().put(forwardAnnotation.name(), forwardAnnotation.path());
+		}
+		
+		return actionRetour;
+	}
+
 
 }
