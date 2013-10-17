@@ -17,6 +17,7 @@ import org.xml.sax.SAXException;
 
 import fr.afcepf.al18.framework.vingtSurStruts.configuration.entities.ActionXml;
 import fr.afcepf.al18.framework.vingtSurStruts.configuration.entities.FormXml;
+import fr.afcepf.al18.framework.vingtSurStruts.configuration.entities.ForwardXml;
 
 /**
  * Classe de lecture du fichier de configuration vingtSurStruts-config.xml.
@@ -86,8 +87,10 @@ public class ParsingConfiguration {
 				NodeList actionElement = action.getChildNodes();
 				for (int j = 0; j < actionElement.getLength(); j++) {
 					Node parametre = actionElement.item(j);
-					
 					// Detection des paramètres vides
+					if (parametre.getNodeType() == Node.TEXT_NODE) {
+						continue;
+					}
 					if (parametre.getTextContent() == null
 							|| parametre.getTextContent().equals("")) {
 						throw new ParserConfigurationException(msgEmptyValue
@@ -103,6 +106,33 @@ public class ParsingConfiguration {
 					}
 					else if (parametre.getNodeName().equals("form-name")) {
 						actionXml.setFormName(parametre.getTextContent());
+					}
+					else if (parametre.getNodeName().equals("input")) {
+						actionXml.setInput(parametre.getTextContent());
+					}
+					else if (parametre.getNodeName().equals("forward")) {
+						ForwardXml forward = new ForwardXml();
+						NodeList forwardElements = parametre.getChildNodes();
+						
+						for (int k = 0; k < forwardElements.getLength(); k++) {
+							Node forwardParam = forwardElements.item(k);
+							if (forwardParam.getNodeType() == Node.TEXT_NODE) {
+								continue;
+							}
+							if (forwardParam.getTextContent() == null
+									|| forwardParam.getTextContent().equals("")) {
+								throw new ParserConfigurationException(msgEmptyValue
+										+ forwardParam.getNodeName());
+							}
+							else if (forwardParam.getNodeName().equals("name")) {
+								forward.setName(forwardParam.getTextContent());
+							}
+							else if (forwardParam.getNodeName().equals("path")) {
+								forward.setPath(forwardParam.getTextContent());
+							}
+						}
+						actionXml.getForwards().add(forward);
+						
 					}
 				}
 				actionsMap.put(actionXml.getUrlPattern(), actionXml);

@@ -13,9 +13,15 @@ public class ActionLogin extends Action {
 	public String execute(HttpServletRequest paramRequest,
 			HttpServletResponse paramResponse) {
 		
+		String returnString = Action.SUCCESS;
+		
 		ActionLoginForm loginForm = this.getForm(ActionLoginForm.class);
 		
-		return "/success.jsp";
+		if (loginForm.getLogin().equals("toto")) {
+			returnString = Action.ERROR;
+		}
+		
+		return returnString;
 	}
 
 

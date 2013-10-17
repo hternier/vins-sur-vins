@@ -5,6 +5,15 @@
             <action-name>fr.afcepf.atod18.testFramework.controller.ActionLogin</action-name>
             <url-pattern>/loginAction.perform</url-pattern>
             <form-name>loginForm</form-name>
+            <input>/index.jsp</input>
+            <forward>
+            	<name>success</name>
+            	<path>/success.jsp</path>
+            </forward>
+            <forward>
+            	<name>error</name>
+            	<path>/error.jsp</path>
+            </forward>
         </action>
     </actions>
     <forms>
