@@ -19,7 +19,7 @@ public class ActionLoginForm extends ActionForm {
     	
     	List<String> message = new ArrayList<String>();
     	
-    	if (!this.getLogin().equals("toto") || !this.getPassword().equals("toto")) {
+    	if (this.getLogin().isEmpty() || this.getPassword().isEmpty()) {
     		// Redirection Erreur
     		message.add("Error login");
         } else {

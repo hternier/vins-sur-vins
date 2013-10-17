@@ -17,7 +17,7 @@ public class ActionLogin extends Action {
 		
 		ActionLoginForm loginForm = this.getForm(ActionLoginForm.class);
 		
-		if (loginForm.getLogin().equals("toto")) {
+		if (!loginForm.getLogin().equals("toto") || !loginForm.getPassword().equals("toto")) {
 			returnString = Action.ERROR;
 		}
 		
