@@ -25,7 +25,7 @@ public class ActionLoginFormAnnotated extends ActionForm {
     	
     	if (this.getLogin().isEmpty() || this.getPassword().isEmpty()) {
     		// Redirection Erreur
-    		message.add("Error login");
+    		message.add("Login ou mot de passe manquant");
         } else {
         	// Redirection Success
         }

@@ -22,7 +22,7 @@ public class ActionLoginAnnotated extends fr.afcepf.al18.framework.vingtSurStrut
 		
 		String returnString = ActionLoginAnnotated.SUCCESS;
 		
-		ActionLoginForm loginForm = this.getForm(ActionLoginForm.class);
+		ActionLoginFormAnnotated loginForm = this.getForm(ActionLoginFormAnnotated.class);
 		
 		if (!loginForm.getLogin().equals("toto") || !loginForm.getPassword().equals("toto")) {
 			returnString = ActionLoginAnnotated.ERROR;
