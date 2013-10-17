@@ -5,8 +5,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import fr.afcepf.al18.framework.vingtSurStruts.core.action.Action;
 
-
-
 public class ActionLogin extends Action {
 
 	@Override
