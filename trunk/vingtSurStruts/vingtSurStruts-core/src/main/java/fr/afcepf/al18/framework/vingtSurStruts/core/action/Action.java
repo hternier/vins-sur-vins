@@ -1,5 +1,6 @@
 package fr.afcepf.al18.framework.vingtSurStruts.core.action;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -11,7 +12,7 @@ public abstract class Action {
 	public static final String ERROR = "error";
 	
 	private ActionForm form;
-	private Map<String, String> forwards;
+	private Map<String, String> forwards = new HashMap<String, String>();
 	private String input;
 
 	public ActionForm getForm() {

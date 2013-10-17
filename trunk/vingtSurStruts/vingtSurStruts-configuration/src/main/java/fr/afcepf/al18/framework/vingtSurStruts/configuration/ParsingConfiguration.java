@@ -1,7 +1,9 @@
 package fr.afcepf.al18.framework.vingtSurStruts.configuration;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.ServletContext;
@@ -23,7 +25,7 @@ import fr.afcepf.al18.framework.vingtSurStruts.configuration.entities.ForwardXml
  * Classe de lecture du fichier de configuration vingtSurStruts-config.xml.
  * @author Hadrien Ternier
  */
-public class ParsingConfiguration {
+public class ParsingConfiguration implements VingtSurStrutsParser {
 
 	// Chemin du fichier de configuration XML
 	private String config;
@@ -34,14 +36,15 @@ public class ParsingConfiguration {
 	// Construction des maps
 	private Map<String, ActionXml> actionsMap = new HashMap<String, ActionXml>();
 	private Map<String, FormXml> formMap = new HashMap<String, FormXml>();
+	private List<String> packages;
+
+	// Singleton
+	private static ParsingConfiguration INSTANCE;
 
 	// Constructeur par defaut
 	private ParsingConfiguration(ServletContext context) {
 		config = context.getRealPath("WEB-INF/vingtSurStruts-config.xml");
 	}
-
-	// Singleton
-	private static ParsingConfiguration INSTANCE;
 
 	/**
 	 * Singleton de ParsingConfiguration.
@@ -69,11 +72,11 @@ public class ParsingConfiguration {
 
 			builder = factory.newDocumentBuilder();
 
-			Document document = builder.parse(config);
+			Document document = builder.parse(this.config);
 			Element racine = document.getDocumentElement();
 
-			actionsMap.clear();
-			formMap.clear();
+			this.actionsMap.clear();
+			this.formMap.clear();
 			
 			
 			/*
@@ -135,7 +138,7 @@ public class ParsingConfiguration {
 						
 					}
 				}
-				actionsMap.put(actionXml.getUrlPattern(), actionXml);
+				this.actionsMap.put(actionXml.getUrlPattern(), actionXml);
 			}
 
 			/*
@@ -165,9 +168,32 @@ public class ParsingConfiguration {
 						formXml.setFormName(parametre.getTextContent());
 					}
 				}
-				formMap.put(formXml.getFormName(), formXml);
+				this.formMap.put(formXml.getFormName(), formXml);
 			}
-
+			
+			/*
+			 * Parsing des packages à scanner
+			 */
+			
+			NodeList packageNames = racine.getElementsByTagName("packagesName");
+			if (packageNames.getLength() > 0) {
+				
+				this.packages = new ArrayList<String>();
+				NodeList packages = packageNames.item(0).getChildNodes();
+				
+				for (int i = 0; i < packages.getLength(); i++) {
+					Node node = packages.item(i);
+					if (node.getNodeType() == Node.TEXT_NODE) {
+						continue;
+					}
+					
+					if (node.getNodeName().equals("packageName")) {
+						this.packages.add(node.getTextContent());
+					}
+				}
+				
+			}
+			
 	}
 
 	/**
@@ -203,7 +229,13 @@ public class ParsingConfiguration {
 	public Map<String, FormXml> getFormMap() {
 		return formMap;
 	}
-	
-	
 
+	public List<String> getPackages() {
+		return packages;
+	}
+
+	public void setPackages(List<String> packages) {
+		this.packages = packages;
+	}
+	
 }

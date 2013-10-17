@@ -22,4 +22,7 @@
             <form-name>loginForm</form-name>
         </form>
     </forms>
+    <packagesName>
+    	<packageName>fr.afcepf.atod18.testFramework.controller</packageName>
+    </packagesName>
 </vingtSurStruts-config>
