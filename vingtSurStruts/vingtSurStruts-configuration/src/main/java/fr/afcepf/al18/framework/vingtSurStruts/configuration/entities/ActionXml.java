@@ -1,5 +1,6 @@
 package fr.afcepf.al18.framework.vingtSurStruts.configuration.entities;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -13,7 +14,7 @@ public class ActionXml {
 	private String urlPattern;
 	private String formName;
 	private String input;
-	private List<ForwardXml> forwards;
+	private List<ForwardXml> forwards = new ArrayList<ForwardXml>();
 
 	public ActionXml() {
 

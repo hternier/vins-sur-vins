@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import fr.afcepf.al18.framework.vingtSurStruts.configuration.ParsingConfiguration;
 import fr.afcepf.al18.framework.vingtSurStruts.configuration.entities.ActionXml;
 import fr.afcepf.al18.framework.vingtSurStruts.configuration.entities.FormXml;
+import fr.afcepf.al18.framework.vingtSurStruts.configuration.entities.ForwardXml;
 import fr.afcepf.al18.framework.vingtSurStruts.core.factory.ActionFactory;
 import fr.afcepf.al18.framework.vingtSurStruts.core.factory.ActionFormFactory;
 
@@ -59,7 +60,7 @@ public class ActionServlet extends HttpServlet {
 			
 		} else {
 			String retourAction = action.execute(req, resp);
-			getServletContext().getRequestDispatcher(retourAction).forward(req, resp);
+			getServletContext().getRequestDispatcher(action.getForwards().get(retourAction)).forward(req, resp);
 		}
 		
 	}
@@ -91,6 +92,14 @@ public class ActionServlet extends HttpServlet {
 			Action action = actionFactory.getAction(actionXml.getActionName());
 			
 			action.setForm(actionForms.get(actionXml.getFormName()));
+			
+			Map<String, String> forwards = new HashMap<String, String>();
+			
+			for (ForwardXml forward : actionXml.getForwards()) {
+				forwards.put(forward.getName(), forward.getPath());
+			}
+			
+			action.setForwards(forwards);
 			
 			actions.put(entry.getKey(), action);
 		}
