@@ -7,40 +7,41 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Login</title>
 </head>
+<body>
 	<form action="loginAction.perform" method="post">
 		Login :
 		<input name="login" type="text" value="${loginForm.login}"/>
-		<br>
+		<br/>
 		Password :
 		<input name="password" type="password" value="${loginForm.password}"/>
-		<br>
+		<br/>
 		<input type="submit" value="Submit">		
-		<br>
+		<br/>
 		
 		<c:forEach items="${loginForm.messagesValidate}" var="message">
 			<tr>
-				<td><c:out value="Error : ${message}"/><br></td>
+				<td><c:out value="Error : ${message}"/><br/></td>
 			</tr>
 		</c:forEach>
 	</form>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
+	<br/>
+	<br/>
+	<br/>
+	<br/>
+	<br/>
 	<form action="loginActionAnnotated.perform" method="post">
 		Login :
 		<input name="login" type="text" value="${loginFormAnnotated.login}"/>
-		<br>
+		<br/>
 		Password :
 		<input name="password" type="password" value="${loginFormAnnotated.password}"/>
-		<br>
+		<br/>
 		<input type="submit" value="Submit">
-		<br>
+		<br/>
 		
 		<c:forEach items="${loginFormAnnotated.messagesValidate}" var="message">
 			<tr>
-				<td><c:out value="Error : ${message}"/><br></td>
+				<td><c:out value="Error : ${message}"/><br/></td>
 			</tr>
 		</c:forEach>
 	</form>
