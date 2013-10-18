@@ -3,7 +3,7 @@ package fr.afcepf.atod18.testFramework.controller;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import fr.afcepf.al18.framework.vingtSurStruts.core.action.Action;
+import fr.afcepf.al18.framework.vingtSurStruts.commons.entities.Action;
 
 public class ActionLogin extends Action {
 

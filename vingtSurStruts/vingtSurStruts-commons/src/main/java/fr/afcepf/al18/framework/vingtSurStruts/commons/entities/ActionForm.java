@@ -1,4 +1,4 @@
-package fr.afcepf.al18.framework.vingtSurStruts.core.action;
+package fr.afcepf.al18.framework.vingtSurStruts.commons.entities;
 
 import java.io.Serializable;
 
@@ -9,18 +9,9 @@ public abstract class ActionForm implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
-	private ActionServlet servlet;
 	private String formName;
 	private String[] messagesValidate;
 
-	public ActionServlet getServlet() {
-		return servlet;
-	}
-
-	public void setServlet(ActionServlet servlet) {
-		this.servlet = servlet;
-	}
-	
 	public String getFormName() {
 		return formName;
 	}

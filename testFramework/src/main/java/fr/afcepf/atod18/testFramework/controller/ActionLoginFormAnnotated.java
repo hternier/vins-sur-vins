@@ -5,8 +5,8 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
-import fr.afcepf.al18.framework.vingtSurStruts.configuration.annotations.Form;
-import fr.afcepf.al18.framework.vingtSurStruts.core.action.ActionForm;
+import fr.afcepf.al18.framework.vingtSurStruts.commons.annotations.Form;
+import fr.afcepf.al18.framework.vingtSurStruts.commons.entities.ActionForm;
 
 @Form("loginFormAnnotated")
 public class ActionLoginFormAnnotated extends ActionForm {

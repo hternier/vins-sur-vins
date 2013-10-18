@@ -2,8 +2,8 @@
 <vingtSurStruts-config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://vins-sur-vins.googlecode.com/svn/trunk/vingtSurStruts/vingtSurStruts-core/src/main/resources/vinSurStrutsSchema.xsd">
     <actions>
         <action>
-            <action-name>fr.afcepf.atod18.testFramework.controller.ActionLogin</action-name>
-            <url-pattern>/loginAction.perform</url-pattern>
+            <action-class>fr.afcepf.atod18.testFramework.controller.ActionLogin</action-class>
+            <action-name>loginAction</action-name>
             <form-name>loginForm</form-name>
             <input>/index.jsp</input>
             <forward>

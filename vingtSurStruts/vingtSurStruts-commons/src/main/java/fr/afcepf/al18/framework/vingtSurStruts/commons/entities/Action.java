@@ -1,4 +1,4 @@
-package fr.afcepf.al18.framework.vingtSurStruts.core.action;
+package fr.afcepf.al18.framework.vingtSurStruts.commons.entities;
 
 import java.util.HashMap;
 import java.util.Map;

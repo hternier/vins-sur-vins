@@ -1,4 +1,4 @@
-package fr.afcepf.al18.framework.vingtSurStruts.configuration.annotations;
+package fr.afcepf.al18.framework.vingtSurStruts.commons.annotations;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;
@@ -11,6 +11,11 @@ import java.lang.annotation.Target;
 @Target(ElementType.TYPE)
 @Inherited
 @Retention(RetentionPolicy.RUNTIME)
-public @interface Form {
-	String value();
+public @interface Action {
+	
+	String actionName();
+	String formName();
+	String input() default "";
+	Forward[] forwards();
+	
 }

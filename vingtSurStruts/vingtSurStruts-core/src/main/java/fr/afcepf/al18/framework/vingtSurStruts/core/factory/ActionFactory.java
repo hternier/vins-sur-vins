@@ -1,6 +1,7 @@
 package fr.afcepf.al18.framework.vingtSurStruts.core.factory;
 
-import fr.afcepf.al18.framework.vingtSurStruts.core.action.Action;
+import fr.afcepf.al18.framework.vingtSurStruts.commons.VingtSurStrutsException;
+import fr.afcepf.al18.framework.vingtSurStruts.commons.entities.Action;
 
 public class ActionFactory {
 	
@@ -17,8 +18,7 @@ public class ActionFactory {
 		try {
 			returnAction = (Action) Class.forName(actionName).newInstance();
 		} catch (Exception e) {
-			e.printStackTrace();
-			returnAction = null;
+			throw new VingtSurStrutsException(e);
 		}
 		
 		return returnAction;

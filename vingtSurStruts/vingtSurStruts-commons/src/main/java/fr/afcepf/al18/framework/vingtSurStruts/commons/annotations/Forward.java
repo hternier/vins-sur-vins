@@ -1,4 +1,4 @@
-package fr.afcepf.al18.framework.vingtSurStruts.configuration.annotations;
+package fr.afcepf.al18.framework.vingtSurStruts.commons.annotations;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;
