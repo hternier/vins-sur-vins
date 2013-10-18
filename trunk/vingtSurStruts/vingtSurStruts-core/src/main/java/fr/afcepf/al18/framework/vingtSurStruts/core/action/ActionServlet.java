@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.lang.StringUtils;
+
 import fr.afcepf.al18.framework.vingtSurStruts.commons.VingtSurStrutsException;
 import fr.afcepf.al18.framework.vingtSurStruts.commons.annotations.Form;
 import fr.afcepf.al18.framework.vingtSurStruts.commons.annotations.Forward;
@@ -74,6 +76,10 @@ public class ActionServlet extends HttpServlet {
 		// Si form invalide
 		if (messagesValidate != null) {
 			
+			if (StringUtils.isEmpty(action.getInput())) {
+				throw new VingtSurStrutsException("L'input de l'action " + action.getClass().getCanonicalName() + " est obligatoire en cas de validation en échec");
+			}
+			
 			// Ajout des messages de validation au form
 			form.setMessagesValidate(messagesValidate);
 			
@@ -86,7 +92,10 @@ public class ActionServlet extends HttpServlet {
 		// Sinon form valide
 		else {
 			String retourAction = action.execute(req, resp);
-			getServletContext().getRequestDispatcher(action.getForwards().get(retourAction)).forward(req, resp);
+			
+			this.checkExecuteResultAndForwards(retourAction, action.getForwards());
+			
+			this.getServletContext().getRequestDispatcher(action.getForwards().get(retourAction)).forward(req, resp);
 		}
 		
 	}
@@ -152,6 +161,9 @@ public class ActionServlet extends HttpServlet {
 			Map<String, String> forwards = new HashMap<String, String>();
 			
 			for (ForwardXml forward : actionXml.getForwards()) {
+				if (forwards.containsKey(forward.getName())) {
+					throw new VingtSurStrutsException("Les forwards de l'action " + actionXml.getActionName() + " sont incorrects, plusieurs forwards ont le même champ name.");
+				}
 				forwards.put(forward.getName(), forward.getPath());
 			}
 			
@@ -183,14 +195,34 @@ public class ActionServlet extends HttpServlet {
 		
 		fr.afcepf.al18.framework.vingtSurStruts.commons.annotations.Action actionAnnonation = (fr.afcepf.al18.framework.vingtSurStruts.commons.annotations.Action) value.getAnnotation(fr.afcepf.al18.framework.vingtSurStruts.commons.annotations.Action.class);
 		
-		actionRetour.setForm(actionForms.get(actionAnnonation.formName()));
+		ActionForm form = actionForms.get(actionAnnonation.formName());
+		
+		if (form == null) {
+			throw new VingtSurStrutsException("Le ActionForm " + actionAnnonation.formName() + " renseigné dans l'action " + actionAnnonation.actionName() + " n'existe pas.");
+		}
+		
+		actionRetour.setForm(form);
 		actionRetour.setInput(actionAnnonation.input());
 		
 		for (Forward forwardAnnotation : actionAnnonation.forwards()) {
+			if (actionRetour.getForwards().containsKey(forwardAnnotation.name())) {
+				throw new VingtSurStrutsException("Les forwards de l'action " + actionAnnonation.actionName() + " sont incorrects, plusieurs forwards ont le même champ name.");
+			}
 			actionRetour.getForwards().put(forwardAnnotation.name(), forwardAnnotation.path());
 		}
 		
 		return actionRetour;
+	}
+	
+	private void checkExecuteResultAndForwards (String executeResult, Map<String, String> forwards) {
+		
+		for (Entry<String, String> entry : forwards.entrySet()) {
+			if (StringUtils.equals(executeResult, entry.getKey())) {
+				return;
+			}
+		}
+		
+		throw new VingtSurStrutsException("Le retour de la méthode execute ne correspond pas aux forwards de l'action.");
 	}
 
 
