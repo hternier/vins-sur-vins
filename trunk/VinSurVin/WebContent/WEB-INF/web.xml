@@ -7,12 +7,15 @@
     <session-config>
         <session-timeout>360</session-timeout>
     </session-config>
-    <welcome-file-list>
-        <welcome-file>index.jsp</welcome-file>
-    </welcome-file-list>
     <persistence-unit-ref>
         <persistence-unit-ref-name>persistence.xml</persistence-unit-ref-name>
     </persistence-unit-ref>
+    
+    <error-page>
+        <exception-type>java.lang.Throwable</exception-type>
+        <location>/error.jsp</location>
+    </error-page>
+    
     <servlet>
         <servlet-name>Faces Servlet</servlet-name>
         <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
