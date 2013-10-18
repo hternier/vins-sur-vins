@@ -10,7 +10,7 @@ import fr.afcepf.al18.framework.vingtSurStruts.configuration.annotations.Forward
 		formName = "newsletterForm", 
 		input = "/newsletter.jsp", forwards = {
 		@Forward(path = "/newsletters.jsp"),
-		@Forward(name = ActionNewsletter.ERROR, path = "/newsletter.jsp") })
+		@Forward(name = ActionNewsletter.ERROR, path = "/newsletterError.jsp") })
 public class ActionNewsletter extends
 		fr.afcepf.al18.framework.vingtSurStruts.core.action.Action {
 

@@ -6,23 +6,21 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Vin sur Vin - Newsletter</title>
-<link rel="stylesheet" href="/VinSurVin/faces/resources/css/css.css"
+<link rel="stylesheet" href="/VinSurVin/faces/resources/css/cssNewsletter.css"
 	type="text/css" />
 </head>
 <body>
 	<h2>Inscription à notre newsletter réussie</h2>
-	<div id="newsletterDiv">
-		<form action="newsletter2Action.perform" method="post">
+	<div id="newsletterValideDiv">
+		<form>
 
 			<label style="color: green">Merci, votre inscription a bien été prise en compte.</label><br> 
 			<br> <br> 
-			
-
-			
+						
 		 <a
 				href="/VinSurVin/faces/pagesFrontOffice/accueil.xhtml"
 				title="Vin sur Vin" class="logo-one"> <img
-				src="/VinSurVin/faces/resources/images/logo.png" alt="Vin sur Vin" /></a>
+				src="/VinSurVin/faces/resources/images/logo.png" alt="Vin sur Vin" width="140px"/></a>
 			<br>
 			<a href="/VinSurVin/faces/pagesFrontOffice/accueil.xhtml"
 				target="_blank">Retourner sur le site Vin sur Vin </a>
