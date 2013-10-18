@@ -5,11 +5,11 @@
 	<xs:import namespace="http://www.w3.org/XML/1998/namespace"/>
 	<xs:element name="vingtSurStruts-config">
 		<xs:complexType>
-			<xs:sequence>
-				<xs:element ref="actions"/>
-				<xs:element ref="forms"/>
+			<xs:all>
+				<xs:element ref="actions" minOccurs="0" maxOccurs="1" />
+				<xs:element ref="forms" minOccurs="0" maxOccurs="1" />
 				<xs:element ref="packagesName" minOccurs="0" maxOccurs="1" />
-			</xs:sequence>
+			</xs:all>
 		</xs:complexType>
 	</xs:element>
 	<xs:element name="actions">
