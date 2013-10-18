@@ -19,6 +19,7 @@ import fr.afcepf.al18.framework.vingtSurStruts.configuration.annotations.Forward
 import fr.afcepf.al18.framework.vingtSurStruts.configuration.entities.ActionXml;
 import fr.afcepf.al18.framework.vingtSurStruts.configuration.entities.FormXml;
 import fr.afcepf.al18.framework.vingtSurStruts.configuration.entities.ForwardXml;
+import fr.afcepf.al18.framework.vingtSurStruts.core.VingtSurStrutsException;
 import fr.afcepf.al18.framework.vingtSurStruts.core.factory.ActionFactory;
 import fr.afcepf.al18.framework.vingtSurStruts.core.factory.ActionFormFactory;
 
@@ -53,7 +54,13 @@ public class ActionServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		Action action = actions.get(req.getServletPath());
+		String urlPattern = req.getServletPath();
+		Action action = actions.get(urlPattern);
+		
+		if (action == null) {
+			throw new VingtSurStrutsException("le pattern " + urlPattern + " n'est relié a aucune action");
+		}
+		
 		ActionForm form = action.getForm();
 		FormFeeder feeder = FormFeeder.getINSTANCE();
 		try {
