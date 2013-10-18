@@ -21,7 +21,21 @@
     <servlet-mapping>
         <servlet-name>Faces Servlet</servlet-name>
         <url-pattern>/faces/*</url-pattern>
-    </servlet-mapping>
+    </servlet-mapping>    
+    
+    <servlet>
+		<servlet-name>action</servlet-name>
+		<servlet-class>fr.afcepf.al18.framework.vingtSurStruts.core.action.ActionServlet</servlet-class>
+		<load-on-startup>3</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>action</servlet-name>
+		<url-pattern>*.perform</url-pattern>		
+	</servlet-mapping>
+    
+    
+    
+    
     <resource-ref>
         <description>DB Connection</description>
         <res-ref-name>jdbc/VinSurVin</res-ref-name>
