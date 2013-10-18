@@ -53,10 +53,14 @@ public class ParsingConfiguration implements VingtSurStrutsParser {
 	 * @throws IOException Exception de lecture de fichier.
 	 * @throws SAXException Exception lors du parsing du fichier.
 	 */
-	public static ParsingConfiguration getINSTANCE(ServletContext context) throws SAXException, IOException, ParserConfigurationException {
+	public static ParsingConfiguration getINSTANCE(ServletContext context) {
 		if (INSTANCE == null) {
 			INSTANCE = new ParsingConfiguration(context);
-			INSTANCE.parse();
+			try {
+				INSTANCE.parse();
+			} catch (Exception e) {
+//				throw new Vin
+			}
 		}
 		return INSTANCE;
 	}

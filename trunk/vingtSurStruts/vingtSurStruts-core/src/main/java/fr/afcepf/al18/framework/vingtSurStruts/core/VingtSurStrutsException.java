@@ -11,5 +11,9 @@ public class VingtSurStrutsException extends RuntimeException {
 	public VingtSurStrutsException(String message) {
 		super(message);
 	}
+	
+	public VingtSurStrutsException(Throwable e) {
+		super(e);
+	}
 
 }

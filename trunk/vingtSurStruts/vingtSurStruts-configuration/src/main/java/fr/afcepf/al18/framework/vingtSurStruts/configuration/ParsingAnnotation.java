@@ -27,12 +27,16 @@ public class ParsingAnnotation {
 	@SuppressWarnings("rawtypes")
 	private Map<String, Class> formMap = new HashMap<String, Class>();
 	
-	private ParsingAnnotation(List<String> packageName) throws ClassNotFoundException, IOException {
+	private ParsingAnnotation(List<String> packageName) {
 		this.packageName = packageName;
-		this.parsePackages();
+		try {
+			this.parsePackages();
+		} catch (Exception e) {
+			
+		}
 	}
 
-	public static ParsingAnnotation getInstance(List<String> packageName) throws ClassNotFoundException, IOException {
+	public static ParsingAnnotation getInstance(List<String> packageName) {
 		if (instance == null) {
 			instance = new ParsingAnnotation(packageName);
 		}
