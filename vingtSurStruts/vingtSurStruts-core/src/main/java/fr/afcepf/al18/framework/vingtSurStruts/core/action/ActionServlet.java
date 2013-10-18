@@ -36,15 +36,11 @@ public class ActionServlet extends HttpServlet {
 	@Override
 	public void init() throws ServletException {
 		ServletContext context = this.getServletContext();
-		try {
-			this.configXml = ParsingConfiguration.getINSTANCE(context);
-			
-			if (configXml.getPackages() != null) {
-				configAnnotations = ParsingAnnotation.getInstance(configXml.getPackages());
-			}
-		} catch (Exception e) {
-			throw new ServletException(e);
+		this.configXml = ParsingConfiguration.getINSTANCE(context);
+		if (configXml.getPackages() != null) {
+			configAnnotations = ParsingAnnotation.getInstance(configXml.getPackages());
 		}
+			
 		this.actions = new HashMap<String, Action>(configXml.getActionsMap().size());
 		Map<String, ActionForm> forms = this.getForms();
 		this.initActions(forms);
