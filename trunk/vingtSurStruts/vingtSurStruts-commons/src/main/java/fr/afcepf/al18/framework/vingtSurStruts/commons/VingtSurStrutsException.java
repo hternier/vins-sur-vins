@@ -1,4 +1,4 @@
-package fr.afcepf.al18.framework.vingtSurStruts.core;
+package fr.afcepf.al18.framework.vingtSurStruts.commons;
 
 public class VingtSurStrutsException extends RuntimeException {
 

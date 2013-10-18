@@ -12,14 +12,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import fr.afcepf.al18.framework.vingtSurStruts.commons.VingtSurStrutsException;
+import fr.afcepf.al18.framework.vingtSurStruts.commons.annotations.Form;
+import fr.afcepf.al18.framework.vingtSurStruts.commons.annotations.Forward;
+import fr.afcepf.al18.framework.vingtSurStruts.commons.entities.Action;
+import fr.afcepf.al18.framework.vingtSurStruts.commons.entities.ActionForm;
+import fr.afcepf.al18.framework.vingtSurStruts.commons.utils.UrlPatternUtils;
 import fr.afcepf.al18.framework.vingtSurStruts.configuration.ParsingAnnotation;
 import fr.afcepf.al18.framework.vingtSurStruts.configuration.ParsingConfiguration;
-import fr.afcepf.al18.framework.vingtSurStruts.configuration.annotations.Form;
-import fr.afcepf.al18.framework.vingtSurStruts.configuration.annotations.Forward;
 import fr.afcepf.al18.framework.vingtSurStruts.configuration.entities.ActionXml;
 import fr.afcepf.al18.framework.vingtSurStruts.configuration.entities.FormXml;
 import fr.afcepf.al18.framework.vingtSurStruts.configuration.entities.ForwardXml;
-import fr.afcepf.al18.framework.vingtSurStruts.core.VingtSurStrutsException;
 import fr.afcepf.al18.framework.vingtSurStruts.core.factory.ActionFactory;
 import fr.afcepf.al18.framework.vingtSurStruts.core.factory.ActionFormFactory;
 
@@ -51,7 +54,7 @@ public class ActionServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		String urlPattern = req.getServletPath();
-		Action action = actions.get(urlPattern);
+		Action action = actions.get(UrlPatternUtils.toActionKey(urlPattern));
 		
 		if (action == null) {
 			throw new VingtSurStrutsException("le pattern " + urlPattern + " n'est relié a aucune action");
@@ -101,11 +104,17 @@ public class ActionServlet extends HttpServlet {
 		ActionFormFactory formFactory = ActionFormFactory.getInstance();
 		
 		for (Entry<String, FormXml> entry : this.configXml.getFormMap().entrySet()) {
+			if (actionForms.containsKey(entry.getKey())) {
+				throw new VingtSurStrutsException("Le ActionForm " + entry.getKey() + " est défini deux fois.");
+			}
 			actionForms.put(entry.getKey(), formFactory.getActionForm(entry.getValue().getFormClass()));
 		}
 		
 		if (configAnnotations != null) {
 			for (Entry<String, Class> entry : configAnnotations.getFormMap().entrySet()) {
+				if (actionForms.containsKey(entry.getKey())) {
+					throw new VingtSurStrutsException("Le ActionForm " + entry.getKey() + " est défini deux fois.");
+				}
 				actionForms.put(entry.getKey(), this.classToForm(entry.getValue()));
 			}
 		}
@@ -148,12 +157,20 @@ public class ActionServlet extends HttpServlet {
 			
 			action.setForwards(forwards);
 			
-			actions.put(entry.getKey(), action);
+			if (this.actions.containsKey(entry.getKey())) {
+				throw new VingtSurStrutsException("Le Action " + entry.getKey() + " est défini deux fois.");
+			}
+			
+			this.actions.put(entry.getKey(), action);
 		}
 		
-		if (configAnnotations != null) {
-			for (Entry<String, Class> entry : configAnnotations.getActionsMap().entrySet()) {
-				actions.put(entry.getKey(), classToAction(entry.getValue(), actionForms));
+		if (this.configAnnotations != null) {
+			for (Entry<String, Class> entry : this.configAnnotations.getActionsMap().entrySet()) {
+				if (this.actions.containsKey(entry.getKey())) {
+					throw new VingtSurStrutsException("Le Action " + entry.getKey() + " est défini deux fois.");
+				}
+				
+				this.actions.put(entry.getKey(), classToAction(entry.getValue(), actionForms));
 			}
 		}
 	}
@@ -164,13 +181,7 @@ public class ActionServlet extends HttpServlet {
 		
 		Action actionRetour = actionFactory.getAction(value.getCanonicalName());
 		
-		fr.afcepf.al18.framework
-		.vingtSurStruts.configuration.annotations.
-		Action actionAnnonation = (fr.afcepf.al18.framework
-				.vingtSurStruts.configuration.annotations.
-				Action) value.getAnnotation(fr.afcepf.al18.framework
-						.vingtSurStruts.configuration.annotations.
-						Action.class);
+		fr.afcepf.al18.framework.vingtSurStruts.commons.annotations.Action actionAnnonation = (fr.afcepf.al18.framework.vingtSurStruts.commons.annotations.Action) value.getAnnotation(fr.afcepf.al18.framework.vingtSurStruts.commons.annotations.Action.class);
 		
 		actionRetour.setForm(actionForms.get(actionAnnonation.formName()));
 		actionRetour.setInput(actionAnnonation.input());

@@ -5,7 +5,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
-import fr.afcepf.al18.framework.vingtSurStruts.core.action.ActionForm;
+import fr.afcepf.al18.framework.vingtSurStruts.commons.entities.ActionForm;
 
 public class ActionLoginForm extends ActionForm {
 

@@ -8,6 +8,9 @@
         <dependent-module archiveName="vingtSurStruts-configuration-0.0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/vingtSurStruts-configuration/vingtSurStruts-configuration">
             <dependency-type>uses</dependency-type>
         </dependent-module>
+        <dependent-module archiveName="vingtSurStruts-commons-0.0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/vingtSurStruts-commons/vingtSurStruts-commons">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
         <dependent-module archiveName="vingtSurStruts-core-0.0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/vingtSurStruts-core/vingtSurStruts-core">
             <dependency-type>uses</dependency-type>
         </dependent-module>

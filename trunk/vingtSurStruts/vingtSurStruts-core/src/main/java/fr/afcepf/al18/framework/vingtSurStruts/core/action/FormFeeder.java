@@ -5,6 +5,8 @@ import java.util.Map;
 
 import org.apache.commons.beanutils.BeanUtils;
 
+import fr.afcepf.al18.framework.vingtSurStruts.commons.entities.ActionForm;
+
 /**
  * Remplit le form avec les valeurs renvoyées par la requete.
  * @author Hadrien Ternier

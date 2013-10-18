@@ -12,8 +12,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import fr.afcepf.al18.framework.vingtSurStruts.configuration.annotations.Action;
-import fr.afcepf.al18.framework.vingtSurStruts.configuration.annotations.Form;
+import fr.afcepf.al18.framework.vingtSurStruts.commons.VingtSurStrutsException;
+import fr.afcepf.al18.framework.vingtSurStruts.commons.annotations.Action;
+import fr.afcepf.al18.framework.vingtSurStruts.commons.annotations.Form;
 
 public class ParsingAnnotation {
 	
@@ -32,7 +33,7 @@ public class ParsingAnnotation {
 		try {
 			this.parsePackages();
 		} catch (Exception e) {
-			
+			throw new VingtSurStrutsException(e);
 		}
 	}
 
@@ -79,7 +80,7 @@ public class ParsingAnnotation {
 	private void initActions(List<Class> actionClasses) {
 		for (Class clazz : actionClasses) {
 			Action actionAnnocation = (Action) clazz.getAnnotation(Action.class);
-			this.actionsMap.put(actionAnnocation.urlPattern(), clazz);
+			this.actionsMap.put(actionAnnocation.actionName(), clazz);
 		}
 	}
 

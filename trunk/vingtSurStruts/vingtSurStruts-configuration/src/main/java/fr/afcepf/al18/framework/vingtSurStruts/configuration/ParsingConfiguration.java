@@ -17,6 +17,7 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
+import fr.afcepf.al18.framework.vingtSurStruts.commons.VingtSurStrutsException;
 import fr.afcepf.al18.framework.vingtSurStruts.configuration.entities.ActionXml;
 import fr.afcepf.al18.framework.vingtSurStruts.configuration.entities.FormXml;
 import fr.afcepf.al18.framework.vingtSurStruts.configuration.entities.ForwardXml;
@@ -25,7 +26,7 @@ import fr.afcepf.al18.framework.vingtSurStruts.configuration.entities.ForwardXml
  * Classe de lecture du fichier de configuration vingtSurStruts-config.xml.
  * @author Hadrien Ternier
  */
-public class ParsingConfiguration implements VingtSurStrutsParser {
+public class ParsingConfiguration {
 
 	// Chemin du fichier de configuration XML
 	private String config;
@@ -59,7 +60,7 @@ public class ParsingConfiguration implements VingtSurStrutsParser {
 			try {
 				INSTANCE.parse();
 			} catch (Exception e) {
-//				throw new Vin
+				throw new VingtSurStrutsException(e);
 			}
 		}
 		return INSTANCE;
@@ -105,10 +106,10 @@ public class ParsingConfiguration implements VingtSurStrutsParser {
 					}
 					
 					// Si ok, récupération de la valeur
-					else if (parametre.getNodeName().equals("action-name")) {
+					else if (parametre.getNodeName().equals("action-class")) {
 						actionXml.setActionName(parametre.getTextContent());
 					}
-					else if (parametre.getNodeName().equals("url-pattern")) {
+					else if (parametre.getNodeName().equals("action-name")) {
 						actionXml.setUrlPattern(parametre.getTextContent());
 					}
 					else if (parametre.getNodeName().equals("form-name")) {
