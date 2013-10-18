@@ -1,22 +1,17 @@
-#newsletterDiv {
-	-moz-box-shadow: 7px 7px 5px px #656565;
-	-webkit-box-shadow: 7px 7px 5px px #656565;
-	-o-box-shadow: 7px 7px 5px px #656565;
-	box-shadow: 7px 7px 5px px #656565;
-	filter: progid:DXImageTransform.Microsoft.Shadow(color=#656565,
-		Direction=135, Strength=5);
-	-moz-border-radius: 10px;
-	-webkit-border-radius: 10px;
-	border-radius: 10px;
-	border-color: black;
-	border-collapse: collapse;
-	width: 550px;
-	border-color: black;
-	border-collapse: collapse;
-	align: center;
+body {
+	margin: 10 10 10 10px;
 }
 
-#newsletterValideDiv {
+
+#emailInput {
+	margin-top: 40px;
+	margin-bottom: 50px;
+}
+
+
+
+.newsletterDiv {
+	margin-top: 30px;
 	-moz-box-shadow: 7px 7px 5px px #656565;
 	-webkit-box-shadow: 7px 7px 5px px #656565;
 	-o-box-shadow: 7px 7px 5px px #656565;
@@ -30,6 +25,56 @@
 	border-collapse: collapse;
 	width: 550px;
 	border-color: black;
-	border-collapse: collapse;
-	align: center;
+	border-collapse: separate;
+	margin-left: 30%;
+	text-align: center;
+	
 }
+
+.retourSite {
+	margin-top: 20px;
+	margin-bottom: 30px;
+}
+
+.header {
+	height: 110px;
+	background-color: rgb(138, 7, 46);
+	width: 100%;
+	-moz-box-shadow: 7px 7px 5px px #656565;
+}
+
+.footer {
+	margin-top: 50px;
+	padding-top: 50px;
+	height: 90px;
+	background-color: black;
+	width: 100%;
+	-moz-box-shadow: 7px 7px 5px px #656565;
+	font: bold 14px Arial;
+	color: white;
+	margin-right: 20px;
+	vertical-align: middle;
+}
+
+.footer a {
+	color: white;
+}
+
+.corps {
+	min-height: 380px;
+	vertical-align: middle;
+	text-align: center;
+}
+
+.cnil {
+	margin-top : 30px;
+}
+
+#table {display: table;
+vertical-align: middle;
+}
+.row {display: table-row;}
+.cell {display: table-cell;
+width: 75%;
+text-align: center;}
+

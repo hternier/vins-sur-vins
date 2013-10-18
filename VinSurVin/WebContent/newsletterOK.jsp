@@ -12,18 +12,26 @@
 <body>
 	<div class="header"></div>
 	<div class="corps">
+
 		<div class="newsletterDiv">
 			<a href="/VinSurVin/faces/pagesFrontOffice/accueil.xhtml"
 				title="Vin sur Vin" class="logo-one"> <img
 				src="/VinSurVin/faces/resources/images/logo.png" alt="Vin sur Vin"
-				width="200px" /></a>
-			<h2>Inscription à notre newsletter impossible</h2>
-			<h4 style="color: red;">Erreur : Le format de l'adresse mail
-				n'est pas valide. Veuillez rééssayer.</h4>
-			<br> <a href="/VinSurVin/newsletter.jsp" target="_blank"
-				style="margin-top: 20px;">Retour sur la page d'abonnement à
-				notre newsletter</a>
+				width="200px" /></a> <br>
+			<h2>Inscription à notre newsletter réussie</h2>
+
+			<form>
+				<label style="color: green">Merci, votre inscription a bien
+					été prise en compte.</label> <br> <br> <br> <a
+					href="/VinSurVin/faces/pagesFrontOffice/accueil.xhtml"
+					target="_blank" class="retourSite">Retourner sur le site Vin
+					sur Vin </a>
+			</form>
+			<label class="cnil"><i >Conformément à la loi Informatique et Liberté du
+				6 janvier 1978, vous disposez d'un droit d'accès, de rectification
+				et d'opposition relatif aux informations vous concernant.</i> </label>
 		</div>
+		
 	</div>
 	<div class="footer">
 		<div id="table">
@@ -42,5 +50,6 @@
 			</div>
 		</div>
 	</div>
+
 </body>
 </html>
