@@ -28,8 +28,8 @@ public class ActionNewsletterForm  extends ActionForm {
     		// Redirection Erreur
     		message.add("Le champ email ne peut pas être vide.");
 
-        } else if (!this.getEmail().matches(regexMail)){
-        	message.add("Le format de l'adresse mail n'est pas valide. Veuillez rééssayer.");
+//        } else if (!this.getEmail().matches(regexMail)){
+//        	message.add("Le format de l'adresse mail n'est pas valide. Veuillez rééssayer.");
         
         } else {
         	// Redirection Success
