@@ -14,7 +14,7 @@
 		Password :
 		<input name="password" type="password" value="${loginForm.password}"/>
 		<br>
-		<input type="submit" value="Submit">
+		<input type="submit" value="Submit">		
 		<br>
 		
 		<c:forEach items="${loginForm.messagesValidate}" var="message">

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vingtSurStruts-config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="http://vins-sur-vins.googlecode.com/svn/trunk/vingtSurStruts/vingtSurStruts-core/src/main/resources/vinSurStrutsSchema.xsd">
+	<packagesName>
+		<packageName>fr.afcepf.atod17.vinsurvin.framework.controller</packageName>
+	</packagesName>
+</vingtSurStruts-config>

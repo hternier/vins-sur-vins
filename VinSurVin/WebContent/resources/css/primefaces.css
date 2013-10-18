@@ -2807,6 +2807,14 @@ div.ui-button,.ui-splitbutton {
 }
 
 .RowsPerPageDropdown {
-		width: 20px;
+	width: 20px;
 	height: 22px;
+}
+
+#bandeauCommande:newsletterLink {
+	float: right;
+	margin-right: -8px;
+	background: url("/showcase/javax.faces.resource/images/ui-bg_glass_45_0078ae_1x400.png.jsf?ln=primefaces-start") 
+	repeat-x scroll 50% 50% rgb(0, 120, 174);
+	border: 1px solid rgb(119, 213, 247);
 }
