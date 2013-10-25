@@ -27,7 +27,7 @@ public class ManagedBeanPanier extends AbstractManagedBean {
     /**
      * Panier de la session.
      */
-    private Panier panier = new Panier();;
+    private Panier panier = new Panier();
     
     /**
      * La commande qui sera généré par le panier

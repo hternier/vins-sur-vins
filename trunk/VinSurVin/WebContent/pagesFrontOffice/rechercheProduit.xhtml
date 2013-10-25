@@ -29,7 +29,8 @@
 					   </p:row>
 					   <p:row>
 					       <p:column style="padding-left:2px;"><h:outputLabel value="Quantité :" /></p:column>
-					       <p:column><p:spinner id="quantiteVignette" styleClass="quantiteVignette" value="#{vin.quantite}" stepFactor="1" min="1" max="#{vin.stock}" /></p:column>
+					       <p:column><p:spinner id="quantiteVignette" styleClass="quantiteVignette" value="#{vin.quantite}" stepFactor="1" min="1" max="#{vin.stock}" />
+					       <h:outputLabel  style="color:grey; font-style:italic;" value="  &nbsp; (Stock : #{vin.stock})" /></p:column>
 					   </p:row>
 					   <p:row>
 					       <p:column colspan="2">
@@ -65,7 +66,8 @@
                        </p:row>
                        <p:row>
                            <p:column><h:outputLabel value="Quantité : " /></p:column>
-                           <p:column><p:spinner id="quantiteVignette" styleClass="quantiteVignette" value="#{spritueux.quantite}" stepFactor="1" min="1" max="#{spritueux.stock}" /></p:column>
+                           <p:column><p:spinner id="quantiteVignette" styleClass="quantiteVignette" value="#{spritueux.quantite}" stepFactor="1" min="1" max="#{spritueux.stock}" />
+                           <h:outputLabel  style="color:grey; font-style:italic;" value="  &nbsp; (Stock : #{spritueux.stock})" /></p:column>
                        </p:row>
                        <p:row>
                            <p:column colspan="2">
@@ -100,7 +102,9 @@
                        </p:row>
                        <p:row>
                            <p:column><h:outputLabel value="Quantité : " /></p:column>
-                           <p:column><p:spinner id="quantiteVignette" styleClass="quantiteVignette" value="#{accessoire.quantite}" stepFactor="1" min="1" max="#{accessoire.stock}" /></p:column>
+                           <p:column><p:spinner id="quantiteVignette" styleClass="quantiteVignette" value="#{accessoire.quantite}" stepFactor="1" min="1" max="#{accessoire.stock}" />
+                           <h:outputLabel  style="color:grey; font-style:italic;" value="  &nbsp; (Stock : #{accessoire.stock})" /></p:column>
+
                        </p:row>
                        <p:row>
                            <p:column colspan="2">

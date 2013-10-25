@@ -22,6 +22,7 @@
 					</p:column>
 					<p:column headerText="Quantité">
 						<p:inputText value="#{produitPanier.quantite}" styleClass="quantiteVignette"/>
+						<h:outputLabel value="#{produitPanier.produit.stock}"></h:outputLabel>
 						<p:commandButton ajax="false" value="Ok" actionListener="mbPanier.setQuantite">
 							<f:attribute name="produit" value="#{produitPanier.produit}" />
 							<f:attribute name="quantite" value="#{produitPanier.quantite}"/>
