@@ -10,7 +10,7 @@
 	template="/layoutsFO/ajoutCommandeLayout.xhtml">
 	<ui:define name="body">
 		<h:form id="form">
-			<p:fieldset legend="Récapitulatife de la commande">
+			<p:fieldset legend="Récapitulatif de la commande">
 				<h:outputLabel value="Votre commande :" />
 				<p:dataTable value="#{mbCommande.commande.produitsEnCommande}"
 					var="produitEnCommande" resizableColumns="true" paginator="false">
