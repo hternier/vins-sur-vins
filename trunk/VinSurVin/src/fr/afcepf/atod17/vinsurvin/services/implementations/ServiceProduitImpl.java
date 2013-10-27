@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
+import fr.afcepf.atod17.vinsurvin.control.managedbeans.AbstractManagedBean;
 import fr.afcepf.atod17.vinsurvin.dao.interfaces.categorieProduit.IDaoCategorieProduit;
 import fr.afcepf.atod17.vinsurvin.dao.interfaces.produit.IDaoProduit;
 import fr.afcepf.atod17.vinsurvin.dao.interfaces.tva.IDaoTVAProduit;
@@ -24,7 +25,7 @@ import fr.afcepf.atod17.vinsurvin.services.interfaces.IServiceProduit;
  * @author Hadrien TERNIER et Nicolas
  * 
  */
-public class ServiceProduitImpl implements IServiceProduit {
+public class ServiceProduitImpl extends AbstractManagedBean implements IServiceProduit {
 
 	/**
 	 * Instenciation de l'implémentation de la DAO produit.
@@ -52,7 +53,7 @@ public class ServiceProduitImpl implements IServiceProduit {
 		} else {
 			listeRetour = daoProduit.getAll();
 		}
-		return listeRetour;
+		return getContext().getBean(ServiceStockImpl.class).getStockFormProductList(listeRetour);
 	}
 
 	@Override
@@ -74,7 +75,7 @@ public class ServiceProduitImpl implements IServiceProduit {
 		} else {
 			listeRetour = daoProduit.getAllParNom(paramNom);
 		}
-		return listeRetour;
+		return getContext().getBean(ServiceStockImpl.class).getStockFormProductList(listeRetour);
 	}
 
 	@Override
@@ -144,7 +145,7 @@ public class ServiceProduitImpl implements IServiceProduit {
 		} else {
 			listeRetour = daoProduit.getAllVinParRegion(paramRegion);
 		}
-		return listeRetour;
+		return getContext().getBean(ServiceStockImpl.class).getStockFormProductList(listeRetour);
 	}
 
 	@Override
@@ -167,7 +168,7 @@ public class ServiceProduitImpl implements IServiceProduit {
 			listeRetour = daoProduit.getAllVinParNomEtRegion(paramNom,
 					paramRegion);
 		}
-		return listeRetour;
+		return getContext().getBean(ServiceStockImpl.class).getStockFormProductList(listeRetour);
 	}
 
 	@Override
@@ -188,7 +189,7 @@ public class ServiceProduitImpl implements IServiceProduit {
 		} else {
 			listeRetour = daoProduit.getAllParMillesime(paramMillesime);
 		}
-		return listeRetour;
+		return getContext().getBean(ServiceStockImpl.class).getStockFormProductList(listeRetour);
 	}
 
 	@Override
@@ -197,7 +198,7 @@ public class ServiceProduitImpl implements IServiceProduit {
 		List<Produit> listeRetour = getAllProduitParMillesime(paramMillesime,
 				enStock);
 		filterListeParPrix(listeRetour, prixMin, prixMax);
-		return listeRetour;
+		return getContext().getBean(ServiceStockImpl.class).getStockFormProductList(listeRetour);
 	}
 
 	@Override
@@ -211,7 +212,7 @@ public class ServiceProduitImpl implements IServiceProduit {
 			listeRetour = daoProduit.getAllParMillesimeEtNom(paramMillesime,
 					paramNom);
 		}
-		return listeRetour;
+		return getContext().getBean(ServiceStockImpl.class).getStockFormProductList(listeRetour);
 	}
 
 	@Override
@@ -221,7 +222,7 @@ public class ServiceProduitImpl implements IServiceProduit {
 		List<Produit> listeRetour = getAllProduitParMillesimeEtNom(
 				paramMillesime, paramNom, true);
 		filterListeParPrix(listeRetour, prixMin, prixMax);
-		return listeRetour;
+		return getContext().getBean(ServiceStockImpl.class).getStockFormProductList(listeRetour);
 	}
 
 	@Override
@@ -260,7 +261,7 @@ public class ServiceProduitImpl implements IServiceProduit {
 			listeRetour = daoProduit.getAllVinParMillesimeEtRegion(
 					paramMillesime, paramRegion);
 		}
-		return listeRetour;
+		return getContext().getBean(ServiceStockImpl.class).getStockFormProductList(listeRetour);
 	}
 
 	@Override
@@ -275,19 +276,22 @@ public class ServiceProduitImpl implements IServiceProduit {
 
 	@Override
 	public List<Produit> getAllVins(boolean enStock) {
-		return daoProduit.getAllProduitByTypeProduit("Vin", enStock);
+		List<Produit> lstProduit = daoProduit.getAllProduitByTypeProduit("Vin", enStock);
+		 return getContext().getBean(ServiceStockImpl.class).getStockFormProductList(lstProduit);
 	}
 
 	/** methode de récupération de tous les Produits de type spiritueux **/
 	@Override
 	public List<Produit> getAllSpiritueux(boolean enStock) {
-		return daoProduit.getAllProduitByTypeProduit("Spiritueux", enStock);
+		List<Produit> lstProduit =  daoProduit.getAllProduitByTypeProduit("Spiritueux", enStock);
+		return getContext().getBean(ServiceStockImpl.class).getStockFormProductList(lstProduit);
 	}
 
 	/** methode de récupération de tous les Produits de type accessoires **/
 	@Override
 	public List<Produit> getAllAccessoires(boolean enStock) {
-		return daoProduit.getAllProduitByTypeProduit("Accessoire", enStock);
+		List<Produit> lstProduit =  daoProduit.getAllProduitByTypeProduit("Accessoire", enStock);
+		return getContext().getBean(ServiceStockImpl.class).getStockFormProductList(lstProduit);
 	}
 
 	/** methode de récupération d'une liste de tous les type de produit **/
@@ -318,20 +322,12 @@ public class ServiceProduitImpl implements IServiceProduit {
 	@Override
 	public List<Produit> getAllProduitParTypeProduit(String paramType) {
 		if (paramType.equals(Vin.class.getSimpleName())) {
-			System.out
-					.println("entrée dans la methode getAllProduitParTypeProduit, dans la partie VIN ");
 			return getAllVins(false);
 		} else if (paramType.equals(Spiritueux.class.getSimpleName())) {
-			System.out
-					.println("entrée dans la methode getAllProduitParTypeProduit, dans la partie SPIRITUEUX");
 			return daoProduit.getAllProduitByTypeProduit("Spiritueux", false);
 		} else if (paramType.equals(Accessoire.class.getSimpleName())) {
-			System.out
-					.println("entrée dans la methode getAllProduitParTypeProduit, dans la partie ACCESSOIRE ");
 			return daoProduit.getAllProduitByTypeProduit("Accessoire", false);
 		} else
-			System.out
-					.println("entrée dans la methode getAllProduitParTypeProduit, pas de concordance trouvée ");
 		return getAllProduit(false);
 	}
 	
@@ -341,7 +337,8 @@ public class ServiceProduitImpl implements IServiceProduit {
 	 **/
 	@Override
 	public List<Produit> getAllProduitParTypeProduitEtNom(String paramType, String paramText) {
-		return daoProduit.getAllProduitByTypeProduitEtTexte(paramType,paramText);
+		List<Produit> lstProduit = daoProduit.getAllProduitByTypeProduitEtTexte(paramType,paramText);
+		 return getContext().getBean(ServiceStockImpl.class).getStockFormProductList(lstProduit);
 	}
 
 	/**
@@ -350,7 +347,8 @@ public class ServiceProduitImpl implements IServiceProduit {
 	 **/
 	@Override
 	public List<Produit> getAllProduitParCategorie(Integer paramCat) {
-		return daoCategorieProduit.getAllProduitsParCategorie(paramCat);
+		List<Produit> lstProduit = daoCategorieProduit.getAllProduitsParCategorie(paramCat);
+		return getContext().getBean(ServiceStockImpl.class).getStockFormProductList(lstProduit);
 	}
 
 	/**
@@ -359,7 +357,8 @@ public class ServiceProduitImpl implements IServiceProduit {
 	 **/
 	@Override
 	public List<Produit> getAllProduitsParCategorieEtTexte(Integer paramCat, String paramText) {
-		return daoCategorieProduit.getAllProduitsParCategorieEtTexte(paramCat, paramText);
+		List<Produit> lstProduit = daoCategorieProduit.getAllProduitsParCategorieEtTexte(paramCat, paramText);
+		 return getContext().getBean(ServiceStockImpl.class).getStockFormProductList(lstProduit);
 	}
 	
 	@Override
