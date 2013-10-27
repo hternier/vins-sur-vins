@@ -1,5 +1,7 @@
 package fr.afcepf.atod17.vinsurvin.services.implementations;
 
+import java.util.List;
+
 import fr.afcepf.atod17.vinsurvin.dao.interfaces.commande.IDaoCommande;
 import fr.afcepf.atod17.vinsurvin.entitybeans.commande.Commande;
 import fr.afcepf.atod17.vinsurvin.entitybeans.produit.Produit;
@@ -42,6 +44,15 @@ public class ServiceStockImpl implements IServiceStock {
 	@Override
 	public void ping(String paramString) {
 		System.out.println(controleDeStockService.ping(paramString));
+	}
+	
+	public List<Produit> getStockFormProductList(List<Produit> paramProduits)
+	{
+		for (Produit produit : paramProduits) {
+			produit.setStock(getStockActuel(produit));
+		}
+		
+		return paramProduits;
 	}
 
 }
