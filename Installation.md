@@ -1,0 +1,8 @@
+# Configuration d'Eclipse #
+
+Pour l'ajout du dépot à un projet Eclipse, suivre [ce tuto](http://baptiste-wicht.developpez.com/tutoriels/eclipse/svn/).
+Il est pour une ancienne version d'Eclipse mais a part quelques libellés c'est identique.
+
+Le login est l'adresse mail google.
+Le mot de passe est à récupérer à l'adresse suivante :
+https://code.google.com/hosting/settings

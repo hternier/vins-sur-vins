@@ -1,0 +1,1 @@
+Tuto web service cxf : http://www.jtips.info/index.php?title=JAX-WS/CXF_et_Spring#Le_projet_CXF
